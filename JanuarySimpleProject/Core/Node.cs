@@ -91,10 +91,10 @@ namespace JanuarySimpleProject.Core
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                return;
+                throw new Exception("Node is not can be Null");
 
             if (_values.Contains(strValue))
-                return;
+                throw new Exception("This value already exist");
 
             _values.Add(strValue);
             _value += $"{strValue}";
@@ -106,17 +106,17 @@ namespace JanuarySimpleProject.Core
         public void AddValue<TValue>(List<TValue> values)
         {
             if (values.Count <= 0)
-                return;
+                throw new Exception("List is not can be Null");
 
             foreach (var value in values)
             {
                 string strValue = value.ToString().Trim();
 
                 if (strValue == null)
-                    return;
+                    throw new Exception("Value is not can be Null");
 
                 if (_values.Contains(strValue))
-                    return;
+                    throw new Exception("This value already exist");
 
                 _values.Add(strValue);
                 _value += $"{strValue}";
@@ -131,15 +131,38 @@ namespace JanuarySimpleProject.Core
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                return;
+                throw new Exception("Value is not can be Null");
 
             if (!_values.Contains(strValue))
-                return;
+                throw new Exception("Value is not exist");
 
             _values.Remove(strValue);
             _value = Value.Replace(strValue, "");
 
             OnNodeChange?.Invoke();
+        }
+
+        public void RemoveValue<TValue>(List<TValue> value)
+        {
+            if (value.Count <= 0)
+                throw new Exception("List is not can be Null");
+
+            foreach (var values in value)
+            {
+                string strValue = value.ToString().Trim();
+
+                if (strValue == null)
+                    throw new Exception("Value is not can be Null");
+
+                if (!_values.Contains(strValue))
+                    throw new Exception("Value is not exist");
+
+                _values.Remove(strValue);
+                _value = Value.Replace(strValue, "");
+
+                OnNodeChange?.Invoke();
+            }
+            
         }
 
         public static Node CreateEmptyNode()
