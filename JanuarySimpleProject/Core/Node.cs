@@ -47,6 +47,7 @@ namespace JanuarySimpleProject.Core
             {
                 _value = value.Trim();
                 //TODO need optimize
+                _values.Clear();
                 _values.Add(_value);
                 OnNodeChange?.Invoke();
             }
