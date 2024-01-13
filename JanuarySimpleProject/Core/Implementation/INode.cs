@@ -12,7 +12,7 @@ namespace JanuarySimpleProject.Core.Implementation
         void ShowInfo();
         void AddValue<TValue>(TValue value);
         void RemoveValue<TValue>(TValue value);
-        //TODO write ReplaceValue method
+        //TODO write UpadateValue method
 
         event Action OnNodeChange;
     }
