@@ -36,6 +36,12 @@ node.ShowInfo();
 node.RemoveValue("Str");
 node.ShowInfo();
 
+node.AddValue(111);
+node.ShowInfo();
+
+Console.WriteLine(node.UpdateValue(111, 222));
+node.ShowInfo();
+
 node.RemoveValue(ints);
 node.ShowInfo();
 

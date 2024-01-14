@@ -62,6 +62,12 @@ namespace JanuarySimpleProject.Core.Implementation
             _values = new string[0];
         }
 
+        public void Replace(string oldValue, string newValue) 
+        {
+            int index = Array.IndexOf(_values, oldValue);
+            _values[index] = newValue;
+        }
+
         public IEnumerator<string> GetEnumerator()
         {
             for(int i = 0;  i < _values.Length; i++)
