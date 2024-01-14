@@ -47,5 +47,7 @@ node.ShowInfo();
 
 Console.WriteLine(node.JSON);
 
+node.Value = "Str";
+node.ShowInfo();
 
 Console.ReadKey();

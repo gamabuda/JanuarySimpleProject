@@ -15,6 +15,11 @@ namespace JanuarySimpleProject.Core.Implementation
             _values = new string[1];
         }
 
+        public DynamicArray(object value)
+        {
+            _values = new string[1] { value.ToString() }; 
+        }
+
         public string this[int index]
         {
             get { return _values[index]; }
