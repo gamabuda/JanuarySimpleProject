@@ -107,7 +107,7 @@ namespace JanuarySimpleProject.Core
         public void AddValue<TValue>(List<TValue> values)
         {
             if (values.Count <= 0)
-                return;
+                throw new Exception("Список элементов пустой");
 
             foreach (var value in values)
             {
@@ -141,6 +141,11 @@ namespace JanuarySimpleProject.Core
             _value = Value.Replace(strValue, "");
 
             OnNodeChange?.Invoke();
+        }
+
+        public void RemoveValue<TValue>(List<TValue> value)
+        {
+
         }
 
         public static Node CreateEmptyNode()
