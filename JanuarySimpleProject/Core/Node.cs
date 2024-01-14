@@ -6,7 +6,7 @@ namespace JanuarySimpleProject.Core
 {
     public class Node : INode
     {
-        //TODO switch list to array
+        //TODO switch list to array(DONE)
         DynamicArray _values = new DynamicArray();
         private string _value;
 
@@ -85,16 +85,17 @@ namespace JanuarySimpleProject.Core
             Console.WriteLine($"Node:\tName:{Name} ID:{Id}\n\tDateTime create:{DateTimeCreate}\n\tDateTime last update:{DateTimeUpdate}\n\tValue:{Value}");
         }
 
-        //TODO switch all returns to throw Exception
+        //TODO switch all returns to throw Exception(DONE)
         public void AddValue<TValue>(TValue value)
         {
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                return;
+                //Вообще эта проверка не нужна, так как при попытке добавления null ломается ToString метод и до этой проверки программа даже не дойдет
+                throw new Exception("Вы пытаетесь добавить null значение");
 
             if (_values.Contains(strValue))
-                return;
+                throw new Exception("Элемент уже есть в массиве");
 
             _values.Add(strValue);
             _value += $"{strValue}";
@@ -102,7 +103,7 @@ namespace JanuarySimpleProject.Core
             OnNodeChange?.Invoke();
         }
 
-        //TODO switch all returns to throw Exception
+        //TODO switch all returns to throw Exception(DONE)
         public void AddValue<TValue>(List<TValue> values)
         {
             if (values.Count <= 0)
@@ -113,10 +114,10 @@ namespace JanuarySimpleProject.Core
                 string strValue = value.ToString().Trim();
 
                 if (strValue == null)
-                    return;
+                    throw new Exception("Вы пытаетесь добавить null значение");
 
                 if (_values.Contains(strValue))
-                    return;
+                    throw new Exception("Список элементов уже есть в массиве");
 
                 _values.Add(strValue);
                 _value += $"{strValue}";
@@ -125,16 +126,16 @@ namespace JanuarySimpleProject.Core
             }
         }
 
-        //TODO switch all returns to throw Exception and add the ability to delete a list of objects
+        //TODO switch all returns to throw Exception(DONE) and add the ability to delete a list of objects
         public void RemoveValue<TValue>(TValue value)
         {
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                return;
+                throw new Exception("Вы пытаетесь удалить null значение");
 
             if (!_values.Contains(strValue))
-                return;
+                throw new Exception("Данного элемента нет в массиве");
 
             _values.Remove(strValue);
             _value = Value.Replace(strValue, "");
