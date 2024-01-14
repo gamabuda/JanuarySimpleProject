@@ -36,6 +36,9 @@ node.ShowInfo();
 node.RemoveValue("Str");
 node.ShowInfo();
 
+node.RemoveValue(ints);
+node.ShowInfo();
+
 Console.WriteLine(node.JSON);
 
 
