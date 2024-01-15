@@ -9,9 +9,9 @@ namespace JanuarySimpleProject.Core
     public class Node : INode
     {
         //TODO switch list to array(DONE)
-        DynamicArray _values = new DynamicArray();
+        DynamicArray<string> _values = new DynamicArray<string>();
         private string _value;
-
+        
         private Node()
         {
             Id = Guid.NewGuid().ToString();
@@ -49,7 +49,7 @@ namespace JanuarySimpleProject.Core
             {
                 _value = value.Trim();
                 //TODO need optimize(DONE)
-                _values = new DynamicArray(_value);
+                _values = new DynamicArray<string>(_value);
                 OnNodeChange?.Invoke();
             }
         }
@@ -73,7 +73,7 @@ namespace JanuarySimpleProject.Core
 
         private void CheckNode()
         {
-            var temp = String.Empty;
+            var temp = string.Empty;
             foreach (var v in _values)
                 temp += v;
 

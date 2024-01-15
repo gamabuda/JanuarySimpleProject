@@ -7,26 +7,25 @@ using System.Threading.Tasks;
 
 namespace JanuarySimpleProject.Core.Implementation
 {
-    public class DynamicArray
+    public class DynamicArray<T>
     {
-        private string[] _values;
+        private T[] _values;
         public DynamicArray()
         {
-            _values = new string[1];
+            _values = new T[0];
         }
-
-        public DynamicArray(object value)
+        
+        public DynamicArray(T value)
         {
-            _values = new string[1] { value.ToString() }; 
+            _values = new T[1] { value };
         }
-
-        public string this[int index]
+        public T this[int index]
         {
             get { return _values[index]; }
             set { _values[index] = value; }
         }
 
-        public void Add(string value)
+        public void Add(T value)
         {
             int lastIndex = _values.Length - 1;
             if (lastIndex == null)
@@ -35,20 +34,20 @@ namespace JanuarySimpleProject.Core.Implementation
             }
             else
             {
-                string[] temp = new string[_values.Length + 1];
+                T[] temp = new T[_values.Length + 1];
                 _values.CopyTo(temp, 0);
                 _values = temp;
                 _values[lastIndex+1] = value;
             }
         }
 
-        public void Remove(string value)
+        public void Remove(T value)
         {
             
             int index = Array.IndexOf(_values, value);
             if(index != -1)
             {
-                _values[index] = null;
+                _values[index] = default(T);
                 _values = _values.Where(a => a != null).ToArray();
             }
             else
@@ -57,23 +56,23 @@ namespace JanuarySimpleProject.Core.Implementation
             }
         }
 
-        public bool Contains(string value)
+        public bool Contains(T value)
         {
             return _values.Contains(value);
         }
 
         public void Clear()
         {
-            _values = new string[0];
+            _values = new T[0];
         }
 
-        public void Replace(string oldValue, string newValue) 
+        public void Replace(T oldValue, T newValue) 
         {
             int index = Array.IndexOf(_values, oldValue);
             _values[index] = newValue;
         }
 
-        public IEnumerator<string> GetEnumerator()
+        public IEnumerator<object> GetEnumerator()
         {
             for(int i = 0;  i < _values.Length; i++)
             {

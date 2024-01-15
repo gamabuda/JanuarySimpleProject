@@ -1,4 +1,5 @@
 ﻿using JanuarySimpleProject.Core;
+using JanuarySimpleProject.Core.Implementation;
 
 /*
  * Я накидал вам базы по прошлому полугодию, друзья!
@@ -51,3 +52,4 @@ node.Value = "Str";
 node.ShowInfo();
 
 Console.ReadKey();
+
