@@ -102,21 +102,21 @@ namespace JanuarySimpleProject.Core
             OnNodeChange?.Invoke();
         }
 
-        //TODO switch all returns to throw Exception
+        //TODO switch all returns to throw Exception (accomplished)
         public void AddValue<TValue>(List<TValue> values)
         {
             if (values.Count <= 0)
-                return;
+                throw new Exception("Вы не можете добавить пустой список");
 
             foreach (var value in values)
             {
                 string strValue = value.ToString().Trim();
 
                 if (strValue == null)
-                    return;
+                    throw new Exception("Вы не можете добавить null-значение");
 
                 if (_values.Contains(strValue))
-                    return;
+                    throw new Exception("Список элементов уже есть в массиве");
 
                 _values.Add(strValue);
                 _value += $"{strValue}";
