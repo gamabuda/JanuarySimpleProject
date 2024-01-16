@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using JanuarySimpleProject.Core.Implementation;
 
 namespace JanuarySimpleProject.Core
@@ -142,6 +143,28 @@ namespace JanuarySimpleProject.Core
             _value = Value.Replace(strValue, "");
 
             OnNodeChange?.Invoke();
+        }
+
+        public void RemoveValue<TValue>(List<TValue> values)
+        {
+            if (values.Count <= 0)
+                throw new Exception("The list is empty");
+
+            foreach (var value in values)
+            {
+                string strValue = value.ToString().Trim();
+
+                if (strValue == null)
+                    throw new Exception("The value is null");
+
+                if (!_values.Contains(strValue))
+                    throw new Exception("The value is not contained in the Node");
+
+                _values.Remove(strValue);
+                _value = Value.Replace(strValue, "");
+
+                OnNodeChange?.Invoke();
+            }
         }
 
         public static Node CreateEmptyNode()
