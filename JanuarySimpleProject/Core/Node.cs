@@ -125,21 +125,42 @@ namespace JanuarySimpleProject.Core
             }
         }
 
-        //TODO switch all returns to throw Exception and add the ability to delete a list of objects
+        //TODO switch all returns to throw Exception and add the ability to delete a list of objects *
         public void RemoveValue<TValue>(TValue value)
         {
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                return;
+                throw new Exception("You cannot delete a null value");
 
             if (!_values.Contains(strValue))
-                return;
+                throw new Exception("There is no such value in the array");
 
             _values.Remove(strValue);
             _value = Value.Replace(strValue, "");
 
             OnNodeChange?.Invoke();
+        }
+        public void RemoveValue<TValue>(List<TValue> values)
+        {
+            if (values.Count <= 0)
+                throw new Exception("The list of items is empty");
+
+            foreach (var value in values)
+            {
+                string strValue = value.ToString().Trim();
+
+                if (strValue == null)
+                    throw new Exception("You are trying to delete a null value");
+
+                if (_values.Contains(strValue))
+                    throw new Exception("This element is not in the array");
+
+                _values.Remove(strValue);
+                _value = Value.Replace(strValue, "");
+
+                OnNodeChange?.Invoke();
+            }
         }
 
         public static Node CreateEmptyNode()
