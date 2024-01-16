@@ -125,21 +125,46 @@ namespace JanuarySimpleProject.Core
             }
         }
 
-        //TODO switch all returns to throw Exception and add the ability to delete a list of objects
-        public void RemoveValue<TValue>(TValue value)
+        //TODO switch all returns to throw Exception and add the ability to delete a list of objects (accomplished)
+        public void RemoveValue<TValue>(TValue value) 
         {
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                return;
+                throw new Exception("Вы не можете удалить null-значение");
 
             if (!_values.Contains(strValue))
-                return;
+                throw new Exception("Такого значения нет в массиве");
 
             _values.Remove(strValue);
             _value = Value.Replace(strValue, "");
 
             OnNodeChange?.Invoke();
+        }
+
+        public void RemoveValue<TValue>(List<TValue> values)
+        {
+
+            if (values.Count <= 0)
+                throw new Exception("Список элементов пустой");
+
+            foreach (var value in values)
+            {
+                string strValue = value.ToString().Trim();
+
+                if (strValue == null)
+                    throw new Exception("Вы пытаетесь удалить null значение");
+
+                if (!_values.Contains(strValue))
+                    throw new Exception("Данного элемента нет в массиве");
+
+                Regex reg = new Regex(strValue);
+
+                _values.Remove(strValue);
+                _value = reg.Replace(Value, "", 1);
+
+                OnNodeChange?.Invoke();
+            }
         }
 
         public static Node CreateEmptyNode()
