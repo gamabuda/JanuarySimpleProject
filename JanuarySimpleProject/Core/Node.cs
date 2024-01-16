@@ -93,10 +93,10 @@ namespace JanuarySimpleProject.Core
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                return;
+                throw new Exception("The value is null");
 
             if (_values.Contains(strValue))
-                return;
+                throw new Exception("The value is already contained in the Node");
 
             _values.Add(strValue);
             _value += $"{strValue}";
@@ -108,17 +108,17 @@ namespace JanuarySimpleProject.Core
         public void AddValue<TValue>(List<TValue> values)
         {
             if (values.Count <= 0)
-                return;
+                throw new Exception("The list is empty");
 
             foreach (var value in values)
             {
                 string strValue = value.ToString().Trim();
 
                 if (strValue == null)
-                    return;
+                    throw new Exception("The value is null");
 
                 if (_values.Contains(strValue))
-                    return;
+                    throw new Exception("The value is already contained in the Node");
 
                 _values.Add(strValue);
                 _value += $"{strValue}";
@@ -133,10 +133,10 @@ namespace JanuarySimpleProject.Core
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                return;
+                throw new Exception("The value is null");
 
             if (!_values.Contains(strValue))
-                return;
+                throw new Exception("The value is not contained in the node");
 
             _values.Remove(strValue);
             _value = Value.Replace(strValue, "");
