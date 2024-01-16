@@ -10,12 +10,12 @@ namespace JanuarySimpleProject.Core
 {
     public class DynamicArray
     {
-        private int[] items;
+        private string[] items;
         private int count;
 
         public DynamicArray(int length)
         {
-            items = new int[length];
+            items = new string[length];
             count = 0;
         }
 
@@ -27,7 +27,7 @@ namespace JanuarySimpleProject.Core
                 newCount = 10;
             }
 
-            var newArray = new int[newCount];
+            var newArray = new string[newCount];
             for (int i = 0; i < count; i++)
             {
                 newArray[i] = items[i];
@@ -36,7 +36,7 @@ namespace JanuarySimpleProject.Core
             items = newArray;
         }
 
-        public void Add(int item)
+        public void Add(string item)
         {
             if (count == items.Length)
             {
@@ -47,7 +47,7 @@ namespace JanuarySimpleProject.Core
             count++;
         }
 
-        public void Remove(int item)
+        public void Remove(string item)
         {
             if (count == 0)
             {
@@ -80,7 +80,7 @@ namespace JanuarySimpleProject.Core
             }
         }
 
-        public bool Contains(int item)
+        public bool Contains(string item)
         {
             if (items.Contains(item))
             {
@@ -106,6 +106,19 @@ namespace JanuarySimpleProject.Core
             }
 
             return result;
+        }
+
+        public void Clear()
+        {
+            List<string> newItems = items.ToList();
+            newItems.Clear();
+            items = newItems.ToArray();
+            count = 0;
+        }
+
+        public string[] GetArray() 
+        { 
+            return items;
         }
     }
 }
