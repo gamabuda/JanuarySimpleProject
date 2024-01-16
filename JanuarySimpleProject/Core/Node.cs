@@ -73,8 +73,10 @@ namespace JanuarySimpleProject.Core
         private void CheckNode()
         {
             var temp = String.Empty;
-            foreach (var v in _values)
-                temp += v;
+            for (var i = 0; i < _values.Count(); i++)
+            {
+                temp += _values.GetArray()[i];
+            }
 
             if (_value != temp)
                 throw new Exception("Node is not correct or broken");
@@ -91,10 +93,10 @@ namespace JanuarySimpleProject.Core
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                return;
+                throw new Exception("ноль");
 
             if (_values.Contains(strValue))
-                return;
+                throw new Exception("уже есть такое значение");
 
             _values.Add(strValue);
             _value += $"{strValue}";
@@ -106,17 +108,17 @@ namespace JanuarySimpleProject.Core
         public void AddValue<TValue>(List<TValue> values)
         {
             if (values.Count <= 0)
-                return;
+                throw new Exception("массив пустой");
 
             foreach (var value in values)
             {
                 string strValue = value.ToString().Trim();
 
                 if (strValue == null)
-                    return;
+                    throw new Exception("ноль");
 
                 if (_values.Contains(strValue))
-                    return;
+                    throw new Exception("уже есть такое значение");
 
                 _values.Add(strValue);
                 _value += $"{strValue}";
@@ -131,10 +133,10 @@ namespace JanuarySimpleProject.Core
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                return;
+                throw new Exception("ноль");
 
             if (!_values.Contains(strValue))
-                return;
+                throw new Exception("уже есть такое значение");
 
             _values.Remove(strValue);
             _value = Value.Replace(strValue, "");
