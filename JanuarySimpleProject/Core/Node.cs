@@ -7,7 +7,7 @@ namespace JanuarySimpleProject.Core
     public class Node : INode
     {
         //TODO switch list to array (accomplished)
-        private List<string> _values = new List<string>();
+        DynamicArray<string> _values = new DynamicArray<string>();
         private string _value;
 
         private Node()
