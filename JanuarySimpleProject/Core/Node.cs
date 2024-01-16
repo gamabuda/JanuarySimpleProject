@@ -6,7 +6,7 @@ namespace JanuarySimpleProject.Core
 {
     public class Node : INode
     {
-        //TODO switch list to array
+        //TODO switch list to array (accomplished)
         private List<string> _values = new List<string>();
         private string _value;
 
