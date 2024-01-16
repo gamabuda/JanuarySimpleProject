@@ -7,7 +7,7 @@ namespace JanuarySimpleProject.Core
     public class Node : INode
     {
         //TODO switch list to array
-        private List<string> _values = new List<string>();
+        DynamicArray<string> _values = new DynamicArray<string>(100);
         private string _value;
 
         private Node()
@@ -91,10 +91,10 @@ namespace JanuarySimpleProject.Core
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                return;
+                throw new Exception("An empty line has been entered");
 
             if (_values.Contains(strValue))
-                return;
+                throw new Exception("Such a record is already available");
 
             _values.Add(strValue);
             _value += $"{strValue}";
@@ -106,17 +106,17 @@ namespace JanuarySimpleProject.Core
         public void AddValue<TValue>(List<TValue> values)
         {
             if (values.Count <= 0)
-                return;
+                throw new Exception("An empty list has been entered");
 
             foreach (var value in values)
             {
                 string strValue = value.ToString().Trim();
 
                 if (strValue == null)
-                    return;
+                    throw new Exception("An empty line has been entered");
 
                 if (_values.Contains(strValue))
-                    return;
+                    throw new Exception("Such a record is already available");
 
                 _values.Add(strValue);
                 _value += $"{strValue}";
@@ -131,15 +131,37 @@ namespace JanuarySimpleProject.Core
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                return;
+                throw new Exception("An empty line has been entered");
 
             if (!_values.Contains(strValue))
-                return;
+                throw new Exception("There is no such line");
 
             _values.Remove(strValue);
             _value = Value.Replace(strValue, "");
 
             OnNodeChange?.Invoke();
+        }
+
+        public void RemoveValue<TValue>(List<TValue> values)
+        {
+            if (values.Count <= 0)
+                throw new Exception("An empty list has been entered");
+
+            foreach (var value in values)
+            {
+                string strValue = value.ToString().Trim();
+
+                if (strValue == null)
+                    throw new Exception("An empty line has been entered");
+
+                if (!_values.Contains(strValue))
+                    throw new Exception("There is no such list");
+
+                _values.Remove(strValue);
+                _value = Value.Replace(strValue, "");
+
+                OnNodeChange?.Invoke();
+            }
         }
 
         public static Node CreateEmptyNode()
