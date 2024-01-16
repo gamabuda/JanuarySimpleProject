@@ -19,10 +19,11 @@ namespace JanuarySimpleProject
 
         private void ArrSize()
         {
-            string[] item = new string[_array.Length * 2];
+            int _count1 = _count + _count / 2;
+            string[] item = new string[_count1];
             if (_count == 0)
             {
-                
+                _count1 = 20;
             }
             for (int i = 0; i < _array.Length; i++)
             {
