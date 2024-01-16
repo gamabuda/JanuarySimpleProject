@@ -13,7 +13,7 @@ namespace JanuarySimpleProject
 
         public DArray(int len)
         {
-            _array = new string[len + len / 2];
+            _array = new string[len];
             _count = 0;
         }
 
@@ -22,6 +22,7 @@ namespace JanuarySimpleProject
             string[] item = new string[_array.Length * 2];
             if (_count == 0)
             {
+                
             }
             for (int i = 0; i < _array.Length; i++)
             {
@@ -46,17 +47,51 @@ namespace JanuarySimpleProject
                 Console.WriteLine(s);
         }
 
-        public void Remove(int s)
+        public void Remove(string s)
         {
-            if (_count == 0)
+            int index = -1;
+            for (int i = 0; i < _count; i++)
             {
-                throw new Exception("массив не имеет значений");
+                if (_array[i].Equals(s))
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            if (index != -1)
+            {
+                for (int i = index; i < _count - 1; i++)
+                {
+                    _array[i] = _array[i + 1];
+                }
+                _count--;
             }
         }
 
         public bool Contains(string s)
         {
-            return Array.IndexOf(_array, s) != -1;
+            if (_array.Contains(s))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void Clear()
+        {
+            List<string> newItems = _array.ToList();
+            newItems.Clear();
+            _array = newItems.ToArray();
+            _count = 0;
+        }
+
+        public string[] GetArray()
+        {
+            return _array;
         }
 
         public int Count()
