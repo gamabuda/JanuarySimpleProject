@@ -20,6 +20,22 @@
             set { _values[index] = value; }
         }
 
+        public void Add(TType value)
+        {
+            int lastIndex = _values.Length - 1;
+            if (lastIndex == null)
+            {
+                _values[lastIndex] = value;
+            }
+            else
+            {
+                TType[] temp = new TType[_values.Length + 1];
+                _values.CopyTo(temp, 0);
+                _values = temp;
+                _values[lastIndex + 1] = value;
+            }
+        }
+
         public void Remove(TType value)
         {
             int index = Array.IndexOf(_values, value);
@@ -30,7 +46,7 @@
             }
             else
             {
-                throw new Exception("Такого элемента нет в массиве")
+                throw new Exception("Такого элемента нет в массиве");
             }
         }
 

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Net.Http.Headers;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using JanuarySimpleProject.Core.Implementation;
 
 namespace JanuarySimpleProject.Core
@@ -46,9 +48,8 @@ namespace JanuarySimpleProject.Core
             set
             {
                 _value = value.Trim();
-                //TODO need optimize
-                _values.Clear();
-                _values.Add(_value);
+                //TODO need optimize (accomplished)
+                _values = new DynamicArray<string>(value);
                 OnNodeChange?.Invoke();
             }
         }

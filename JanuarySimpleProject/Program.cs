@@ -36,7 +36,7 @@ node.ShowInfo();
 node.RemoveValue("Str");
 node.ShowInfo();
 
-Console.WriteLine(node.JSON);
-
+node.AddValue(111);
+node.ShowInfo();
 
 Console.ReadKey();
