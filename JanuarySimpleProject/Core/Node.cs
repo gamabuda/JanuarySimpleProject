@@ -102,21 +102,21 @@ namespace JanuarySimpleProject.Core
             OnNodeChange?.Invoke();
         }
 
-        //TODO switch all returns to throw Exception
+        //TODO switch all returns to throw Exception *
         public void AddValue<TValue>(List<TValue> values)
         {
             if (values.Count <= 0)
-                return;
+                throw new Exception("You cannot add a list if it is empty.");
 
             foreach (var value in values)
             {
                 string strValue = value.ToString().Trim();
 
                 if (strValue == null)
-                    return;
+                    throw new Exception("You cannot add a null value");
 
                 if (_values.Contains(strValue))
-                    return;
+                    throw new Exception("The list of elements is already in the array");
 
                 _values.Add(strValue);
                 _value += $"{strValue}";
