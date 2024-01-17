@@ -162,10 +162,18 @@ namespace JanuarySimpleProject.Core
                 OnNodeChange?.Invoke();
             }
         }
+  
+        public string Update(string strValue)
+        {
+            string oldValue = _value;
+            _value = strValue;
+            return oldValue;
+        }
 
         public static Node CreateEmptyNode()
         {
             return new Node();
+
         }
     }
 }
