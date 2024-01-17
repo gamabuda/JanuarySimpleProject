@@ -141,6 +141,27 @@ namespace JanuarySimpleProject.Core
 
             OnNodeChange?.Invoke();
         }
+        public void RemoveValue<TValue>(List<TValue> values)
+        {
+            if (values.Count <= 0)
+                return;
+
+            foreach (var value in values)
+            {
+                string strValue = value.ToString().Trim();
+
+                if (strValue == null)
+                    return;
+
+                if (_values.Contains(strValue))
+                    return;
+
+                _values.Remove(strValue);
+                _value = Value.Replace(strValue, "");
+
+                OnNodeChange?.Invoke();
+            }
+        }
 
         public static Node CreateEmptyNode()
         {
