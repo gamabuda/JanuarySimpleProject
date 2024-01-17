@@ -10,6 +10,7 @@ namespace JanuarySimpleProject.Core
         private List<string> _values = new List<string>();
         private string _value;
 
+
         private Node()
         {
             Id = Guid.NewGuid().ToString();
