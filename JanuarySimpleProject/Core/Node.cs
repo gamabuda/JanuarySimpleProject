@@ -105,17 +105,15 @@ namespace JanuarySimpleProject.Core
         public void AddValue<TValue>(List<TValue> values)
         {
             if (values.Count <= 0)
-                return;
+                throw new Exception("List of valuew isempty");
 
             foreach (var value in values)
             {
-                string strValue = value.ToString().Trim();
+                string strValue = value?.ToString().Trim() ?? throw new ArgumentNullException(nameof(value));
 
-                if (strValue == null)
-                    return;
+                if (_values.Contains(strValue));
+                throw new Exception("Value already exists");
 
-                if (_values.Contains(strValue))
-                    return;
 
                 _values.Add(strValue);
                 _value += $"{strValue}";
