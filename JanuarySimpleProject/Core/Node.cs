@@ -172,7 +172,7 @@ namespace JanuarySimpleProject.Core
         public static Node CreateEmptyNode()
         {
             return new Node();
-        }
+        }                                                                                                                                                                        
     }
 }
 
