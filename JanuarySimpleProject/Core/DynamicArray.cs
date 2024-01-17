@@ -27,35 +27,24 @@ namespace JanuarySimpleProject
                 array = temp;
             }
         }
-        public void Remove(int index) 
-        {
-            array[index] = default;
-
-            for (int i = 0; i < array.Length - 1; i++)
-            {
-                if(i >= index + 1)
-                {
-                    array[i - 1] = array[i];
-                }
-            }
-        }
-
         public void Remove(T value)
         {
-            if (!array.Contains(value))
-                throw new IndexOutOfRangeException();
+            int index = Array.IndexOf(array, value);
 
-            int index = IndexOf(value);
+            if (index == -1)
+                throw new ArgumentOutOfRangeException();
+
+            RemoveAt(index);
+        }
+
+        public void RemoveAt(int index)
+        {
+            if (index <= 0 || array[index] == null)
+                throw new ArgumentOutOfRangeException();           
 
             array[index] = default;
-
-            for (int i = 0; i < array.Length - 1; i++)
-            {
-                if (i >= index + 1)
-                {
-                    array[i - 1] = array[i];
-                }
-            }
+            Array.Copy(array, index + 1, array, index, count - index - 1);
+            count--;
         }
 
         public void Clear()
@@ -81,9 +70,10 @@ namespace JanuarySimpleProject
 
         public void Print()
         {
-            foreach (T s in array)
+            foreach (T item in array)
             {
-                Console.WriteLine(s);
+                if(item != null)
+                    Console.WriteLine(item);
             }
         }
 

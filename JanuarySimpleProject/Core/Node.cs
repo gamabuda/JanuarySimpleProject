@@ -128,40 +128,39 @@ namespace JanuarySimpleProject.Core
         //TODO switch all returns to throw Exception and add the ability to delete a list of objects
         public void RemoveValue<TValue>(TValue value)
         {
-            string strValue = value.ToString().Trim();
+            string strValue = value?.ToString()?.Trim();
 
-            if (strValue == null)
-                throw new Exception("An empty line has been entered");
+            if (string.IsNullOrEmpty(strValue))
+                throw new ArgumentException("An empty or null value has been entered");
 
             if (!_values.Contains(strValue))
-                throw new Exception("There is no such line");
+                throw new ArgumentException("There is no such value");
 
             _values.Remove(strValue);
-            _value = Value.Replace(strValue, "");
-
+            _value = string.Join("", _values);
             OnNodeChange?.Invoke();
         }
 
-        public void RemoveValue<TValue>(List<TValue> values)
+        public void RemoveValues<TValue>(List<TValue> values)
         {
-            if (values.Count <= 0)
-                throw new Exception("An empty list has been entered");
+            if (values == null || values.Count == 0)
+                throw new ArgumentException("An empty or null list has been entered");
 
             foreach (var value in values)
             {
-                string strValue = value.ToString().Trim();
+                string strValue = value?.ToString()?.Trim();
 
-                if (strValue == null)
-                    throw new Exception("An empty line has been entered");
+                if (string.IsNullOrEmpty(strValue))
+                    throw new ArgumentException("An empty or null value has been entered");
 
                 if (!_values.Contains(strValue))
-                    throw new Exception("There is no such list");
+                    throw new ArgumentException("There is no such value in the list");
 
                 _values.Remove(strValue);
-                _value = Value.Replace(strValue, "");
-
-                OnNodeChange?.Invoke();
             }
+
+            _value = string.Join("", _values);
+            OnNodeChange?.Invoke();
         }
 
         public TValue UpdateValue<TValue>(TValue oldValue, TValue newValue)
@@ -170,18 +169,23 @@ namespace JanuarySimpleProject.Core
             string strNewValue = newValue.ToString().Trim();
 
             if (!_values.Contains(strOldValue))
-                throw new Exception();
-
-            if (_values.Contains(strNewValue))
-                throw new Exception();
+                throw new Exception("Old value not found");
 
             if (strNewValue == null)
-                throw new ArgumentNullException();
+                throw new ArgumentNullException("New value cannot be null");
+
+            if (_values.Contains(strNewValue))
+                throw new Exception("New value already exists");
 
             _values.Replace(strOldValue, strNewValue);
-            _value = Value.Replace(strOldValue, strNewValue);
+
+            _value = string.Join("", _values);
+
+            OnNodeChange?.Invoke();
+
             return oldValue;
         }
+
 
         public static Node CreateEmptyNode()
         {

@@ -1,4 +1,6 @@
-﻿using JanuarySimpleProject.Core;
+﻿using JanuarySimpleProject;
+using JanuarySimpleProject.Core;
+using System.Xml;
 
 /*
  * Я накидал вам базы по прошлому полугодию, друзья!
@@ -23,28 +25,27 @@ node.ShowInfo();
 node.Value = "Str";
 node.ShowInfo();
 
-//node.AddValue(Node.CreateEmptyNode());
-//node.ShowInfo();
-
-//List<int> ints = new List<int>()
-//{
-//    1, 2, 3
-//};
-//node.AddValue(ints);
-//node.ShowInfo();
-
-//node.RemoveValue("Str");
-//node.ShowInfo();
-
-//Console.WriteLine(node.JSON);
-
-
-//Console.ReadKey();
-
-node.AddValue("Penis");
+node.AddValue("acnsq");
 node.ShowInfo();
 
-node.AddValue("jsdbnvkb");
+node.AddValue(Node.CreateEmptyNode());
 node.ShowInfo();
 
-node.UpdateValue("Penis", "asdf");
+List<int> ints = new List<int>()
+{
+    1, 2, 3
+};
+node.AddValue(ints);
+node.ShowInfo();
+
+//node.RemoveValue("acnsq");
+//node.ShowInfo();
+
+node.UpdateValue("acnsq", "OUOPUFJKE");
+
+Console.WriteLine(node.JSON);
+
+
+Console.ReadKey();
+
+
