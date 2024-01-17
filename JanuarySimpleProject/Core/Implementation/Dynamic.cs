@@ -57,5 +57,10 @@
                 yield return _values[i];
             }
         }
+
+        internal void Add(string strValue)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
