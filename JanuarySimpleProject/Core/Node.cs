@@ -47,7 +47,7 @@ namespace JanuarySimpleProject.Core
             {
                 _value = value.Trim();
                 //TODO need optimize
-                _values.Clear();
+                _values = new DynamicArray<string>(100);
                 _values.Add(_value);
                 OnNodeChange?.Invoke();
             }
@@ -162,6 +162,25 @@ namespace JanuarySimpleProject.Core
 
                 OnNodeChange?.Invoke();
             }
+        }
+
+        public TValue UpdateValue<TValue>(TValue oldValue, TValue newValue)
+        {
+            string strOldValue = oldValue.ToString().Trim();
+            string strNewValue = newValue.ToString().Trim();
+
+            if (!_values.Contains(strOldValue))
+                throw new Exception();
+
+            if (_values.Contains(strNewValue))
+                throw new Exception();
+
+            if (strNewValue == null)
+                throw new ArgumentNullException();
+
+            _values.Replace(strOldValue, strNewValue);
+            _value = Value.Replace(strOldValue, strNewValue);
+            return oldValue;
         }
 
         public static Node CreateEmptyNode()

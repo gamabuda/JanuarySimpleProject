@@ -4,12 +4,14 @@ namespace JanuarySimpleProject
 {
     class DynamicArray<T>
     {
-        private static int count;
+        private int count;
         private T[] array;
+        private int length;
 
-        public DynamicArray(int len)
+        public DynamicArray(int _len)
         {
-            array = new T[len];
+            length = _len;
+            array = new T[length];
             count = 0;
         }
 
@@ -18,15 +20,10 @@ namespace JanuarySimpleProject
             array[count] = msg;
             count++;
 
-            if(count == array.Length - 1)
+            if(count == array.Length)
             {
-                T[] temp = new T[array.Length + 10];
-
-                for (int i = 0; i < array.Length; i++)
-                {
-                    temp[i] = array[i];
-                }
-
+                T[] temp = new T[array.Length + 1];
+                Array.Copy(array, temp, array.Length);
                 array = temp;
             }
         }
@@ -46,7 +43,7 @@ namespace JanuarySimpleProject
         public void Remove(T value)
         {
             if (!array.Contains(value))
-                throw new Exception("There is no such value");
+                throw new IndexOutOfRangeException();
 
             int index = IndexOf(value);
 
@@ -58,17 +55,17 @@ namespace JanuarySimpleProject
                 {
                     array[i - 1] = array[i];
                 }
-            
+            }
         }
 
         public void Clear()
         {
-            array = new T[0];
+            array = new T[length];
         }
 
         public void Replace(T oldValue, T newValue)
         {
-            int index = Array.IndexOf(array, oldValue);
+            int index = IndexOf(oldValue);
             array[index] = newValue;
         }
 
@@ -90,7 +87,7 @@ namespace JanuarySimpleProject
             }
         }
 
-        public IEnumerator<object> GetEnumerator()
+        public IEnumerator<T> GetEnumerator()
         {
             for (int i = 0; i < array.Length; i++)
             {

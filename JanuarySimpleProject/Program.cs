@@ -23,20 +23,28 @@ node.ShowInfo();
 node.Value = "Str";
 node.ShowInfo();
 
-node.AddValue(Node.CreateEmptyNode());
+//node.AddValue(Node.CreateEmptyNode());
+//node.ShowInfo();
+
+//List<int> ints = new List<int>()
+//{
+//    1, 2, 3
+//};
+//node.AddValue(ints);
+//node.ShowInfo();
+
+//node.RemoveValue("Str");
+//node.ShowInfo();
+
+//Console.WriteLine(node.JSON);
+
+
+//Console.ReadKey();
+
+node.AddValue("Penis");
 node.ShowInfo();
 
-List<int> ints = new List<int>()
-{
-    1, 2, 3
-};
-node.AddValue(ints);
+node.AddValue("jsdbnvkb");
 node.ShowInfo();
 
-node.RemoveValue("Str");
-node.ShowInfo();
-
-Console.WriteLine(node.JSON);
-
-
-Console.ReadKey();
+node.UpdateValue("Penis", "asdf");
