@@ -17,26 +17,35 @@
  * Одна тудушка = 2 балла
  */
 
-Node node = Node.CreateEmptyNode();
-node.ShowInfo();
+//Node node = Node.CreateEmptyNode();
+//node.ShowInfo();
 
-node.Value = "Str";
-node.ShowInfo();
+//node.Value = "Str";
+//node.ShowInfo();
 
-node.AddValue(Node.CreateEmptyNode());
-node.ShowInfo();
+//node.AddValue(Node.CreateEmptyNode());
+//node.ShowInfo();
 
-List<int> ints = new List<int>()
-{
-    1, 2, 3
-};
-node.AddValue(ints);
-node.ShowInfo();
+//List<int> ints = new List<int>()
+//{
+//    1, 2, 3
+//};
+//node.AddValue(ints);
+//node.ShowInfo();
 
-node.RemoveValue("Str");
-node.ShowInfo();
+//node.RemoveValue("Str");
+//node.ShowInfo();
 
-Console.WriteLine(node.JSON);
+//Console.WriteLine(node.JSON);
 
+var array = new DynamicArray();
 
+array.Add("saaf");
+array.Add("dgsg");
+array.Add("mjgfdj");
+array.Add("czxvx");
+array.Add("fhdfhfdh");
+array.Add("mn,bnf");
+
+array.Print();
 Console.ReadKey();

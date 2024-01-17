@@ -26,6 +26,9 @@ namespace JanuarySimpleProject.Core
             for (int i = 0; i < _array.Length; i++) { newArray[i] = _array[i]; }
 
             _array = newArray;
+            _array[_count] = str;
+            _count++;
+            
         }
 
 
