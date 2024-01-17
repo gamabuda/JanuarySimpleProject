@@ -88,13 +88,12 @@ namespace JanuarySimpleProject.Core
         //TODO switch all returns to throw Exception
         public void AddValue<TValue>(TValue value)
         {
-            string strValue = value.ToString().Trim();
+            string strValue = value?.ToString().Trim() ?? throw new ArgumentNullException(nameof(value));
 
-            if (strValue == null)
-                return;
 
             if (_values.Contains(strValue))
-                return;
+                throw new Exception("Value already exists");
+
 
             _values.Add(strValue);
             _value += $"{strValue}";
