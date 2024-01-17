@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using System.Text.Json;
 using JanuarySimpleProject.Core.Implementation;
 
@@ -9,6 +10,60 @@ namespace JanuarySimpleProject.Core
         //TODO switch list to array
         private List<string> _values = new List<string>();
         private string _value;
+        public class TDinamicArray<TValue>
+        {
+            private string[] _array;
+            private int _count;
+            public TDinamicArray(int len)
+            {
+                _array = new string[len + len];
+                _count = 0;
+            }
+            void Add(string s)
+            {
+                if(_count == _array.Length)
+                {
+                    publ9c
+                    Array.Resize(ref _array, _count);
+                }
+                _array[_count] = s;
+                _count++;
+            }
+            void Remove(string s)
+            {
+                int index = Array.IndexOf(_array, s, 0,_count);
+                if(index != -1)
+                {
+                    for(int i = 0; i < _count-1; i++)
+                    {
+                        _array[i] = _array[i + 1];
+                    }
+                }
+              
+                _count--;
+            }
+            
+            public int Count
+            {
+                get { return _count; }
+            }
+            public bool Contains(string s)
+            {
+                return Array.IndexOf(_array,s, 0,_count) != -1;
+            }
+
+            void Print()
+            {
+                foreach (var s in _array)
+                    Console.WriteLine(s);
+                for(int i = 0; i < _count; i++)
+                {
+                    Console.WriteLine(_array[i]+ " ");
+                }
+            }
+            
+
+        }
 
 
         private Node()
