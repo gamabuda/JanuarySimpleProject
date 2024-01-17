@@ -7,43 +7,59 @@ using System.Threading.Tasks;
 
 namespace JanuarySimpleProject.Core
 {
-    public class DynamicArray<T>
+    public class DynamicArray
     {
-        private int ArrayLength { get; set; }
+        private string[] _array;
+        private int _count;
 
-        private T[] MyArray;
-        public DynamicArray(int arraylength) 
+        public DynamicArray()
         {
-            MyArray = new T[arraylength];
-            ArrayLength = arraylength + arraylength / 2;
+            _array = new string[4];
+            _count = 0;
         }
 
-        public void AddValue<TValue>(T item)
+        public void Add(string str)
         {
-            //Проверка на индекс за пределами массива, если места нет ресайз эррей
-            if(MyArray.Last() == null)
-            {
-                MyArray[ArrayLength] = item;
-                ArrayLength++;
-            }
-            else
-            {
-                var NewDynamicArray = new DynamicArray<TValue>(MyArray.Length + 10);
+            int oldSize = _array.Length;
+            string[] newArray = new string[oldSize + 10];
 
-                for(int i = 0; i < MyArray.Length; i++)
+            for (int i = 0; i < _array.Length; i++) { newArray[i] = _array[i]; }
+
+            _array = newArray;
+        }
+
+
+        public void Remove(string str)
+        {
+            int index = Array.IndexOf(_array, str, 0, _count);
+
+            if (index != -1)
+            {
+                for (int i = 0; i < _count - 1; i++)
                 {
-                
-                    NewDynamicArray.AddValue<T>(MyArray[i]);
+                    _array[i] = _array[i + 1];
                 }
+                _count--;
             }
-            
         }
+
+        public bool Contains(string str)
+        {
+            return Array.IndexOf(_array, str, 0, _count) != -1;
+        }
+
         public void Print()
         {
-            foreach(var item in MyArray)
+            for (int i = 0; i < _count; i++)
             {
-                Console.WriteLine(item);
+                Console.Write(_array[i] + " ");
             }
+            Console.WriteLine();
+        }
+
+        public int Count
+        {
+            get { return _count; }
         }
     }
 }
