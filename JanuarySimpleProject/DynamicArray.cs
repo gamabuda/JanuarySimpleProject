@@ -18,7 +18,7 @@ namespace JanuarySimpleProject
         {
             if (_count == _array.Length)
             {
-                //НАПИСАТЬ СВОЙ
+             
               Resize();
             }
             _array[_count] = str;
