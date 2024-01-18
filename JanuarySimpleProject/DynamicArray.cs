@@ -54,5 +54,12 @@ namespace JanuarySimpleProject
             }
             Console.WriteLine();
         }
+        public void Clear()
+        {
+            List<string> newItems = _array.ToList();
+            newItems.Clear();
+            _array = newItems.ToArray();
+            _count = 0;
+        }
     }
 }
