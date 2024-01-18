@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace JanuarySimpleProject
 {
-    internal class DArray
+    internal class DArray<T>
     {
-        private string[] _array;
+        private T[] _array;
         private int _count;
 
         public DArray(int len)
         {
-            _array = new string[len];
+            _array = new T[len];
             _count = 0;
         }
 
         private void ArrSize()
         {
             int _count1 = _count + _count / 2;
-            string[] item = new string[_count1];
+            T[] item = new T[_count1];
             if (_count == 0)
             {
                 _count1 = 20;
@@ -32,7 +32,7 @@ namespace JanuarySimpleProject
             _array = item;
         }
 
-        public void Add(string s)
+        public void Add(T s)
         {
             if (_count == _array.Length)
             {
@@ -45,10 +45,13 @@ namespace JanuarySimpleProject
         public void Print()
         {
             foreach (var s in _array)
-                Console.WriteLine(s);
+            {
+                if (s != null)
+                    Console.WriteLine(s);
+            }
         }
 
-        public void Remove(string s)
+        public void Remove(T s)
         {
             int index = -1;
             for (int i = 0; i < _count; i++)
@@ -70,7 +73,7 @@ namespace JanuarySimpleProject
             }
         }
 
-        public bool Contains(string s)
+        public bool Contains(T s)
         {
             if (_array.Contains(s))
             {
@@ -84,13 +87,13 @@ namespace JanuarySimpleProject
 
         public void Clear()
         {
-            List<string> newItems = _array.ToList();
+            List<T> newItems = _array.ToList();
             newItems.Clear();
             _array = newItems.ToArray();
             _count = 0;
         }
 
-        public string[] GetArray()
+        public T[] GetArray()
         {
             return _array;
         }

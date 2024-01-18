@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace JanuarySimpleProject
 {
-    internal class TClass
+    internal class TClass<TValue>
     {
+        private TValue _value;
+
+        public TClass(TValue value)
+        {
+            _value = value;
+        }
+        public void ShowTType()
+        {
+            Console.WriteLine(_value.GetType());
+        }
     }
 }
