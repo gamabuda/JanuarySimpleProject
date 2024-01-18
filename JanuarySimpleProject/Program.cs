@@ -1,4 +1,5 @@
-﻿using JanuarySimpleProject.Core;
+﻿using JanuarySimpleProject;
+using JanuarySimpleProject.Core;
 
 /*
  * Я накидал вам базы по прошлому полугодию, друзья!
@@ -37,6 +38,5 @@ node.RemoveValue("Str");
 node.ShowInfo();
 
 Console.WriteLine(node.JSON);
-
 
 Console.ReadKey();
