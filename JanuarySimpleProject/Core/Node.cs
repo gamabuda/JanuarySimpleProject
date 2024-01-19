@@ -12,24 +12,29 @@ namespace JanuarySimpleProject.Core
         private string _value;
         public class TDinamicArray<TValue>
         {
-            private string[] _array;
+            private TValue[] _array;
             private int _count;
             public TDinamicArray(int len)
             {
-                _array = new string[len + len];
+                _array = new TValue[len + len];
                 _count = 0;
             }
-            void Add(string s)
+            void Add(TValue s)
             {
                 if(_count == _array.Length)
                 {
-                    publ9c
-                    Array.Resize(ref _array, _count);
+                    TValue[] newarray = new TValue[_count*2];
+
+                    for (int i = 0; i<_count;i++)
+                    {
+                        _array[i] = newarray[i];
+                    }
+                    _array = newarray;
                 }
                 _array[_count] = s;
                 _count++;
             }
-            void Remove(string s)
+            void Remove(TValue s)
             {
                 int index = Array.IndexOf(_array, s, 0,_count);
                 if(index != -1)
@@ -47,7 +52,7 @@ namespace JanuarySimpleProject.Core
             {
                 get { return _count; }
             }
-            public bool Contains(string s)
+            public bool Contains(TValue s)
             {
                 return Array.IndexOf(_array,s, 0,_count) != -1;
             }
