@@ -15,6 +15,12 @@ namespace JanuarySimpleProject
             count = 0;
         }
 
+        public T this[int index]
+        {
+            get { return array[index]; }
+            set { array[index] = value; }
+        }
+
         public void Add(T msg)
         {
             array[count] = msg;

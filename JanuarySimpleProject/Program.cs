@@ -38,14 +38,13 @@ List<int> ints = new List<int>()
 node.AddValue(ints);
 node.ShowInfo();
 
-//node.RemoveValue("acnsq");
-//node.ShowInfo();
+node.RemoveValue("acnsq");
+node.ShowInfo();
 
-node.UpdateValue("acnsq", "OUOPUFJKE");
+node.UpdateValue("Str", "OUOPUFJKE");
+node.ShowInfo();
 
 Console.WriteLine(node.JSON);
 
 
 Console.ReadKey();
-
-

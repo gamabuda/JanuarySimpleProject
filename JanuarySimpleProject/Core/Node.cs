@@ -137,7 +137,11 @@ namespace JanuarySimpleProject.Core
                 throw new ArgumentException("There is no such value");
 
             _values.Remove(strValue);
-            _value = string.Join("", _values);
+            _value = string.Empty;  
+            foreach(var v in _values)
+            {
+                _value += v;
+            }
             OnNodeChange?.Invoke();
         }
 
@@ -159,7 +163,11 @@ namespace JanuarySimpleProject.Core
                 _values.Remove(strValue);
             }
 
-            _value = string.Join("", _values);
+            _value = string.Empty;
+            foreach (var v in _values)
+            {
+                _value += v;
+            }
             OnNodeChange?.Invoke();
         }
 
@@ -179,7 +187,11 @@ namespace JanuarySimpleProject.Core
 
             _values.Replace(strOldValue, strNewValue);
 
-            _value = string.Join("", _values);
+            _value = string.Empty;
+            foreach (var v in _values)
+            {
+                _value += v;
+            }
 
             OnNodeChange?.Invoke();
 
