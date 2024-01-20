@@ -1,64 +1,93 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace JanuarySimpleProject.Core
 {
-    internal class DynamicArray
+    class DynamicArray<T>
     {
-        private string[] _array;
-        private int _count;
+        private int count;
+        private T[] array;
+        private int length;
 
-        public DynamicArray()
+        public DynamicArray(int _len)
         {
-            _array = new string[4];
-            _count = 0;
+            length = _len;
+            array = new T[length];
+            count = 0;
         }
 
-        public void Add(string str)
+        public T this[int index]
         {
-            if (_count == _array.Length)
-            {
-                //TODO написать свой
-                Array.Resize(ref _array, _array.Length * 2);
-            }
-            _array[_count] = str;
-            _count++;
+            get { return array[index]; }
+            set { array[index] = value; }
         }
 
-        public void Remove(string str)
+        public void Add(T msg)
         {
-            int index = Array.IndexOf(_array, str, 0, _count);
+            array[count] = msg;
+            count++;
 
-            if(index != -1)
+            if (count == array.Length)
             {
-                for(int i = 0; i < _count - 1; i++)
-                {
-                    _array[i] = _array[i + 1];
-                }
-                _count--;
+                T[] temp = new T[array.Length + 1];
+                Array.Copy(array, temp, array.Length);
+                array = temp;
             }
         }
-
-        public bool Contains(string str)
+        public void Remove(T value)
         {
-            return Array.IndexOf(_array, str, 0, _count) != -1;
+            int index = Array.IndexOf(array, value);
+
+            if (index == -1)
+                throw new ArgumentOutOfRangeException();
+
+            RemoveAt(index);
+        }
+
+        public void RemoveAt(int index)
+        {
+            if (index <= 0 || array[index] == null)
+                throw new ArgumentOutOfRangeException();
+
+            array[index] = default;
+            Array.Copy(array, index + 1, array, index, count - index - 1);
+            count--;
+        }
+
+        public void Clear()
+        {
+            array = new T[length];
+        }
+
+        public void Replace(T oldValue, T newValue)
+        {
+            int index = IndexOf(oldValue);
+            array[index] = newValue;
+        }
+
+        public bool Contains(T msg)
+        {
+            return array.Contains(msg);
+        }
+
+        public int IndexOf(T msg)
+        {
+            return Array.IndexOf(array, msg);
         }
 
         public void Print()
         {
-            for (int i = 0; i < _count; i++)
+            foreach (T item in array)
             {
-                Console.Write(_array[i] + " ");
+                if (item != null)
+                    Console.WriteLine(item);
             }
-            Console.WriteLine();
         }
 
-        public int Count
+        public IEnumerator<T> GetEnumerator()
         {
-            get { return _count; }
+            for (int i = 0; i < array.Length; i++)
+            {
+                yield return array[i];
+            }
         }
     }
 }
