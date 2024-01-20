@@ -91,10 +91,10 @@ namespace JanuarySimpleProject.Core
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                return;
+                throw new ArgumentNullException("An empty line has been entered");
 
             if (_values.Contains(strValue))
-                return;
+                throw new InvalidOperationException("Such a record is already available");
 
             _values.Add(strValue);
             _value += $"{strValue}";
@@ -113,10 +113,10 @@ namespace JanuarySimpleProject.Core
                 string strValue = value.ToString().Trim();
 
                 if (strValue == null)
-                    return;
+                    throw new ArgumentNullException("An empty line has been entered");
 
                 if (_values.Contains(strValue))
-                    return;
+                    throw new InvalidOperationException("Such a record is already available");
 
                 _values.Add(strValue);
                 _value += $"{strValue}";
@@ -130,11 +130,11 @@ namespace JanuarySimpleProject.Core
         {
             string strValue = value.ToString().Trim();
 
-            if (strValue == null)
-                return;
+            if (string.IsNullOrEmpty(strValue))
+                throw new ArgumentException("An empty or null value has been entered");
 
             if (!_values.Contains(strValue))
-                return;
+                throw new ArgumentException("There is no such value");
 
             _values.Remove(strValue);
             _value = string.Empty;
