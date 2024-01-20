@@ -171,6 +171,34 @@ namespace JanuarySimpleProject.Core
             OnNodeChange?.Invoke();
         }
 
+        public TValue UpdateValue<TValue>(TValue oldValue, TValue newValue)
+        {
+            string strOldValue = oldValue.ToString().Trim();
+            string strNewValue = newValue.ToString().Trim();
+
+            if (!_values.Contains(strOldValue))
+                throw new Exception("Old value not found");
+
+            if (strNewValue == null)
+                throw new ArgumentNullException("New value cannot be null");
+
+            if (_values.Contains(strNewValue))
+                throw new Exception("New value already exists");
+
+            _values.Replace(strOldValue, strNewValue);
+
+            _value = string.Empty;
+            foreach (var v in _values)
+            {
+                _value += v;
+            }
+
+            OnNodeChange?.Invoke();
+
+            return oldValue;
+        }
+
+
         public static Node CreateEmptyNode()
         {
             return new Node();
