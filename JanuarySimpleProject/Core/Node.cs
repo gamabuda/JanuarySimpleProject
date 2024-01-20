@@ -106,7 +106,7 @@ namespace JanuarySimpleProject.Core
         public void AddValue<TValue>(List<TValue> values)
         {
             if (values.Count <= 0)
-                return;
+                throw new Exception("An empty list has been entered");
 
             foreach (var value in values)
             {
@@ -137,6 +137,32 @@ namespace JanuarySimpleProject.Core
                 throw new ArgumentException("There is no such value");
 
             _values.Remove(strValue);
+            _value = string.Empty;
+            foreach (var v in _values)
+            {
+                _value += v;
+            }
+            OnNodeChange?.Invoke();
+        }
+
+        public void RemoveValues<TValue>(List<TValue> values)
+        {
+            if (values == null || values.Count == 0)
+                throw new ArgumentException("An empty or null list has been entered");
+
+            foreach (var value in values)
+            {
+                string strValue = value?.ToString().Trim();
+
+                if (string.IsNullOrEmpty(strValue))
+                    throw new ArgumentNullException("An empty line has been entered");
+
+                if (!_values.Contains(strValue))
+                    throw new InvalidOperationException("Such a record is already available");
+
+                _values.Remove(strValue);
+            }
+
             _value = string.Empty;
             foreach (var v in _values)
             {
