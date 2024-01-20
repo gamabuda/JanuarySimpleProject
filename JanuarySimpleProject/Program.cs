@@ -18,40 +18,23 @@ using JanuarySimpleProject.Core;
  * Одна тудушка = 2 балла
  */
 
-//Node node = Node.CreateEmptyNode();
-//node.ShowInfo();
+Node node = Node.CreateEmptyNode();
+node.ShowInfo();
 
-//node.Value = "Str";
-//node.ShowInfo();
+node.Value = "Str";
+node.ShowInfo();
 
-//node.AddValue(Node.CreateEmptyNode());
-//node.ShowInfo();
+node.AddValue(Node.CreateEmptyNode());
+node.ShowInfo();
 
-//List<int> ints = new List<int>()
-//{
-//    1, 2, 3
-//};
-//node.AddValue(ints);
-//node.ShowInfo();
+List<int> ints = new List<int>()
+{
+    1, 2, 3
+};
+node.AddValue(ints);
+node.ShowInfo();
 
-//node.RemoveValue("Str");
-//node.ShowInfo();
+node.RemoveValue("Str");
+node.ShowInfo();
 
-//Console.WriteLine(node.JSON);
-DynamicArray array = new DynamicArray();
-array.Add("sadas");
-array.Add("qwert");
-array.Add("zxc");
-array.Add("sadas");
-array.Add("qwert");
-array.Add("zxc");
-array.Print();
-
-TClass<Node> t1 = new TClass<Node>(Node.CreateEmptyNode());
-t1.ShowTType();
-TClass<int> t2 = new TClass<int>(12);
-t2.ShowTType();
-TClass<string> t3 = new TClass<string>("qwerty");
-t3.ShowTType();
-
-Console.ReadKey();
+Console.WriteLine(node.JSON);
