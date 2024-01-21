@@ -128,10 +128,10 @@ namespace JanuarySimpleProject.Core
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                return;
+                throw new ArgumentException("Value cannot be null");
 
             if (!_values.Contains(strValue))
-                return;
+                throw new Exception("Value does not exist");
 
             _values.Remove(strValue);
             _value = Value.Replace(strValue, "");
