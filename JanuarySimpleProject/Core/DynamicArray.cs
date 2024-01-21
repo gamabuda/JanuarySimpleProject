@@ -12,9 +12,9 @@ namespace JanuarySimpleProject.Core
         private string[] _array;
         private int _count;
 
-        public DynamicArray()
+        public DynamicArray(object value)
         {
-            _array = new string[4];
+            _array = new string[1] { value.ToString() };
             _count = 0;
         }
 
@@ -69,6 +69,11 @@ namespace JanuarySimpleProject.Core
         public int Count
         {
             get { return _count; }
+        }
+
+        public static implicit operator List<object>(DynamicArray v)
+        {
+            throw new NotImplementedException();
         }
     }
 }

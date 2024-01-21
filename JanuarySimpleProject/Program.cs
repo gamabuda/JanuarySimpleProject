@@ -38,14 +38,14 @@
 
 //Console.WriteLine(node.JSON);
 
-var array = new DynamicArray();
+//var array = new DynamicArray();
 
-array.Add("saaf");
-array.Add("dgsg");
-array.Add("mjgfdj");
-array.Add("czxvx");
-array.Add("fhdfhfdh");
-array.Add("mn,bnf");
+//array.Add("saaf");
+//array.Add("dgsg");
+//array.Add("mjgfdj");
+//array.Add("czxvx");
+//array.Add("fhdfhfdh");
+//array.Add("mn,bnf");
 
-array.Print();
-Console.ReadKey();
+//array.Print();
+//Console.ReadKey();
