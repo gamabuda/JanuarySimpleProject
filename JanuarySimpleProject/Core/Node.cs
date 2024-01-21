@@ -7,7 +7,7 @@ namespace JanuarySimpleProject.Core
     public class Node : INode
     {
         //TODO switch list to array
-        private List<string> _values = new List<string>();
+        private string[] _values = new string[0];
         private string _value;
 
         private Node()
@@ -47,8 +47,7 @@ namespace JanuarySimpleProject.Core
             {
                 _value = value.Trim();
                 //TODO need optimize
-                _values.Clear();
-                _values.Add(_value);
+                _values = new string[] { _value };
                 OnNodeChange?.Invoke();
             }
         }
@@ -95,7 +94,8 @@ namespace JanuarySimpleProject.Core
                 throw new Exception("Value already exists");
 
 
-            _values.Add(strValue);
+            Array.Resize(ref _values, _values.Length + 1);
+            _values[_values.Length - 1] = strValue;
             _value += $"{strValue}";
 
             OnNodeChange?.Invoke();
@@ -115,7 +115,8 @@ namespace JanuarySimpleProject.Core
                 throw new Exception("Value already exists");
 
 
-                _values.Add(strValue);
+                Array.Resize(ref _values, _values.Length + 1);
+                _values[_values.Length - 1] = strValue;
                 _value += $"{strValue}";
 
                 OnNodeChange?.Invoke();
@@ -130,10 +131,15 @@ namespace JanuarySimpleProject.Core
             if (strValue == null)
                 throw new ArgumentException("Value cannot be null");
 
-            if (!_values.Contains(strValue))
+            int index = Array.IndexOf(_values, strValue);
+            if (index < 0)
                 throw new Exception("Value does not exist");
 
-            _values.Remove(strValue);
+            for (int i = index + 1; i < _values.Length; i++)
+            {
+                _values[i - 1] = _values[i];
+            }
+            Array.Resize(ref _values, _values.Length - 1);
             _value = Value.Replace(strValue, "");
 
             OnNodeChange?.Invoke();
