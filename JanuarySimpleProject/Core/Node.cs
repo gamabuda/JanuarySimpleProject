@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Text.Json;
 using JanuarySimpleProject.Core.Implementation;
+using System.Net.Http.Headers;
+using System.Text.RegularExpressions;
 
 namespace JanuarySimpleProject.Core
 {
@@ -157,12 +159,32 @@ namespace JanuarySimpleProject.Core
                 if (!_values.Contains(strValue))
                     throw new Exception("Value is not exist");
 
+                Regex reg = new Regex(strValue);
+
                 _values.Remove(strValue);
-                _value = Value.Replace(strValue, "");
+                _value = reg.Replace(Value, "", 1);
 
                 OnNodeChange?.Invoke();
             }
             
+        }
+
+        public TValue UpdateValue<TValue>(TValue oldValue, TValue newValue)
+        {
+            string strOldValue = oldValue.ToString().Trim();
+            string strNewValue = newValue.ToString().Trim();
+            if (!_values.Contains(strOldValue))
+                throw new Exception("Элемента нет в массиве");
+
+            if (_values.Contains(strNewValue))
+                throw new Exception("Элемент уже есть в массиве");
+
+            if (strNewValue == null)
+                throw new Exception("Вы пытаетесь добавить null значение");
+
+            _values.Replace(strOldValue, strNewValue);
+            _value = Value.Replace(strOldValue, strNewValue);
+            return oldValue;
         }
 
         public static Node CreateEmptyNode()

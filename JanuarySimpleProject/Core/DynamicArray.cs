@@ -60,6 +60,12 @@ namespace JanuarySimpleProject.Core
             Console.WriteLine();
         }
 
+        public void Replace(string oldValue, string newValue)
+        {
+            int index = Array.IndexOf(_array, oldValue);
+            _array[index] = newValue;
+        }
+
         public int Count
         {
             get { return _count; }

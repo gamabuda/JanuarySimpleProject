@@ -14,6 +14,8 @@ namespace JanuarySimpleProject.Core.Implementation
         void RemoveValue<TValue>(TValue value);
         //TODO write UpadateValue method
 
+        TValue UpdateValue<TValue>(TValue oldValue, TValue newValue);
+
         event Action OnNodeChange;
     }
 }
