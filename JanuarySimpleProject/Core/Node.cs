@@ -5,13 +5,15 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Text.RegularExpressions;
 using JanuarySimpleProject.Core;
+using System.Linq;
 
 namespace JanuarySimpleProject.Core
 {
     public class Node : INode
     {
         //TODO switch list to array
-        private List<string> _values = new List<string>();
+        private List<string> values = new List<string>();
+        private DynamicArray<string> _values = new DynamicArray<string>();
         private string _value;
 
         private Node()
@@ -52,7 +54,7 @@ namespace JanuarySimpleProject.Core
                 _value = value.Trim();
                 //TODO need optimize
 
-                _values = new DynamicArray(_value);
+                _values = new DynamicArray<string>();
 
                 OnNodeChange?.Invoke();
             }
@@ -78,7 +80,7 @@ namespace JanuarySimpleProject.Core
         private void CheckNode()
         {
             var temp = String.Empty;
-            foreach (var v in _values)
+            foreach (var v in _values._array)
                 temp += v;
 
             if (_value != temp)
@@ -193,6 +195,43 @@ namespace JanuarySimpleProject.Core
         public static Node CreateEmptyNode()
         {
             return new Node();
+        }
+
+        public void SortArray()
+        {
+            string[] sorted = _values._array.OrderBy(x => x).ToArray();
+            //int temp = 0;
+
+            //if (typeof(_values) == int)
+            //{
+
+            //    for (int write = 0; write < _values.Length; write++)
+            //    {
+            //        for (int sort = 0; sort < _values.Length - 1; sort++)
+            //        {
+            //            if (Convert.ChangeType(_values[sort]) > _values[sort + 1])
+            //            {
+            //                temp = _values[sort + 1];
+            //                _values[sort + 1] = _values[sort];
+            //                _values[sort] = temp;
+            //            }
+            //        }
+            //    }
+
+            //    for (int i = 0; i < _values.Length; i++)
+            //        Console.Write(_values[i] + " ");
+
+            //    Console.ReadKey();
+            //}
+            //else if (typeof(_values) == string)
+            //{
+
+            //    string[] sorted = _values.OrderBy(x => x).ToArray();
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Type of T != string or int");
+            //}
         }
     }
 }

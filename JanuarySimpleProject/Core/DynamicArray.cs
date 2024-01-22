@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using System.Linq;
@@ -9,12 +10,12 @@ namespace JanuarySimpleProject.Core
 {
     public class DynamicArray<T>
     {
-        private T[] _array;
+        public T[] _array;
         private int _count;
 
-        public DynamicArray(T value)
+        public DynamicArray()
         {
-            _array = new T[1] { value };
+            _array = new T[1];
             _count = 0;
         }
 
@@ -70,5 +71,16 @@ namespace JanuarySimpleProject.Core
         {
             get { return _count; }
         }
+
+        
+        //public IEnumerator<string> GetEnumerator()
+        //{
+        //    yield return "x";
+        //    yield return "y";
+        //}
+        //IEnumerator IEnumerable.GetEnumerator()
+        //{
+        //    return GetEnumerator(); // Just return the generic version
+        //}
     }
 }
