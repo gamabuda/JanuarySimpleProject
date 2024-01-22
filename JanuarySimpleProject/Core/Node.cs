@@ -7,7 +7,7 @@ namespace JanuarySimpleProject.Core
     public class Node : INode
     {
         //TODO switch list to array
-        private List<string> _values = new List<string>();
+        private DinamicArray<string> _values = new DinamicArray<string>();
         private string _value;
 
         private Node()
@@ -120,6 +120,25 @@ namespace JanuarySimpleProject.Core
 
                 _values.Add(strValue);
                 _value += $"{strValue}";
+
+                OnNodeChange?.Invoke();
+            }
+        }
+        
+        public void RemoveValue<TValue>(List<TValue> values)
+        {
+            foreach(TValue value in values)
+            {
+                string strValue = value.ToString().Trim();
+
+                if (strValue == null)
+                    throw new Exception("ошибка");
+
+                if (!_values.Contains(strValue))
+                    throw new Exception("ошибка");
+
+                _values.Remove(strValue);
+                _value = Value.Replace(strValue, "");
 
                 OnNodeChange?.Invoke();
             }
