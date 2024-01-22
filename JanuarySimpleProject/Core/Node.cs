@@ -116,6 +116,33 @@ namespace JanuarySimpleProject.Core
 
                 if (_values.Contains(strValue))
                     throw new Exception("Значение не может быть записано дважды");
+<<<<<<< Updated upstream
+
+                _values.Add(strValue);
+                _value += $"{strValue}";
+
+                OnNodeChange?.Invoke();
+            }
+
+
+        }
+
+        public void AddValue<TValue>(List<TValue> values)
+        {
+            if (values.Count <= 0)
+                throw new Exception("Кол-во переменых не может быть отрицательным");
+
+            foreach (var value in values)
+            {
+                string strValue = value.ToString().Trim();
+
+                if (strValue == null)
+                    throw new Exception("Значение не может быть пустым");
+
+                if (_values.Contains(strValue))
+                    throw new Exception("Значение не может быть записано дважды");
+=======
+>>>>>>> Stashed changes
 
                 _values.Add(strValue);
                 _value += $"{strValue}";
