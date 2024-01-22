@@ -40,7 +40,8 @@ using static JanuarySimpleProject.Core.Node;
 //Console.WriteLine(node.JSON);
 
 TDinamicArray<int> t = new TDinamicArray<int>(12);
-t.GetType();
+t.Add(1);
+t.Print();
 
 
 Console.ReadKey();

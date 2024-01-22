@@ -10,6 +10,8 @@ namespace JanuarySimpleProject.Core
         //TODO switch list to array
         private List<string> _values = new List<string>();
         private string _value;
+
+
         
 
 

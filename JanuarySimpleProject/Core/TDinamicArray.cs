@@ -16,7 +16,7 @@ namespace JanuarySimpleProject.Core
                 _array = new TValue[len + len];
                 _count = 0;
             }
-            void Add(TValue s)
+            public void Add(TValue s)
             {
                 if (_count == _array.Length)
                 {
@@ -31,7 +31,7 @@ namespace JanuarySimpleProject.Core
                 _array[_count] = s;
                 _count++;
             }
-            void Remove(TValue s)
+            public void Remove(TValue s)
             {
                 int index = Array.IndexOf(_array, s, 0, _count);
                 if (index != -1)
@@ -54,7 +54,7 @@ namespace JanuarySimpleProject.Core
                 return Array.IndexOf(_array, s, 0, _count) != -1;
             }
 
-            void Print()
+            public void Print()
             {
 
                 for (int i = 0; i < _count; i++)
