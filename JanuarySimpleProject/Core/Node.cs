@@ -6,8 +6,7 @@ namespace JanuarySimpleProject.Core
 {
     public class Node : INode
     {
-        //TODO switch list to array
-        private List<string> _values = new List<string>();
+        DynamicArray<string> _values = new DynamicArray<string>();
         private string _value;
 
         private Node()
@@ -101,30 +100,7 @@ namespace JanuarySimpleProject.Core
             OnNodeChange?.Invoke();
         }
 
-        //TODO switch all returns to throw Exception
-        public void AddValue<TValue>(List<TValue> values)
-        {
-            if (values.Count <= 0)
-                throw new Exception("Кол-во переменых не может быть отрицательным");
-
-            foreach (var value in values)
-            {
-                string strValue = value.ToString().Trim();
-
-                if (strValue == null)
-                    throw new Exception("Значение не может быть пустым");
-
-                if (_values.Contains(strValue))
-                    throw new Exception("Значение не может быть записано дважды");
-
-                _values.Add(strValue);
-                _value += $"{strValue}";
-
-                OnNodeChange?.Invoke();
-            }
-
-
-        }
+       
 
         public void AddValue<TValue>(List<TValue> values)
         {
