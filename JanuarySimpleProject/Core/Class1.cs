@@ -1,12 +1,68 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JanuarySimpleProject.Core
+﻿namespace JanuarySimpleProject.Core
 {
-    internal class Class1
+    class DinamicArray<TCLass>
     {
+        public TCLass[] _array;
+        private int _count;
+
+        public DinamicArray()
+        {
+            _array = new TCLass[4];
+            _count = 0;
+        }
+
+        public void Add(TCLass zn)
+        {
+            if (_count == _array.Length)
+            {
+                TCLass[] temp = new TCLass[_array.Length * 2];
+                for(int i = 0; i < _array.Length - 1; i++)
+                {
+                    temp[i] = _array[i];
+                }
+                _array = temp;
+            }
+            _array[_count] = zn;
+            _count++;
+        }
+
+        public void Remove(TCLass zn)
+        {
+            int index = Array.IndexOf(_array, zn, 0, _count);
+
+            if (index != -1)
+            {
+                for (int i = 0; i < _count - 1; i++)
+                {
+                    _array[i] = _array[i + 1];
+                }
+                _count--;
+            }
+        }
+
+        public bool Contains(TCLass zn)
+        {
+            return Array.IndexOf(_array, zn, 0, _count) != -1;
+        }
+
+        public void Print()
+        {
+            for (int i = 0; i < _count; i++)
+            {
+                Console.Write(_array[i] + " ");
+            }
+            Console.WriteLine();
+        }
+
+        public int Count
+        {
+            get { return _count; }
+        }
+
+        public void Clear()
+        {
+            _array = new TCLass[4];
+            _count = 0;
+        }
     }
 }

@@ -73,7 +73,7 @@ namespace JanuarySimpleProject.Core
         private void CheckNode()
         {
             var temp = String.Empty;
-            foreach (var v in _values)
+            foreach (var v in _values._array)
                 temp += v;
 
             if (_value != temp)
