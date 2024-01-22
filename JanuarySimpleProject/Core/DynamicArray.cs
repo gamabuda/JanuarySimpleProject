@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace JanuarySimpleProject.Core
 {
-    public class DynamicArray
+    public class DynamicArray<T>
     {
-        private string[] items;
+        private T[] items;
         private int count;
 
         public DynamicArray(int length)
         {
-            items = new string[length];
+            items = new T[length];
             count = 0;
         }
 
@@ -27,7 +27,7 @@ namespace JanuarySimpleProject.Core
                 newCount = 10;
             }
 
-            var newArray = new string[newCount];
+            var newArray = new T[newCount];
             for (int i = 0; i < count; i++)
             {
                 newArray[i] = items[i];
@@ -36,7 +36,7 @@ namespace JanuarySimpleProject.Core
             items = newArray;
         }
 
-        public void Add(string item)
+        public void Add(T item)
         {
             if (count == items.Length)
             {
@@ -47,32 +47,22 @@ namespace JanuarySimpleProject.Core
             count++;
         }
 
-        public void Remove(string item)
+        public void Remove(T item)
         {
             if (count == 0)
             {
                 throw new Exception("Массив пустой!");
             }
 
-            int index = Array.IndexOf(items, item);
+            int index = Array.IndexOf(items, item, 0, count);
 
-            if (items.Contains(item))
+            if (index != -1)
             {
-                for (var i = 0; i < count; i++)
+                for (int i = index; i < count - 1; i++)
                 {
-                    if (items[i] == items[index])
-                    {
-                        items[i] = items[i + 1];
-
-                        for(var j = i;  j < count; j++)
-                        {
-                            items[j] = items[j + 1];
-                        }
-
-                        count--;
-                        break;
-                    }
+                    items[i] = items[i + 1];
                 }
+                count--;
             }
             else
             {
@@ -80,7 +70,7 @@ namespace JanuarySimpleProject.Core
             }
         }
 
-        public bool Contains(string item)
+        public bool Contains(T item)
         {
             if (items.Contains(item))
             {
@@ -110,13 +100,12 @@ namespace JanuarySimpleProject.Core
 
         public void Clear()
         {
-            List<string> newItems = items.ToList();
-            newItems.Clear();
-            items = newItems.ToArray();
+            var newArray = new T[10];
+            items = newArray;
             count = 0;
         }
 
-        public string[] GetArray() 
+        public T[] GetArray() 
         { 
             return items;
         }
