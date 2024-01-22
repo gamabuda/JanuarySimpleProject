@@ -149,6 +149,11 @@ namespace JanuarySimpleProject.Core
         {
             return new Node();
         }
+
+        public void UpdateValue<TValue>(TValue value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
