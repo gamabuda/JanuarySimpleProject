@@ -91,10 +91,10 @@ namespace JanuarySimpleProject.Core
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                return;
+                throw new Exception("ошибка"); 
 
             if (_values.Contains(strValue))
-                return;
+                throw new Exception("ошибка");
 
             _values.Add(strValue);
             _value += $"{strValue}";
@@ -106,17 +106,17 @@ namespace JanuarySimpleProject.Core
         public void AddValue<TValue>(List<TValue> values)
         {
             if (values.Count <= 0)
-                return;
+                throw new Exception("ошибка");
 
             foreach (var value in values)
             {
                 string strValue = value.ToString().Trim();
 
                 if (strValue == null)
-                    return;
+                    throw new Exception("ошибка");
 
                 if (_values.Contains(strValue))
-                    return;
+                    throw new Exception("ошибка");
 
                 _values.Add(strValue);
                 _value += $"{strValue}";
@@ -131,13 +131,13 @@ namespace JanuarySimpleProject.Core
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                return;
+                throw new Exception("ошибка");
 
             if (!_values.Contains(strValue))
-                return;
+                throw new Exception("ошибка");
 
             _values.Remove(strValue);
-            _value = Value.Replace(strValue, "");
+            _value = Value.Replace(strValue, "ошибка");
 
             OnNodeChange?.Invoke();
         }
