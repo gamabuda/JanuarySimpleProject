@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 
 namespace JanuarySimpleProject.Core
 {
-    public class DynamicArray
+    public class DynamicArray<T>
     {
-        private string[] _array;
+        private T[] _array;
         private int _count;
 
-        public DynamicArray(object value)
+        public DynamicArray(T value)
         {
-            _array = new string[1] { value.ToString() };
+            _array = new T[1] { value };
             _count = 0;
         }
 
-        public void Add(string str)
+        public void Add(T str)
         {
             int oldSize = _array.Length;
-            string[] newArray = new string[oldSize + 10];
+            T[] newArray = new T[oldSize + 10];
 
             for (int i = 0; i < _array.Length; i++) { newArray[i] = _array[i]; }
 
@@ -32,7 +32,7 @@ namespace JanuarySimpleProject.Core
         }
 
 
-        public void Remove(string str)
+        public void Remove(T str)
         {
             int index = Array.IndexOf(_array, str, 0, _count);
 
@@ -46,7 +46,7 @@ namespace JanuarySimpleProject.Core
             }
         }
 
-        public bool Contains(string str)
+        public bool Contains(T str)
         {
             return Array.IndexOf(_array, str, 0, _count) != -1;
         }
@@ -60,7 +60,7 @@ namespace JanuarySimpleProject.Core
             Console.WriteLine();
         }
 
-        public void Replace(string oldValue, string newValue)
+        public void Replace(T oldValue, T newValue)
         {
             int index = Array.IndexOf(_array, oldValue);
             _array[index] = newValue;
@@ -69,11 +69,6 @@ namespace JanuarySimpleProject.Core
         public int Count
         {
             get { return _count; }
-        }
-
-        public static implicit operator List<object>(DynamicArray v)
-        {
-            throw new NotImplementedException();
         }
     }
 }
