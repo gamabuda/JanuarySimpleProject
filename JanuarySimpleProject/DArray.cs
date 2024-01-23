@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JanuarySimpleProject
 {
-    internal class DArray<T>
+    internal class DArray<T> where T : IComparable<T>
     {
         private T[] _array;
         private int _count;
@@ -87,9 +87,8 @@ namespace JanuarySimpleProject
 
         public void Clear()
         {
-            List<T> newItems = _array.ToList();
-            newItems.Clear();
-            _array = newItems.ToArray();
+            var Arr = new T[15];
+            _array = Arr;
             _count = 0;
         }
 
@@ -103,6 +102,44 @@ namespace JanuarySimpleProject
             return _count;
         }
 
+        public int BinarySearch(T s)
+        {
+            int left = 0;
+            int right = _count - 1;
+            while (left <= right)
+            {
+                int mid = (left + right) / 2;
+                if (_array[mid].CompareTo(s) == 0)
+                {
+                    return mid;
+                }
+                else if (_array[mid].CompareTo(s) < 0)
+                {
+                    left = mid + 1;
+                }
+                else
+                {
+                    right = mid - 1;
+                }
+            }
+            return -1;
+        }
+
+        public void Sort()
+        {
+            for (int i = 0; i < _count - 1; i++)
+            {
+                for (int j = i + 1; j < _count; j++)
+                {
+                    if (_array[i].CompareTo(_array[j]) > 0)
+                    {
+                        T temp = _array[i];
+                        _array[i] = _array[j];
+                        _array[j] = temp;
+                    }
+                }
+            }
+        }
 
     }
 
