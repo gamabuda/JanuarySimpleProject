@@ -150,9 +150,22 @@ namespace JanuarySimpleProject.Core
             return new Node();
         }
 
-        public void UpdateValue<TValue>(TValue value)
+        public void UpdateValue<TValue>(TValue oldValue, TValue newValue)
         {
-            throw new NotImplementedException();
+            string strOldValue = oldValue.ToString().Trim();
+            string strNewValue = newValue.ToString().Trim();
+
+            if (strOldValue == null || strNewValue == null)
+                throw new ArgumentException("Value cannot be null");
+
+            int index = Array.IndexOf(_values, strOldValue);
+            if (index < 0)
+                throw new Exception("Value does not exist");
+
+            _values[index] = strNewValue;
+            _value = Value.Replace(strOldValue, strNewValue);
+
+            OnNodeChange?.Invoke();
         }
     }
 }
