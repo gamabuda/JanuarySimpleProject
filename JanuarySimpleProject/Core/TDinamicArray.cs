@@ -44,11 +44,15 @@ namespace JanuarySimpleProject.Core
 
                 _count--;
             }
-
-            public int Count
+            public void Clear()
             {
+                _array = new TValue[0];
+            }  
+
+             public int Count
+             {
                 get { return _count; }
-            }
+             }
             public bool Contains(TValue s)
             {
                 return Array.IndexOf(_array, s, 0, _count) != -1;
@@ -62,8 +66,14 @@ namespace JanuarySimpleProject.Core
                     Console.WriteLine(_array[i] + " ");
                 }
             }
+            public IEnumerator<object> GetEnumerator()
+            {
+                for (int i = 0; i < _array.Length; i++)
+                {
+                    yield return _array[i];
+                }
+            }
 
 
-        
     }
 }

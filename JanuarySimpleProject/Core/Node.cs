@@ -8,9 +8,9 @@ namespace JanuarySimpleProject.Core
     public class Node : INode
     {
         //TODO switch list to array
-        private List<string> _values = new List<string>();
+        private TDinamicArray<string> _values = new TDinamicArray<string>(12);
         private string _value;
-
+        
 
         
 
