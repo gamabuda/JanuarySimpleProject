@@ -108,17 +108,17 @@ namespace JanuarySimpleProject.Core
         public void AddValue<TValue>(List<TValue> values)
         {
             if (values.Count <= 0)
-                return;
+                throw new Exception("массив пустой");
 
             foreach (var value in values)
             {
                 string strValue = value.ToString().Trim();
 
                 if (strValue == null)
-                    return;
+                    throw new Exception("ноль");
 
                 if (_values.Contains(strValue))
-                    return;
+                    throw new Exception("уже есть такое значение");
 
                 _values.Add(strValue);
                 _value += $"{strValue}";
