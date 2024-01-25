@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JanuarySimpleProject
 {
-    internal class DynamicArray<T>
+    internal class DynamicArray<T> where T: IComparable<T>
     {
         private T[] _array;
         private int _count;
@@ -46,6 +46,26 @@ namespace JanuarySimpleProject
             _array.CopyTo(temp, 0);
             _array = temp;
         }
+        public void Sort()
+        {
+            int step = _count / 2;
+            while (step > 0)
+            {
+                for (int i = step; i < _count; i++)
+                {
+                    T temp = _array[i];
+                    int j;
+                    for (j = i; j >= step && _array[j - step].CompareTo(temp) > 0; j -= step)
+                    {
+                        _array[j] = _array[j - step];
+                    }
+                    _array[j] = temp;
+                }
+                step /= 2;
+            }
+        }
+
+
         public void Print()
         {
             for (int i = 0; i < _count; i++)
@@ -54,6 +74,7 @@ namespace JanuarySimpleProject
             }
             Console.WriteLine();
         }
+
         public void Clear()
         {
             List<T> newItems = _array.ToList();
