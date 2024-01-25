@@ -91,10 +91,10 @@ namespace JanuarySimpleProject.Core
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                return;
+                throw new Exception("Значение = нул");
 
             if (_values.Contains(strValue))
-                return;
+                throw new Exception("Значение уже есть");
 
             _values.Add(strValue);
             _value += $"{strValue}";
