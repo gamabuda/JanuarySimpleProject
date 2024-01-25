@@ -141,6 +141,15 @@ namespace JanuarySimpleProject
             }
         }
 
+        internal void Insert(int index, string item)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void RemoveAt(int index)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }
