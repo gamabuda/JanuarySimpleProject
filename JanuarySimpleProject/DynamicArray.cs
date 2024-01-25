@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace JanuarySimpleProject
 {
-    internal class DynamicArray
+    internal class DynamicArray<T>
     {
-        private string[] _array;
+        private T[] _array;
         private int _count;
         public DynamicArray()
         {
-            _array = new string[4]; _count = 0;
+            _array = new T[4]; _count = 0;
         }
-        public void Add(string str)
+        public void Add(T str)
         {
             if (_count == _array.Length)
             {
@@ -24,7 +24,7 @@ namespace JanuarySimpleProject
             _array[_count] = str;
             _count++;
         }
-        public void Remove(string str)
+        public void Remove(T str)
         {
             int index = Array.IndexOf(_array, str, 0, _count); if (index != -1)
             {
@@ -35,14 +35,14 @@ namespace JanuarySimpleProject
                 _count--;
             }
         }
-        public bool Contains(string str)
+        public bool Contains(T str)
         {
             return Array.IndexOf(_array, str, 0, _count) != -1;
         }
 
         private void Resize()
         {
-            string[] temp = new string[_array.Length * 2];
+            T[] temp = new T[_array.Length * 2];
             _array.CopyTo(temp, 0);
             _array = temp;
         }
@@ -56,12 +56,12 @@ namespace JanuarySimpleProject
         }
         public void Clear()
         {
-            List<string> newItems = _array.ToList();
+            List<T> newItems = _array.ToList();
             newItems.Clear();
             _array = newItems.ToArray();
             _count = 0;
         }
-        public string[] GetArray()
+        public T[] GetArray()
         {
             return _array;
         }
