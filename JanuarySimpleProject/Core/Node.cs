@@ -73,8 +73,10 @@ namespace JanuarySimpleProject.Core
         private void CheckNode()
         {
             var temp = String.Empty;
-            foreach (var v in _values)
-                temp += v;
+            for (var i = 0; i < _values.Count(); i++)
+            {
+                temp += _values.GetArray()[i];
+            }
 
             if (_value != temp)
                 throw new Exception("Node is not correct or broken");

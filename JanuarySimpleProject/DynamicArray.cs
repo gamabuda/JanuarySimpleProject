@@ -61,5 +61,14 @@ namespace JanuarySimpleProject
             _array = newItems.ToArray();
             _count = 0;
         }
+        public string[] GetArray()
+        {
+            return _array;
+        }
+
+        public int Count()
+        {
+            return _count;
+        }
     }
 }
