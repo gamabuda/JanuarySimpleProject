@@ -62,6 +62,26 @@ namespace JanuarySimpleProject.Core.Implementation
         {
             Console.WriteLine(string.Join(", ", items));
         }
-    }
 
+        public void InsertionSort()
+        {
+            for (int i = 1; i < count; i++)
+            {
+                T key = items[i];
+                int j = i - 1;
+
+                while (j >= 0 && Comparer<T>.Default.Compare(items[j], key) > 0)
+                {
+                    items[j + 1] = items[j];
+                    j = j - 1;
+                }
+
+                items[j + 1] = key;
+            }
+        }
+        public void PrintArray()
+        {
+            Console.WriteLine(string.Join(", ", items));
+        }
+    }
 }

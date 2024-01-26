@@ -1,4 +1,5 @@
 ﻿using JanuarySimpleProject.Core;
+using JanuarySimpleProject.Core.Implementation;
 
 /*
  * Я накидал вам базы по прошлому полугодию, друзья!
@@ -40,3 +41,15 @@
 
 
 //Console.ReadKey();
+DynamicArray<int> dynamicArray = new DynamicArray<int>();
+dynamicArray.Add(5);
+dynamicArray.Add(3);
+dynamicArray.Add(9);
+dynamicArray.Add(1);
+Console.WriteLine("Массив перед сортировкой::");
+dynamicArray.PrintArray();
+
+dynamicArray.InsertionSort();
+
+Console.WriteLine("Массив после сортировкой::");
+dynamicArray.PrintArray();
