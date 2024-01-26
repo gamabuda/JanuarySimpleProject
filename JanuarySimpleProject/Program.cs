@@ -1,5 +1,6 @@
 ﻿using JanuarySimpleProject.Core;
 using JanuarySimpleProject.Core.Implementation;
+using System.Text.Json;
 
 /*
  * Я накидал вам базы по прошлому полугодию, друзья!
@@ -46,10 +47,22 @@ node.ShowInfo();
 node.RemoveValue(ints);
 node.ShowInfo();
 
-Console.WriteLine(node.JSON);
-
 node.Value = "Str";
 node.ShowInfo();
 
-Console.ReadKey();
 
+Console.WriteLine("\t\tЧтобы посмотреть функционал моей ноды нажмите любую кнопку");
+Console.ReadKey();
+Console.Clear();
+
+MyNode myNode = new("myNode");
+myNode.Value = 12;
+
+myNode.AddValue(12);
+
+myNode.AddValue("MMM");
+myNode.UpdateValue("MMM", "FDF");
+
+myNode.RemoveValue("FDF");
+
+myNode.RemoveAllValue(12);

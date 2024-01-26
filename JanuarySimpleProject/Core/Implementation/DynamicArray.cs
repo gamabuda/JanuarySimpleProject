@@ -10,14 +10,17 @@ namespace JanuarySimpleProject.Core.Implementation
     public class DynamicArray<T>
     {
         private T[] _values;
+        private int _count;
         public DynamicArray()
         {
             _values = new T[0];
+            _count = 0;
         }
-        
+
         public DynamicArray(T value)
         {
             _values = new T[1] { value };
+            _count = 1;
         }
         public T this[int index]
         {
@@ -27,33 +30,34 @@ namespace JanuarySimpleProject.Core.Implementation
 
         public void Add(T value)
         {
-            int lastIndex = _values.Length - 1;
-            if (lastIndex == null)
+            if (_count != _values.Length)
             {
-                _values[lastIndex] = value;
+                _values[_count] = value;
             }
             else
             {
-                T[] temp = new T[_values.Length + 1];
+                T[] temp = new T[_values.Length * 2];
                 _values.CopyTo(temp, 0);
                 _values = temp;
-                _values[lastIndex+1] = value;
+                _values[_count] = value;
             }
+            _count++;
         }
 
         public void Remove(T value)
         {
-            
+
             int index = Array.IndexOf(_values, value);
-            if(index != -1)
+            if (index != -1)
             {
                 _values[index] = default(T);
                 _values = _values.Where(a => a != null).ToArray();
             }
             else
             {
-                throw new Exception("Элемента нет в массиве");       
+                throw new Exception("Элемента нет в массиве");
             }
+            _count--;
         }
 
         public bool Contains(T value)
@@ -66,7 +70,7 @@ namespace JanuarySimpleProject.Core.Implementation
             _values = new T[0];
         }
 
-        public void Replace(T oldValue, T newValue) 
+        public void Replace(T oldValue, T newValue)
         {
             int index = Array.IndexOf(_values, oldValue);
             _values[index] = newValue;
@@ -74,7 +78,7 @@ namespace JanuarySimpleProject.Core.Implementation
 
         public IEnumerator<object> GetEnumerator()
         {
-            for(int i = 0;  i < _values.Length; i++)
+            for (int i = 0; i < _values.Length; i++)
             {
                 yield return _values[i];
             }
