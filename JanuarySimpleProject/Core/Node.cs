@@ -100,24 +100,23 @@ namespace JanuarySimpleProject.Core
             OnNodeChange?.Invoke();
         }
 
-        //TODO switch all returns to throw Exception
         public void AddValue<TValue>(List<TValue> values)
         {
             if (values.Count <= 0)
-                return;
+                throw new ArgumentException("List is empty.");
 
             foreach (var value in values)
             {
-                string strValue = value.ToString().Trim();
+                string strValue = value?.ToString().Trim();
 
-                if (strValue == null)
-                    return;
+                if (string.IsNullOrEmpty(strValue))
+                    throw new ArgumentException("Value is null or empty.");
 
                 if (_values.Contains(strValue))
-                    return;
+                    throw new ArgumentException("Value already exists in the list.");
 
-                _values.Add(strValue);
-                _value += $"{strValue}";
+                _values = new string[] { strValue };
+                _value += strValue;
 
                 OnNodeChange?.Invoke();
             }
