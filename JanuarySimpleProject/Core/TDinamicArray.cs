@@ -73,7 +73,11 @@ namespace JanuarySimpleProject.Core
                     yield return _array[i];
                 }
             }
-
-
+             
+            public void ReplaceX(TValue oldValue, TValue newValue)
+            {
+                int index = Array.IndexOf(_array, oldValue);
+                _array[index] = newValue; 
+            }
     }
 }

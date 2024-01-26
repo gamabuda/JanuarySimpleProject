@@ -169,7 +169,20 @@ namespace JanuarySimpleProject.Core
                 OnNodeChange?.Invoke();
             }
         }
+        public TValue UpadateMethod<TValue>(TValue oldValue, TValue newValue)
+        {
+            string StringOldValue = oldValue.ToString().Trim();
+            string StringNewValue = newValue.ToString().Trim();
+            if (!_values.Contains(StringOldValue)) throw new Exception("this element not exist in array");
+            if (_values.Contains(StringNewValue)) throw new Exception( "this element already has existed in array");
+            if (StringNewValue == null) throw new Exception("You try add null value");
+            _values.ReplaceX(StringOldValue, StringNewValue);
+            _value = Value.Replace(StringOldValue, StringNewValue);
 
+            return oldValue;
+            
+
+        }
         public static Node CreateEmptyNode()
         {
             return new Node();
