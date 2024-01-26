@@ -6,18 +6,19 @@ using System.Threading.Tasks;
 
 namespace JanuarySimpleProject.Core.Implementation
 {
-    public class DynamicArray
+
+    public class DynamicArray<T>
     {
-        private int[] array;
+        private T[] array;
         private int count;
 
         public DynamicArray()
         {
-            array = new int[4];
+            array = new T[4];
             count = 0;
         }
 
-        public void Add(int item)
+        public void Add(T item)
         {
             if (count == array.Length)
             {
@@ -28,7 +29,7 @@ namespace JanuarySimpleProject.Core.Implementation
             count++;
         }
 
-        public void Remove(int item)
+        public void Remove(T item)
         {
             int index = Array.IndexOf(array, item, 0, count);
 
@@ -43,7 +44,7 @@ namespace JanuarySimpleProject.Core.Implementation
             }
         }
 
-        public bool Contains(int item)
+        public bool Contains(T item)
         {
             return Array.IndexOf(array, item, 0, count) != -1;
         }
@@ -64,3 +65,4 @@ namespace JanuarySimpleProject.Core.Implementation
         }
     }
 }
+
