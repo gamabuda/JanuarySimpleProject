@@ -148,7 +148,7 @@ namespace JanuarySimpleProject.Core
             OnNodeChange?.Invoke();
         }
 
-        public void AddValRemoveValueue<TValue>(List<TValue> values)
+        public void RemoveValue<TValue>(List<TValue> values)
         {
             if (values.Count <= 0)
                 throw new Exception("There is nothing to delete");
@@ -158,7 +158,7 @@ namespace JanuarySimpleProject.Core
                 string strValue = value.ToString().Trim();
 
                 if (strValue == null)
-                    throw new Exception("Nothing deleted");
+                    throw new Exception("Nothing   deleted");
 
                 if (!_values.Contains(strValue))
                     throw new Exception("these values ​​is not exist");
