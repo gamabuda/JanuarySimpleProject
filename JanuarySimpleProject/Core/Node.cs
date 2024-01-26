@@ -142,6 +142,18 @@ namespace JanuarySimpleProject.Core
             OnNodeChange?.Invoke();
         }
 
+        public void UpdateValue<TValue>(TValue value)
+        {
+            string strValue = value?.ToString().Trim();
+
+            if (string.IsNullOrEmpty(strValue))
+                throw new ArgumentException("Value is null or empty.");
+
+            _value = strValue;
+
+            OnNodeChange?.Invoke();
+        }
+
         public static Node CreateEmptyNode()
         {
             return new Node();
