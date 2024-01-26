@@ -1,68 +1,73 @@
-﻿public class DynamicArray<T>
+﻿using System;
+
+public class DynamicArray<T>
 {
-    private int ArrayLength { get; set; }
-    private T[] MyArray;
-
-    public DynamicArray(int length)
+    private T[] _array;
+    private int length;
+    private int _count;
+    public DynamicArray(int _len)
     {
-        MyArray = new T[length];
-        ArrayLength = 0;
+        length = _len;
+        _array = new T[length];
+        _count = 0;
     }
 
-    public void Add(T item)
+    public void Add(T str)
     {
-        if (ArrayLength < MyArray.Length)
+        if (_count == _array.Length)
         {
-            MyArray[ArrayLength] = item;
-            ArrayLength++;
+            Array.Resize(ref _array, _array.Length * 2);
         }
-        else
-        {
-            ResizeArray();
-            MyArray[ArrayLength] = item;
-            ArrayLength++;
-        }
+        _array[_count] = str;
+        _count++;
     }
 
-    public bool Remove(T item)
+    public void Remove(string str)
     {
-        int index = Array.IndexOf(MyArray, item);
+        int index = Array.IndexOf(_array, str, 0, _count);
+
         if (index != -1)
         {
-            for (int i = index; i < ArrayLength - 1; i++)
+            for (int i = 0; i < _count - 1; i++)
             {
-                MyArray[i] = MyArray[i + 1];
+                _array[i] = _array[i + 1];
             }
-            MyArray[ArrayLength - 1] = default(T);
-            ArrayLength--;
-            return true;
+            _count--;
         }
-        return false;
     }
 
-    public bool Contains(T item)
+    public void Clear()
     {
-        return Array.IndexOf(MyArray, item) != -1;
+        _array = new T[length];
     }
 
-    public int Count
+    public bool Contains(string str)
     {
-        get { return ArrayLength; }
+        return Array.IndexOf(_array, str, 0, _count) != -1;
     }
 
     public void Print()
     {
-        for (int i = 0; i < ArrayLength; i++)
+        for (int i = 0; i < _count; i++)
         {
-            Console.WriteLine(MyArray[i]);
+            Console.Write(_array[i] + " ");
         }
+        Console.WriteLine();
     }
 
-    private void ResizeArray()
+    public int Count
     {
-        T[] newArray = new T[MyArray.Length * 2];
-        Array.Copy(MyArray, newArray, MyArray.Length);
-        MyArray = newArray;
+        get { return _count; }
+    }
+    public IEnumerator<T> GetEnumerator()
+    {
+        for (int i = 0; i < _array.Length; i++)
+        {
+            yield return _array[i];
+        }
     }
 }
-}
+
+
+
+
