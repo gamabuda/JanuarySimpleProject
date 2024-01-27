@@ -27,10 +27,10 @@ using JanuarySimpleProject.Core;
 //node.AddValue(Node.CreateEmptyNode());
 //node.ShowInfo();
 
-//List<int> ints = new List<int>()
-//{
-//    1, 2, 3
-//};
+List<int> ints = new List<int>()
+{
+    1, 2, 3
+};
 //node.AddValue(ints);
 //node.ShowInfo();
 
@@ -38,20 +38,24 @@ using JanuarySimpleProject.Core;
 //node.ShowInfo();
 
 //Console.WriteLine(node.JSON);
-DynamicArray array = new DynamicArray();
-array.Add("sadas");
-array.Add("qwert");
-array.Add("zxc");
-array.Add("sadas");
-array.Add("qwert");
-array.Add("zxc");
-array.Print();
+//DynamicArray array = new DynamicArray();
+//array.Add("sadas");
+//array.Add("qwert");
+//array.Add("zxc");
+//array.Add("sadas");
+//array.Add("qwert");
+//array.Add("zxc");
+//array.Print();
 
-TClass<Node> t1 = new TClass<Node>(Node.CreateEmptyNode());
-t1.ShowTType();
-TClass<int> t2 = new TClass<int>(12);
-t2.ShowTType();
-TClass<string> t3 = new TClass<string>("qwerty");
-t3.ShowTType();
+//TClass<Node> t1 = new TClass<Node>(Node.CreateEmptyNode());
+//t1.ShowTType();
+//TClass<int> t2 = new TClass<int>(12);
+//t2.ShowTType();
+//TClass<string> t3 = new TClass<string>("qwerty");
+//t3.ShowTType();
+
+MyClass<int> m = new MyClass<int>();
+m.Value = 1;
+Console.WriteLine(m.Equals(1));
 
 Console.ReadKey();
