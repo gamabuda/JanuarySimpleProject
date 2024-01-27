@@ -1,59 +1,58 @@
-﻿namespace JanuarySimpleProject
+﻿
+namespace JanuarySimpleProject
 {
-    class DynamicArray<T>
+    internal class DynamicArray<T>
     {
-        private int count;
-        private T[] array;
+        private int _count;
+        private T[] _array;
 
         public DynamicArray(int len)
         {
-            array = new T[len];
-            count = 0;
+            _array = new T[len];
+            _count = 0;
         }
 
         public void Add(T item)
         {
-            if (count == array.Length)
+            if (_array.Length > 3)
             {
-                T[] temp = new T[array.Length ]; // изменить
-               
+                _array[3] = item;
             }
-            array[count] = item;
-            count++;
+            _array[_count] = item;
+            _count++;
         }
 
         public void Remove(T item)
         {
-            int index = Array.IndexOf(array, item); 
+            int index = Array.IndexOf(_array, item);
             if (index >= 0)
             {
-                for (int i = index; i < count - 1; i++)
+                for (int i = index; i < _count - 1; i++)
                 {
-                    array[i] = array[i + 1]; 
+                    _array[i] = _array[i + 1];
                 }
-                count--;
+                _count--;
                 return;
             }
         }
 
-        public  bool Contains(T item)
+        public bool Contains(T item)
         {
-            return Array.IndexOf(array, item) >= 0;
+            return Array.IndexOf(_array, item) >= 0;
         }
 
         public int Count
         {
-            get { return count; }
+            get { return _count; }
         }
 
         public void Print()
         {
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < _count; i++)
             {
-                Console.WriteLine(array[i]);
+                Console.WriteLine(_array[i] + " ");
             }
             Console.WriteLine();
         }
     }
 }
-
