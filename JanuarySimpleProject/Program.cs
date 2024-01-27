@@ -53,3 +53,19 @@ dynamicArray.InsertionSort();
 
 Console.WriteLine("Массив после сортировкой::");
 dynamicArray.PrintArray();
+Console.WriteLine("==================================================================================================================");
+
+MyClass<int> m = new MyClass<int>();
+m.Value = 1;
+Console.WriteLine("Введите значение:");
+string userInput = Console.ReadLine();
+int value;
+if (int.TryParse(userInput, out value))
+{
+    m.Value = value;
+    Console.WriteLine(m.Equals(new MyClass<int> { Value = value }));
+}
+else
+{
+    Console.WriteLine("Введено некорректное значение!");
+}
