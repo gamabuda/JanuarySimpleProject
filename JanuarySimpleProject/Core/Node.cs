@@ -45,8 +45,7 @@ namespace JanuarySimpleProject.Core
             set
             {
                 _value = value.Trim();
-                //TODO need optimize
-                _values.Clear();
+                _values = new DArray(10);
                 _values.Add(_value);
                 OnNodeChange?.Invoke();
             }
