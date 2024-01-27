@@ -110,13 +110,9 @@ namespace JanuarySimpleProject.Core
             }
         }
 
-        //TODO switch all returns to throw Exception and add the ability to delete a list of objects
         public void RemoveValue<TValue>(TValue value)
         {
-            string strValue = value.ToString().Trim();
-
-            if (strValue == null)
-                return;
+            string strValue = value?.ToString().Trim() ?? throw new ArgumentNullException(nameof(value));
 
             if (!_values.Contains(strValue))
                 return;
