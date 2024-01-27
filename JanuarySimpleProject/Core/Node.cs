@@ -45,10 +45,9 @@ namespace JanuarySimpleProject.Core
             get => _value;
             set
             {
-                _value = value.Trim();
-                //TODO need optimize
-                _values.Clear();
-                _values.Add(_value);
+                //ОПТИМИЗАЦИЯ ЗАКРЫТА
+                _value = value?.Trim() ?? string.Empty;
+                _values = new string[] { _value };
                 OnNodeChange?.Invoke();
             }
         }
