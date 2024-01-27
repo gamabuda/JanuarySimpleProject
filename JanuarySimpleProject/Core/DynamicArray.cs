@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -8,10 +9,11 @@ using System.Threading.Tasks;
 
 namespace JanuarySimpleProject.Core
 {
-    public class DynamicArray<T>
+    public class DynamicArray<T> : IEnumerable, IEquatable<DynamicArray<T>>
     {
         private T[] items;
         private int count;
+        public T Value { get; set; }
 
         public DynamicArray(int length)
         {
@@ -108,6 +110,31 @@ namespace JanuarySimpleProject.Core
         public T[] GetArray() 
         { 
             return items;
+        }
+
+
+        public IEnumerator GetEnumerator() => items.GetEnumerator();
+
+        public bool Equals(DynamicArray<T> other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+
+            return EqualityComparer<T>.Default.Equals(Value, other.Value);
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != typeof(DynamicArray<T>)) return false;
+
+            return Equals((DynamicArray<T>)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return EqualityComparer<T>.Default.GetHashCode(Value);
         }
     }
 }
