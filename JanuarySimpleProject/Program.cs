@@ -1,4 +1,5 @@
 ﻿using JanuarySimpleProject.Core;
+using System.Formats.Asn1;
 
 /*
  * Я накидал вам базы по прошлому полугодию, друзья!
@@ -16,6 +17,27 @@
  * Одна тудушка = один коммит (в ином исходе будет засчитано половина от всех баллов)
  * Одна тудушка = 2 балла
  */
+
+//Node node = Node.CreateEmptyNode();
+//node.ShowInfo();
+
+//node.Value = "Str";
+//node.ShowInfo();
+
+//node.AddValue(Node.CreateEmptyNode());
+//node.ShowInfo();
+
+//List<int> ints = new List<int>()
+//{
+//  1, 2, 3
+//};
+//node.AddValue(ints);
+//node.ShowInfo();
+
+//node.RemoveValue("Str");
+//node.ShowInfo();
+
+//Console.WriteLine(node.JSON);
 
 Node node = Node.CreateEmptyNode();
 node.ShowInfo();
