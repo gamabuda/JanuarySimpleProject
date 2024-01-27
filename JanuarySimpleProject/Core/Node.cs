@@ -1,45 +1,64 @@
 ﻿using System;
 using System.Text.Json;
-using System.Collections.Generic;
 using JanuarySimpleProject.Core.Implementation;
 
 namespace JanuarySimpleProject.Core
 {
     public class Node : INode
     {
-        private List<string> _values = new List<string>(); // Изменено на список
-
+        //TODO switch list to array
+        private string[] _values = new string[0];
         private string _value;
+
+        private Node()
+        {
+            Id = Guid.NewGuid().ToString();
+
+            Name = "NewNode";
+            DateTimeCreate = DateTime.Now;
+            DateTimeUpdate = DateTimeCreate;
+
+            OnNodeChange += CheckNode;
+            OnNodeChange += DateTimeEditChange;
+            OnNodeChange += SerializeNode2Json;
+        }
+
+        public Node(string name)
+        {
+            Id = Guid.NewGuid().ToString();
+
+            Name = name;
+            DateTimeCreate = DateTime.Now;
+            DateTimeUpdate = DateTimeCreate;
+
+            OnNodeChange += CheckNode;
+            OnNodeChange += DateTimeEditChange;
+            OnNodeChange += SerializeNode2Json;
+        }
+
         public string Id { get; }
+
         public string Name { get; set; }
+
         public string Value
         {
             get => _value;
             set
             {
                 _value = value.Trim();
+                //TODO need optimize
                 _values.Clear();
                 _values.Add(_value);
                 OnNodeChange?.Invoke();
             }
         }
+
         public string JSON { get; set; }
+
         public DateTime DateTimeCreate { get; }
         public DateTime DateTimeUpdate { get; private set; }
 
         public event Action OnNodeChange;
-
-        public Node()
-        {
-            Id = Guid.NewGuid().ToString();
-            Name = "NewNode";
-            Value = string.Empty;
-            DateTimeCreate = DateTime.Now;
-            DateTimeUpdate = DateTimeCreate;
-            OnNodeChange += CheckNode;
-            OnNodeChange += DateTimeEditChange;
-            OnNodeChange += SerializeNode2Json;
-        }
 
         private void SerializeNode2Json()
         {
@@ -66,36 +85,39 @@ namespace JanuarySimpleProject.Core
             Console.WriteLine($"Node:\tName:{Name} ID:{Id}\n\tDateTime create:{DateTimeCreate}\n\tDateTime last update:{DateTimeUpdate}\n\tValue:{Value}");
         }
 
+        //TODO switch all returns to throw Exception
         public void AddValue<TValue>(TValue value)
         {
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                throw new Exception("Value cannot be null");
+                throw new Exception("не может быть нулем");
 
             if (_values.Contains(strValue))
-                throw new Exception("Value already exists");
+                throw new Exception("значение уже есть");
 
             _values.Add(strValue);
             _value += $"{strValue}";
 
             OnNodeChange?.Invoke();
         }
+        
 
+        //TODO switch all returns to throw Exception
         public void AddValue<TValue>(List<TValue> values)
         {
             if (values.Count <= 0)
-                throw new Exception("List of values is empty");
+                return;
 
             foreach (var value in values)
             {
                 string strValue = value.ToString().Trim();
 
                 if (strValue == null)
-                    throw new Exception("Value cannot be null");
+                    return;
 
                 if (_values.Contains(strValue))
-                    throw new Exception("Value already exists");
+                    return;
 
                 _values.Add(strValue);
                 _value += $"{strValue}";
@@ -103,8 +125,27 @@ namespace JanuarySimpleProject.Core
                 OnNodeChange?.Invoke();
             }
         }
+
+        //TODO switch all returns to throw Exception and add the ability to delete a list of objects
+        public void RemoveValue<TValue>(TValue value)
+        {
+            string strValue = value.ToString().Trim();
+
+            if (strValue == null)
+                return;
+
+            if (!_values.Contains(strValue))
+                return;
+
+            _values.Remove(strValue);
+            _value = Value.Replace(strValue, "");
+
+            OnNodeChange?.Invoke();
+        }
+
+        public static Node CreateEmptyNode()
+        {
+            return new Node();
+        }
     }
 }
-
-
-
