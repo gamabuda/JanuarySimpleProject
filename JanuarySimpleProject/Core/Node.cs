@@ -126,25 +126,20 @@ namespace JanuarySimpleProject.Core
             }
         }
         //TODO switch all returns to throw Exception and add the ability to delete a list of objects
-        public void RemoveValue<TValue>(TValue value)
+        public interface INode
         {
-            string strValue = value.ToString().Trim();
+            string Id { get; }
+            string Name { get; set; }
+            string Value { get; set; }
+            DateTime DateTimeCreate { get; }
+            DateTime DateTimeUpdate { get; }
+            void UpdateValue<TValue>(TValue oldValue, TValue newValue);
+            void ShowInfo();
+            void AddValue<TValue>(TValue value);
+            void RemoveValue<TValue>(TValue value);
 
-            if (strValue == null)
-                return;
 
-            if (!_values.Contains(strValue))
-                return;
-
-            _values.Remove(strValue);
-            _value = Value.Replace(strValue, "");
-
-            OnNodeChange?.Invoke();
-        }
-
-        public static Node CreateEmptyNode()
-        {
-            return new Node();
+            event Action OnNodeChange;
         }
     }
 }
