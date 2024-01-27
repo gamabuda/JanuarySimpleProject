@@ -156,7 +156,7 @@ namespace JanuarySimpleProject.Core
                 throw new Exception("ошибка");
 
             _values.Remove(strValue);
-            _value = Value.Replace(strValue, "ошибка");
+            _value = Value.Replace(strValue, "");
 
             OnNodeChange?.Invoke();
         }

@@ -7,7 +7,7 @@
 
         public DinamicArray()
         {
-            _array = new TCLass[4];
+            _array = new TCLass[10];
             _count = 0;
         }
 
@@ -16,7 +16,7 @@
             if (_count == _array.Length)
             {
                 TCLass[] temp = new TCLass[_array.Length * 2];
-                for(int i = 0; i < _array.Length - 1; i++)
+                for(int i = 0; i < _array.Length; i++)
                 {
                     temp[i] = _array[i];
                 }
@@ -36,6 +36,7 @@
                 {
                     _array[i] = _array[i + 1];
                 }
+                _array[_count-1] = default(TCLass);
                 _count--;
             }
         }
