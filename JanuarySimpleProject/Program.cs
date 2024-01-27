@@ -19,50 +19,70 @@ using System.Text.Json;
  * Одна тудушка = 2 балла
  */
 
-Node node = Node.CreateEmptyNode();
-node.ShowInfo();
+//Node node = Node.CreateEmptyNode();
+//node.ShowInfo();
 
-node.Value = "Str";
-node.ShowInfo();
+//node.Value = "Str";
+//node.ShowInfo();
 
-node.AddValue(Node.CreateEmptyNode());
-node.ShowInfo();
+//node.AddValue(Node.CreateEmptyNode());
+//node.ShowInfo();
 
-List<int> ints = new List<int>()
+//List<int> ints = new List<int>()
+//{
+//    1, 2, 3
+//};
+//node.AddValue(ints);
+//node.ShowInfo();
+
+//node.RemoveValue("Str");
+//node.ShowInfo();
+
+//node.AddValue(111);
+//node.ShowInfo();
+
+//Console.WriteLine(node.UpdateValue(111, 222));
+//node.ShowInfo();
+
+//node.RemoveValue(ints);
+//node.ShowInfo();
+
+//node.Value = "Str";
+//node.ShowInfo();
+
+
+//Console.WriteLine("\t\tЧтобы посмотреть функционал моей ноды нажмите любую кнопку");
+//Console.ReadKey();
+//Console.Clear();
+
+//MyNode myNode = new("myNode");
+//myNode.Value = 12;
+
+//myNode.AddValue(12);
+
+//myNode.AddValue("MMM");
+//myNode.UpdateValue("MMM", "FDF");
+
+//myNode.RemoveValue("FDF");
+
+//myNode.RemoveAllValue(12);
+
+DynamicArray<MyClass<string>, string> array = new DynamicArray<MyClass<string>, string>();
+array.Add("sa");
+array.Add("1123");
+array.Add("aasdfasdfsa");
+array.Add("sdsafa");
+array.Add("sadsaf");
+array.Add("s123a");
+array.Add("sa4435");
+array.Add("srta");
+foreach (var item in array)
 {
-    1, 2, 3
-};
-node.AddValue(ints);
-node.ShowInfo();
-
-node.RemoveValue("Str");
-node.ShowInfo();
-
-node.AddValue(111);
-node.ShowInfo();
-
-Console.WriteLine(node.UpdateValue(111, 222));
-node.ShowInfo();
-
-node.RemoveValue(ints);
-node.ShowInfo();
-
-node.Value = "Str";
-node.ShowInfo();
-
-
-Console.WriteLine("\t\tЧтобы посмотреть функционал моей ноды нажмите любую кнопку");
-Console.ReadKey();
-Console.Clear();
-
-MyNode myNode = new("myNode");
-myNode.Value = 12;
-
-myNode.AddValue(12);
-
-myNode.AddValue("MMM");
-myNode.UpdateValue("MMM", "FDF");
-
-myNode.RemoveValue("FDF");
-
-myNode.RemoveAllValue(12);
+    Console.WriteLine(item);
+}
+array.Sort();
+Console.WriteLine();
+foreach (var item in array)
+{
+    Console.WriteLine(item);
+}
