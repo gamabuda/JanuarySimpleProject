@@ -101,7 +101,7 @@ namespace JanuarySimpleProject.Core
             OnNodeChange?.Invoke();
         }
 
-        //TODO switch all returns to throw Exception
+        //TODO switch all returns to throw Exception ЗАКРЫТО
         public void AddValue<TValue>(List<TValue> values)
         {
             if (values.Count <= 0)
@@ -127,15 +127,15 @@ namespace JanuarySimpleProject.Core
         //TODO switch all returns to throw Exception and add the ability to delete a list of objects
         public void RemoveValue<TValue>(TValue value)
         {
-            string strValue = value.ToString().Trim();
+            string strValue = value?.ToString().Trim();
 
-            if (strValue == null)
-                return;
+            if (string.IsNullOrEmpty(strValue))
+                throw new ArgumentException("Value is null or empty.");
 
             if (!_values.Contains(strValue))
-                return;
+                throw new ArgumentException("Value does not exist in the list.");
 
-            _values.Remove(strValue);
+            _values = Array.FindAll(_values, v => v != strValue);
             _value = Value.Replace(strValue, "");
 
             OnNodeChange?.Invoke();
