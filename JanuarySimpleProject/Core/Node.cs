@@ -84,19 +84,19 @@ namespace JanuarySimpleProject.Core
             Console.WriteLine($"Node:\tName:{Name} ID:{Id}\n\tDateTime create:{DateTimeCreate}\n\tDateTime last update:{DateTimeUpdate}\n\tValue:{Value}");
         }
 
-        //TODO switch all returns to throw Exception
+        //TODO switch all returns to throw ExceptionЗАКРЫТО
         public void AddValue<TValue>(TValue value)
         {
             string strValue = value.ToString().Trim();
 
-            if (strValue == null)
-                return;
+            if (string.IsNullOrEmpty(strValue))
+                throw new ArgumentException("Value is null or empty.");
 
             if (_values.Contains(strValue))
-                return;
+                throw new ArgumentException("Value already exists in the list.");
 
-            _values.Add(strValue);
-            _value += $"{strValue}";
+            _values = new string[] { strValue };
+            _value += strValue;
 
             OnNodeChange?.Invoke();
         }
