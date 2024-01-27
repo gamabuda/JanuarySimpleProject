@@ -1,42 +1,68 @@
 ﻿using System;
 using System.Text.Json;
+using System.Collections.Generic;
 using JanuarySimpleProject.Core.Implementation;
+using System.Xml.Linq;
 
 namespace JanuarySimpleProject.Core
 {
     public class Node : INode
     {
-        //TODO switch list to array
-        private List<string> _values = new List<string>();
-        private string _value;
+        private string[] _values = Array.Empty<string>(); 
 
-        private Node()
+        private string _value;
+        public string Id { get; }
+        public string Name { get; }
+        public DateTime DateTimeCreate { get; }
+        public DateTime DateTimeUpdate { get; }
+        string INode.Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Value { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public Node()
         {
             Id = Guid.NewGuid().ToString();
-
             Name = "NewNode";
             DateTimeCreate = DateTime.Now;
             DateTimeUpdate = DateTimeCreate;
-
             OnNodeChange += CheckNode;
             OnNodeChange += DateTimeEditChange;
             OnNodeChange += SerializeNode2Json;
         }
+        public event Action OnNodeChange;
 
-        public Node(string name)
+        public void CheckNode()
         {
-            Id = Guid.NewGuid().ToString();
-
-            Name = name;
-            DateTimeCreate = DateTime.Now;
-            DateTimeUpdate = DateTimeCreate;
-
-            OnNodeChange += CheckNode;
-            OnNodeChange += DateTimeEditChange;
-            OnNodeChange += SerializeNode2Json;
+          
         }
 
-        public string Id { get; }
+        public void DateTimeEditChange()
+        {
+           
+        }
+
+        public void SerializeNode2Json()
+        {
+            
+        }
+
+        public void ShowInfo()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddValue<TValue>(TValue value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveValue<TValue>(TValue value)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
+
+public string Id { get; }
 
         public string Name { get; set; }
 
