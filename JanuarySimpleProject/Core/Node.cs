@@ -122,6 +122,20 @@ namespace JanuarySimpleProject.Core
 
             OnNodeChange?.Invoke();
         }
+        public void UpdateValue<TValue>(TValue value)
+        {
+            string strValue = value?.ToString().Trim() ?? throw new ArgumentNullException(nameof(value));
+
+            int index = Array.IndexOf(_values.GetArray(), strValue);
+            if (index >= 0)
+            {
+                _values.Remove(strValue);
+                _values.Add(strValue);
+                _value += strValue;
+
+                OnNodeChange?.Invoke();
+            }
+        }
 
         public static Node CreateEmptyNode()
         {

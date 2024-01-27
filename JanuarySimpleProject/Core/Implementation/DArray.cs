@@ -60,7 +60,12 @@ namespace JanuarySimpleProject.Core.Implementation
                 Console.WriteLine(_array[i]);
             }
         }
-
+        public string[] GetArray()
+        {
+            string[] result = new string[_count];
+            Array.Copy(_array, result, _count);
+            return result;
+        }
         private void Resize()
         {
             int newLenght = _array.Length + _array.Length / 2;
