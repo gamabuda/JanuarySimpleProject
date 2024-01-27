@@ -1,66 +1,57 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JanuarySimpleProject.Core.Implementation
+﻿public class DynamicArray<T>
 {
-    public class DynamicArray
+    private T[] array;
+    private int count;
+
+    public DynamicArray()
     {
-        private int[] array;
-        private int count;
+        array = new T[4];
+        count = 0;
+    }
 
-        public DynamicArray()
+    public void Add(T item)
+    {
+        if (count == array.Length)
         {
-            array = new int[4];
-            count = 0;
+            Array.Resize(ref array, array.Length * 2);
         }
 
-        public void Add(int item)
+        array[count] = item;
+        count++;
+    }
+
+    public void Remove(T item)
+    {
+        int index = Array.IndexOf(array, item, 0, count);
+
+        if (index != -1)
         {
-            if (count == array.Length)
+            for (int i = index; i < count - 1; i++)
             {
-                Array.Resize(ref array, array.Length * 2);
+                array[i] = array[i + 1];
             }
 
-            array[count] = item;
-            count++;
-        }
-
-        public void Remove(int item)
-        {
-            int index = Array.IndexOf(array, item, 0, count);
-
-            if (index != -1)
-            {
-                for (int i = index; i < count - 1; i++)
-                {
-                    array[i] = array[i + 1];
-                }
-
-                count--;
-            }
-        }
-
-        public bool Contains(int item)
-        {
-            return Array.IndexOf(array, item, 0, count) != -1;
-        }
-
-        public int Count
-        {
-            get { return count; }
-        }
-
-        public void Print()
-        {
-            Console.Write("Array elements: ");
-            for (int i = 0; i < count; i++)
-            {
-                Console.Write(array[i] + " ");
-            }
-            Console.WriteLine();
+            count--;
         }
     }
 
+    public bool Contains(T item)
+    {
+        return Array.IndexOf(array, item, 0, count) != -1;
+    }
+
+    public int Count
+    {
+        get { return count; }
+    }
+
+    public void Print()
+    {
+        Console.Write("Array elements: ");
+        for (int i = 0; i < count; i++)
+        {
+            Console.Write(array[i] + " ");
+        }
+        Console.WriteLine();
+    }
+}
