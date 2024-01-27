@@ -91,8 +91,6 @@ namespace JanuarySimpleProject.Core
 
             OnNodeChange?.Invoke();
         }
-
-        //TODO switch all returns to throw Exception
         public void AddValue<TValue>(List<TValue> values)
         {
             if (values.Count <= 0)
@@ -100,16 +98,13 @@ namespace JanuarySimpleProject.Core
 
             foreach (var value in values)
             {
-                string strValue = value.ToString().Trim();
-
-                if (strValue == null)
-                    return;
+                string strValue = value?.ToString().Trim() ?? throw new ArgumentNullException(nameof(value));
 
                 if (_values.Contains(strValue))
                     return;
 
                 _values.Add(strValue);
-                _value += $"{strValue}";
+                _value += strValue;
 
                 OnNodeChange?.Invoke();
             }
