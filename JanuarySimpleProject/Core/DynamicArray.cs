@@ -12,6 +12,9 @@ namespace JanuarySimpleProject.Core
     {
         public T[] _array;
         private int _count;
+        public T Value { get; set; }
+
+        public IEnumerator GetEnumerator() => _array.GetEnumerator();
 
         public DynamicArray()
         {
@@ -72,15 +75,26 @@ namespace JanuarySimpleProject.Core
             get { return _count; }
         }
 
-        
-        //public IEnumerator<string> GetEnumerator()
-        //{
-        //    yield return "x";
-        //    yield return "y";
-        //}
-        //IEnumerator IEnumerable.GetEnumerator()
-        //{
-        //    return GetEnumerator(); // Just return the generic version
-        //}
+        public bool Equals(DynamicArray<T> other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+
+            return EqualityComparer<T>.Default.Equals(Value, other.Value);
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != typeof(DynamicArray<T>)) return false;
+
+            return Equals((DynamicArray<T>)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return EqualityComparer<T>.Default.GetHashCode(Value);
+        }
     }
 }
