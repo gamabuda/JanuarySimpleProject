@@ -1,7 +1,9 @@
 ﻿
+using System.Collections;
+
 namespace JanuarySimpleProject.Core
 {
-    class DynamicArray<T>
+    public class DynamicArray<T> : IEnumerable, IEquatable<DynamicArray<T>>
     {
         private int count;
         private T[] array;
@@ -52,6 +54,68 @@ namespace JanuarySimpleProject.Core
             count--;
         }
 
+        public void Sort()
+        {
+            if (typeof(T) == typeof(string))
+            {
+                BubbleSort(array, StringComparer.CurrentCulture as IComparer<T>);
+            }
+            else
+            {
+                BubbleSort(array, Comparer<T>.Default);
+            }
+        }
+
+        private void BubbleSort(T[] arr, IComparer<T> comparer)
+        {
+            int n = arr.Length;
+            for (int i = 0; i < n - 1; i++)
+            {
+                for (int j = 0; j < n - i - 1; j++)
+                {
+                    if (comparer.Compare(arr[j], arr[j + 1]) > 0)
+                    {
+                        T temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+            }
+        }
+
+        public int BinarySearch(T value)
+        {
+            if (!array.Any())
+                return -1; // Массив пуст, возвращаем -1
+
+            int left = 0;
+            int right = count - 1;
+
+            while (left <= right)
+            {
+                int middle = left + (right - left) / 2;
+
+                int comparisonResult = Comparer<T>.Default.Compare(array[middle], value);
+
+                if (comparisonResult == 0)
+                {
+                    return middle; // Найден элемент
+                }
+                else if (comparisonResult < 0)
+                {
+                    left = middle + 1; // Искать в правой половине
+                }
+                else
+                {
+                    right = middle - 1; // Искать в левой половине
+                }
+            }
+
+            return -1; // Элемент не найден
+        }
+
+
+
         public void Clear()
         {
             array = new T[length];
@@ -88,6 +152,34 @@ namespace JanuarySimpleProject.Core
             {
                 yield return array[i];
             }
+        }
+        public T Value { get; set; }
+
+        public bool Equals(DynamicArray<T> other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+
+            return EqualityComparer<T>.Default.Equals(Value, other.Value);
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != typeof(DynamicArray<T>)) return false;
+
+            return Equals((DynamicArray<T>)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return EqualityComparer<T>.Default.GetHashCode(Value);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return array.GetEnumerator();
         }
     }
 }
