@@ -89,16 +89,19 @@ namespace JanuarySimpleProject.Core
             Console.WriteLine($"Node:\tName:{Name} ID:{Id}\n\tDateTime create:{DateTimeCreate}\n\tDateTime last update:{DateTimeUpdate}\n\tValue:{Value}");
         }
 
-        //TODO switch all returns to throw Exception
         public void AddValue<TValue>(TValue value)
         {
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                return;
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
 
             if (_values.Contains(strValue))
-                return;
+            {
+                throw new InvalidOperationException("Value already exists in the collection");
+            }
 
             _values.Add(strValue);
             _value += $"{strValue}";
