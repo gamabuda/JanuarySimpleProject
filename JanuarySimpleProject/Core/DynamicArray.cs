@@ -19,11 +19,17 @@ namespace JanuarySimpleProject.Core
 
         public void Add(string str)
         {
+            if (str == null)
+            {
+                throw new ArgumentNullException(nameof(str));
+            }
+
             if (_count == _array.Length)
             {
-                //TODO написать свой
-                Array.Resize(ref _array, _array.Length * 2);
+                int newLength = _array.Length * 2;
+                Array.Resize(ref _array, newLength);
             }
+
             _array[_count] = str;
             _count++;
         }
