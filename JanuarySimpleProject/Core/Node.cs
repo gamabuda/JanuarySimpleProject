@@ -132,13 +132,11 @@ namespace JanuarySimpleProject.Core
         {
             string strValue = value.ToString().Trim();
 
-            if (strValue == null)
-                throw new Exception("Вы пытаетесь удалить null значение");
-
             if (!_values.Contains(strValue))
                 throw new Exception("Данного элемента нет в массиве");
 
             _values.Remove(strValue);
+            NullDelete();
             _value = Value.Replace(strValue, "");
 
             OnNodeChange?.Invoke();
@@ -190,6 +188,19 @@ namespace JanuarySimpleProject.Core
         public static Node CreateEmptyNode()
         {
             return new Node();
+        }
+
+        private void NullDelete()
+        {
+            DynamicArray<MyClass<string>, string> temp = new DynamicArray<MyClass<string>, string>();
+            for(int i = 0; i <= _values.Count + 1; i++)
+            {
+                if (_values[i] != null)
+                {
+                    temp.Add(_values[i]);
+                }
+            }
+            _values = temp;
         }
     }
 }

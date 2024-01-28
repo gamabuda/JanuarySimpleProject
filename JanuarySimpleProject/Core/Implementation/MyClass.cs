@@ -53,9 +53,30 @@ namespace JanuarySimpleProject.Core.Implementation
             return value1.GetHashCode() > value2.GetHashCode();
         }
 
+        public static bool operator == (MyClass<TValue> value1, MyClass<TValue> value2)
+        {
+            if (value1 is null && value2 is null) return true;
+
+            if (!(value1 is null) && value2 is null) return false;
+
+            return (!(value1 is null || value2 is null) && value1.GetHashCode() == value2.GetHashCode());
+        }
+
+        public static bool operator != (MyClass<TValue> value1, MyClass<TValue> value2)
+        {
+            if (value1 is null && value2 is null) return false;
+
+            if (!(value1 is null) && value2 is null) return true;
+
+            return (value1.GetHashCode() != value2.GetHashCode());
+        }
+
         public override string ToString()
         {
-            return Value.ToString();
+            if (Value != null)
+                return Value.ToString();
+
+            return "";
         }
     }
 }

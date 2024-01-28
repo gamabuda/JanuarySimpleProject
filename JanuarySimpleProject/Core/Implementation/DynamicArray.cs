@@ -105,5 +105,49 @@ namespace JanuarySimpleProject.Core.Implementation
                 }
             }
         }
+
+        public int BinnarySearch(TValue value)
+        {
+            if (!Contains(value))
+                return -1;
+
+            if (Count == 0)
+                throw new Exception("Массив пуст");
+            
+            Sort();
+
+            int middleIndex = _count / 2;
+
+            if (_values[middleIndex] == new MyClass<TValue>(value))
+            {
+                return middleIndex;
+            }
+            else if (_values[middleIndex] > new MyClass<TValue>(value))
+            {
+                return BinnarySearch(value, 0, middleIndex);
+            }
+            else
+            {
+                return BinnarySearch(value, middleIndex, _count);
+            }
+        }
+
+        private int BinnarySearch(TValue value, int startIndex, int endIndex)
+        {
+            if (endIndex == startIndex)
+                return startIndex;
+            
+            int middleIndex = (endIndex + startIndex) / 2;
+            if (_values[middleIndex] == new MyClass<TValue>(value))
+                return middleIndex;
+            else if (_values[middleIndex] > new MyClass<TValue>(value))
+            {
+                return BinnarySearch(value, startIndex, middleIndex);
+            }
+            else
+            {
+                return BinnarySearch(value, middleIndex, endIndex);
+            }
+        } 
     }
 }
