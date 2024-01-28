@@ -18,43 +18,26 @@ using JanuarySimpleProject.Core;
  * Одна тудушка = 2 балла
  */
 
-//Node node = Node.CreateEmptyNode();
-//node.ShowInfo();
+Node node = Node.CreateEmptyNode();
+node.ShowInfo();
 
-//node.Value = "Str";
-//node.ShowInfo();
+node.Value = "Str";
+node.ShowInfo();
 
-//node.AddValue(Node.CreateEmptyNode());
-//node.ShowInfo();
+node.AddValue(Node.CreateEmptyNode());
+node.ShowInfo();
 
-//List<int> ints = new List<int>()
-//{
-//    1, 2, 3
-//};
-//node.AddValue(ints);
-//node.ShowInfo();
-
-//node.RemoveValue("Str");
-//node.ShowInfo();
-
-//Console.WriteLine(node.JSON);
-DynamicArray<string> sortedStringArray = new DynamicArray<string>(5);
-sortedStringArray.Add("член");
-sortedStringArray.Add("хуй");
-sortedStringArray.Add("пенис");
-sortedStringArray.Add("головка");
-sortedStringArray.Add("пизда");
-
-sortedStringArray.Sort();
-
-int index = sortedStringArray.BinarySearch("хуй");
-if (index != -1)
+List<int> ints = new List<int>()
 {
-    Console.WriteLine($"Элемент 'хуй' найден по индексу {index}");
-}
-else
-{
-    Console.WriteLine("Элемент 'хуй' не найден");
-}
+    1, 2, 3
+};
+node.AddValue(ints);
+node.ShowInfo();
+
+node.RemoveValue("Str");
+node.ShowInfo();
+
+Console.WriteLine(node.JSON);
+
 
 

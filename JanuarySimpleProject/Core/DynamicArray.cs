@@ -83,10 +83,11 @@ namespace JanuarySimpleProject.Core
             }
         }
 
+        //бинарный поиск работает только после сортировки
         public int BinarySearch(T value)
         {
             if (!array.Any())
-                return -1; // Массив пуст, возвращаем -1
+                return -1; 
 
             int left = 0;
             int right = count - 1;
@@ -99,22 +100,20 @@ namespace JanuarySimpleProject.Core
 
                 if (comparisonResult == 0)
                 {
-                    return middle; // Найден элемент
+                    return middle; 
                 }
                 else if (comparisonResult < 0)
                 {
-                    left = middle + 1; // Искать в правой половине
+                    left = middle + 1; 
                 }
                 else
                 {
-                    right = middle - 1; // Искать в левой половине
+                    right = middle - 1; 
                 }
             }
 
-            return -1; // Элемент не найден
+            return -1;
         }
-
-
 
         public void Clear()
         {
