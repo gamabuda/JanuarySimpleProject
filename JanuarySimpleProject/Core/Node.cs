@@ -6,6 +6,7 @@ namespace JanuarySimpleProject.Core
 {
     public class Node : INode
     {
+
         //TODO switch list to array
         private List<string> _values = new List<string>();
         private string _value;
@@ -45,11 +46,14 @@ namespace JanuarySimpleProject.Core
             get => _value;
             set
             {
-                _value = value.Trim();
-                //TODO need optimize
-                _values.Clear();
-                _values.Add(_value);
-                OnNodeChange?.Invoke();
+                string trimmedValue = value.Trim();
+                if (_value != trimmedValue)
+                {
+                    _value = trimmedValue;
+                    _values.Clear();
+                    _values.Add(_value);
+                    OnNodeChange?.Invoke();
+                }
             }
         }
 
