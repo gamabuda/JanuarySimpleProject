@@ -109,27 +109,24 @@ namespace JanuarySimpleProject.Core
             OnNodeChange?.Invoke();
         }
 
-        //TODO switch all returns to throw Exception
-        public void AddValue<TValue>(List<TValue> values)
+        public void AddValue<TValue>(TValue value)
         {
-            if (values.Count <= 0)
-                return;
+            string strValue = value.ToString().Trim();
 
-            foreach (var value in values)
+            if (strValue == null)
             {
-                string strValue = value.ToString().Trim();
-
-                if (strValue == null)
-                    return;
-
-                if (_values.Contains(strValue))
-                    return;
-
-                _values.Add(strValue);
-                _value += $"{strValue}";
-
-                OnNodeChange?.Invoke();
+                throw new ArgumentNullException(nameof(value));
             }
+
+            if (_values.Contains(strValue))
+            {
+                throw new InvalidOperationException("Value already exists in the collection");
+            }
+
+            _values.Add(strValue);
+            _value += $"{strValue}";
+
+            OnNodeChange?.Invoke();
         }
 
         //TODO switch all returns to throw Exception and add the ability to delete a list of objects
