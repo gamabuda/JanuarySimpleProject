@@ -47,6 +47,41 @@ namespace JanuarySimpleProject.Core
                 _count--;
             }
         }
+        public int BinarySearch(string str)
+        {
+            if (str == null)
+            {
+                throw new ArgumentNullException(nameof(str));
+            }
+
+            Array.Sort(_array, 0, _count);
+            return BinarySearch(_array, 0, _count, str);
+        }
+
+        private int BinarySearch(string[] array, int left, int right, string value)
+        {
+            while (left <= right)
+            {
+                int mid = left + (right - left) / 2;
+
+                int compareResult = string.Compare(array[mid], value);
+
+                if (compareResult == 0)
+                {
+                    return mid;
+                }
+                else if (compareResult < 0)
+                {
+                    left = mid + 1;
+                }
+                else
+                {
+                    right = mid - 1;
+                }
+            }
+
+            return -1;
+        }
 
         public bool Contains(string str)
         {
