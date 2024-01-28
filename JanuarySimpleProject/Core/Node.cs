@@ -9,7 +9,7 @@ namespace JanuarySimpleProject.Core
     public class Node : INode
     {
         //TODO switch list to array (accomplished)
-        DynamicArray<string> _values = new DynamicArray<string>();
+        DynamicArray<MyClass<string>, string> _values = new DynamicArray<MyClass<string>, string>();
         private string _value;
 
         private Node()
@@ -49,7 +49,7 @@ namespace JanuarySimpleProject.Core
             {
                 _value = value.Trim();
                 //TODO need optimize (accomplished)
-                _values = new DynamicArray<string>(value);
+                _values = new DynamicArray<MyClass<string>, string>(value);
                 OnNodeChange?.Invoke();
             }
         }

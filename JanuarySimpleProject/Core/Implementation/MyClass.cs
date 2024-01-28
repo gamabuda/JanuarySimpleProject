@@ -1,0 +1,61 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace JanuarySimpleProject.Core.Implementation
+{
+    public class MyClass<TValue> : IEnumerable, IEquatable<MyClass<TValue>>
+    {
+        public TValue Value { get; set; }
+        private TValue[] Values { get; set; } = new TValue[10];
+
+        public MyClass(TValue value)
+        {
+            Value = value;
+        }
+
+        public void Add(TValue value) => Values[0] = value;
+
+        public IEnumerator GetEnumerator() => Values.GetEnumerator();
+
+        public bool Equals(MyClass<TValue> other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+
+            return EqualityComparer<TValue>.Default.Equals(Value, other.Value);
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != typeof(MyClass<TValue>)) return false;
+
+            return Equals((MyClass<TValue>)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return EqualityComparer<TValue>.Default.GetHashCode(Value);
+        }
+
+        public static bool operator <(MyClass<TValue> value1, MyClass<TValue> value2)
+        {
+            return value1.GetHashCode() < value2.GetHashCode();
+        }
+
+        public static bool operator >(MyClass<TValue> value1, MyClass<TValue> value2)
+        {
+            return value1.GetHashCode() > value2.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return Value.ToString();
+        }
+    }
+}
