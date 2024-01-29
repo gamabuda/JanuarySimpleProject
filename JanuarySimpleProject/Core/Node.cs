@@ -94,10 +94,10 @@ namespace JanuarySimpleProject.Core
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                return;
+                throw new Exception("ноль");
 
             if (_values.Contains(strValue))
-                return;
+                throw new Exception("уже есть такое значение");
 
             _values.Add(strValue);
             _value += $"{strValue}";
