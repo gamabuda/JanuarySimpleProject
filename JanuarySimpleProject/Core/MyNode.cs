@@ -1,12 +1,18 @@
-using System;
-using System.Net.Http.Headers;
-using System.Text.Json;
-using System.Text.RegularExpressions;
 using JanuarySimpleProject.Core.Implementation;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization.Metadata;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.ComponentModel;
+using System.Collections.Immutable;
 
 namespace JanuarySimpleProject.Core
 {
-    public class MyNode : INode
+    public class MyNode : IMyNode
     {
         private Dictionary<object, int> _values;
         private string _value;
@@ -175,4 +181,3 @@ namespace JanuarySimpleProject.Core
         public event Action OnNodeChange;
     }
 }
-

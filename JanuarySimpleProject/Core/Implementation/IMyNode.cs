@@ -1,11 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace JanuarySimpleProject.Core.Implementation
 {
-    public interface INode
+    public interface IMyNode
     {
         string Id { get; }
         string Name { get; set; }
-        string Value { get; set; }
+        object Value { get; set; }
         DateTime DateTimeCreate { get; }
         DateTime DateTimeUpdate { get; }
 

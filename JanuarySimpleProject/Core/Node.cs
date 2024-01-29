@@ -49,7 +49,7 @@ namespace JanuarySimpleProject.Core
             {
                 _value = value.Trim();
                 //TODO need optimize (accomplished)
-                _values = new DynamicArray<MyClass<string>, string>(value);
+                _values = new DynamicArray<MyClass<string>, string>(_value);
                 OnNodeChange?.Invoke();
             }
         }
@@ -73,7 +73,7 @@ namespace JanuarySimpleProject.Core
 
         private void CheckNode()
         {
-            var temp = String.Empty;
+            var temp = string.Empty;
             foreach (var v in _values)
                 temp += v;
 
@@ -92,10 +92,10 @@ namespace JanuarySimpleProject.Core
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                throw new Exception("Вы не можете добавить null-значение");
+                throw new Exception("Вы пытаетесь добавить null значение");
 
             if (_values.Contains(strValue))
-                throw new Exception("Такое значение уже есть в массиве");
+                throw new Exception("Элемент уже есть в массиве");
 
             _values.Add(strValue);
             _value += $"{strValue}";
@@ -107,14 +107,14 @@ namespace JanuarySimpleProject.Core
         public void AddValue<TValue>(List<TValue> values)
         {
             if (values.Count <= 0)
-                throw new Exception("Вы не можете добавить пустой список");
+                throw new Exception("Список элементов пустой");
 
             foreach (var value in values)
             {
                 string strValue = value.ToString().Trim();
 
                 if (strValue == null)
-                    throw new Exception("Вы не можете добавить null-значение");
+                    throw new Exception("Вы пытаетесь добавить null значение");
 
                 if (_values.Contains(strValue))
                     throw new Exception("Список элементов уже есть в массиве");
@@ -126,18 +126,16 @@ namespace JanuarySimpleProject.Core
             }
         }
 
-        //TODO switch all returns to throw Exception and add the ability to delete a list of objects (accomplished)
-        public void RemoveValue<TValue>(TValue value) 
+        //TODO switch all returns to throw Exception (accomplished) and add the ability to delete a list of objects (accomplished)
+        public void RemoveValue<TValue>(TValue value)
         {
             string strValue = value.ToString().Trim();
 
-            if (strValue == null)
-                throw new Exception("Вы не можете удалить null-значение");
-
             if (!_values.Contains(strValue))
-                throw new Exception("Такого значения нет в массиве");
+                throw new Exception("Данного элемента нет в массиве");
 
             _values.Remove(strValue);
+            NullDelete();
             _value = Value.Replace(strValue, "");
 
             OnNodeChange?.Invoke();
@@ -190,6 +188,18 @@ namespace JanuarySimpleProject.Core
         {
             return new Node();
         }
+
+        private void NullDelete()
+        {
+            DynamicArray<MyClass<string>, string> temp = new DynamicArray<MyClass<string>, string>();
+            for (int i = 0; i <= _values.Count + 1; i++)
+            {
+                if (_values[i] != null)
+                {
+                    temp.Add(_values[i]);
+                }
+            }
+            _values = temp;
+        }
     }
 }
-
