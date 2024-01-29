@@ -153,7 +153,11 @@ namespace JanuarySimpleProject
 
         public int CompareTo(T? other)
         {
-            throw new NotImplementedException();
+            if (other == null)
+            {
+                return 1;
+            }
+            return Comparer<T>.Default.Compare(_array[0], other);
         }
 
     }
