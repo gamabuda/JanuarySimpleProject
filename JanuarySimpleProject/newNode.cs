@@ -1,16 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json;
 using JanuarySimpleProject.Core.Implementation;
 
 namespace JanuarySimpleProject.Core
 {
-    public class Node : INode, IComparable
+    public class NewNode : INode
     {
-        //TODO switch list to array
         DArray<string> _values = new DArray<string>(0);
         private string _value;
 
-        private Node()
+        private NewNode()
         {
             Id = Guid.NewGuid().ToString();
 
@@ -23,7 +24,7 @@ namespace JanuarySimpleProject.Core
             OnNodeChange += SerializeNode2Json;
         }
 
-        public Node(string name)
+        public NewNode(string name)
         {
             Id = Guid.NewGuid().ToString();
 
@@ -35,11 +36,8 @@ namespace JanuarySimpleProject.Core
             OnNodeChange += DateTimeEditChange;
             OnNodeChange += SerializeNode2Json;
         }
-
         public string Id { get; }
-
         public string Name { get; set; }
-
         public string Value
         {
             get => _value;
@@ -52,7 +50,6 @@ namespace JanuarySimpleProject.Core
                 OnNodeChange?.Invoke();
             }
         }
-
         public string JSON { get; set; }
 
         public DateTime DateTimeCreate { get; }
@@ -86,8 +83,6 @@ namespace JanuarySimpleProject.Core
         {
             Console.WriteLine($"Node:\tName:{Name} ID:{Id}\n\tDateTime create:{DateTimeCreate}\n\tDateTime last update:{DateTimeUpdate}\n\tValue:{Value}");
         }
-
-        //TODO switch all returns to throw Exception
         public void AddValue<TValue>(TValue value)
         {
             string strValue = value.ToString().Trim();
@@ -103,8 +98,6 @@ namespace JanuarySimpleProject.Core
 
             OnNodeChange?.Invoke();
         }
-
-        //TODO switch all returns to throw Exception
         public void AddValue<TValue>(List<TValue> values)
         {
             if (values.Count <= 0)
@@ -126,8 +119,6 @@ namespace JanuarySimpleProject.Core
                 OnNodeChange?.Invoke();
             }
         }
-
-        //TODO switch all returns to throw Exception and add the ability to delete a list of objects
         public void RemoveValue<TValue>(TValue value)
         {
             string strValue = value.ToString().Trim();
@@ -171,14 +162,32 @@ namespace JanuarySimpleProject.Core
             return oldValue;
         }
 
-        public static Node CreateEmptyNode()
+        public static NewNode CreateEmptyNode()
         {
-            return new Node();
+            return new NewNode();
+        }
+        public void Insert(int index, string item)
+        //вставляет элемент item в список по индексу index
+        {
+            if (index < 0 || index > _values.Count())
+                throw new IndexOutOfRangeException("ошибка");
+
+            _values.Insert(index, item);
+            _value = _values.ToString();
+
+            OnNodeChange?.Invoke();
         }
 
-        public int CompareTo(object? obj)
+        public void RemoveAt(int index)
+        //удаление элемента по указанному индексу index
         {
-            return _value.CompareTo(obj);
+            if (index < 0 || index >= _values.Count())
+                throw new IndexOutOfRangeException("ошибка");
+
+            _values.RemoveAt(index);
+            _value = _values.ToString();
+
+            OnNodeChange?.Invoke();
         }
     }
 }

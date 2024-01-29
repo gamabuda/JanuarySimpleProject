@@ -17,4 +17,3 @@ namespace JanuarySimpleProject.Core.Implementation
         event Action OnNodeChange;
     }
 }
-
