@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JanuarySimpleProject
 {
-    internal class DArray<T> : IComparable<T>
+    internal class DArray<T> where T: IComparable<T>
     {
         private T[] _array;
         private int _count;
@@ -125,6 +125,11 @@ namespace JanuarySimpleProject
             return -1;
         }
 
+        private int CompareTo(T? s)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Sort()
         {
             for (int i = 0; i < _count - 1; i++)
@@ -149,15 +154,6 @@ namespace JanuarySimpleProject
         internal void RemoveAt(int index)
         {
             throw new NotImplementedException();
-        }
-
-        public int CompareTo(T? other)
-        {
-            if (other == null)
-            {
-                return 1;
-            }
-            return Comparer<T>.Default.Compare(_array[0], other);
         }
 
     }

@@ -4,7 +4,7 @@ using JanuarySimpleProject.Core.Implementation;
 
 namespace JanuarySimpleProject.Core
 {
-    public class Node : INode
+    public class Node : INode, IComparable
     {
         //TODO switch list to array
         DArray<string> _values = new DArray<string>(0);
@@ -174,6 +174,11 @@ namespace JanuarySimpleProject.Core
         public static Node CreateEmptyNode()
         {
             return new Node();
+        }
+
+        public int CompareTo(object? obj)
+        {
+            return _value.CompareTo(obj);
         }
     }
 }
