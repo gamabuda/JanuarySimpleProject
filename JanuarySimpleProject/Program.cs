@@ -19,3 +19,6 @@ node.ShowInfo();
 Console.WriteLine(node.JSON);
 
 Console.ReadKey();
+
+SpecialNode specialNode = new SpecialNode("Special Node");
+specialNode.ShowInfo();

@@ -136,5 +136,15 @@ namespace JanuarySimpleProject.Core
         {
             return EqualityComparer<T>.Default.GetHashCode(Value);
         }
+
+        public void Sort()
+        {
+            Array.Sort(items, 0, count);
+        }
+
+        public int BinarySearch(T item)
+        {
+            return Array.BinarySearch(items, 0, count, item);
+        }
     }
 }
