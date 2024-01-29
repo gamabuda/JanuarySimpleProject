@@ -55,3 +55,7 @@ Console.WriteLine("Массив после сортировкой::");
 dynamicArray.PrintArray();
 Console.WriteLine("==================================================================================================================");
 
+MyClass<int> m = new MyClass<int>();
+m.Value = 1;
+Console.WriteLine(m.Equals(1));
+Console.ReadKey();
