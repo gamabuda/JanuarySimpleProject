@@ -131,10 +131,10 @@ namespace JanuarySimpleProject.Core
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                throw new Exception("непрвильно");
+                throw new Exception("неправильно");
 
             if (!_values.Contains(strValue))
-                throw new Exception("непрвильно");
+                throw new Exception("неправильно");
 
             _values.Remove(strValue);
             _value = Value.Replace(strValue, "");
