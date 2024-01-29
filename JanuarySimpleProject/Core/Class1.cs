@@ -53,7 +53,7 @@ namespace JanuarySimpleProject.Core
         {
             for (int i = 0; i < _count; i++)
             {
-                Console.Write(_array[i] + " ");
+                Console.WriteLine(_array[i] + " ");
             }
             Console.WriteLine();
         }

@@ -27,4 +27,5 @@ dinamicArray.Add("миу миу миу");
 dinamicArray.Add("мур мур мур");
 dinamicArray.Add("мрр мрр мрр");
 dinamicArray.Sort();
+dinamicArray.Print();
 Console.WriteLine(dinamicArray.BinarySearch("миу миу миу"));
