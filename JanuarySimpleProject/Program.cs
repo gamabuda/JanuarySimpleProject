@@ -39,26 +39,11 @@ using System.Formats.Asn1;
 
 //Console.WriteLine(node.JSON);
 
-Node node = Node.CreateEmptyNode();
-node.ShowInfo();
-
-node.Value = "Str";
-node.ShowInfo();
-
-node.AddValue(Node.CreateEmptyNode());
-node.ShowInfo();
-
-List<int> ints = new List<int>()
-{
-    1, 2, 3
-};
-node.AddValue(ints);
-node.ShowInfo();
-
-node.RemoveValue("Str");
-node.ShowInfo();
-
-Console.WriteLine(node.JSON);
-
-
-Console.ReadKey();
+Mynode mynode = new Mynode();
+mynode.AddValue("7");
+mynode.ShowInfo();
+DinamicArray<string> dinamicArray = new DinamicArray<string>();
+dinamicArray.Add("нет");
+dinamicArray.Sort();
+dinamicArray.Print();
+Console.WriteLine(dinamicArray.BinarySearch("да"));
