@@ -4,10 +4,10 @@ using JanuarySimpleProject.Core.Implementation;
 
 namespace JanuarySimpleProject.Core
 {
-    public class Node : INode
+    public class Node : INode, IComparable
     {
         //TODO switch list to array
-        private List<string> _values = new List<string>();
+        DArray<string> _values = new DArray<string>(0);
         private string _value;
 
         private Node()
@@ -73,12 +73,15 @@ namespace JanuarySimpleProject.Core
         private void CheckNode()
         {
             var temp = String.Empty;
-            foreach (var v in _values)
-                temp += v;
+            for (var i = 0; i < _values.Count(); i++)
+            {
+                temp += _values.GetArray()[i];
+            }
 
             if (_value != temp)
                 throw new Exception("Node is not correct or broken");
         }
+
 
         public void ShowInfo()
         {
@@ -145,6 +148,10 @@ namespace JanuarySimpleProject.Core
         public static Node CreateEmptyNode()
         {
             return new Node();
+        }
+        public int CompareTo(object? obj)
+        {
+            return _value.CompareTo(obj);
         }
     }
 }
