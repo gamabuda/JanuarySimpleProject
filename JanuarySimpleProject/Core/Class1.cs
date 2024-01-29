@@ -1,4 +1,7 @@
-﻿namespace JanuarySimpleProject.Core
+﻿using System.Drawing;
+using System;
+
+namespace JanuarySimpleProject.Core
 {
     class DinamicArray<TCLass>
     {
@@ -64,6 +67,15 @@
         {
             _array = new TCLass[4];
             _count = 0;
+        }
+        public void Sort()
+        {
+            Array.Sort(_array, 0, _count);
+        }
+
+        public int BinarySearch(TCLass item)
+        {
+            return Array.BinarySearch(_array, 0, _count, item);
         }
     }
 }

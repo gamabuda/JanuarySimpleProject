@@ -1,4 +1,5 @@
 ﻿using JanuarySimpleProject.Core;
+using System.Formats.Asn1;
 
 /*
  * Я накидал вам базы по прошлому полугодию, друзья!
@@ -20,3 +21,10 @@
 MoiaNode moiaNode = new MoiaNode();
 moiaNode.AddValue("7sisa");
 moiaNode.ShowInfo();
+DinamicArray<string> dinamicArray = new DinamicArray<string>();
+dinamicArray.Add("мяу мяу мяу");
+dinamicArray.Add("миу миу миу");
+dinamicArray.Add("мур мур мур");
+dinamicArray.Add("мрр мрр мрр");
+dinamicArray.Sort();
+Console.WriteLine(dinamicArray.BinarySearch("миу миу миу"));
