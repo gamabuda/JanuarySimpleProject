@@ -9,40 +9,49 @@ namespace JanuarySimpleProject.Core
 {
     public class MoiaNode : INode
     {
+        public MoiaNode()
+        {
+            Id = Guid.NewGuid().ToString();
+
+            Name = "MoiaNode";
+            DateTimeCreate = DateTime.Now;
+            DateTimeUpdate = DateTimeCreate;
+
+            OnNodeChange += miay;
+            OnNodeChange.Invoke();
+        }
         private string _value;
         private DinamicArray<string> _values = new DinamicArray<string>();
-        string Id { get; }
-        string Name { get; set; }
-        string Value { get; set; }
-        DateTime DateTimeCreate { get; }
-        DateTime DateTimeUpdate { get; }
+        public string Id { get; }
+        public string Name { get; set; }
+        public string Value { get; set; }
+        public DateTime DateTimeCreate { get; }
+        public DateTime DateTimeUpdate { get; }
         public event Action OnNodeChange;
 
-        void ShowInfo()
+        private void miay()
+        {
+            Console.WriteLine("miay miay miay");
+        }
+
+        public void ShowInfo()
         {
             Console.WriteLine($"Node:\tName:{Name} ID:{Id}\n\tDateTime create:{DateTimeCreate}\n\tDateTime last update:{DateTimeUpdate}\n\tValue:{Value}");
         }
-        void AddValue<TValue>(TValue value)
+        public void AddValue<TValue>(TValue value)
         {
             string strValue = value.ToString().Trim();
             _values.Add(strValue);
             _value += $"{strValue}";
             OnNodeChange?.Invoke();
         }
-        void RemoveValue<TValue>(TValue value)
+        public void RemoveValue<TValue>(TValue value)
         {
-            foreach (TValue value in values)
-            {
-                string strValue = value.ToString().Trim();
+            string strValue = value.ToString().Trim();
+            _values.Remove(strValue);
+            _value = Value.Replace(strValue, "");
 
-                _values.Remove(strValue);
-                _value = Value.Replace(strValue, "");
-
-                OnNodeChange?.Invoke();
-            }
-        }
-        
-
-       
+            OnNodeChange?.Invoke();
+        }     
     }
 }

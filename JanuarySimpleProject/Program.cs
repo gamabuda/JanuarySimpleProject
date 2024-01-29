@@ -17,26 +17,6 @@
  * Одна тудушка = 2 балла
  */
 
-Node node = Node.CreateEmptyNode();
-node.ShowInfo();
-
-node.Value = "Str";
-node.ShowInfo();
-
-node.AddValue(Node.CreateEmptyNode());
-node.ShowInfo();
-
-List<int> ints = new List<int>()
-{
-    1, 2, 3
-};
-node.AddValue(ints);
-node.ShowInfo();
-
-node.RemoveValue("Str");
-node.ShowInfo();
-
-Console.WriteLine(node.JSON);
-
-
-Console.ReadKey();
+MoiaNode moiaNode = new MoiaNode();
+moiaNode.AddValue("7sisa");
+moiaNode.ShowInfo();
