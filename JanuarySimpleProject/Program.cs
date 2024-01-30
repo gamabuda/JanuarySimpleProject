@@ -38,7 +38,7 @@ using JanuarySimpleProject.Core;
 //node.ShowInfo();
 
 //Console.WriteLine(node.JSON);
-DynamicArray array = new DynamicArray();
+DynamicArray<string> array = new DynamicArray<string>();
 array.Add("sadas");
 array.Add("qwert");
 array.Add("zxc");

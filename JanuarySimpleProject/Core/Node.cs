@@ -8,7 +8,7 @@ namespace JanuarySimpleProject.Core
     {
 
         //TODO switch list to array
-        private List<string> _values = new List<string>();
+        private DynamicArray<string> _values = new DynamicArray<string>();
         private string _value;
 
         private Node()
@@ -50,7 +50,7 @@ namespace JanuarySimpleProject.Core
                 if (_value != trimmedValue)
                 {
                     _value = trimmedValue;
-                    _values.Clear();
+                    _values.Remove(_value);
                     _values.Add(_value);
                     OnNodeChange?.Invoke();
                 }
@@ -77,7 +77,7 @@ namespace JanuarySimpleProject.Core
         private void CheckNode()
         {
             var temp = String.Empty;
-            foreach (var v in _values)
+            foreach (var v in _value)
                 temp += v;
 
             if (_value != temp)
