@@ -1,5 +1,5 @@
 ﻿using JanuarySimpleProject.Core;
-
+using static System.Collections.IEnumerable;
 /*
  * Я накидал вам базы по прошлому полугодию, друзья!
  * Надеюсь пример получился не перегруженным, а даже если и так, то это к лучшему
@@ -26,7 +26,7 @@ node.ShowInfo();
 node.AddValue(Node.CreateEmptyNode());
 node.ShowInfo();
 
-List<int> ints = new List<int>()
+DynamicArray<int> ints = new DynamicArray<int>(5)
 {
     1, 2, 3
 };

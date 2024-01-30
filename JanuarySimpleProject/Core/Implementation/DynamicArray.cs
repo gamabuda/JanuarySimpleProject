@@ -66,6 +66,42 @@ public class DynamicArray<T>
             yield return _array[i];
         }
     }
+    private int BinarySearch(string[] array, int left, int right, string value)
+    {
+        while (left <= right)
+        {
+            int mid = left + (right - left) / 2;
+
+            int compareResult = string.Compare(array[mid], value);
+
+            if (compareResult == 0)
+            {
+                return mid;
+            }
+            else if (compareResult < 0)
+            {
+                left = mid + 1;
+            }
+            else
+            {
+                right = mid - 1;
+            }
+        }
+        
+        return -1;
+    }
+        private int CustomCompare(T obj1, T obj2)
+        {
+            int hashCode1 = obj1.GetHashCode();
+            int hashCode2 = obj2.GetHashCode();
+
+            return hashCode1.CompareTo(hashCode2);
+        }
+
+        public void CustomSort()
+        {
+            Array.Sort(_array, 0, _count, new CustomComparer<T>(CustomCompare));
+        }
 }
 
 
