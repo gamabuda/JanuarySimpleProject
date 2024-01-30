@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JanuarySimpleProject.Core.Implementation;
 
 namespace JanuarySimpleProject.Core
 {
@@ -90,6 +92,19 @@ namespace JanuarySimpleProject.Core
         public int Count
         {
             get { return _count; }
+        }
+
+        private int CustomCompare(T obj1, T obj2)
+        {
+            int hashCode1 = obj1.GetHashCode();
+            int hashCode2 = obj2.GetHashCode();
+
+            return hashCode1.CompareTo(hashCode2);
+        }
+
+        public void CustomSort()
+        {
+            Array.Sort(_array, 0, _count, StringComparer.Create(new CultureInfo("en-US"), false));
         }
     }
 }

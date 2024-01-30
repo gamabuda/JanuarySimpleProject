@@ -39,12 +39,9 @@ using JanuarySimpleProject.Core;
 
 //Console.WriteLine(node.JSON);
 DynamicArray<string> array = new DynamicArray<string>();
-array.Add("sadas");
-array.Add("qwert");
-array.Add("zxc");
-array.Add("sadas");
-array.Add("qwert");
-array.Add("zxc");
+array.Add("3");
+array.Add("2");
+array.Add("1");
 array.Print();
 
 TClass<Node> t1 = new TClass<Node>(Node.CreateEmptyNode());
