@@ -169,7 +169,7 @@ namespace JanuarySimpleProject.Core
                 OnNodeChange?.Invoke();
             }
         }
-        public TValue UpadateMethod<TValue>(TValue oldValue, TValue newValue)
+        public INode UpadateMethod<TValue>(INode oldValue, INode newValue)
         {
             string StringOldValue = oldValue.ToString().Trim();
             string StringNewValue = newValue.ToString().Trim();
@@ -186,6 +186,11 @@ namespace JanuarySimpleProject.Core
         public static Node CreateEmptyNode()
         {
             return new Node();
+        }
+
+        public void UpadateMethod<INode>(INode value1, INode value2)
+        {
+            throw new NotImplementedException();
         }
     }
 }
