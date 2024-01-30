@@ -84,24 +84,6 @@ namespace JanuarySimpleProject.Core
         {
             Console.WriteLine($"Node:\tName:{Name} ID:{Id}\n\tDateTime create:{DateTimeCreate}\n\tDateTime last update:{DateTimeUpdate}\n\tValue:{Value}");
         }
-
-        //TODO switch all returns to throw Exception
-        public void AddValue<TValue>(TValue value)
-        {
-            string strValue = value.ToString().Trim();
-
-            if (strValue == null)
-                return;
-
-            if (_values.Contains(strValue))
-                return;
-
-            _values.Add(strValue);
-            _value += $"{strValue}";
-
-            OnNodeChange?.Invoke();
-        }
-
         //TODO switch all returns to throw Exception
         public void AddValue<TValue>(List<TValue> values)
         {
