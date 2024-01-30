@@ -170,6 +170,18 @@ namespace JanuarySimpleProject.Core
             _value = strValue;
             return oldValue;
         }
+        public int GetIndex(string value)
+        {
+            for (int i = 0; i < _values.Count(); i++)
+            {
+                if (_values.GetArray()[i] == value)
+                {
+                    return i;
+                }
+            }
+
+            throw new Exception("значение не найдено");
+        }
 
         public static Node CreateEmptyNode()
         {
@@ -180,6 +192,7 @@ namespace JanuarySimpleProject.Core
         {
             return _value.CompareTo(obj);
         }
+
     }
 }
 
