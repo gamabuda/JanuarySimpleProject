@@ -73,7 +73,7 @@ namespace JanuarySimpleProject.Core
         private void CheckNode()
         {
             var temp = String.Empty;
-            foreach (var v in _values)
+            foreach (var v in _value)
                 temp += v;
 
             if (_value != temp)
@@ -85,14 +85,9 @@ namespace JanuarySimpleProject.Core
             Console.WriteLine($"Node:\tName:{Name} ID:{Id}\n\tDateTime create:{DateTimeCreate}\n\tDateTime last update:{DateTimeUpdate}\n\tValue:{Value}");
         }
         //TODO switch all returns to throw Exception
-        public void AddValue<TValue>(List<TValue> values)
+        public void AddValue<TValue>(TValue value)
         {
-            if (values.Count <= 0)
-                throw new Exception();
-
-            foreach (var value in values)
-            {
-                string strValue = value.ToString().Trim();
+            string strValue = value.ToString().Trim();
 
                 if (strValue == null)
                 {
@@ -108,7 +103,6 @@ namespace JanuarySimpleProject.Core
                 _value += $"{strValue}";
 
                 OnNodeChange?.Invoke();
-            }
         }
 
         //TODO switch all returns to throw Exception and add the ability to delete a list of objects
@@ -117,10 +111,10 @@ namespace JanuarySimpleProject.Core
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                return;
+                throw new ArgumentNullException(nameof(value));
 
             if (!_values.Contains(strValue))
-                return;
+                throw new InvalidOperationException("nea");
 
             _values.Remove(strValue);
             _value = Value.Replace(strValue, "");
