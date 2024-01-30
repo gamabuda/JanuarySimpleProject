@@ -103,7 +103,7 @@ namespace JanuarySimpleProject.Core
             var N = _array.Length;
             while (N > 0)
             {
-
+                //process
             }
         }
     }                     
