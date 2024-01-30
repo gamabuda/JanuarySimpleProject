@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JanuarySimpleProject
 {
-    internal class DArray<T> where T : IComparable<T>
+    public class DArray<T> where T : IComparable<T>
     {
         private T[] _array;
         private int _count;
@@ -109,11 +109,11 @@ namespace JanuarySimpleProject
             while (left <= right)
             {
                 int mid = (left + right) / 2;
-                if (CompareTo(s) == 0)
+                if (_array[mid].CompareTo(s) == 0)
                 {
                     return mid;
                 }
-                else if (CompareTo(s) < 0)
+                else if (_array[mid].CompareTo(s) < 0)
                 {
                     left = mid + 1;
                 }
@@ -125,18 +125,13 @@ namespace JanuarySimpleProject
             return -1;
         }
 
-        private int CompareTo(T? s)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Sort()
         {
             for (int i = 0; i < _count - 1; i++)
             {
                 for (int j = i + 1; j < _count; j++)
                 {
-                    if (CompareTo(_array[j]) > 0)
+                    if (_array[i].CompareTo(_array[j]) > 0)
                     {
                         T temp = _array[i];
                         _array[i] = _array[j];
@@ -144,16 +139,6 @@ namespace JanuarySimpleProject
                     }
                 }
             }
-        }
-
-        internal void Insert(int index, string item)
-        {
-            throw new NotImplementedException();
-        }
-
-        internal void RemoveAt(int index)
-        {
-            throw new NotImplementedException();
         }
 
     }

@@ -6,8 +6,10 @@ using JanuarySimpleProject.Core.Implementation;
 
 namespace JanuarySimpleProject.Core
 {
+
     public class NewNode : INode
     {
+
         DArray<string> _values = new DArray<string>(0);
         private string _value;
 
@@ -161,33 +163,23 @@ namespace JanuarySimpleProject.Core
             _value = strValue;
             return oldValue;
         }
+        public int GetIndex(string value)
+        {
+            for (int i = 0; i < _values.Count(); i++)
+            {
+                if (_values.GetArray()[i] == value)
+                {
+                    return i;
+                }
+            }
+
+            throw new Exception("значение не найдено");
+        }
 
         public static NewNode CreateEmptyNode()
         {
             return new NewNode();
         }
-        public void Insert(int index, string item)
-        //вставляет элемент item в список по индексу index
-        {
-            if (index < 0 || index > _values.Count())
-                throw new IndexOutOfRangeException("ошибка");
 
-            _values.Insert(index, item);
-            _value = _values.ToString();
-
-            OnNodeChange?.Invoke();
-        }
-
-        public void RemoveAt(int index)
-        //удаление элемента по указанному индексу index
-        {
-            if (index < 0 || index >= _values.Count())
-                throw new IndexOutOfRangeException("ошибка");
-
-            _values.RemoveAt(index);
-            _value = _values.ToString();
-
-            OnNodeChange?.Invoke();
-        }
     }
 }
