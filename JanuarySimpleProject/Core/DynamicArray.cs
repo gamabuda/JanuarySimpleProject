@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace JanuarySimpleProject.Core
 {
-    public class DynamicArray<T> : IEnumerable, IEquatable<DynamicArray<T>>
+    public class DynamicArray<T> where T : IComparable<T>
     {
         private T[] items;
         private int count;
@@ -84,10 +84,7 @@ namespace JanuarySimpleProject.Core
             }
         }
 
-        public int Count()
-        {
-            return count;
-        }
+        public int Count { get { return count; } }
 
         public string Print()
         {
@@ -112,37 +109,35 @@ namespace JanuarySimpleProject.Core
             return items;
         }
 
-
-        public IEnumerator GetEnumerator() => items.GetEnumerator();
-
-        public bool Equals(DynamicArray<T> other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-
-            return EqualityComparer<T>.Default.Equals(Value, other.Value);
-        }
-
-        public override bool Equals(object? obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof(DynamicArray<T>)) return false;
-
-            return Equals((DynamicArray<T>)obj);
-        }
-
-        public override int GetHashCode()
-        {
-            return EqualityComparer<T>.Default.GetHashCode(Value);
-        }
-
-        public void Sort()
+        public void SortAuto()
         {
             Array.Sort(items, 0, count);
         }
 
         public int BinarySearch(T item)
+        {
+            SortAuto();
+
+            int left = 0;
+            int right = count - 1;
+
+            while (left <= right)
+            {
+                int middle = left + (right - left) / 2;
+
+                if (items[middle].CompareTo(item) == 0)
+                    return middle;
+
+                if (items[middle].CompareTo(item) < 0)
+                    left = middle + 1;
+                else
+                    right = middle - 1;
+            }
+
+            return -1;
+        }
+
+        public int BinarySearchAuto(T item)
         {
             return Array.BinarySearch(items, 0, count, item);
         }

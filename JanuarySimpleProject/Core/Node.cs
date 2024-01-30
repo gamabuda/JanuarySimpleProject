@@ -5,7 +5,7 @@ using JanuarySimpleProject.Core.Implementation;
 
 namespace JanuarySimpleProject.Core
 {
-    public class Node : INode, IComparable
+    public class Node : INode
     {
         //TODO switch list to array
         private DynamicArray<string> _values = new DynamicArray<string>(0);
@@ -74,7 +74,7 @@ namespace JanuarySimpleProject.Core
         private void CheckNode()
         {
             var temp = String.Empty;
-            for (var i = 0; i < _values.Count(); i++)
+            for (var i = 0; i < _values.Count; i++)
             {
                 temp += _values.GetArray()[i];
             }

@@ -10,8 +10,10 @@ using System.Xml.Linq;
 namespace JanuarySimpleProject.Core
 {
     public delegate void TransactionOperation(string msg);
+    
     public class SpecialNode : INode
     {
+        
         public SpecialNode(string name)
         {
             Id = Guid.NewGuid().ToString();
@@ -25,7 +27,7 @@ namespace JanuarySimpleProject.Core
             TransactionOperationHandler(PrintMessage);
         }
 
-        private DynamicArray<string> _items = new DynamicArray<string>(0);
+        public DynamicArray<string> items = new DynamicArray<string>(0);
         private string _item;
 
         public string Id { get; }
@@ -61,13 +63,10 @@ namespace JanuarySimpleProject.Core
         private void CheckNode()
         {
             var temp = String.Empty;
-            for (var i = 0; i < _items.Count(); i++)
+            for (var i = 0; i < items.Count; i++)
             {
-                temp += _items.GetArray()[i];
+                temp += items.GetArray()[i];
             }
-
-            if (_item != temp)
-                throw new Exception("Node is not correct or broken");
         }
 
         public void AddValue<TValue>(TValue value)
@@ -77,10 +76,10 @@ namespace JanuarySimpleProject.Core
             if (strValue == null)
                 throw new Exception("The value is null");
 
-            if (_items.Contains(strValue))
+            if (items.Contains(strValue))
                 throw new Exception("The value is already contained in the Node");
 
-            _items.Add(strValue);
+            items.Add(strValue);
             _item += $"{strValue}";
 
             OnNodeChange?.Invoke();
@@ -93,10 +92,10 @@ namespace JanuarySimpleProject.Core
             if (strValue == null)
                 throw new Exception("The value is null");
 
-            if (!_items.Contains(strValue))
+            if (!items.Contains(strValue))
                 throw new Exception("The value is not contained in the node");
 
-            _items.Remove(strValue);
+            items.Remove(strValue);
             _item = Value.Replace(strValue, "");
 
             OnNodeChange?.Invoke();
@@ -109,7 +108,7 @@ namespace JanuarySimpleProject.Core
                  $"\tDateTime create: {DateTimeCreate}\n" +
                  $"\tDateTime last update: {DateTimeUpdate}\n" +
                  $"\tValue: {Value}");
-            Operation?.Invoke($"\tБаланс: {_balance}");
+            Operation?.Invoke($"\tBalance: {_balance}₽");
         }
 
         public string UpdateValue(string value)
@@ -122,8 +121,10 @@ namespace JanuarySimpleProject.Core
         public void Transaction(int total)
         {
             Balance += total;
-            Balance -= total;
+            Console.ForegroundColor = ConsoleColor.Green;
             Operation?.Invoke($"Операция выполнена успешно! Счет пополнен на сумму {total}₽. Ваш текущий баланс: {_balance}₽");
+            Console.ResetColor();
+            OnNodeChange?.Invoke();
         }
     }
 }
