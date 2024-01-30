@@ -30,20 +30,19 @@ specialNode.Value = "Money";
 specialNode.ShowInfo();
 Console.WriteLine();
 specialNode.Transaction(1000);
+Console.WriteLine();
 specialNode.ShowInfo();
 
-DynamicArray<string> dynamicArray = new DynamicArray<string>(10);
+specialNode.AddValue("Gold");
+specialNode.AddValue("Silver");
+specialNode.AddValue("Platinum");
+specialNode.AddValue("Bronze");
 
-dynamicArray.Add("Gold");
-dynamicArray.Add("Silver");
-dynamicArray.Add("Platinum");
-dynamicArray.Add("Bronze");
+specialNode.Sort();
+string metals = specialNode.PrintArray();
+Console.WriteLine("\tMetals in the Bank: " + metals);
 
-dynamicArray.SortAuto();
-string metals = dynamicArray.Print();
-Console.WriteLine("\nMetals: " + metals);
-
-Console.WriteLine("\nIndex of Silver: " + dynamicArray.BinarySearch("Silver"));
-Console.WriteLine("Index of Gold: " + dynamicArray.BinarySearch("Gold"));
-Console.WriteLine("Index of Bronze: " + dynamicArray.BinarySearch("Bronze"));
-Console.WriteLine("Index of Platinum: " + dynamicArray.BinarySearchAuto("Platinum"));
+Console.WriteLine("\n\tIndex of Silver: " + specialNode.BinarySearch("Silver"));
+Console.WriteLine("\tIndex of Gold: " + specialNode.BinarySearch("Gold"));
+Console.WriteLine("\tIndex of Bronze: " + specialNode.BinarySearch("Bronze"));
+Console.WriteLine("\tIndex of Platinum: " + specialNode.BinarySearch("Platinum"));

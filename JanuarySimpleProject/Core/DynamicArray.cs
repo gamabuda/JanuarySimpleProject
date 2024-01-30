@@ -14,6 +14,7 @@ namespace JanuarySimpleProject.Core
         private T[] items;
         private int count;
         public T Value { get; set; }
+        public int Count { get { return count; } }
 
         public DynamicArray(int length)
         {
@@ -84,8 +85,6 @@ namespace JanuarySimpleProject.Core
             }
         }
 
-        public int Count { get { return count; } }
-
         public string Print()
         {
             string result = "";
@@ -104,42 +103,18 @@ namespace JanuarySimpleProject.Core
             count = 0;
         }
 
-        public T[] GetArray() 
-        { 
-            return items;
-        }
-
-        public void SortAuto()
+        public T[] GetArray()
         {
-            Array.Sort(items, 0, count);
-        }
-
-        public int BinarySearch(T item)
-        {
-            SortAuto();
-
-            int left = 0;
-            int right = count - 1;
-
-            while (left <= right)
+            T[] array = new T[count];
+            for (int i = 0; i < count; i++)
             {
-                int middle = left + (right - left) / 2;
-
-                if (items[middle].CompareTo(item) == 0)
-                    return middle;
-
-                if (items[middle].CompareTo(item) < 0)
-                    left = middle + 1;
-                else
-                    right = middle - 1;
+                if (items[i] != null)
+                {
+                    array[i] = items[i];
+                }
             }
 
-            return -1;
-        }
-
-        public int BinarySearchAuto(T item)
-        {
-            return Array.BinarySearch(items, 0, count, item);
+            return array;
         }
     }
 }

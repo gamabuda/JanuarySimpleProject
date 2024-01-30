@@ -13,7 +13,6 @@ namespace JanuarySimpleProject.Core
     
     public class SpecialNode : INode
     {
-        
         public SpecialNode(string name)
         {
             Id = Guid.NewGuid().ToString();
@@ -27,7 +26,7 @@ namespace JanuarySimpleProject.Core
             TransactionOperationHandler(PrintMessage);
         }
 
-        public DynamicArray<string> items = new DynamicArray<string>(0);
+        private DynamicArray<string> _items = new DynamicArray<string>(0);
         private string _item;
 
         public string Id { get; }
@@ -63,9 +62,9 @@ namespace JanuarySimpleProject.Core
         private void CheckNode()
         {
             var temp = String.Empty;
-            for (var i = 0; i < items.Count; i++)
+            for (var i = 0; i < _items.Count; i++)
             {
-                temp += items.GetArray()[i];
+                temp += _items.GetArray()[i];
             }
         }
 
@@ -76,10 +75,10 @@ namespace JanuarySimpleProject.Core
             if (strValue == null)
                 throw new Exception("The value is null");
 
-            if (items.Contains(strValue))
+            if (_items.Contains(strValue))
                 throw new Exception("The value is already contained in the Node");
 
-            items.Add(strValue);
+            _items.Add(strValue);
             _item += $"{strValue}";
 
             OnNodeChange?.Invoke();
@@ -92,10 +91,10 @@ namespace JanuarySimpleProject.Core
             if (strValue == null)
                 throw new Exception("The value is null");
 
-            if (!items.Contains(strValue))
+            if (!_items.Contains(strValue))
                 throw new Exception("The value is not contained in the node");
 
-            items.Remove(strValue);
+            _items.Remove(strValue);
             _item = Value.Replace(strValue, "");
 
             OnNodeChange?.Invoke();
@@ -116,6 +115,64 @@ namespace JanuarySimpleProject.Core
             string oldValue = _item;
             _item = value;
             return oldValue;
+        }
+
+        public void Sort()
+        {
+            string[] array = _items.GetArray();
+
+            for (int i = 0; i < _items.Count - 1; i++)
+            {
+                int minIndex = i;
+                for (int j = i + 1; j < _items.Count; j++)
+                {
+                    if (array[j].CompareTo(array[minIndex]) < 0)
+                    {
+                        minIndex = j;
+                    }
+                }
+
+                if (minIndex != i)
+                {
+                    string temp = array[i];
+                    array[i] = array[minIndex];
+                    array[minIndex] = temp;
+                }
+            }
+
+            _items.Clear();
+            foreach (string value in array)
+            {
+                _items.Add(value);
+            }
+        }
+        public string PrintArray()
+        {
+            return _items.Print();
+        }
+
+        public int BinarySearch(string item)
+        {
+            Sort();
+
+            string[] array = _items.GetArray();
+            int left = 0;
+            int right = _items.Count - 1;
+
+            while (left <= right)
+            {
+                int middle = left + (right - left) / 2;
+
+                if (array[middle].CompareTo(item) == 0)
+                    return middle;
+
+                if (array[middle].CompareTo(item) < 0)
+                    left = middle + 1;
+                else
+                    right = middle - 1;
+            }
+
+            return -1;
         }
 
         public void Transaction(int total)

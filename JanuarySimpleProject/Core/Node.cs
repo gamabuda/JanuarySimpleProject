@@ -183,6 +183,70 @@ namespace JanuarySimpleProject.Core
         {
             return _value.CompareTo(obj);
         }
+
+        public DynamicArray<string> Get_values()
+        {
+            return _values;
+        }
+
+        public string PrintArray()
+        {
+            return _values.Print();
+        }
+
+        public void Sort()
+        {
+            string[] array = _values.GetArray();
+
+            for (int i = 0; i < _values.Count - 1; i++)
+            {
+                int minIndex = i;
+                for (int j = i + 1; j < _values.Count; j++)
+                {
+                    if (array[j].CompareTo(array[minIndex]) < 0)
+                    {
+                        minIndex = j;
+                    }
+                }
+
+                if (minIndex != i)
+                {
+                    string temp = array[i];
+                    array[i] = array[minIndex];
+                    array[minIndex] = temp;
+                }
+            }
+
+            _values.Clear();
+            foreach(string value in array) 
+            {
+                _values.Add(value);
+            }
+        }
+
+        public int BinarySearch(string item)
+        {
+            Sort();
+
+            string[] array = _values.GetArray();
+            int left = 0;
+            int right = _values.Count - 1;
+
+            while (left <= right)
+            {
+                int middle = left + (right - left) / 2;
+
+                if (array[middle].CompareTo(item) == 0)
+                    return middle;
+
+                if (array[middle].CompareTo(item) < 0)
+                    left = middle + 1;
+                else
+                    right = middle - 1;
+            }
+
+            return -1;
+        }
     }
 }
 
