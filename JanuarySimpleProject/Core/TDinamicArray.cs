@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JanuarySimpleProject.Core
 {
-    internal class TDinamicArray<TValue> : where TValue : IComparable<TValue>
+    internal class TDinamicArray<TValue>  where TValue : IComparable<TValue>
     {
 
         private TValue[] _array;
@@ -88,7 +88,8 @@ namespace JanuarySimpleProject.Core
             {
                 for (int i = 0; i < N; i++)
                 {
-                      if (_array[i].CompareTo(_array[i+1])>0)
+                    for(int j = 0; j < N; j++)
+                      if (_array[i].CompareTo(_array[j])>0)
                       {
                         TValue temp = _array[i + 1];
                         _array[i + 1] = _array[i];

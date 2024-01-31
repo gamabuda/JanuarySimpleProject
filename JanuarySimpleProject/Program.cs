@@ -39,8 +39,14 @@ using static JanuarySimpleProject.Core.Node;
 
 //Console.WriteLine(node.JSON);
 
-TDinamicArray<int> t = new TDinamicArray<int>(12);
+TDinamicArray<int> t = new TDinamicArray<int>(5);
+t.Add(2);
 t.Add(1);
+t.Add(5);
+t.Add(4);
+t.Add(3);
+t.Print();
+t.SortX(t.Count);
 t.Print();
 
 
