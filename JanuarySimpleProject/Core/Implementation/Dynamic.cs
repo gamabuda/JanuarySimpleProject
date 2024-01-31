@@ -1,6 +1,6 @@
 ﻿namespace JanuarySimpleProject.Core.Implementation
 {
-    public class Dynamic<TAny>
+    public class Dynamic<TAny> where TAny : IComparable<TAny>
     {
         private TAny[] _values;
 
@@ -61,6 +61,58 @@
         internal void Add(string strValue)
         {
             throw new NotImplementedException();
+        }
+
+        public int BinarySearch(TAny value)
+        {
+            int left = 0;
+            int right = _values.Length - 1;
+
+            while (left <= right)
+            {
+                int mid = left + (right - left) / 2;
+
+                if (NewMethod(value, mid) == 0)
+                {
+                    return mid;
+                }
+                else if (_values[mid].CompareTo(value) < 0)
+                {
+                    left = mid + 1;
+                }
+                else
+                {
+                    right = mid - 1;
+                }
+            }
+
+            return -1;
+        }
+
+        private int NewMethod(TAny value, int mid)
+        {
+            return _values[mid].CompareTo(value);
+        }
+
+        public void Sort()
+        {
+            Array.Sort(_values);
+        }
+
+        public void SortCustom()
+        {
+            for (int i = 0; i < _values.Length - 1; i++)
+            {
+                for (int j = i + 1; j < _values.Length; j++)
+                {
+                    if (_values[i].CompareTo(_values[j]) > 0)
+                    {
+                        TAny temp = _values[i];
+                        _values[i] = _values[j];
+                        _values[j] = temp;
+                    }
+                }
+            }
         }
     }
 }

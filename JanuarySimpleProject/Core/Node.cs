@@ -175,6 +175,11 @@ namespace JanuarySimpleProject.Core
             return new Node();
 
         }
+
+        public string UpdateValue(string s)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
