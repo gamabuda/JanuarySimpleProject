@@ -98,13 +98,34 @@ namespace JanuarySimpleProject.Core
                 }
             }
         }
-        public void BinarySearchX(TValue[] array)
+        public int BinarySearchX(TValue S)
         {
             var N = _array.Length;
             while (N > 0)
             {
-                //process
+                int lower = 0;
+                int upper = _array.Length-1;
+                while (upper > lower)
+                {
+                    
+                      
+                      int mid = (lower + upper) / 2;
+                      if (_array[mid].CompareTo(S) == 0)
+                      {
+                          return mid;
+                      }
+                      else if (_array[mid].CompareTo(S)<0)
+                      {
+                        upper = mid - 1;
+                      }
+                      else
+                      {
+                        lower = mid + 1;
+                      }
+                    
+                }
             }
+            return -1;
         }
     }                     
 
