@@ -11,6 +11,7 @@ namespace RTS.Core
         public Wizard(int strength, int dexterity, int intelligence, int virality) : base(strength, dexterity, intelligence, virality)
         {
             Health = (int)(1.4 / virality + 0.2 / Strength);
+            Damage = (int)(0.5 / strength);
         }
     }
 }

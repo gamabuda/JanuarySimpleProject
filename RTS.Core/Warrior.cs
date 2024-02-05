@@ -10,7 +10,8 @@ namespace RTS.Core
     {
         public Warrior(int strength, int dexterity, int intelligence, int virality) : base(strength, dexterity, intelligence, virality)
         {
-            Health = 2/virality + Strength;
+            Health = 2/virality + strength;
+            Damage = 1 / strength;
         }
     }
 }
