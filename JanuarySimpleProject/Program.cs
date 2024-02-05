@@ -1,4 +1,6 @@
-﻿using JanuarySimpleProject.Core;
+﻿using JanuarySimpleProject;
+using JanuarySimpleProject.Core;
+using System;
 
 /*
  * Я накидал вам базы по прошлому полугодию, друзья!
@@ -17,26 +19,41 @@
  * Одна тудушка = 2 балла
  */
 
-Node node = Node.CreateEmptyNode();
-node.ShowInfo();
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        Node node = Node.CreateEmptyNode();
+        node.ShowInfo();
 
-node.Value = "Str";
-node.ShowInfo();
+        node.Value = "Str";
+        node.ShowInfo();
 
-node.AddValue(Node.CreateEmptyNode());
-node.ShowInfo();
+        node.AddValue(Node.CreateEmptyNode());
+        node.ShowInfo();
 
-List<int> ints = new List<int>()
+        List<int> ints = new List<int>()
 {
     1, 2, 3
 };
-node.AddValue(ints);
-node.ShowInfo();
+        node.AddValue(ints);
+        node.ShowInfo();
 
-node.RemoveValue("Str");
-node.ShowInfo();
+        node.RemoveValue("Str");
+        node.ShowInfo();
+        DArray<string> dArray = new DArray<string>(10);
+        dArray.Add("gdsyug");
+        dArray.Add("bsdfsb");
+        dArray.Add("skafguyg");
+        dArray.Print();
+        dArray.Sort();
+        dArray.Print();
+        Console.WriteLine(dArray.BinarySearch("skafguyg"));
+        
 
-Console.WriteLine(node.JSON);
+        Console.WriteLine(node.JSON);
 
 
-Console.ReadKey();
+        Console.ReadKey();
+    }
+}
