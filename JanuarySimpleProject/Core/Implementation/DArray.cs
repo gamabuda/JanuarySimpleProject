@@ -1,67 +1,103 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace JanuarySimpleProject.Core.Implementation
+public class DynamicArray<T> where T : IComparable<T>
 {
+    private T[] array;
+    private int count;
 
-    public class DynamicArray<T>
+    public DynamicArray()
     {
-        private T[] array;
-        private int count;
+        array = new T[4];
+        count = 0;
+    }
 
-        public DynamicArray()
+    public void Add(T item)
+    {
+        if (count == array.Length)
         {
-            array = new T[4];
-            count = 0;
+            Array.Resize(ref array, array.Length * 2);
         }
 
-        public void Add(T item)
+        array[count] = item;
+        count++;
+    }
+
+    public void Remove(T item)
+    {
+        int index = Array.IndexOf(array, item, 0, count);
+
+        if (index != -1)
         {
-            if (count == array.Length)
+            for (int i = index; i < count - 1; i++)
             {
-                Array.Resize(ref array, array.Length * 2);
+                array[i] = array[i + 1];
             }
 
-            array[count] = item;
-            count++;
+            count--;
         }
+    }
 
-        public void Remove(T item)
+    public bool Contains(T item)
+    {
+        return Array.IndexOf(array, item, 0, count) != -1;
+    }
+
+    public int Count
+    {
+        get { return count; }
+    }
+
+    public void Print()
+    {
+        Console.Write("Array elements: ");
+        for (int i = 0; i < count; i++)
         {
-            int index = Array.IndexOf(array, item, 0, count);
+            Console.Write(array[i] + " ");
+        }
+        Console.WriteLine();
+    }
 
-            if (index != -1)
+    public void Sort()
+    {
+        for (int i = 0; i < count - 1; i++)
+        {
+            for (int j = 0; j < count - i - 1; j++)
             {
-                for (int i = index; i < count - 1; i++)
+                if (array[j].CompareTo(array[j + 1]) > 0)
                 {
-                    array[i] = array[i + 1];
+                    T temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
                 }
-
-                count--;
             }
         }
+    }
 
-        public bool Contains(T item)
-        {
-            return Array.IndexOf(array, item, 0, count) != -1;
-        }
+    public int BinarySearch(T item)
+    {
+        int left = 0;
+        int right = count - 1;
 
-        public int Count
+        while (left <= right)
         {
-            get { return count; }
-        }
+            int mid = left + (right - left) / 2;
 
-        public void Print()
-        {
-            Console.Write("Array elements: ");
-            for (int i = 0; i < count; i++)
+            int comparisonResult = item.CompareTo(array[mid]);
+
+            if (comparisonResult == 0)
             {
-                Console.Write(array[i] + " ");
+                return mid;
             }
-            Console.WriteLine();
+            else if (comparisonResult < 0)
+            {
+                right = mid - 1;
+            }
+            else
+            {
+                left = mid + 1;
+            }
         }
+
+        return -1;
     }
 }
