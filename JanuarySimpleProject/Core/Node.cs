@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text.Json;
+﻿using System.Text.Json;
 using JanuarySimpleProject.Core.Implementation;
 
 namespace JanuarySimpleProject.Core
@@ -135,6 +134,17 @@ namespace JanuarySimpleProject.Core
 
             OnNodeChange?.Invoke();
         }
+        public void UpdateValue<TValue>(TValue value)
+        {
+            string strValue = value?.ToString().Trim();
+
+            if (string.IsNullOrEmpty(strValue))
+                throw new ArgumentException("Value is null or empty.");
+
+            _value = strValue;
+
+            OnNodeChange?.Invoke();
+        }
 
         public void UpdateValue<TValue>(TValue value)
         {
@@ -154,4 +164,3 @@ namespace JanuarySimpleProject.Core
         }
     }
 }
-
