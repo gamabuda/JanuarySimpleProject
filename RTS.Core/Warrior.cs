@@ -2,8 +2,13 @@
 {
     public class Warrior : Unit
     {
-        public Warrior(int Strength, int Dexterity, int Inteligence, int Vitality) : base(Strength, Dexterity, Inteligence, Vitality)
+        public Warrior()
         {
+            this.Strength = 30;
+            this.Dexterity = 15;
+            this.Inteligence = 10;
+            this.Vitality = 25;
+
             HP = 2 / Vitality + Strength;
             Mana = Inteligence;
         }

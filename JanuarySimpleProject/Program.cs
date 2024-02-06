@@ -1,4 +1,9 @@
-﻿using RTS.Core;
+﻿using JanuarySimpleProject;
+using RTS.Core;
 
-//TODO сделать силу не менее 30 у роги и у остальных классов по всем атрибутам
-//TODO сделать дамаг и метод нанесения урона
+var wizzard = new Wizzard();
+var rogue = new Rogue();
+var warrior = new Warrior();
+
+warrior.DealDamage(rogue, 0.01);
+Console.WriteLine(rogue.HP);
