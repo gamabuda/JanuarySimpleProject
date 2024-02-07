@@ -8,11 +8,10 @@ namespace RTS.Core
 {
     public class Warrior : Unit
     {
-        public Warrior(int Strenght, int Dexterity, int Inteligense, int Vitality) : base(Strenght, Dexterity, Inteligense, Vitality)
+        public Warrior(int strength, int dexterity, int intelligence, int vitality) : base(strength, dexterity, intelligence, vitality)
         {
-            Health = 2 / Vitality + Strenght;
-            Mana = Inteligense;
+            Health = 2 / vitality + strength;
+            Damage = 1 / strength;
         }
-
     }
 }

@@ -8,11 +8,24 @@ namespace RTS.Core
 {
     public class Wizard : Unit
     {
-        public Wizard(int Strenght, int Dexterity, int Inteligense, int Vitality) : base(Strenght, Dexterity, Inteligense, Vitality)
+        public int HealPoint { get; set; } = 10;
+        public Wizard(int strength, int dexterity, int intelligence, int vitality) : base(strength, dexterity, intelligence, vitality)
         {
-            double Health = 1.4 / Vitality + 0.2/Strenght;
-            double Mana = 1.5/Inteligense;
+            Health = (int)(vitality / 1.5 + strength / 0.2);
+            Mana = (int)(intelligence / 1.5);
+            Damage = (int)(0.5 / strength);
+
+
+            MaxHealth = Health;
         }
 
+        public void Heal(Unit unit)
+        {
+            if (Mana < 15)
+                return;
+
+            Mana -= 15;
+            unit.Health += HealPoint;
+        }
     }
 }
