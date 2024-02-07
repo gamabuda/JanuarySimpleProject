@@ -2,29 +2,60 @@
 {
     public class Unit
     {
-        public int Damage { get; set; }
-        public int Health { get; set; }
-        public int Mana { get; set; }
+        public int PhysicalDamage { get; protected set; }
+        public int Armor { get; protected set; }
+        public int CriticalChance { get; protected set; }
+        public int CriticalDamage { get; protected set; }
+        public int MagicalDamage { get; protected set; }
+        public int MagicDefense { get; protected set; }
+        public int Health { get; protected set; }
+        public int Mana { get; protected set; }
 
-        public int Strenght { get; set { OnStatChange?.Invoke(); } }
-        public int Dexterity { get; set { OnStatChange?.Invoke(); } }
-        public int Intelligence { get; set { OnStatChange?.Invoke(); } }
-        public int Vitality { get; set { OnStatChange?.Invoke(); } }
 
-        public int MaxStrenght { get; private set; }
-        public int MaxDexterity { get; private set; }
-        public int MaxIntelligence { get; private set; }
-        public int MaxVitality { get; private set; }
+        protected int _str;
+        protected int _dex;
+        protected int _int;
+        protected int _vit;
+
+        public int Strenght { get => _str; protected set { _str = value; onStatChange?.Invoke(); } }
+        public int Dexterity { get => _dex; protected set { _dex = value; onStatChange?.Invoke(); } }
+        public int Intelligence { get => _int; protected set { _int = value; onStatChange?.Invoke(); } }
+        public int Vitality { get => _vit; protected set { _vit = value; onStatChange?.Invoke(); } }
+
+        public int BaseStrenght { get; protected set; }
+        public int BaseDexterity { get; protected set; }
+        public int BaseIntelligence { get; protected set; }
+        public int BaseVitality { get; protected set; }
+
+        public int MaxStrenght { get; protected set; }
+        public int MaxDexterity { get; protected set; }
+        public int MaxIntelligence { get; protected set; }
+        public int MaxVitality { get; protected set; }
+
+        public int MaxHealth { get; protected set; }
+        public int MaxMana { get; protected set; }
+
+        protected int _maxHealthFormula;
+        protected int _maxManaFormula;
+        protected int _pDamageFormula;
+        protected int _mDamageFormula;
+        protected int _armorFormula;
+        protected int _mDefenseFormula;
+        protected int _critChanceFormula;
+        protected int _critDamageFormula;
 
         public Unit(int strenght, int dexterity, int intelligence, int vitality)
         {
-            OnStatChange = checkStat;
-            OnStatChange += calculateDamage;
-
             Strenght = strenght;
             Dexterity = dexterity;
             Intelligence = intelligence;
             Vitality = vitality;
+
+            onStatChange = checkStat;
+            onStatChange += calculateHealth;
+            onStatChange += calculateMana;
+            onStatChange += calculateDamage;
+            onStatChange += calculateDefense;
         }
 
         public void ShowInfo()
@@ -32,23 +63,62 @@
             Console.WriteLine($"HP:{Health}\nMP:{Mana}\nSTR:{Strenght}\nDEX:{Dexterity}\nINT:{Intelligence}\nVIT:{Vitality}");
         }
 
-        public event Action OnStatChange;
+        protected event Action onStatChange;
 
         protected void checkStat() 
         {
-            if (Strenght > MaxStrenght)
-                throw new Exception($"У данного юнита не может быть больше {MaxStrenght} силы");
+            if (Strenght > MaxStrenght && MaxStrenght != 0)
+            {
+                Console.WriteLine($"У данного юнита не может быть больше {MaxStrenght} силы");
+                Strenght = MaxStrenght;
+            }
 
-            if (Intelligence > MaxIntelligence)
-                throw new Exception($"У данного юнита не может быть больше {Intelligence} силы");
+            if (Intelligence > MaxIntelligence && MaxIntelligence != 0)
+            {
+                Console.WriteLine($"У данного юнита не может быть больше {MaxIntelligence} интеллекта");
+                Intelligence = MaxIntelligence;
+            }
 
-            if (Dexterity > MaxDexterity)
-                throw new Exception($"У данного юнита не может быть больше {Dexterity} силы");
+            if (Dexterity > MaxDexterity && MaxDexterity != 0)
+            {
+                Console.WriteLine($"У данного юнита не может быть больше {MaxDexterity} ловкости");
+                Dexterity = MaxDexterity;
+            }
 
-            if (Vitality > MaxVitality)
-                throw new Exception($"У данного юнита не может быть больше {Vitality} силы");
+            if (Vitality > MaxVitality && MaxVitality != 0)
+            {
+                Console.WriteLine($"У данного юнита не может быть больше {MaxVitality} выносливости");
+                Vitality = MaxVitality;
+            }
         }
 
-        protected abstract void calculateDamage();
+        protected void calculateHealth()
+        {
+            MaxHealth = _maxHealthFormula;
+        }
+
+        protected void calculateMana()
+        {
+            MaxMana = _maxManaFormula;
+        }
+
+        protected void calculateDamage()
+        {
+            PhysicalDamage = _pDamageFormula;
+            MagicalDamage = _mDamageFormula;
+            CriticalChance = _critChanceFormula;
+            CriticalDamage = _critDamageFormula;
+        }
+
+        protected void calculateDefense()
+        {
+            Armor = _armorFormula;
+            MagicDefense = _mDefenseFormula;
+        }
+
+        public void Attack(Unit unit)
+        {
+            unit.Health -= PhysicalDamage;
+        }
     }
 }
