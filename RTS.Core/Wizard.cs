@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace RTS.Core
 {
-    internal class Wizard
+    public class Wizard : Unit
     {
+        public Wizard(int Strenght, int Dexterity, int Inteligense, int Vitality) : base(Strenght, Dexterity, Inteligense, Vitality)
+        {
+            double Health = 1.4 / Vitality + 0.2 / Strenght;
+            double Mana = 1.5 / Inteligense;
+        }
+
     }
 }
