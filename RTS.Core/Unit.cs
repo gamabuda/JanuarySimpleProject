@@ -14,15 +14,15 @@ namespace RTS.Core
         public int Strength { get; set; }
         public int Dexterity { get; set; }
         public int Intelligence { get; set; }
-        public int Virality { get; set; }
+        public int Vitality { get; set; }
         public int Damage { get; set; }
 
-        public Unit(int strength, int dexterity, int intelligence, int virality)
+        public Unit(int strength, int dexterity, int intelligence, int vitality)
         {
             this.Strength = strength;
             this.Dexterity = dexterity;
             this.Intelligence = intelligence;
-            this.Virality = virality;
+            this.Vitality = vitality;
         }
 
         public void ShowInfo()
@@ -32,12 +32,18 @@ namespace RTS.Core
                 $"Strength: {Strength}\n" +
                 $"Dexterity: {Dexterity}\n" +
                 $"Intelligence: {Intelligence}\n" +
-                $"Virality: {Virality}");
+                $"Vitality: {Vitality}");
         }
 
-        public void Attack(Unit unit, int damage)
+        public void Attack(Unit unit)
         {
-            unit.Health -= damage;
+            if (unit.Health - this.Damage < 1)
+            {
+                unit.Health = 0;
+                return;
+            }
+
+            unit.Health -= this.Damage;
         }
     }
 }

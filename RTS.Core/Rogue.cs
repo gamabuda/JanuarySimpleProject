@@ -8,10 +8,11 @@ namespace RTS.Core
 {
     internal class Rogue : Unit
     {
-        public Rogue(int strength, int dexterity, int intelligence, int virality) : base(strength, dexterity, intelligence, virality)
+        public Rogue(int strength, int dexterity, int intelligence, int vitality) : base(strength, dexterity, intelligence, vitality)
         {
-            Health = (int)(1.5 / virality + 0.5 / Strength);
+            Health = (int)(vitality / 1.5 + Strength / 0.5);
             Damage = (int)( 0.5 / strength + 0.5 / dexterity);
+            Mana = 1.2 / intelligence;
         }
     }
 }
