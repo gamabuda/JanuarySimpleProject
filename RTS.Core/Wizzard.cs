@@ -11,22 +11,26 @@
             this.Inteligence = 35;
             this.Vitality = 15;
 
-            HP = (int)(Vitality / 1.5 + Strength / 0.5);
-            Mana = (int)(Inteligence / 1.5);
-            Damage = (int)(0.5 / Strength);
+            this.HP = (int)(Vitality / 1.5 + Strength / 0.5);
+            this.Mana = (int)(Inteligence / 1.5);
+            this.Damage = (int)(0.5 / Strength);
+            this.HealPoint = 10;
+            this.MagicalDamage = (int)(Inteligence / 1);
+            this.MagicalDefense = (int)(Inteligence / 1);
 
-            MaxHealth = Health;
-            MaxMana = Mana;
+            this.MaxHealth = this.HP;
+            this.MaxMana = this.Mana;
+            this.Armor = (int)(Dexterity / 1);
         }
 
-        public void Heal(Unit unit)
+        public void Heal(Unit target)
         {
             if (Mana < 15)
                 return;
             else
             {
                 Mana -= 15;
-                unit.Health += HealPoint;
+                target.HP += HealPoint;
             }
         }
     }
