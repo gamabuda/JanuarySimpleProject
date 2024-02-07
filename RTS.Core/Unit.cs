@@ -25,8 +25,23 @@
 
         }
 
-        public void Attack()
+        public void Attack(Unit unit)
         {
+            if (unit.Health - this.Damage < 1)
+            {
+                Unit.Health = 0;
+                return;
+            }
 
         }
+
+        public void Heal(Unit unit)
+        {
+            if (Mana > 15)
+                return;
+
+            Mana -= 15;
+            unit.Heal += HealPoint
+        }
+
     }
