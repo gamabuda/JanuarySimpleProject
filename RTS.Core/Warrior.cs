@@ -9,8 +9,11 @@
             this.Inteligence = 10;
             this.Vitality = 25;
 
-            HP = 2 / Vitality + Strength;
-            Mana = Inteligence;
+            HP = (int)(Vitality / 2 + Strength);
+            Mana = (int)(Inteligence);
+
+            MaxHealth = Health;
+            MaxMana = Mana;
         }
     }
 }

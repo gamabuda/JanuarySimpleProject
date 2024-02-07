@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Core\Implementation\" />
+    <Compile Remove="Core\Implementation\**" />
+    <EmbeddedResource Remove="Core\Implementation\**" />
+    <None Remove="Core\Implementation\**" />
   </ItemGroup>
 
   <ItemGroup>

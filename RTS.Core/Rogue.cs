@@ -11,9 +11,13 @@ namespace JanuarySimpleProject
             this.Dexterity = 30;
             this.Inteligence = 15;
             this.Vitality = 20;
-            HP = 1.5 / Vitality + 0.5 / Strength;
-            Mana = 1.2 / Inteligence;
-            Damage = 1 / Strength + 0.5/Strength + 0.5/Dexterity + 0.5/Strength;
+
+            HP = (int)(Vitality / 1.5 + Strength / 0.5);
+            Mana = (int)(Inteligence / 1.2);
+            Damage = (int)(Strength / 1 + Strength / 0.5 + Dexterity / 0.5 + Strength / 0.5);
+
+            MaxHealth = Health;
+            MaxMana = Mana;
         }
     }
 }
