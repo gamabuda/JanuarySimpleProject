@@ -10,8 +10,14 @@ namespace RTS.Core
     {
         public Rogue(int strength, int dexterity, int intelligence, int vitality) : base(strength, dexterity, intelligence, vitality)
         {
-            Health = (int)(1.5 / vitality + 0.5 / Strength);
-            Damage = (int)(0.5 / strength + 0.5 / dexterity);
+            Health = (int)(vitality/1.5 + strength/0/5);
+            Mana = (int)(intelligence/1.2);
+            PDamage = (int)(strength/0.5 + dexterity/0.5);
+            Armor = (int)(dexterity/1.5);
+            MDefence = (int)(intelligence/0.5);
+            MDamage = (int)(intelligence/0.2);
+            CrtChance = (int)(dexterity/0.2);
+            CrtDamage = (int)(dexterity/0.1);
         }
     }
 }

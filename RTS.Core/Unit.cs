@@ -16,8 +16,12 @@ namespace RTS.Core
         public int Dexterity { get; set; }
         public int Intelligence { get; set; }
         public int Vitality { get; set; }
-        public int Damage { get; set; } = 50;
-
+        public int PDamage { get; set; } = 50;
+        public int MDamage { get; set; }
+        public int Armor { get; set; }
+        public int MDefence { get; set; }
+        public int CrtChance { get; set; }
+        public int CrtDamage { get; set; }
         public Unit(int strength, int dexterity, int intelligence, int vitality)
         {
             this.Strength = strength;
@@ -38,13 +42,13 @@ namespace RTS.Core
 
         public void Attack(Unit unit)
         {
-            if (unit.Health - this.Damage < 1)
+            if (unit.Health - this.PDamage < 1)
             {
                 unit.Health = 0;
                 return;
             }
 
-            unit.Health -= this.Damage;
+            unit.Health -= this.PDamage;
 
         }
     }

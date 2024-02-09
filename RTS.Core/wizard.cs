@@ -13,8 +13,12 @@ namespace RTS.Core
         {
             Health = (int)(vitality / 1.5 + strength / 0.2);
             Mana = (int)(intelligence / 1.5);
-            Damage = (int)(0.5 / strength);
-
+            PDamage = (int)(strength/0.5);
+            Armor = 1/ dexterity;
+            MDamage = 1/ intelligence;
+            MDefence = 1 / intelligence;
+            CrtChance = (int)(dexterity/0.2);
+            CrtDamage = (int)(dexterity/0.1);
 
             MaxHealth = Health;
         }
