@@ -1,4 +1,5 @@
 ﻿using JanuarySimpleProject.Core;
+using JanuarySimpleProject.Core.Implementation;
 
 /*
  * Я накидал вам базы по прошлому полугодию, друзья!
@@ -17,26 +18,37 @@
  * Одна тудушка = 2 балла
  */
 
-Node node = Node.CreateEmptyNode();
-node.ShowInfo();
+//Node node = Node.CreateEmptyNode();
+//node.ShowInfo();
 
-node.Value = "Str";
-node.ShowInfo();
+//node.Value = "Str";
+//node.ShowInfo();
 
-node.AddValue(Node.CreateEmptyNode());
-node.ShowInfo();
+//node.AddValue(Node.CreateEmptyNode());
+//node.ShowInfo();
 
-List<int> ints = new List<int>()
+//List<int> ints = new List<int>()
+//{
+//    1, 2, 3
+//};
+//node.AddValue(ints);
+//node.ShowInfo();
+
+//node.RemoveValue("Str");
+//node.ShowInfo();
+
+//Console.WriteLine(node.JSON);
+
+
+//Console.ReadKey();
+
+DynamicArray<string> dynamicArray = new DynamicArray<string>();
+dynamicArray.Add("яблоко");
+dynamicArray.Add("груша");
+dynamicArray.Add("помидор");
+dynamicArray.Sort();
+foreach (var item in dynamicArray._values)
 {
-    1, 2, 3
-};
-node.AddValue(ints);
-node.ShowInfo();
-
-node.RemoveValue("Str");
-node.ShowInfo();
-
-Console.WriteLine(node.JSON);
-
-
-Console.ReadKey();
+    Console.Write(item + " ");
+}
+Console.WriteLine(dynamicArray.BinarySearch("яблоко"));
