@@ -10,16 +10,24 @@ namespace Classes
     {
         public Warrior(int strenght, int dexterity, int intelligence, int vitality) : base(strenght, dexterity, intelligence, vitality)
         {
-            BaseStrenght = 30;
-            BaseDexterity = 15;
-            BaseIntelligence = 10;
-            BaseVitality = 25;
-
             MaxStrenght = 250;
             MaxDexterity = 80;
             MaxIntelligence = 50;
             MaxVitality = 25;
 
+            BaseStrenght = 30;
+            BaseDexterity = 15;
+            BaseIntelligence = 10;
+            BaseVitality = 25;
+
+            Calculate();
+
+            Health = MaxHealth;
+            Mana = MaxMana;
+        }
+
+        protected override void calculateMaxStats()
+        {
             _maxHealthFormula = (int)(Vitality * 2 + Strenght);
             _maxManaFormula = (int)(Intelligence);
             _pDamageFormula = (int)(Strenght);
@@ -28,11 +36,6 @@ namespace Classes
             _mDefenseFormula = (int)(Intelligence * 0.5);
             _critChanceFormula = (int)(Dexterity * 0.05);
             _critDamageFormula = (int)(Dexterity * 0.1);
-        }
-
-        public void UpgradeStrenght(int strenght)
-        {
-            Strenght += strenght;
         }
     }
 }

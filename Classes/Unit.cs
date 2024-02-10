@@ -8,9 +8,10 @@
         public int CriticalDamage { get; protected set; }
         public int MagicalDamage { get; protected set; }
         public int MagicDefense { get; protected set; }
-        public int Health { get; protected set; }
-        public int Mana { get; protected set; }
-
+        public int Health { get; set; }
+        public int Mana { get; set; }
+        public int Level { get; protected set; }
+        public int Experience { get => Experience; set { Experience = value; Level = calculateLevel(); } }
 
         protected int _str;
         protected int _dex;
@@ -35,14 +36,14 @@
         public int MaxHealth { get; protected set; }
         public int MaxMana { get; protected set; }
 
-        protected int _maxHealthFormula;
-        protected int _maxManaFormula;
-        protected int _pDamageFormula;
-        protected int _mDamageFormula;
-        protected int _armorFormula;
-        protected int _mDefenseFormula;
-        protected int _critChanceFormula;
-        protected int _critDamageFormula;
+        protected int _maxHealthFormula = 0;
+        protected int _maxManaFormula = 0;
+        protected int _pDamageFormula = 0;
+        protected int _mDamageFormula = 0;
+        protected int _armorFormula = 0;
+        protected int _mDefenseFormula = 0;
+        protected int _critChanceFormula = 0;
+        protected int _critDamageFormula = 0;
 
         public Unit(int strenght, int dexterity, int intelligence, int vitality)
         {
@@ -51,45 +52,46 @@
             Intelligence = intelligence;
             Vitality = vitality;
 
-            onStatChange = checkStat;
-            onStatChange += calculateHealth;
-            onStatChange += calculateMana;
-            onStatChange += calculateDamage;
-            onStatChange += calculateDefense;
+            onStatChange = Calculate;
         }
 
         public void ShowInfo()
         {
-            Console.WriteLine($"HP:{Health}\nMP:{Mana}\nSTR:{Strenght}\nDEX:{Dexterity}\nINT:{Intelligence}\nVIT:{Vitality}");
+            Console.WriteLine($"HP:{Health}/{MaxHealth}\nMP:{Mana}/{MaxMana}\nSTR:{Strenght}\nDEX:{Dexterity}\nINT:{Intelligence}\nVIT:{Vitality}");
         }
 
         protected event Action onStatChange;
 
         protected void checkStat() 
-        {
+        { 
             if (Strenght > MaxStrenght && MaxStrenght != 0)
             {
                 Console.WriteLine($"У данного юнита не может быть больше {MaxStrenght} силы");
-                Strenght = MaxStrenght;
+                _str = MaxStrenght;
             }
 
             if (Intelligence > MaxIntelligence && MaxIntelligence != 0)
             {
                 Console.WriteLine($"У данного юнита не может быть больше {MaxIntelligence} интеллекта");
-                Intelligence = MaxIntelligence;
+                _int = MaxIntelligence;
             }
 
             if (Dexterity > MaxDexterity && MaxDexterity != 0)
             {
                 Console.WriteLine($"У данного юнита не может быть больше {MaxDexterity} ловкости");
-                Dexterity = MaxDexterity;
+                _dex = MaxDexterity;
             }
 
             if (Vitality > MaxVitality && MaxVitality != 0)
             {
                 Console.WriteLine($"У данного юнита не может быть больше {MaxVitality} выносливости");
-                Vitality = MaxVitality;
+                _vit = MaxVitality;
             }
+        }
+
+        public void Attack(Unit unit)
+        {
+            unit.Health -= PhysicalDamage;
         }
 
         protected void calculateHealth()
@@ -116,9 +118,23 @@
             MagicDefense = _mDefenseFormula;
         }
 
-        public void Attack(Unit unit)
+        protected virtual void calculateMaxStats() { }
+
+        protected void Calculate()
         {
-            unit.Health -= PhysicalDamage;
+            checkStat();
+            calculateMaxStats();
+            calculateHealth();
+            calculateMana();
+            calculateDamage();
+            calculateDefense();
+        }
+
+        protected int calculateLevel()
+        {
+            
+
+            return 0;
         }
     }
 }

@@ -1,10 +1,11 @@
 ﻿using Classes;
 
-Warrior warrior = new Warrior(100, 50, 50, 50);
-warrior.ShowInfo();
+int lvl = 5;
+int exp = 11000;
 
-for(int i = 0; i < 100; i++)
-{
-    warrior.UpgradeStrenght(10);
-    warrior.ShowInfo();
-}
+int defLvlExp = lvl * (lvl - 1) / 2 * 1000;
+
+int next = lvl * 1000;
+
+int nextExp = defLvlExp + next;
+
