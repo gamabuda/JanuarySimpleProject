@@ -9,6 +9,7 @@ namespace RTS.Core1
     public class Unit
     {
         public int MaxHealth { get; set; }
+        public int MaxMana { get; set; }
         public int Health { get; set; }
         public int Mana { get; set; }
 
@@ -22,12 +23,16 @@ namespace RTS.Core1
         public int MDefence { get; set; }
         public int CrtChance { get; set; }
         public int CrtDamage { get; set; }
+
         public Unit(int strength, int dexterity, int intelligence, int vitality)
         {
             this.Strength = strength;
             this.Dexterity = dexterity;
             this.Intelligence = intelligence;
             this.Vitality = vitality;
+            this.MaxHealth = this.Health;
+            this.MaxMana = this.Mana;
+
         }
 
         public void ShowInfo()
