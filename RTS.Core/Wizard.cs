@@ -29,8 +29,14 @@ namespace RTS.Core
 
             if (Mana < 10)
                 return;
+            
+            if (unit is Wizard)
+                unit.Health += HealPoint * 2;
+            else if (unit is Rogue)
+                unit.Health += HealPoint / 2;
+            else
+                unit.Health += HealPoint;
 
-            unit.Health += HealPoint;
             Mana -= HealPoint;
         }
     }
