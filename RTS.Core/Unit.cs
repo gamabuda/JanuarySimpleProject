@@ -19,6 +19,9 @@ namespace RTS.Core
         public int Damage { get; set; }
         public int MagicalDamage { get; set; }
         public int MagicalDefense { get; set; }
+        public int CriticalChanse { get; set; }
+        public int CriticalDamage { get; set; }
+
 
         public void ShowInfo()
         {

@@ -18,6 +18,9 @@
             this.MaxHealth = this.HP;
             this.MaxMana = this.Mana;
             this.Armor = (int)(Dexterity / 1);
+
+            this.CriticalChanse = (int)(Dexterity / 0.2);
+            this.CriticalDamage = (int)(Dexterity / 0.1);
         }
     }
 }

@@ -7,3 +7,6 @@ var warrior = new Warrior();
 
 warrior.DealDamage(rogue);
 Console.WriteLine(rogue.HP);
+
+rogue.ShowInfo();
+Console.WriteLine(rogue.MaxHealth);
