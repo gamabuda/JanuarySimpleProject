@@ -15,7 +15,14 @@ namespace RTS.Core
         public int Dexterity { get; set; }
         public int Intelligence { get; set; }
         public int Vitality { get; set; }
-        public int Damage { get; set; }
+        public int PDamage { get; set; }
+        public int MDamage { get; set; }
+        public int Armor { get; set; }
+        public int MDefense { get; set; }
+        public int CrtChance { get; set; }
+        public int CrtDamage { get; set; }
+        public int MaxHealth { get; set; }
+        public int MaxMana { get; set; }
 
         public Unit(int strength, int dexterity, int intelligence, int vitality)
         {
@@ -23,6 +30,8 @@ namespace RTS.Core
             this.Dexterity = dexterity;
             this.Intelligence = intelligence;
             this.Vitality = vitality;
+            this.MaxHealth = this.Health;
+            this.MaxMana = this.Mana;
         }
 
         public void ShowInfo()
@@ -37,13 +46,15 @@ namespace RTS.Core
 
         public void Attack(Unit unit)
         {
-            if (unit.Health - this.Damage < 1)
+            if (unit.Health - this.PDamage < 1)
             {
                 unit.Health = 0;
                 return;
             }
 
-            unit.Health -= this.Damage;
+            unit.Health -= this.PDamage;
         }
+
+        // метод лечения у визарда, церковь восстанавливает ману (если маг *2, разбойник /2)
     }
 }
