@@ -9,3 +9,5 @@ for (int i = 0; i < 10; i++)
     unit1.Attack(unit2);
     unit2.ShowInfo();
 }
+Barracks barracks = new Barracks("Wizzard", 15, 20, 35, 15);
+Unit wizzard = barracks.CreateUnit("Wizzard");
