@@ -17,7 +17,7 @@ namespace RTS.Core1
         public int Dexterity { get; set; }
         public int Intelligence { get; set; }
         public int Vitality { get; set; }
-        public int PDamage { get; set; } = 50;
+        public int PDamage { get; set; };
         public int MDamage { get; set; }
         public int Armor { get; set; }
         public int MDefence { get; set; }

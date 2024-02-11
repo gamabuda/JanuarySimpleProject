@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Barracks.cs" />
+    <Compile Include="Church.cs" />
     <Compile Include="Rogue.cs" />
     <Compile Include="Warrior.cs" />
     <Compile Include="Wizard.cs" />
