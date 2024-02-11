@@ -9,7 +9,7 @@ namespace RTS.Lib
 {
     internal class Wizard : Unit
     {
-        public int HealPoint {  get; set; }
+        public int HealPoint { get; set; } = 10;
         public Wizard(int strength, int dexterity, int intelligence, int vitality) : base(strength, dexterity, intelligence, vitality)
         {
             Health = (int)(vitality * 1.4 + Strength * 0.2);
@@ -20,25 +20,13 @@ namespace RTS.Lib
             MDefense = (int)(1 * intelligence);
             CrtChance = (int)(0.2 * dexterity);
             CrtDamage = (int)(0.1 * dexterity);
-            HealPoint = 10;
         }
 
         public void Heal(Unit unit)
         {
-            if (unit.Health == unit.MaxHealth)
-                return;
-
-            if (Mana < 10)
-                return;
-
-            if (unit is Wizard)
-                unit.Health += HealPoint * 2;
-            else if (unit is Rogue)
-                unit.Health += HealPoint / 2;
-            else
-                unit.Health += HealPoint;
-
-            Mana -= HealPoint;
+            if (Mana < 15)
+            Mana -= 15;
+            unit.Health += HealPoint;
         }
     }
 }
