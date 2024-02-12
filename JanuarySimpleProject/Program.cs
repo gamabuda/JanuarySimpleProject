@@ -10,3 +10,5 @@ Console.WriteLine(rogue.HP);
 
 rogue.ShowInfo();
 Console.WriteLine(rogue.MaxHealth);
+
+var w = Barracks.CreateNewUnit("Wizzard");

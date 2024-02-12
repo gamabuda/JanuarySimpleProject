@@ -2,10 +2,21 @@
 
 namespace RTS.Core
 {
-    public class Barracks : Unit
+    public class Barracks : Buildings
     {
-        public Unit CreateNewWarrior() { return new Warrior(); }
-        public Unit CreateNewWizzard() { return new Wizzard(); }
-        public Unit CreateNewRogue() { return new Rogue(); }
+        public static Unit CreateNewUnit(string name)
+        {
+            switch (name)
+            {
+                case "Warrior":
+                    return new Warrior();
+                case "Wizzard":
+                    return new Wizzard();
+                case "Rogue":
+                    return new Rogue();
+                default:
+                    throw new Exception("This unit doesn`t exist");
+            }
+        }
     }
 }

@@ -10,6 +10,7 @@ namespace RTS.Core
 
         public int HP { get; set; }
         public int Mana { get; set; }
+        public int Level { get; set; }
 
         public int Vitality { get; set; }
         public int Strength { get; set; }
