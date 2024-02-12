@@ -9,17 +9,22 @@ namespace RTS.Core
     public class Wizard : Unit
     {
         public int HealPoint { get; set; }
-        public Wizard(int strength, int dexterity, int intelligence, int vitality) : base(strength, dexterity, intelligence, vitality)
+        public Wizard()
         {
-            Health = (int)(vitality * 1.4 + Strength * 0.2);
-            Mana = (int)(1.5 * intelligence);
-            PDamage = (int)(0.5 * strength);
-            Armor = 1 * dexterity;
-            MDamage = (int)(1 * intelligence);
-            MDefense = (int)(1 * intelligence);
-            CrtChance = (int)(0.2 * dexterity);
-            CrtDamage = (int)(0.1 * dexterity);
-            HealPoint = 10;
+            this.Strength = 15;
+            this.Dexterity = 20;
+            this.Intelligence = 35;
+            this.Vitality = 15;
+            this.HealPoint = 10;
+
+            Health = (int)(Vitality * 1.4 + Strength * 0.2);
+            Mana = (int)(1.5 * Intelligence);
+            PDamage = (int)(0.5 * Strength);
+            Armor = 1 * Dexterity;
+            MDamage = (int)(1 * Intelligence);
+            MDefense = (int)(1 * Intelligence);
+            CrtChance = (int)(0.2 * Dexterity);
+            CrtDamage = (int)(0.1 * Dexterity);
         }
 
         public void Heal(Unit unit)
@@ -29,13 +34,8 @@ namespace RTS.Core
 
             if (Mana < 10)
                 return;
-            
-            if (unit is Wizard)
-                unit.Health += HealPoint * 2;
-            else if (unit is Rogue)
-                unit.Health += HealPoint / 2;
-            else
-                unit.Health += HealPoint;
+
+            unit.Health += HealPoint;
 
             Mana -= HealPoint;
         }
