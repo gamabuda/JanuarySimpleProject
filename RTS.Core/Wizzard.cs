@@ -1,4 +1,6 @@
-﻿namespace RTS.Core
+﻿using JanuarySimpleProject;
+
+namespace RTS.Core
 {
     public class Wizzard : Unit
     {
@@ -32,8 +34,21 @@
                 return;
             else
             {
-                Mana -= 15;
-                target.HP += HealPoint;
+                if (target is Wizzard)
+                {
+                    Mana -= 15;
+                    target.HP += (HealPoint * 2);
+                }
+                else if (target is Rogue)
+                {
+                    Mana -= 15;
+                    target.HP += (HealPoint / 2);
+                }
+                else
+                {
+                    Mana -= 15;
+                    target.HP += HealPoint;
+                }
             }
         }
     }
