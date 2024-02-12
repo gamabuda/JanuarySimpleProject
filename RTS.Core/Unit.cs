@@ -24,16 +24,7 @@ namespace RTS.Core
         public int CrtChance { get; set; }
         public int CrtDamage { get; set; }
 
-        public Unit(int strength, int dexterity, int intelligence, int vitality)
-        {
-            this.Strength = strength;
-            this.Dexterity = dexterity;
-            this.Intelligence = intelligence;
-            this.Vitality = vitality;
-            this.MaxHealth = this.Health;
-            this.MaxMana = this.Mana;
-
-        }
+  
 
         public void ShowInfo()
         {

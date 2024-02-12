@@ -7,22 +7,22 @@ using System.Threading.Tasks;
 
 namespace RTS.Core
 {
-    public class Barracks : Unit
+    public class Barracks
     {
-        public Barracks(string unitType, int strength, int dexterity, int intelligence, int vitality) : base(strength, dexterity, intelligence, vitality)
+        public Barracks(string unitType)
         {
             Unit unit = null;
 
             switch (unitType)
             {
                 case "Wizzard":
-                    unit = new Wizard(15, 20, 35, 15);
+                    unit = new Wizard();
                     break;
                 case "Warrior":
-                    unit = new Warrior(30, 15, 10, 25);
+                    unit = new Warrior();
                     break;
                 case "Rogue":
-                    unit = new Rogue(20, 30, 15, 20);
+                    unit = new Rogue();
                     break;
                 default:
                     throw new ArgumentException("Unknown unit type");
