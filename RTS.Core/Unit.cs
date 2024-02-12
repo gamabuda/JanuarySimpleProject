@@ -11,6 +11,7 @@ namespace RTS.Core
         public int HP { get; set; }
         public int Mana { get; set; }
         public int Level { get; set; }
+        public int Experience { get; set; }
 
         public int Vitality { get; set; }
         public int Strength { get; set; }
@@ -38,6 +39,23 @@ namespace RTS.Core
             }
 
             target.HP -= this.Damage;
+        }
+
+        public void LevelUp(Unit target)
+        {
+            if(target.Level < 50)
+            {
+                int CurrentLevel = target.Level;
+                int CurrentExperience = target.Experience;
+                int NeccecaryEXP = (CurrentLevel - 1) * 1000;
+
+                if (CurrentExperience >= CurrentExperience + NeccecaryEXP)
+                    target.Level++;
+                else
+                    return;
+            }
+            else
+                return;
         }
     }
 }
