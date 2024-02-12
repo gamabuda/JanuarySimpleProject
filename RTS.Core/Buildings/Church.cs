@@ -8,7 +8,7 @@ namespace RTS.Core.Buildings
 {
     public class Church
     {
-        public int HealPoint { get; set; }
+        public int HealPoint { get; set; } = 10;
         public void Pray(Unit unit)
         {
             if (unit.Mana == unit.MaxMana)

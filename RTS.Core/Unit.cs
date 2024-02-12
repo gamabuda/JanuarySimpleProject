@@ -9,6 +9,8 @@ namespace RTS.Core
     public class Unit
     {
         public int Level { get; set; } = 0;
+        public int Points { get; set; } = 0;
+        public int LevelUpPoints { get; set; } = 1000;
         public int Health { get; set; }
         public int Mana { get; set; }
 
@@ -44,6 +46,19 @@ namespace RTS.Core
             }
 
             unit.Health -= this.PDamage;
+        }
+
+        public void LevelUp()
+        {
+            if (this.Level <= 50)
+            {
+                int index = (Level - 1) * 1000;
+
+                if (Points >= Points + index)
+                    Level++;
+                else
+                    return;
+            }
         }
     }
 }
