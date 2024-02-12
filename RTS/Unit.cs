@@ -3,7 +3,7 @@ using System.ComponentModel.Design;
 
 namespace RTS
 {
-    public class Unit
+    public class Unit : IUnit
     {
         //Attributes
         protected int Strength { get => _strength; set { _strength = value; } }
@@ -43,6 +43,12 @@ namespace RTS
         public int Armor { get; set; }
         public int MDefense { get; set; }
 
+        //Level
+        public int Level { get; set; }
+        public int Experience { get; set; }
+
+
+
         protected void CheckingAttributes()
         {
             if (_strength > _maxStrength) 
@@ -77,6 +83,23 @@ namespace RTS
 
             unit.Health -= this.PDamage;
 
+        }
+
+        public void LevelUp(Unit target)
+        {
+            if (target.Level < 50)
+            {
+                int CurrentLevel = target.Level;
+                int CurrentExperience = target.Experience;
+                int NeccecaryEXP = (CurrentLevel - 1) * 1000;
+
+                if (CurrentExperience >= CurrentExperience + NeccecaryEXP)
+                    target.Level++;
+                else
+                    return;
+            }
+            else
+                return;
         }
     }
 

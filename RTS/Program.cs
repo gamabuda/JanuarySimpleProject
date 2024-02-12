@@ -1,5 +1,6 @@
-﻿using RTS.Units;
+﻿using RTS.Bildings;
+using RTS.Units;
 
-Warrior w = new Warrior();
-w.ShowInfo();
+var warrior = Barracks.CreateNewUnit("Warrior");
+warrior.ShowInfo();
 

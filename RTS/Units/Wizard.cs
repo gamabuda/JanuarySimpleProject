@@ -8,6 +8,8 @@ namespace RTS.Units
 {
     public class Wizard : Unit
     {
+        public int HealPoint { get; set; } = 10;
+
         public Wizard() 
         {
             Strength = 15;
@@ -36,6 +38,17 @@ namespace RTS.Units
             MDefense = (int)(Inteligence * 0.7);
             CrtChanse = (int)(Dexterity * 0.5);
             CrtDamage = (int)(Dexterity * 3);
+        }
+
+        public void Heal(Unit target)
+        {
+            if (Mana < 15)
+                return;
+            else
+            {
+                Mana -= 15;
+                target.Health += HealPoint;
+            }
         }
     }
 }
