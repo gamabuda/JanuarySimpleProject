@@ -6,12 +6,23 @@ using System.Threading.Tasks;
 
 namespace RTS.Core
 {
-    internal class Rogue : Unit
+   public class Rogue : Unit
     {
         public Rogue(int strength, int dexterity, int intelligence, int virality) : base(strength, dexterity, intelligence, virality)
         {
-            Health = (int)(1.5 / virality + 0.5 / Strength);
-            Damage = (int)( 0.5 / strength + 0.5 / dexterity);
+            this.Strength = 20;
+            this.Dexterity = 30;
+            this.Intelligence = 15;
+            this.Vitality = 20;
+
+            Health = (int)(Vitality * 1.5 + Strength * 0.5);
+            Mana = (int)(1.2 * Intelligence);
+            PDamage = (int)(0.5 * Strength + 0.5 * Dexterity);
+            Armor = (int)(1.5 * Dexterity);
+            MDamage = (int)(0.2 * Intelligence);
+            MDefense = (int)(0.5 * Intelligence);
+            CrtChance = (int)(0.2 * Dexterity);
+            CrtDamage = (int)(0.1 * Dexterity);
         }
     }
 }

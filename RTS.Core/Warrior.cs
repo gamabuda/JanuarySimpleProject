@@ -10,8 +10,19 @@ namespace RTS.Core
     {
         public Warrior(int strength, int dexterity, int intelligence, int virality) : base(strength, dexterity, intelligence, virality)
         {
-            Health = 2/virality + strength;
-            Damage = 1 / strength;
+            this.Strength = 30;
+            this.Dexterity = 15;
+            this.Intelligence = 10;
+            this.Vitality = 25;
+
+            Health = Vitality * 2 + Strength;
+            Mana = 1 * Intelligence;
+            PDamage = 1 * Strength;
+            Armor = 1 * Dexterity;
+            MDamage = (int)(0.2 * Intelligence);
+            MDefense = (int)(0.5 * Intelligence);
+            CrtChance = (int)(0.2 * Dexterity);
+            CrtDamage = (int)(0.1 * Dexterity);
         }
     }
 }
