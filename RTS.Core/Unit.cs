@@ -8,6 +8,9 @@ namespace RTS.Core
 {
     public class Unit
     {
+        public int Level { get; set; } = 0;
+        public int Points { get; set; } = 0;
+        public int LevelUpPoints { get; set; } = 1000;
         public int Health { get; set; }
         public int Mana { get; set; }
 
@@ -15,15 +18,15 @@ namespace RTS.Core
         public int Dexterity { get; set; }
         public int Intelligence { get; set; }
         public int Vitality { get; set; }
-        public int Damage { get; set; }
+        public int PDamage { get; set; }
+        public int MDamage { get; set; }
+        public int Armor { get; set; }
+        public int MDefense { get; set; }
+        public int CrtChance { get; set; }
+        public int CrtDamage { get; set; }
+        public int MaxHealth { get; set; }
+        public int MaxMana { get; set; }
 
-        public Unit(int strength, int dexterity, int intelligence, int vitality)
-        {
-            this.Strength = strength;
-            this.Dexterity = dexterity;
-            this.Intelligence = intelligence;
-            this.Vitality = vitality;
-        }
 
         public void ShowInfo()
         {
@@ -45,5 +48,17 @@ namespace RTS.Core
 
             unit.Health -= this.Damage;
         }
-    }
+
+        public void LevelUp()
+        {
+            if (this.Level <= 50)
+            {
+                int index = (Level - 1) * 1000;
+
+                if (Points >= Points + index)
+                    Level++;
+                else
+                    return;
+            }
+        }
 }
