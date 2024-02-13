@@ -2,16 +2,21 @@
 {
     public class Warrior : Unit
     {
-        public Warrior(int strength, int dexterity, int intelligence, int vitality) : base(strength, dexterity, intelligence, vitality)
+        public Warrior()
         {
-            Health = vitality * 2 + strength;
-            Mana = 1 * intelligence;
-            PDamage = 1 * strength;
-            Armor = 1 * dexterity;
-            MDamage = (int)(0.2 * intelligence);
-            MDefense = (int)(0.5 * intelligence);
-            CrtChance = (int)(0.2 * dexterity);
-            CrtDamage = (int)(0.1 * dexterity);
+            this.Strength = 30;
+            this.Dexterity = 15;
+            this.Intelligence = 10;
+            this.Vitality = 25;
+
+            this.Health = (int) (Vitality * 2 + Strength);
+            this.Mana = (int) (1 * Intelligence);
+            this.PDamage = (int) (1 * Strength);
+            this.Armor = (int)(1 * Dexterity);
+            this.MDamage = (int)(0.2 * Intelligence);
+            this.MDefense = (int)(0.5 * Intelligence);
+            this.CrtChance = (int)(0.2 * Dexterity);
+            this.CrtDamage = (int)(0.1 * Dexterity);
         }
     }
 }

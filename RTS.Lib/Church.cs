@@ -9,15 +9,6 @@ namespace RTS.Lib
     public class Church : Unit
     {
         public int RegenMana { get; set; } = 15;
-        public Church(int strength, int dexterity, int intelligence, int vitality) : base(strength, dexterity, intelligence, vitality)
-        {
-            this.Strength = strength;
-            this.Dexterity = dexterity;
-            this.Intelligence = intelligence;
-            this.Vitality = vitality;
-            this.MaxHealth = this.Health;
-            this.MaxMana = this.Mana;
-        }
 
         public void Pray(Unit unit)
         {

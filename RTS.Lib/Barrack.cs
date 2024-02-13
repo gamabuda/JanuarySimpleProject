@@ -6,7 +6,27 @@ using System.Threading.Tasks;
 
 namespace RTS.Lib
 {
-    internal class Barrack
+    public class Barrack
     {
+        public Barrack(string unitType)
+        {
+            Unit unit = null;
+
+            switch (unitType)
+            {
+                case "Wizzard":
+                    unit = new Wizard();
+                    break;
+                case "Warrior":
+                    unit = new Warrior();
+                    break;
+                case "Rogue":
+                    unit = new Rogue();
+                    break;
+                default:
+                    throw new ArgumentException("Unknown unit type");
+            }
+            return;
+        }
     }
 }

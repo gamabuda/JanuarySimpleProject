@@ -24,12 +24,12 @@ namespace RTS.Lib
         public int MaxHealth { get; set; }
         public int MaxMana { get; set; }
 
-        public Unit(int strength, int dexterity, int intelligence, int vitality)
+        public int Lvl {  get; set; }
+        public int Exp {  get; set; }
+
+        public Unit()
         {
-            this.Strength = strength;
-            this.Dexterity = dexterity;
-            this.Intelligence = intelligence;
-            this.Vitality = vitality;
+       
         }
 
         public void ShowInfo()
@@ -51,6 +51,29 @@ namespace RTS.Lib
             }
 
             unit.Health -= this.PDamage;
+        }
+
+        public void LevelUp(Unit unit)
+        {
+            if (unit.Lvl < 50)
+            {
+                int Exptoneedlvl = (unit.Lvl - 1) * 1000;
+
+                if (unit.Exp >= Exptoneedlvl)
+                {
+                    unit.Lvl++;
+                    unit.Exp -= Exptoneedlvl; 
+                    Console.WriteLine($"Вы достигли уровня {unit.Lvl}!\nВаш текцщий опыт: {unit.Exp}");
+                }
+                else
+                {
+                    Console.WriteLine("Недостаточно опыта для повышения уровня.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Вы достигли максимального уровня!");
+            }
         }
     }
 }

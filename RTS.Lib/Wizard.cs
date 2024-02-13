@@ -10,16 +10,21 @@ namespace RTS.Lib
     internal class Wizard : Unit
     {
         public int HealPoint { get; set; } = 10;
-        public Wizard(int strength, int dexterity, int intelligence, int vitality) : base(strength, dexterity, intelligence, vitality)
+        public Wizard()
         {
-            Health = (int)(vitality * 1.4 + Strength * 0.2);
-            Mana = (int)(1.5 * intelligence);
-            PDamage = (int)(0.5 * strength);
-            Armor = 1 * dexterity;
-            MDamage = (int)(1 * intelligence);
-            MDefense = (int)(1 * intelligence);
-            CrtChance = (int)(0.2 * dexterity);
-            CrtDamage = (int)(0.1 * dexterity);
+            this.Strength = 15;
+            this.Dexterity = 20;
+            this.Intelligence = 35;
+            this.Vitality = 15;
+
+            this.Health = (int)(Vitality * 2 + Strength);
+            this.Mana = (int)(1 * Intelligence);
+            this.PDamage = (int)(1 * Strength);
+            this.Armor = (int)(1 * Dexterity);
+            this.MDamage = (int)(0.2 * Intelligence);
+            this.MDefense = (int)(0.5 * Intelligence);
+            this.CrtChance = (int)(0.2 * Dexterity);
+            this.CrtDamage = (int)(0.1 * Dexterity);
         }
 
         public void Heal(Unit unit)
