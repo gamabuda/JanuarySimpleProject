@@ -9,18 +9,22 @@ namespace RTS.Core1
 {
     public class Warrior : Unit
     {
-        public Warrior(int strength, int dexterity, int intelligence, int vitality ) : base(strength, dexterity, intelligence, vitality)
+        public Warrior()
         {
-            Health = (vitality + strength) / 2;
+            Strength = 30;
+            Dexterity = 15;
+            Intelligence = 10;
+            Vitality = 25;
+            Health = (Vitality + Strength) / 2;
             MaxHealth = Health;
-            Mana = 1 * intelligence;
+            Mana = 1 * Intelligence;
             MaxMana = Mana;
-            PDamage = 1 * strength;
-            Armor = 1 * dexterity;
-            MDefence = (int)(intelligence * 0.5);
-            MDamage = (int)(intelligence * 0.2);
-            CrtChance = (int)(dexterity * 0.2);
-            CrtDamage = (int)(dexterity * 0.1);
+            PDamage = 1 * Strength;
+            Armor = 1 * Dexterity;
+            MDefence = (int)(Intelligence * 0.5);
+            MDamage = (int)(Intelligence * 0.2);
+            CrtChance = (int)(Dexterity * 0.2);
+            CrtDamage = (int)(Dexterity * 0.1);
         }
     }
 }

@@ -6,28 +6,28 @@ using System.Threading.Tasks;
 
 namespace RTS.Core1
 {
-        public class Barracks : Unit
+    public class Barracks : Buildings
+    {
+        public Barracks(string unitType)
         {
-        public Barracks(string unitType, int strength, int dexterity, int intelligence, int vitality) : base(strength, dexterity, intelligence, vitality)
-        {
-                Unit unit = null;
+            Unit unit = null;
 
-                switch (unitType)
-                {
-                    case "Wizzard":
-                        unit = new Wizard(15, 20, 35, 15);
-                        break;
-                    case "Warrior":
-                        unit = new Warrior(30, 15, 10, 25);
-                        break;
-                    case "Rogue":
-                        unit = new Rogue(20, 30, 15, 20);
-                        break;
-                    default:
-                        throw new ArgumentException("Unknown unit type");
-                }
-                return;
+            switch (unitType)
+            {
+                case "Wizzard":
+                    unit = new Wizard();
+                    break;
+                case "Warrior":
+                    unit = new Warrior();
+                    break;
+                case "Rogue":
+                    unit = new Rogue();
+                    break;
+                default:
+                    throw new ArgumentException("Unknown unit type");
             }
+            return;
         }
     }
+}
 

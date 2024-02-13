@@ -23,17 +23,8 @@ namespace RTS.Core1
         public int MDefence { get; set; }
         public int CrtChance { get; set; }
         public int CrtDamage { get; set; }
-
-        public Unit(int strength, int dexterity, int intelligence, int vitality)
-        {
-            this.Strength = strength;
-            this.Dexterity = dexterity;
-            this.Intelligence = intelligence;
-            this.Vitality = vitality;
-            this.MaxHealth = this.Health;
-            this.MaxMana = this.Mana;
-
-        }
+        public int Level { get; set; }
+        public int Exp { get; set; }
 
         public void ShowInfo()
         {
@@ -44,7 +35,6 @@ namespace RTS.Core1
                 $"Intelligence: {Intelligence}\n\t" +
                 $"Virality: {Vitality}");
         }
-
         public void Attack(Unit unit)
         {
             if (unit.Health - this.PDamage < 1)
@@ -56,5 +46,28 @@ namespace RTS.Core1
             unit.Health -= this.PDamage;
 
         }
+
+        public void LevelUp(Unit unit)
+        {
+            if (unit.Level < 50)
+            {
+                int NecessaryExp = (unit.Level - 1) * 1000;
+
+                while (unit.Exp < NecessaryExp)
+                {
+                    Console.WriteLine("Недостаточно опыта для повышения уровня");
+                    return;
+                }
+
+                unit.Level++;
+                unit.Exp -= NecessaryExp;
+                Console.WriteLine($"Поздравляем, вы достигли уровня {unit.Level}! Текущий опыт: {unit.Exp}");
+            }
+            else
+            {
+                Console.WriteLine("Вы достигли максимального уровня! Поздравляем!");
+            }
+        }
+
     }
 }

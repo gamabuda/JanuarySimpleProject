@@ -42,7 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Barracks.cs" />
+    <Compile Include="Buildings.cs" />
     <Compile Include="Church.cs" />
+    <Compile Include="IUnit.cs" />
     <Compile Include="Rogue.cs" />
     <Compile Include="Warrior.cs" />
     <Compile Include="Wizard.cs" />
