@@ -39,4 +39,5 @@ namespace RTS.Core
 
             Mana -= HealPoint;
         }
+    }
 }
