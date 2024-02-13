@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace RTS.Core
 {
-    public class Church
+    public class Church : Buildings
     {
         public int RegenMana { get; set; } = 15;
-        
+
         public void Pray(Unit unit)
         {
             if (unit.Mana == unit.MaxMana)
@@ -23,7 +23,7 @@ namespace RTS.Core
             else
                 unit.Mana += RegenMana;
 
-            
+
         }
     }
 }

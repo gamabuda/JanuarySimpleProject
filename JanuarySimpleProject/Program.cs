@@ -1,7 +1,7 @@
 ﻿using RTS.Core;
 
-Wizard unit1 = new Wizard(50, 50, 50, 50);
-Wizard unit2 = new Wizard(50, 50, 50, 50);
+Wizard unit1 = new Wizard();
+Wizard unit2 = new Wizard();
 unit1.ShowInfo();
 
 for (int i = 0; i < 10; i++)

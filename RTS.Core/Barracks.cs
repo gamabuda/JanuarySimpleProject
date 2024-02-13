@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RTS.Core
 {
-    public class Barracks
+    public class Barracks : Buildings
     {
         public Barracks(string unitType)
         {
