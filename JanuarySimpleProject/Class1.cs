@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace rts.core
+namespace JanuarySimpleProject
 {
     internal class Class1
     {
