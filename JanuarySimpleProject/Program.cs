@@ -1,5 +1,4 @@
 ﻿using RTS.Core;
-using RTS.Core.Buildings;
 
 Unit war = Barrack.CreateUnit("warrior");
 
