@@ -1,7 +1,7 @@
 ﻿using RTS.Core;
 using System.Reflection.Metadata;
 
-namespace JanuarySimpleProject
+namespace RTS.Core
 {
     public class Rogue : Unit
     {

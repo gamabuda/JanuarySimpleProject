@@ -1,4 +1,4 @@
-﻿using JanuarySimpleProject;
+﻿using RTS.Core;
 
 namespace RTS.Core
 {

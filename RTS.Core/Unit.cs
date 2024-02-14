@@ -1,8 +1,9 @@
-﻿using System.Xml.Linq;
+﻿using System.ComponentModel;
+using System.Xml.Linq;
 
 namespace RTS.Core
 {
-    public class Unit
+    public class Unit : INotifyPropertyChanged
     {
         public int MaxHealth { get; set; }
         public int MaxMana { get; set; }
@@ -10,19 +11,74 @@ namespace RTS.Core
 
         public int HP { get; set; }
         public int Mana { get; set; }
-        public int Level { get; set; }
+        private int _level;
+        public int Level
+        {
+            get => _level;
+            set
+            {
+                _level = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Level)));
+            }
+        }
         public int Experience { get; set; }
 
-        public int Vitality { get; set; }
-        public int Strength { get; set; }
-        public int Inteligence { get; set; }
-        public int Dexterity { get; set; }
+        private int _vitality;
+        public int Vitality 
+        {
+            get => _vitality;
+            set
+            {
+                _vitality = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Vitality)));
+            }
+        }
+
+        private int _strength;
+        public int Strength
+        {
+            get => _strength;
+            set
+            {
+                _strength = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Strength)));
+            }
+        }
+
+        private int _inteligence;
+        public int Inteligence 
+        {
+            get => _inteligence;
+            set
+            {
+                _inteligence = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Strength)));
+            }
+        }
+
+        private int _dexterity;
+        public int Dexterity 
+        {
+            get => _dexterity;
+            set
+            {
+                _dexterity = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Strength)));
+            }
+        }
 
         public int Damage { get; set; }
         public int MagicalDamage { get; set; }
         public int MagicalDefense { get; set; }
         public int CriticalChanse { get; set; }
         public int CriticalDamage { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public Unit()
+        {
+            Level = 1;
+        }
 
 
         public void ShowInfo()
@@ -41,16 +97,16 @@ namespace RTS.Core
             target.HP -= this.Damage;
         }
 
-        public void LevelUp(Unit target)
+        public void LevelUp()
         {
-            if(target.Level < 50)
+            if(this.Level < 50)
             {
-                int CurrentLevel = target.Level;
-                int CurrentExperience = target.Experience;
+                int CurrentLevel = this.Level;
+                int CurrentExperience = this.Experience;
                 int NeccecaryEXP = (CurrentLevel - 1) * 1000;
 
                 if (CurrentExperience >= CurrentExperience + NeccecaryEXP)
-                    target.Level++;
+                    this.Level++;
                 else
                     return;
             }
