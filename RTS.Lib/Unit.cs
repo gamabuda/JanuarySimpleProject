@@ -24,7 +24,8 @@ namespace RTS.Lib
         public int MaxHealth { get; set; }
         public int MaxMana { get; set; }
 
-        public int Lvl {  get; set; }
+        public int Lvl { get; set; } = 1;
+        public int MaxLvl { get; set; } = 50;
         public int Exp {  get; set; }
 
         public Unit()
@@ -55,7 +56,7 @@ namespace RTS.Lib
 
         public void LevelUp(Unit unit)
         {
-            if (unit.Lvl < 50)
+            if (unit.Lvl < unit.MaxLvl)
             {
                 int Exptoneedlvl = (unit.Lvl - 1) * 1000;
 

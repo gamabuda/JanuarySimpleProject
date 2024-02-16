@@ -7,7 +7,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace RTS.Lib
 {
-    internal class Wizard : Unit
+    public class Wizard : Unit
     {
         public int HealPoint { get; set; } = 10;
         public Wizard()

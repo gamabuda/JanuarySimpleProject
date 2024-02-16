@@ -1,0 +1,45 @@
+﻿<Window x:Class="RTS.WPFApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RTS.WPFApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TextBlock 
+            x:Name="LvlTB"
+            FontSize="16"
+            Margin="10"
+            VerticalAlignment="Top" 
+            HorizontalAlignment="Center"
+             Text="{Binding Lvl}"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+            <TextBlock 
+                x:Name="StrTB"
+                FontSize="16" 
+                Margin="10" 
+                Padding="10" 
+                Text=""/>
+            <TextBlock 
+                x:Name="DexTB"
+                FontSize="16" 
+                Margin="10" 
+                Padding="10"
+                Text=""/>
+            <TextBlock 
+                x:Name="IntTB"
+                FontSize="16" 
+                Margin="10" 
+                Padding="10" 
+                Text=""/>
+            <TextBlock 
+                x:Name="VitTB"
+                FontSize="16" 
+                Margin="10" 
+                Padding="10" 
+                Text=""/>
+            <Button FontSize="16" Margin="10" Padding="10" Content="Level up"/>
+        </StackPanel>
+    </Grid>
+</Window>

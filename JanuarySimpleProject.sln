@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTS.Console", "RTS.Console\RTS.Console.csproj", "{5D520F19-B5F0-4344-A72F-5F3D71899041}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RTS.Console", "RTS.Console\RTS.Console.csproj", "{5D520F19-B5F0-4344-A72F-5F3D71899041}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTS.Lib", "RTS.Lib\RTS.Lib.csproj", "{F929B928-FA16-4DAD-BF2F-FC919D68D8CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RTS.Lib", "RTS.Lib\RTS.Lib.csproj", "{F929B928-FA16-4DAD-BF2F-FC919D68D8CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTS.WpfApp", "RTS.WpfApp\RTS.WpfApp.csproj", "{1B4C0C1E-788E-48D6-A9E4-319F534200E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{F929B928-FA16-4DAD-BF2F-FC919D68D8CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F929B928-FA16-4DAD-BF2F-FC919D68D8CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F929B928-FA16-4DAD-BF2F-FC919D68D8CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B4C0C1E-788E-48D6-A9E4-319F534200E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B4C0C1E-788E-48D6-A9E4-319F534200E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B4C0C1E-788E-48D6-A9E4-319F534200E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B4C0C1E-788E-48D6-A9E4-319F534200E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

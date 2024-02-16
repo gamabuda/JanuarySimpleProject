@@ -24,7 +24,7 @@ namespace RTS.Lib
                     unit = new Rogue();
                     break;
                 default:
-                    throw new ArgumentException("Unknown unit type");
+                    throw new ArgumentException("Некорректное значение");
             }
             return;
         }

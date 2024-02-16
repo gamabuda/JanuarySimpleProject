@@ -1,0 +1,52 @@
+﻿<Window x:Class="RTS.WpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RTS.WpfApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Warrior" Click="Button_Click_1"/>
+            <Button Content="Rogue" Margin="5,0,5,0" Click="Button_Click_2"/>
+            <Button Content="Wizzzard" Click="Button_Click_3"/>
+        </StackPanel>
+
+        <TextBlock FontSize="16" 
+            x:Name="LvlTB"
+            Text="{Binding Level}"
+            Margin="10" 
+            VerticalAlignment="Top" 
+            HorizontalAlignment="Center"/>
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+            <TextBlock
+         x:Name="StrTB"
+         FontSize="16"  
+         Padding="10" 
+         Text="{Binding Strength}"/>
+            <TextBlock 
+         x:Name="DexTB"
+         FontSize="16"  
+         Padding="10" 
+         Text="{Binding Dexterity}"/>
+            <TextBlock 
+         x:Name="IntTB"
+         FontSize="16" 
+         Padding="10" 
+         Text="{Binding Inteligence}"/>
+            <TextBlock 
+         x:Name="VitTB"
+         FontSize="16" 
+         Padding="10" 
+         Text="{Binding Vitality}"/>
+            <Button FontSize="16" Margin="10" Padding="10" Content="Level up" Click="Button_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

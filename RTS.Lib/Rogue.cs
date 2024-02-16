@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RTS.Lib
 {
-    internal class Rogue : Unit
+    public class Rogue : Unit
     {
         public Rogue()
         {
