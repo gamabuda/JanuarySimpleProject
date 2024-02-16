@@ -8,11 +8,11 @@ namespace RTS.Core.Buildings
 {
     public class Barrack
     {
-        public int hp { get; set; }
+        public int Health { get; set; }
 
         public static Unit CreateUnit(string type)
         {
-            switch (type.ToLower())
+            switch (type.ToLower().Trim())
             {
                 case "warrior":
                     return new Warrior();
@@ -23,9 +23,9 @@ namespace RTS.Core.Buildings
                 case "wizard":
                     return new Wizard();
                     break;
+                default:
+                    throw new Exception("This unit doesn`t exist");
             }
-              
-            return null;
         }
     }
 }
