@@ -8,12 +8,12 @@ namespace Classes
 {
     public class Rogue : Unit
     {
-        public Rogue(int strenght, int dexterity, int intelligence, int vitality) : base(strenght, dexterity, intelligence, vitality)
+        public Rogue() : base()
         {
-            BaseStrenght = 20;
-            BaseDexterity = 30;
-            BaseIntelligence = 15;
-            BaseVitality = 20;
+            Strenght = 20;
+            Dexterity = 30;
+            Intelligence = 15;
+            Vitality = 20;
 
             MaxStrenght = 65;
             MaxDexterity = 250;
@@ -24,6 +24,11 @@ namespace Classes
 
             Health = MaxHealth;
             Mana = MaxMana;
+        }
+
+        public Rogue(string name) : this()
+        {
+            Name = name;
         }
 
         protected override void calculateMaxStats()

@@ -1,6 +1,6 @@
 ﻿namespace Classes
 {
-    public class Unit
+    public class Unit: Creature
     {
         public int PhysicalDamage { get; protected set; }
         public int Armor { get; protected set; }
@@ -8,11 +8,13 @@
         public int CriticalDamage { get; protected set; }
         public int MagicalDamage { get; protected set; }
         public int MagicDefense { get; protected set; }
-        public int Health { get; set; }
-        public int Mana { get; set; }
-        public int Level { get; protected set; }
-        public int Experience { get => Experience; set { Experience = value; Level = calculateLevel(); } }
+        public int Mana { get; protected set; }
 
+        public int Level { get; protected set; } = 1;
+        public int Experience { get => _exp; protected set { _exp = value; Level = calculateLevel(); } }
+        public int MaxLevel { get; protected set; } = 50;
+
+        protected int _exp;
         protected int _str;
         protected int _dex;
         protected int _int;
@@ -23,17 +25,11 @@
         public int Intelligence { get => _int; protected set { _int = value; onStatChange?.Invoke(); } }
         public int Vitality { get => _vit; protected set { _vit = value; onStatChange?.Invoke(); } }
 
-        public int BaseStrenght { get; protected set; }
-        public int BaseDexterity { get; protected set; }
-        public int BaseIntelligence { get; protected set; }
-        public int BaseVitality { get; protected set; }
-
         public int MaxStrenght { get; protected set; }
         public int MaxDexterity { get; protected set; }
         public int MaxIntelligence { get; protected set; }
         public int MaxVitality { get; protected set; }
 
-        public int MaxHealth { get; protected set; }
         public int MaxMana { get; protected set; }
 
         protected int _maxHealthFormula = 0;
@@ -45,16 +41,12 @@
         protected int _critChanceFormula = 0;
         protected int _critDamageFormula = 0;
 
-        public Unit(int strenght, int dexterity, int intelligence, int vitality)
+        public Unit() : base()
         {
-            Strenght = strenght;
-            Dexterity = dexterity;
-            Intelligence = intelligence;
-            Vitality = vitality;
-
             onStatChange = Calculate;
         }
 
+        public Unit(string name) : base(name) { onStatChange = Calculate; }
         public void ShowInfo()
         {
             Console.WriteLine($"HP:{Health}/{MaxHealth}\nMP:{Mana}/{MaxMana}\nSTR:{Strenght}\nDEX:{Dexterity}\nINT:{Intelligence}\nVIT:{Vitality}");
@@ -89,9 +81,15 @@
             }
         }
 
-        public void Attack(Unit unit)
+        public void Attack(Creature creature)
         {
-            unit.Health -= PhysicalDamage;
+            if (creature.Health == 0)
+                return;
+
+            if(creature.Health > PhysicalDamage)
+                creature.Health -= PhysicalDamage;
+            else
+                creature.Health = 0;
         }
 
         protected void calculateHealth()
@@ -132,9 +130,48 @@
 
         protected int calculateLevel()
         {
-            
+            int temp = 0;
+            int templvl = 0;
+            for(int i = 1; Experience >= temp && i < MaxLevel + 1; i++)
+            {
+                temp += i * 1000;
+                templvl = i;
+            }
 
-            return 0;
+            return templvl;
+        }
+
+        public void GainXp(int exp)
+        {
+            Experience += exp;
+        }
+
+        public bool GainMana(int mana)
+        {
+            if (MaxMana == Mana)
+                return false;
+
+            if (MaxMana - Mana <= mana)
+            {
+                Mana = mana;
+                return true;
+            }
+            Mana += mana;
+            return true;
+        }
+
+        public bool GainHealth(int health)
+        {
+            if (MaxHealth == Health)
+                return false;
+
+            if (MaxHealth - Health <= health)
+            {
+                Health = health;
+                return true;
+            }
+            Health += health;
+            return true;
         }
     }
 }

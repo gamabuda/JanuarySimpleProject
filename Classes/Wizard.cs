@@ -8,16 +8,15 @@ namespace Classes
 {
     public class Wizard : Unit
     {
-        
+        public int HealPoint { get; private set; } = 10;
+        public int HealManaCost { get; private set; } = 15;
 
-        public int HealPoint { get; set; } = 10;
-
-        public Wizard(int strenght, int dexterity, int intelligence, int vitality) : base(strenght, dexterity, intelligence, vitality)
+        public Wizard() : base()
         {
-            BaseStrenght = 15;
-            BaseDexterity = 20;
-            BaseIntelligence = 35;
-            BaseVitality = 15;
+            Strenght = 15;
+            Dexterity = 20;
+            Intelligence = 35;
+            Vitality = 15;
 
             MaxStrenght = 45;
             MaxDexterity = 80;
@@ -30,13 +29,17 @@ namespace Classes
             Mana = MaxMana;
         }
 
+        public Wizard(string name) : this()
+        {
+            Name = name;
+        }
         public void Heal(Unit unit)
         {
-            if (Mana < 15)
+            if (Mana < HealManaCost)
                 return;
 
-            unit.Health += HealPoint;
-            Mana -= 15;
+            if (unit.GainHealth(HealPoint))
+                Mana -= HealManaCost;
         }
 
         protected override void calculateMaxStats()
