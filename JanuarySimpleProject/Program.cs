@@ -3,21 +3,16 @@ using RTS.Core.Buildings;
 
 Unit war = Barrack.CreateUnit("warrior");
 
-//for (var i = 0; i < 100000; i += 1000)
-//{
-//    war.Points = i;
-//    war.LevelUp();
-//    Console.WriteLine(war.Points + "\t" + war.Level);
-//}
+for (var i = 0; i < 100000; i+=1000)
+{
+    war.Experience = i;
+    war.LevelUp();
+    Console.WriteLine($"Опыт: {war.Experience}\nУровень: {war.Level}\n");
+}
 
-war.Points = 1000;
-war.LevelUp();
-Console.WriteLine(war.Points + "\t" + war.Level);
-
-war.Points = 3000;
-war.LevelUp();
-Console.WriteLine(war.Points + "\t" + war.Level);
-
-war.Points = 6000;
-war.LevelUp();
-Console.WriteLine(war.Points + "\t" + war.Level);
+for (var i = 0; i < 1300000; i += 10000)
+{
+    war.Experience = i;
+    war.LevelUp();
+    Console.WriteLine($"Опыт: {war.Experience}\nУровень: {war.Level}\n");
+}

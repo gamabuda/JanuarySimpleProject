@@ -8,9 +8,12 @@ namespace RTS.Core
 {
     public class Unit
     {
-        public int Level { get; set; } = 0;
-        public int Points { get; set; } = 0;
-        public int LevelUpPoints { get; set; } = 1000;
+        public int Level { get; set; } = 1;
+        private int _maxLevel = 50;
+        public int Experience { get; set; } = 0;
+        private int _levelUpExperience = 0;
+        private int _levelUpMinExperience = 1000;
+
         public int Health { get; set; }
         public int Mana { get; set; }
 
@@ -50,15 +53,31 @@ namespace RTS.Core
 
         public void LevelUp()
         {
-            if (this.Level <= 50)
+            if (Level <= _maxLevel - 1)
             {
-                int index = (Level - 1) * 1000;
-
-                if (Points >= Points + index)
+                if (Experience >= _levelUpMinExperience)
+                {
                     Level++;
+                    _levelUpExperience += 1000;
+                    _levelUpMinExperience += _levelUpExperience + 1000;
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    if (Level == _maxLevel)
+                    {
+                        Console.WriteLine("Уровень персонажа повышен до 50. Достигнут максимальный уровень!");
+                        Console.ResetColor();
+                        return;
+                    } 
+                    Console.WriteLine("Уровень персонажа повышен до " + Level);
+                    Console.ResetColor();
+                }
                 else
-                    return;
-            }
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"Недостаточно опыта для повышения уровня. Необходимо: {_levelUpMinExperience}");
+                    Console.ResetColor();
+                }
+            } else
+                return;
         }
     }
 }
