@@ -12,34 +12,41 @@ namespace RTS.WPF
         public MainWindow()
         {
             InitializeComponent();
+            unit = new Unit();
             this.DataContext = unit;
-            unit = new Warrior();
+
         }
+
+        public object PropertyChanged { get; private set; }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            unit.Experience = unit.Experience + 1000;
             unit.LevelUp();
 
             unit.Strength++;
             unit.Inteligence++;
             unit.Vitality++;
             unit.Dexterity++;
-            unit.Level++;
+            this.DataContext = unit;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             unit = new Warrior();
+            this.DataContext = unit;
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             unit = new Rogue();
+            this.DataContext = unit;
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             unit = new Wizzard();
+            this.DataContext = unit;
         }
     }
 }

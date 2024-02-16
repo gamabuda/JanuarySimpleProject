@@ -12,6 +12,7 @@ namespace RTS.Core
         public int HP { get; set; }
         public int Mana { get; set; }
         private int _level;
+        public int MaxLevel { get; set; } = 50;
         public int Level
         {
             get => _level;
@@ -52,7 +53,7 @@ namespace RTS.Core
             set
             {
                 _inteligence = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Strength)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Inteligence)));
             }
         }
 
@@ -63,7 +64,7 @@ namespace RTS.Core
             set
             {
                 _dexterity = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Strength)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Dexterity)));
             }
         }
 
@@ -99,14 +100,14 @@ namespace RTS.Core
 
         public void LevelUp()
         {
-            if(this.Level < 50)
+            if(Level < MaxLevel)
             {
-                int CurrentLevel = this.Level;
-                int CurrentExperience = this.Experience;
+                int CurrentLevel = Level;
+                int CurrentExperience = Experience;
                 int NeccecaryEXP = (CurrentLevel - 1) * 1000;
 
                 if (CurrentExperience >= CurrentExperience + NeccecaryEXP)
-                    this.Level++;
+                    Level++;
                 else
                     return;
             }

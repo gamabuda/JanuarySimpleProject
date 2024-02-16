@@ -46,7 +46,7 @@
                 FontSize="16" 
                 Padding="10" 
                 Text="{Binding Vitality}"/>
-            <Button FontSize="16" Margin="10" Padding="10" Content="Level up" Click="Button_Click"/>
+            <Button FontSize="16" Margin="10" Padding="10" Content="GetEXP" Click="Button_Click"/>
         </StackPanel>
     </Grid>
 </Window>
