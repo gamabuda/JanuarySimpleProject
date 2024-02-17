@@ -97,26 +97,20 @@ namespace RTS.Core
 
             target.HP -= this.Damage;
         }
-
-        int Current = 0;
         public void LevelUp()
         {
-            if(Level < MaxLevel)
+            if (Level < MaxLevel)
             {
-                int CurrentLevel = Level;
-                int CurrentExperience = Experience;
-                int NeccecaryEXP = (CurrentLevel - 1) * 1000;
+                int currentLevel = Level;
+                int currentExperience = Experience;
+                int necessaryEXP = currentLevel * 1000;
 
-                if (CurrentExperience >= Current + NeccecaryEXP)
+                if (currentExperience >= necessaryEXP)
                 {
                     Level++;
-                    Current = CurrentExperience;
+                    Experience = currentExperience - necessaryEXP;
                 }
-                else
-                    return;
             }
-            else
-                return;
         }
     }
 }
