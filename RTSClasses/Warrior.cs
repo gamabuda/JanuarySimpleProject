@@ -8,22 +8,27 @@ namespace RTSClasses
 {
     public class Warrior : Unit
     {
-        public Warrior(int strenght, int dexterity, int intelligence, int vitality) : base(strenght, dexterity, intelligence, vitality)
+        public Warrior() : base()
         {
+            Strenght = 30;
+            Dexterity = 15;
+            Intelligence = 10;
+            Vitality = 25;
+
             MaxStrenght = 250;
             MaxDexterity = 80;
             MaxIntelligence = 50;
             MaxVitality = 25;
 
-            BaseStrenght = 30;
-            BaseDexterity = 15;
-            BaseIntelligence = 10;
-            BaseVitality = 25;
-
             Calculate();
 
             Health = MaxHealth;
             Mana = MaxMana;
+        }
+
+        public Warrior(string name) : this()
+        {
+            Name = name;
         }
 
         protected override void calculateMaxStats()
