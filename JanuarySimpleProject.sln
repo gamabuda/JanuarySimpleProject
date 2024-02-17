@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JanuarySimpleProject", "JanuarySimpleProject\JanuarySimpleProject.csproj", "{9FF10828-B750-461D-84C7-7DA83FDCDE6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JanuarySimpleProject", "JanuarySimpleProject\JanuarySimpleProject.csproj", "{9FF10828-B750-461D-84C7-7DA83FDCDE6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTS.Core", "RTS.Core\RTS.Core.csproj", "{3BA28FBE-7AA8-4223-A378-AE6235DF8082}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTS.WpfApp", "RTS.WpfApp\RTS.WpfApp.csproj", "{0DD98260-40F2-42BF-BA57-B5D23D5AA5E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{9FF10828-B750-461D-84C7-7DA83FDCDE6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FF10828-B750-461D-84C7-7DA83FDCDE6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FF10828-B750-461D-84C7-7DA83FDCDE6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BA28FBE-7AA8-4223-A378-AE6235DF8082}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BA28FBE-7AA8-4223-A378-AE6235DF8082}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BA28FBE-7AA8-4223-A378-AE6235DF8082}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BA28FBE-7AA8-4223-A378-AE6235DF8082}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DD98260-40F2-42BF-BA57-B5D23D5AA5E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DD98260-40F2-42BF-BA57-B5D23D5AA5E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DD98260-40F2-42BF-BA57-B5D23D5AA5E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DD98260-40F2-42BF-BA57-B5D23D5AA5E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
