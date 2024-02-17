@@ -15,14 +15,50 @@ using System.Windows.Shapes;
 
 namespace RTS.WpfApp
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
+        /// <summary>
+        /// Interaction logic for MainWindow.xaml
+        /// </summary>
+        public partial class MainWindow : Window
         {
-            InitializeComponent();
+            public Core.Unit unit;
+
+            public MainWindow()
+            {
+                InitializeComponent();
+                SetUnit(new Warrior());
+            }
+
+            private void SetUnit(Core.Unit newUnit)
+            {
+                unit = newUnit;
+                this.DataContext = unit;
+            }
+
+            private void Button_Click_LevelUp(object sender, RoutedEventArgs e)
+            {
+                if (unit != null)
+                {
+                    unit.LevelUp();
+                    unit.Strength++;
+                    unit.Dexterity++;
+                    unit.Intelligence++;
+                    unit.Vitality++;
+                }
+            }
+
+            private void Button_Click_1(object sender, RoutedEventArgs e)
+            {
+                SetUnit(new Warrior());
+            }
+
+            private void Button_Click_2(object sender, RoutedEventArgs e)
+            {
+                SetUnit(new Rogue());
+            }
+
+            private void Button_Click_3(object sender, RoutedEventArgs e)
+            {
+                SetUnit(new Wizard());
+            }
         }
     }
-}
