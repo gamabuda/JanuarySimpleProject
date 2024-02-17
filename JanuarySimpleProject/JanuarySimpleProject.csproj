@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RTS.Core\RTS.Core.csproj" />
+    <ProjectReference Include="..\RTS.WPF\RTS.WPF.csproj" />
   </ItemGroup>
 
 </Project>

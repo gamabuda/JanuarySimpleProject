@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace RTS.Core.Buildings
 {
-    public class Barrack
+    public class Barrack : IBuilding
     {
-        public int Health { get; set; }
+        public int HP { get; set; } = 1000;
 
         public static Unit CreateUnit(string type)
         {

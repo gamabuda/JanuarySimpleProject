@@ -15,6 +15,13 @@ namespace RTS.Core
             this.Intelligence = 15;
             this.Vitality = 20;
 
+            MaxMana = 50;
+            MaxHealth = 100;
+            MaxStrength = 65;
+            MaxDexterity = 250;
+            MaxIntelligence = 70;
+            MaxVitality = 80;
+
             Health = (int)(Vitality * 1.5 + Strength * 0.5);
             Mana = (int)(1.2 * Intelligence);
             PDamage = (int)(0.5 * Strength + 0.5 * Dexterity);

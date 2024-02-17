@@ -27,8 +27,13 @@ namespace RTS.Core
         public int MDefense { get; set; }
         public int CrtChance { get; set; }
         public int CrtDamage { get; set; }
+
         public int MaxHealth { get; set; }
         public int MaxMana { get; set; }
+        public int MaxStrength { get; set; }
+        public int MaxDexterity { get; set; }
+        public int MaxIntelligence { get; set; }
+        public int MaxVitality { get; set; }
 
         public void ShowInfo()
         {

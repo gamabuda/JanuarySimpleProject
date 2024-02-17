@@ -5,7 +5,9 @@ VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JanuarySimpleProject", "JanuarySimpleProject\JanuarySimpleProject.csproj", "{9FF10828-B750-461D-84C7-7DA83FDCDE6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTS.Core", "RTS.Core\RTS.Core.csproj", "{A233ADFF-E027-4F5E-948A-C8D03D49F66C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RTS.Core", "RTS.Core\RTS.Core.csproj", "{A233ADFF-E027-4F5E-948A-C8D03D49F66C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTS.WPF", "RTS.WPF\RTS.WPF.csproj", "{7121E4B4-CDD9-46FB-962E-89E99DABFF58}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A233ADFF-E027-4F5E-948A-C8D03D49F66C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A233ADFF-E027-4F5E-948A-C8D03D49F66C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A233ADFF-E027-4F5E-948A-C8D03D49F66C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7121E4B4-CDD9-46FB-962E-89E99DABFF58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7121E4B4-CDD9-46FB-962E-89E99DABFF58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7121E4B4-CDD9-46FB-962E-89E99DABFF58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7121E4B4-CDD9-46FB-962E-89E99DABFF58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
