@@ -17,9 +17,22 @@ namespace RTS.Core
                 return;
 
             if (unit is Wizard)
+            {
                 unit.Mana += RegenMana * 2;
+                if (unit.Mana > unit.MaxMana)
+                {
+                    unit.Mana = unit.MaxMana;
+                }
+            }
+
             else if (unit is Rogue)
+            {
                 unit.Mana += RegenMana / 2;
+                if (unit.Mana > unit.MaxMana)
+                {
+                    unit.Mana = unit.MaxMana;
+                }
+            }
             else
                 unit.Mana += RegenMana;
 
