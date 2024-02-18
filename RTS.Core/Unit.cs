@@ -11,21 +11,22 @@ namespace RTS.Core
     public class Unit : INotifyPropertyChanged
     {
         private int _level;
-        public int Level 
-         {
+        public int Level
+        {
             get => _level;
             set
             {
                 _level = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Level)));
             }
-          
+
         }
-public int MaxLevel { get; set; } = 50;
+        public int MaxLevel { get; set; } = 50;
         public int Points { get; set; } = 0;
         public int LevelUpPoints { get; set; } = 1000;
         public int Health { get; set; }
         public int Mana { get; set; }
+
 
         public int Strength { get; set; }
         public int Dexterity { get; set; }
@@ -39,8 +40,11 @@ public int MaxLevel { get; set; } = 50;
         public int CrtDamage { get; set; }
         public int MaxHealth { get; set; }
         public int MaxMana { get; set; }
+        public int HP { get; set; }
         public int Inteligence { get; set; }
         public int Experience { get; set; }
+        public int Damage { get; set; }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void ShowInfo()
@@ -51,6 +55,17 @@ public int MaxLevel { get; set; } = 50;
                 $"Dexterity: {Dexterity}\n" +
                 $"Intelligence: {Intelligence}\n" +
                 $"Vitality: {Vitality}");
+        }
+
+        public void DealDamage(Unit target)
+        {
+            if (target.HP - this.Damage < 1)
+            {
+                target.HP = 0;
+                return;
+            }
+
+            target.HP -= this.Damage;
         }
 
         public void Attack(Unit unit)
@@ -100,66 +115,67 @@ public int MaxLevel { get; set; } = 50;
         }
 
     }
-
-    namespace RTS.Core
-    {
-        public class Unit : INotifyPropertyChanged
-        {
-            public int Level { get; set; } = 0;
-            public int Points { get; set; } = 0;
-            public int LevelUpPoints { get; set; } = 1000;
-            public int Health { get; set; }
-            public int Mana { get; set; }
-
-            private int strength;
-            public int Strength
-            {
-                get { return strength; }
-                set { strength = value; OnPropertyChanged("Strength"); }
-            }
-
-            private int dexterity;
-            public int Dexterity
-            {
-                get { return dexterity; }
-                set { dexterity = value; OnPropertyChanged("Dexterity"); }
-            }
-
-            private int intelligence;
-            public int Intelligence
-            {
-                get { return intelligence; }
-                set { intelligence = value; OnPropertyChanged("Intelligence"); }
-            }
-
-            private int vitality;
-            public int Vitality
-            {
-                get { return vitality; }
-                set { vitality = value; OnPropertyChanged("Vitality"); }
-            }
-
-            // ... (other existing properties and methods)
-
-            public event PropertyChangedEventHandler PropertyChanged;
-
-            protected void OnPropertyChanged(string propertyName)
-            {
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            }
-
-            public void LevelUp()
-            {
-                if (this.Level <= 50)
-                {
-                    int index = (Level - 1) * 1000;
-
-                    if (Points >= Points + index)
-                        Level++;
-                    else
-                        return;
-                }
-            }
-        }
-    }
 }
+
+//    namespace RTS.Core
+//    {
+//        public class Unit : INotifyPropertyChanged
+//        {
+//            public int Level { get; set; } = 0;
+//            public int Points { get; set; } = 0;
+//            public int LevelUpPoints { get; set; } = 1000;
+//            public int Health { get; set; }
+//            public int Mana { get; set; }
+
+//            private int strength;
+//            public int Strength
+//            {
+//                get { return strength; }
+//                set { strength = value; OnPropertyChanged("Strength"); }
+//            }
+
+//            private int dexterity;
+//            public int Dexterity
+//            {
+//                get { return dexterity; }
+//                set { dexterity = value; OnPropertyChanged("Dexterity"); }
+//            }
+
+//            private int intelligence;
+//            public int Intelligence
+//            {
+//                get { return intelligence; }
+//                set { intelligence = value; OnPropertyChanged("Intelligence"); }
+//            }
+
+//            private int vitality;
+//            public int Vitality
+//            {
+//                get { return vitality; }
+//                set { vitality = value; OnPropertyChanged("Vitality"); }
+//            }
+
+//            // ... (other existing properties and methods)
+
+//            public event PropertyChangedEventHandler PropertyChanged;
+
+//            protected void OnPropertyChanged(string propertyName)
+//            {
+//                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+//            }
+
+//            public void LevelUp()
+//            {
+//                if (this.Level <= 50)
+//                {
+//                    int index = (Level - 1) * 1000;
+
+//                    if (Points >= Points + index)
+//                        Level++;
+//                    else
+//                        return;
+//                }
+//            }
+//        }
+//    }
+//}

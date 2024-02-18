@@ -1,6 +1,20 @@
-﻿using JanuarySimpleProject;
-using JanuarySimpleProject.Core;
+﻿
+using JanuarySimpleProject;
+using RTS.Core;
+using RTS.Core.Buildings;
+using System.Threading;
 
+var wizard = new Wizard();
+var rogue = new Rogue();
+var warrior = new Warrior();
+
+warrior.DealDamage(rogue);
+Console.WriteLine(rogue.HP);
+
+rogue.ShowInfo();
+Console.WriteLine(rogue.MaxHealth);
+
+var w = Barrack.CreateUnit("Wizzard");
 /*
  * Я накидал вам базы по прошлому полугодию, друзья!
  * Надеюсь пример получился не перегруженным, а даже если и так, то это к лучшему
@@ -27,10 +41,10 @@ using JanuarySimpleProject.Core;
 //node.AddValue(Node.CreateEmptyNode());
 //node.ShowInfo();
 
-List<int> ints = new List<int>()
-{
-    1, 2, 3
-};
+//List<int> ints = new List<int>()
+//{
+//    1, 2, 3
+//};
 //node.AddValue(ints);
 //node.ShowInfo();
 
@@ -54,8 +68,8 @@ List<int> ints = new List<int>()
 //TClass<string> t3 = new TClass<string>("qwerty");
 //t3.ShowTType();
 
-MyClass<int> m = new MyClass<int>();
-m.Value = 1;
-Console.WriteLine(m.Equals(1));
+//MyClass<int> m = new MyClass<int>();
+//m.Value = 1;
+//Console.WriteLine(m.Equals(1));
 
-Console.ReadKey();
+//Console.ReadKey();

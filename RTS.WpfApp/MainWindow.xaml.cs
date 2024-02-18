@@ -21,46 +21,46 @@ namespace RTS.WpfApp
         /// </summary>
         public partial class MainWindow : Window
         {
-            public Core.Unit unit;
+            Unit unit;
 
             public MainWindow()
             {
                 InitializeComponent();
-                SetUnit(new Warrior());
+            unit = new Unit();
+            this.DataContext = unit;
             }
+        public object PropertyChanged { get; private set; }
 
-            private void SetUnit(Core.Unit newUnit)
-            {
-                unit = newUnit;
-                this.DataContext = unit;
-            }
 
-            private void Button_Click_LevelUp(object sender, RoutedEventArgs e)
+        private void Button_Click_LevelUp(object sender, RoutedEventArgs e)
             {
-                if (unit != null)
-                {
+              
                 unit.Experience = unit.Experience + 1000;
                 unit.LevelUp();
                     unit.Strength++;
                     unit.Dexterity++;
                     unit.Intelligence++;
                     unit.Vitality++;
-                }
+                this.DataContext = unit;
             }
+            
 
             private void Button_Click_1(object sender, RoutedEventArgs e)
             {
-                SetUnit(new Warrior());
-            }
+                unit(new Warrior());
+            this.DataContext = unit;
+        }
 
             private void Button_Click_2(object sender, RoutedEventArgs e)
             {
-                SetUnit(new Rogue());
-            }
+                unit(new Rogue());
+            this.DataContext = unit;
+        }
 
             private void Button_Click_3(object sender, RoutedEventArgs e)
             {
-                SetUnit(new Wizard());
-            }
+                unit(new Wizard());
+            this.DataContext = unit;
+        }
         }
     }
