@@ -1,0 +1,133 @@
+﻿<Window x:Class="WPF.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:WPF"
+    mc:Ignorable="d"
+    Title="MainWindow" Height="600" Width="800">
+    <Window.Resources>
+        <Image x:Key="Warrior" Source="/Warrior.jpg"></Image>
+        <Image x:Key="Wizard" Source="/Wizard.jpg" ></Image>
+        <Image x:Key="Rogue" Source="/Rogue.jpg"></Image>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock x:Name="HpMp"></TextBlock>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Width="200px" Height="200px">
+            <Border BorderThickness="1px" BorderBrush="Black">
+                <ContentPresenter x:Name="HeroIcon" Height="200px" Content="{Binding Icon}"></ContentPresenter>
+            </Border>
+        </StackPanel>
+
+
+
+        <Grid Grid.Column="1" Height="50px" VerticalAlignment="Bottom" UseLayoutRounding="False">
+            <Button Grid.Column="1" Margin="150px 0 0 0" Content="←" HorizontalAlignment="left" Width="20px" Height="20px" Click="SwipeLeft"></Button>
+            <Button Grid.Column="1" Margin="0 0 150px 0" Content="→" HorizontalAlignment="Right" Width="20px" Height="20px" Click="SwipeRight"></Button>
+            <Label x:Name="Name" Grid.Column="1" Content="" FontSize="20px" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+        </Grid>
+
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="35px"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Strenght: "></TextBlock>
+                    <TextBlock x:Name="Strenght" Height="25px" Text="{Binding Strenght}"></TextBlock>
+                    <TextBlock x:Name="StrPlus"  Text=""></TextBlock>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Dexterity: "></TextBlock>
+                    <TextBlock x:Name="Dexterity" Height="25px" Text="{Binding Dexterity}"></TextBlock>
+                    <TextBlock x:Name="DexPlus" Text=""></TextBlock>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Intelligence: "></TextBlock>
+                    <TextBlock x:Name="Intelligence" Height="25px" Text="{Binding Intelligence}"></TextBlock>
+                    <TextBlock x:Name="IntPlus" Text=""></TextBlock>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Vitality: "></TextBlock>
+                    <TextBlock x:Name="Vitality" Height="25px" Text="{Binding Vitality}"></TextBlock>
+                    <TextBlock x:Name="VitPlus" Text=""></TextBlock>
+                </StackPanel>
+            </StackPanel>
+            <Grid Grid.Row="1" Grid.ColumnSpan="2">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Lvl: "></TextBlock>
+                    <TextBlock x:Name="LvlBlock" Text="{Binding Level}"></TextBlock>
+                </StackPanel>
+
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Bottom">
+                    <TextBlock Text="Exp: "></TextBlock>
+                    <TextBlock x:Name="ExpBlock" Text="{Binding Experience}"></TextBlock>
+                    <TextBlock x:Name="ExpToNextLvl" Text="{Binding ExpToNextLvl}"></TextBlock>
+                </StackPanel>
+
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="Skillpoints left: "></TextBlock>
+                    <TextBlock x:Name="SkillPointsBlock" HorizontalAlignment="Center" Text="{Binding SkillPoints}"></TextBlock>
+                </StackPanel>
+            </Grid>
+            <StackPanel Grid.ColumnSpan="2" Grid.Row="2">
+                <Button Height="25px" Content="Confirm skillPoints" Click="Confirm"></Button>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="ExpAmount" Height="25px" VerticalContentAlignment="Center" Text="Type number of xp gained here" Width="200px" GotFocus="TextBox_GotFocus" MaxLength="9"/>
+                    <Button Height="25px" Width="280px" Content="Gain XP" Click="GainExp"></Button>
+                </StackPanel>
+
+            </StackPanel>
+
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Button Grid.Column="0" Grid.Row="0" Content="+" Click="StrenghtUp"></Button>
+                <Button Grid.Column="0" Grid.Row="1" Content="+" Click="DexterityUp"></Button>
+                <Button Grid.Column="0" Grid.Row="2" Content="+" Click="IntelligenceUp"></Button>
+                <Button Grid.Column="0" Grid.Row="3" Content="+" Click="VitalityUp"></Button>
+
+                <Button Grid.Column="1" Grid.Row="0" Content="-" Click="StrenghtDown"></Button>
+                <Button Grid.Column="1" Grid.Row="1" Content="-" Click="DexterityDown"></Button>
+                <Button Grid.Column="1" Grid.Row="2" Content="-" Click="IntelligenceDown"></Button>
+                <Button Grid.Column="1" Grid.Row="3" Content="-" Click="VitalityDown"></Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

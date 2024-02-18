@@ -8,6 +8,7 @@ namespace Classes
 {
     public class Warrior : Unit
     {
+        public string Icon { get; set; } = "Icons\\Warrior.png";
         public Warrior() : base()
         {
             Strenght = 30;
@@ -18,7 +19,7 @@ namespace Classes
             MaxStrenght = 250;
             MaxDexterity = 80;
             MaxIntelligence = 50;
-            MaxVitality = 25;
+            MaxVitality = 100;
 
             Calculate();
 

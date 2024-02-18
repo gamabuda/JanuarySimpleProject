@@ -1,4 +1,6 @@
-﻿namespace Classes
+﻿using System.ComponentModel;
+
+namespace Classes
 {
     public class Unit: Creature
     {
@@ -8,22 +10,25 @@
         public int CriticalDamage { get; protected set; }
         public int MagicalDamage { get; protected set; }
         public int MagicDefense { get; protected set; }
-        public int Mana { get; protected set; }
+        public int Mana { get; set; }
 
-        public int Level { get; protected set; } = 1;
-        public int Experience { get => _exp; protected set { _exp = value; Level = calculateLevel(); } }
+        public int Level { get => _level; protected set { _level = value; } }
+        public long Experience { get => _exp; set { _exp = value; calculateLevel(); } }
+        public int ExpToNextLvl { get; set; } = 1000;
+        public int SkillPoints { get; set; }
         public int MaxLevel { get; protected set; } = 50;
 
-        protected int _exp;
+        protected long _exp;
+        protected int _level = 1;
         protected int _str;
         protected int _dex;
         protected int _int;
         protected int _vit;
 
-        public int Strenght { get => _str; protected set { _str = value; onStatChange?.Invoke(); } }
-        public int Dexterity { get => _dex; protected set { _dex = value; onStatChange?.Invoke(); } }
-        public int Intelligence { get => _int; protected set { _int = value; onStatChange?.Invoke(); } }
-        public int Vitality { get => _vit; protected set { _vit = value; onStatChange?.Invoke(); } }
+        public int Strenght { get => _str; set { _str = value; onStatChange?.Invoke(); } }
+        public int Dexterity { get => _dex; set { _dex = value; onStatChange?.Invoke(); } }
+        public int Intelligence { get => _int; set { _int = value; onStatChange?.Invoke(); } }
+        public int Vitality { get => _vit; set { _vit = value; onStatChange?.Invoke(); } }
 
         public int MaxStrenght { get; protected set; }
         public int MaxDexterity { get; protected set; }
@@ -128,20 +133,26 @@
             calculateDefense();
         }
 
-        protected int calculateLevel()
+        protected void calculateLevel()
         {
             int temp = 0;
             int templvl = 0;
-            for(int i = 1; Experience >= temp && i < MaxLevel + 1; i++)
+            for (int i = 1; Experience >= temp && i < MaxLevel + 1; i++)
             {
                 temp += i * 1000;
                 templvl = i;
             }
 
-            return templvl;
+            if (templvl != Level)
+            {
+                SkillPoints += (templvl - Level) * 5;
+                Level = templvl;
+            }
+            
+            ExpToNextLvl = temp;
         }
 
-        public void GainXp(int exp)
+            public void GainXp(int exp)
         {
             Experience += exp;
         }

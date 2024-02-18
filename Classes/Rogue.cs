@@ -8,6 +8,7 @@ namespace Classes
 {
     public class Rogue : Unit
     {
+        public string Icon { get; set; } = "Icons\\Rogue.png";
         public Rogue() : base()
         {
             Strenght = 20;
