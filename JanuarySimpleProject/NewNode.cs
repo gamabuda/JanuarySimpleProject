@@ -1,16 +1,19 @@
-﻿using System;
+﻿using JanuarySimpleProject.Core.Implementation;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Text.Json;
-using JanuarySimpleProject.Core.Implementation;
+using System.Threading.Tasks;
 
-namespace JanuarySimpleProject.Core
+namespace JanuarySimpleProject
 {
-    public class Node : INode
+    public class NewNode : INode
     {
-        //TODO switch list to array
-        private DynamicArray<string> _values = new DynamicArray<string>(0);
+        DynamicArray<string> _values = new DynamicArray<string>(0);
         private string _value;
 
-        private Node()
+        private NewNode()
         {
             Id = Guid.NewGuid().ToString();
 
@@ -23,7 +26,7 @@ namespace JanuarySimpleProject.Core
             OnNodeChange += SerializeNode2Json;
         }
 
-        public Node(string name)
+        public NewNode(string name)
         {
             Id = Guid.NewGuid().ToString();
 
@@ -35,11 +38,8 @@ namespace JanuarySimpleProject.Core
             OnNodeChange += DateTimeEditChange;
             OnNodeChange += SerializeNode2Json;
         }
-
         public string Id { get; }
-
         public string Name { get; set; }
-
         public string Value
         {
             get => _value;
@@ -52,7 +52,6 @@ namespace JanuarySimpleProject.Core
                 OnNodeChange?.Invoke();
             }
         }
-
         public string JSON { get; set; }
 
         public DateTime DateTimeCreate { get; }
@@ -86,39 +85,35 @@ namespace JanuarySimpleProject.Core
         {
             Console.WriteLine($"Node:\tName:{Name} ID:{Id}\n\tDateTime create:{DateTimeCreate}\n\tDateTime last update:{DateTimeUpdate}\n\tValue:{Value}");
         }
-
-        //TODO switch all returns to throw Exception
         public void AddValue<TValue>(TValue value)
         {
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                throw new Exception("Значение = нул");
+                throw new Exception("ноль");
 
             if (_values.Contains(strValue))
-                throw new Exception("Значение уже есть");
+                throw new Exception("уже есть такое значение");
 
             _values.Add(strValue);
             _value += $"{strValue}";
 
             OnNodeChange?.Invoke();
         }
-
-        //TODO switch all returns to throw Exception
         public void AddValue<TValue>(List<TValue> values)
         {
             if (values.Count <= 0)
-                throw new Exception("Пустой массив");
+                throw new Exception("массив пустой");
 
             foreach (var value in values)
             {
                 string strValue = value.ToString().Trim();
 
                 if (strValue == null)
-                    throw new Exception("Значение = нул");
+                    throw new Exception("ноль");
 
                 if (_values.Contains(strValue))
-                    throw new Exception("Значение уже есть");
+                    throw new Exception("уже есть такое значение");
 
                 _values.Add(strValue);
                 _value += $"{strValue}";
@@ -126,17 +121,15 @@ namespace JanuarySimpleProject.Core
                 OnNodeChange?.Invoke();
             }
         }
-
-        //TODO switch all returns to throw Exception and add the ability to delete a list of objects
         public void RemoveValue<TValue>(TValue value)
         {
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                throw new Exception("Значение = нул");
+                throw new Exception("ноль");
 
             if (!_values.Contains(strValue))
-                throw new Exception("Значение уже есть");
+                throw new Exception("уже есть такое значение");
 
             _values.Remove(strValue);
             _value = Value.Replace(strValue, "");
@@ -146,20 +139,20 @@ namespace JanuarySimpleProject.Core
         public void RemoveValue<TValue>(List<TValue> values)
         {
             if (values.Count <= 0)
-                throw new Exception("Пустой массив");
+                throw new Exception("массив пустой");
 
             foreach (var value in values)
             {
                 string strValue = value.ToString().Trim();
 
                 if (strValue == null)
-                    throw new Exception("Значение = нул");
+                    throw new Exception("ноль");
 
                 if (_values.Contains(strValue))
-                    throw new Exception("Значение уже есть");
+                    throw new Exception("уже есть такое значение");
 
                 _values.Remove(strValue);
-                _value += $"{strValue}";
+                _value = Value.Replace(strValue, "");
 
                 OnNodeChange?.Invoke();
             }
@@ -179,16 +172,14 @@ namespace JanuarySimpleProject.Core
                     return i;
                 }
             }
+
             throw new Exception("значение не найдено");
         }
-        public static Node CreateEmptyNode()
+
+        public static NewNode CreateEmptyNode()
         {
-            return new Node();
+            return new NewNode();
         }
-        public int CompareTo(object? obj)
-        {
-            return _value.CompareTo(obj);
-        }
+
     }
 }
-

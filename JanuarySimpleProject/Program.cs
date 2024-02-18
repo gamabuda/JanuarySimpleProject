@@ -36,6 +36,14 @@ node.ShowInfo();
 
 node.RemoveValue("Str");
 node.ShowInfo();
+DynamicArray<string> dArray = new DynamicArray<string>(10);
+dArray.Add("ваывыф");
+dArray.Add("йцуке");
+dArray.Add("ячсми");
+dArray.Print();
+dArray.Sort();
+dArray.Print();
+Console.WriteLine(dArray.BinarySearch("ячсми"));
 
 Console.WriteLine(node.JSON);
 

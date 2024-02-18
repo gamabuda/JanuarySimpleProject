@@ -10,9 +10,24 @@ namespace JanuarySimpleProject
     {
         private T[] _array; 
         private int _count;
-        public DynamicArray()
+        public DynamicArray(int len)
         {
-            _array = new T[4]; _count = 0;
+            _array = new T[len];
+            _count = 0;
+        }
+        private void ArrSize()
+        {
+            int _count1 = _count + _count / 2;
+            T[] item = new T[_count1];
+            if (_count == 0)
+            {
+                _count1 = 20;
+            }
+            for (int i = 0; i < _array.Length; i++)
+            {
+                item[i] = _array[i];
+            }
+            _array = item;
         }
         public void Add(T str)
         {
