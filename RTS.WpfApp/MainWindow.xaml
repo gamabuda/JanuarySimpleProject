@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RTS.WpfApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="auto"/>
 			<RowDefinition/>
@@ -18,7 +18,7 @@
 			<Button Content="Wizard" Click="Button_Click_3"/>
 		</StackPanel>
 
-		<TextBlock FontSize="16" x:Name="LvlTB" Text="{Binding Level}" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+		<TextBlock FontSize="16" x:Name="LvlTB" Text="{Binding Level}" VerticalAlignment="Top" HorizontalAlignment="Center" Width="16" Margin="0,22,0,0" Grid.Row="1"/>
 
 		<StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
 			<TextBlock x:Name="StrTB" FontSize="16" Padding="10" Text="{Binding Strength}"/>

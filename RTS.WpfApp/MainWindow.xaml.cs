@@ -39,7 +39,8 @@ namespace RTS.WpfApp
             {
                 if (unit != null)
                 {
-                    unit.LevelUp();
+                unit.Experience = unit.Experience + 1000;
+                unit.LevelUp();
                     unit.Strength++;
                     unit.Dexterity++;
                     unit.Intelligence++;

@@ -2,14 +2,26 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace RTS.Core
 {
-    public class Unit
+    public class Unit : INotifyPropertyChanged
     {
-        public int Level { get; set; } = 0;
+        private int _level;
+        public int Level 
+         {
+            get => _level;
+            set
+            {
+                _level = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Level)));
+            }
+          
+        }
+public int MaxLevel { get; set; } = 50;
         public int Points { get; set; } = 0;
         public int LevelUpPoints { get; set; } = 1000;
         public int Health { get; set; }
@@ -28,6 +40,8 @@ namespace RTS.Core
         public int MaxHealth { get; set; }
         public int MaxMana { get; set; }
         public int Inteligence { get; set; }
+        public int Experience { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public void ShowInfo()
         {
@@ -65,7 +79,18 @@ namespace RTS.Core
 
         public void LevelUp()
         {
-            throw new NotImplementedException();
+            if (Level < MaxLevel)
+            {
+                int currentLevel = Level;
+                int currentExperience = Experience;
+                int necessaryEXP = currentLevel * 1000;
+
+                if (currentExperience >= necessaryEXP)
+                {
+                    Level++;
+                    Experience = currentExperience - necessaryEXP;
+                }
+            }
         }
 
         public Unit()
