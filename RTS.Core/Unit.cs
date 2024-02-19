@@ -8,6 +8,16 @@ namespace RTS.Core
         public int MaxHealth { get; set; }
         public int MaxMana { get; set; }
         public int Armor { get; set; }
+        private int _startspoints;
+        public int StartsPoints 
+        {
+            get => _startspoints;
+            set
+            {
+                _startspoints = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(StartsPoints)));
+            }
+        }
 
         public int HP { get; set; }
         public int Mana { get; set; }
@@ -22,7 +32,16 @@ namespace RTS.Core
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Level)));
             }
         }
-        public int Experience { get; set; }
+        private int _experience;
+        public int Experience 
+        {
+            get => _experience;
+            set
+            {
+                _experience = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Experience)));
+            }
+        }
 
         private int _vitality;
         public int Vitality 

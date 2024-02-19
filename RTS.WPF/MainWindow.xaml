@@ -7,46 +7,214 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Left">
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Content="Warrior" Click="Button_Click_1"/>
-            <Button Content="Rogue" Margin="5,0,5,0" Click="Button_Click_2"/>
-            <Button Content="Wizzzard" Click="Button_Click_3"/>
+            <StackPanel>
+                <TextBlock 
+                    Text="{Binding Class}"
+                    Padding="10" 
+                    TextAlignment="Left">
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel>
+                <TextBlock
+                    Text="" 
+                    Padding="10"
+                    TextAlignment="Left">
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel>
+                <TextBlock
+                    Text="{Binding Level, StringFormat='Level - {0}'}"
+                    Padding="10"
+                    TextAlignment="Left">
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel>
+                <TextBlock 
+                    Text="{Binding Experience, StringFormat='Experience - {0}'}"
+                    Padding="10" 
+                    TextAlignment="Left">
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel>
+                <TextBlock 
+                    Text="{Binding HP, StringFormat='HP - {0}'}"
+                    Padding="10" 
+                    TextAlignment="Left">
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel>
+                <TextBlock
+                    Text="{Binding Mana, StringFormat='Mana - {0}'}"
+                    Padding="10"
+                    TextAlignment="Left">
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                    Text="{Binding Strength, StringFormat='Strength - {0}'}"
+                    Padding="10"
+                    TextAlignment="Left">
+                </TextBlock>
+
+                <StackPanel Orientation="Horizontal">
+                    <Button 
+                        Content="+"
+                        Background="White" 
+                        Width="20"
+                        Height="20"
+                        Margin="1" Click="Button_Click_2">
+                    </Button>
+                    <Button
+                        Content="-"
+                        Background="White"
+                        Width="20"
+                        Height="20" Click="Button_Click_1">
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                    Text="{Binding Dexterity, StringFormat='Dexterity - {0}'}"
+                    Padding="10"
+                    TextAlignment="Left">
+                </TextBlock>
+
+                <StackPanel Orientation="Horizontal">
+                    <Button 
+                        Content="+"
+                        Background="White" 
+                        Width="20"
+                        Height="20" Click="Button_Click_3">
+                    </Button>
+                    <Button
+                        Content="-"
+                        Background="White"
+                        Width="20"
+                        Height="20"
+                        Margin="1" Click="Button_Click_4">
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock 
+                    Text="{Binding Inteligence, StringFormat='Inteligence - {0}'}"
+                    Padding="10"
+                    TextAlignment="Left">
+                </TextBlock>
+
+                <StackPanel Orientation="Horizontal">
+                    <Button 
+                        Content="+"
+                        Background="White" 
+                        Width="20"
+                        Height="20"
+                        Margin="1" Click="Button_Click_5">
+                    </Button>
+                    <Button
+                        Content="-"
+                        Background="White"
+                        Width="20"
+                        Height="20" Click="Button_Click_6">
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock 
+                    Text="{Binding Vitality, StringFormat='Vitality - {0}'}"
+                    Padding="10"
+                    TextAlignment="Left">
+                </TextBlock>
+
+                <StackPanel Orientation="Horizontal">
+                    <Button 
+                        Content="+"
+                        Margin="1"
+                        Background="White" 
+                        Width="20"
+                        Height="20" Click="Button_Click_7">
+                    </Button>
+                    <Button
+                        Content="-"
+                        Background="White"
+                        Width="20"
+                        Height="20" Click="Button_Click_8">
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+
         </StackPanel>
 
-        <TextBlock FontSize="16" 
-                   x:Name="LvlTB"
-                   Text="{Binding Level}"
-                   Margin="10" 
-                   VerticalAlignment="Top" 
-                   HorizontalAlignment="Center"/>
+        <StackPanel HorizontalAlignment="Right" Margin="40">
+            
+            <StackPanel>
+                <Border BorderBrush="Black" BorderThickness="1">
+                    <Image
+                        Height="200"
+                        Source="/blank.jpg"
+                        Stretch="Fill"
+                        Width="200"
+                        x:Name="MyImage"/>
+                </Border>
+            </StackPanel>
 
-        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-            <TextBlock
-                x:Name="StrTB"
-                FontSize="16"  
-                Padding="10" 
-                Text="{Binding Strength}"/>
+            <StackPanel Margin="10">
+                <TextBlock
+                    Text="{Binding StartsPoints, StringFormat='Starts Points - {0}'}">
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel Margin="10">
+                <TextBlock 
+                    Text="За каждый уроввень + 1 очко">
+                </TextBlock>
+            </StackPanel>
+
+            <Button
+                Margin="10"
+                Width="100"
+                Height="25"
+                Content="GetEXP"
+                Click="Button_Click">
+            </Button>
+
             <TextBlock 
-                x:Name="DexTB"
-                FontSize="16"  
-                Padding="10" 
-                Text="{Binding Dexterity}"/>
-            <TextBlock 
-                x:Name="IntTB"
-                FontSize="16" 
-                Padding="10" 
-                Text="{Binding Inteligence}"/>
-            <TextBlock 
-                x:Name="VitTB"
-                FontSize="16" 
-                Padding="10" 
-                Text="{Binding Vitality}"/>
-            <Button FontSize="16" Margin="10" Padding="10" Content="GetEXP" Click="Button_Click"/>
+                Margin="10"
+                Text="За каждый клик +1000 опыта">
+            </TextBlock>
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button 
+                Content="Warrior"
+                Margin="10"
+                Height="20"
+                Width="100" Click="Button_Click_9">
+            </Button>
+
+            <Button
+                Content="Wizzard"
+                Margin="10" 
+                Height="20"
+                Width="100" Click="Button_Click_10">
+            </Button>
+
+            <Button
+                Content="Rogue"
+                Margin="10"
+                Height="20"
+                Width="100" Click="Button_Click_11">
+            </Button>
         </StackPanel>
     </Grid>
 </Window>
