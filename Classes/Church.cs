@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Classes
 {
-    public class Church : Creature
+    public class Church : Building
     {
         private const int _regen = 10;
         public Church() : base() { }

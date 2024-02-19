@@ -2,8 +2,11 @@
 
 namespace Classes
 {
-    public class Unit: Creature
+    public class Unit: Nameable, IHealthHandler 
     {
+        public int Health { get; set; }
+        public int MaxHealth { get; set; }
+
         public int PhysicalDamage { get; protected set; }
         public int Armor { get; protected set; }
         public int CriticalChance { get; protected set; }
@@ -51,7 +54,6 @@ namespace Classes
             onStatChange = Calculate;
         }
 
-        public Unit(string name) : base(name) { onStatChange = Calculate; }
         public void ShowInfo()
         {
             Console.WriteLine($"HP:{Health}/{MaxHealth}\nMP:{Mana}/{MaxMana}\nSTR:{Strenght}\nDEX:{Dexterity}\nINT:{Intelligence}\nVIT:{Vitality}");
