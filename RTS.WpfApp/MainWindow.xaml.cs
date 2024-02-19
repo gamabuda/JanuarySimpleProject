@@ -47,19 +47,19 @@ namespace RTS.WpfApp
 
             private void Button_Click_1(object sender, RoutedEventArgs e)
             {
-                unit(new Warrior());
+                unit=(new Warrior());
             this.DataContext = unit;
         }
 
             private void Button_Click_2(object sender, RoutedEventArgs e)
             {
-                unit(new Rogue());
+                unit=(new Rogue());
             this.DataContext = unit;
         }
 
             private void Button_Click_3(object sender, RoutedEventArgs e)
             {
-                unit(new Wizard());
+                unit=(new Wizard());
             this.DataContext = unit;
         }
         }

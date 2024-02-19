@@ -15,14 +15,14 @@ namespace RTS.Core
             this.Intelligence = 10;
             this.Vitality = 25;
 
-            Health = Vitality * 2 + Strength;
-            Mana = 1 * Intelligence;
-            PDamage = 1 * Strength;
-            Armor = 1 * Dexterity;
-            MDamage = (int)(0.2 * Intelligence);
-            MDefense = (int)(0.5 * Intelligence);
-            CrtChance = (int)(0.2 * Dexterity);
-            CrtDamage = (int)(0.1 * Dexterity);
+            this.Health = Vitality * 2 + Strength;
+            this.Mana = 1 * Intelligence;
+            this.PDamage = 1 * Strength;
+            this.Armor = 1 * Dexterity;
+            this.MDamage = (int)(0.2 * Intelligence);
+            this.MDefense = (int)(0.5 * Intelligence);
+            this.CrtChance = (int)(0.2 * Dexterity);
+            this.CrtDamage = (int)(0.1 * Dexterity);
         }
     }
 }

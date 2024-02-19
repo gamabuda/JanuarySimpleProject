@@ -53,9 +53,10 @@ using System;
 Console.WriteLine("Rogue: (HP) " + rogue.HP);
 
 rogue.ShowInfo();
-Console.WriteLine(rogue.MaxHealth);
+Console.WriteLine(("Rogue:") + rogue.MaxHealth);
+Console.ReadKey();
 
-var w = Barrack.CreateUnit("Wizzard");
+//var w = Barrack.CreateUnit("Wizzard");
 
 
     //public class Unit

@@ -28,10 +28,39 @@ namespace RTS.Core
         public int Mana { get; set; }
 
 
-        public int Strength { get; set; }
-        public int Dexterity { get; set; }
-        public int Intelligence { get; set; }
-        public int Vitality { get; set; }
+        //public int Strength { get; set; }
+        private int _strength;
+        public int Strength
+        {
+            get => _strength;
+            set
+            {
+                _strength = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Strength)));
+            }
+        }
+        private int _dexterity;
+        public int Dexterity
+        {
+            get => _dexterity;
+            set
+            {
+                _dexterity = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Dexterity)));
+            }
+        }
+     
+
+        private int _vitality;
+        public int Vitality
+        {
+            get => _vitality;
+            set
+            {
+                _vitality = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Vitality)));
+            }
+        }
         public int PDamage { get; set; }
         public int MDamage { get; set; }
         public int Armor { get; set; }
@@ -41,7 +70,17 @@ namespace RTS.Core
         public int MaxHealth { get; set; }
         public int MaxMana { get; set; }
         public int HP { get; set; }
-        public int Inteligence { get; set; }
+
+        private int _inteligence;
+        public int Intelligence
+        {
+            get => _inteligence;
+            set
+            {
+                _inteligence = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Intelligence)));
+            }
+        }
         public int Experience { get; set; }
         public int Damage { get; set; }
 
@@ -79,18 +118,18 @@ namespace RTS.Core
             unit.Health -= this.PDamage;
         }
 
-        public void LevelUp(Unit unit)
-        {
-            if (this.Level <= 50)
-            {
-                int index = (Level - 1) * 1000;
+        //public void LevelUp(Unit unit)
+        //{
+        //    if (this.Level <= 50)
+        //    {
+        //        int index = (Level - 1) * 1000;
 
-                if (Points >= Points + index)
-                    Level++;
-                else
-                    return;
-            }
-        }
+        //        if (Points >= Points + index)
+        //            Level++;
+        //        else
+        //            return;
+        //    }
+        //}
 
         public void LevelUp()
         {

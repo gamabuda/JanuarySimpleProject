@@ -1,20 +1,20 @@
 ﻿
-using JanuarySimpleProject;
-using RTS.Core;
-using RTS.Core.Buildings;
-using System.Threading;
+//using JanuarySimpleProject;
+//using RTS.Core;
+//using RTS.Core.Buildings;
+//using System.Threading;
 
-var wizard = new Wizard();
-var rogue = new Rogue();
-var warrior = new Warrior();
+//var wizard = new Wizard();
+//var rogue = new Rogue();
+//var warrior = new Warrior();
 
-warrior.DealDamage(rogue);
-Console.WriteLine(rogue.HP);
+//warrior.DealDamage(rogue);
+//Console.WriteLine(rogue.HP);
 
-rogue.ShowInfo();
-Console.WriteLine(rogue.MaxHealth);
+//rogue.ShowInfo();
+//Console.WriteLine(rogue.MaxHealth);
 
-var w = Barrack.CreateUnit("Wizzard");
+//var w = Barrack.CreateUnit("Wizzard");
 /*
  * Я накидал вам базы по прошлому полугодию, друзья!
  * Надеюсь пример получился не перегруженным, а даже если и так, то это к лучшему
