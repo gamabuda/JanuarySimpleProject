@@ -12,7 +12,7 @@ namespace RTS.Core.Buildings
 
         public static Unit CreateUnit(string type)
         {
-            switch (type.ToLower())
+            switch (type)
             {
                 case "warrior":
                     return new Warrior();

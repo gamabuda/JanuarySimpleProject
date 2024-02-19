@@ -7,8 +7,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\RTS.Core\RTS.Core.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Remove="Core\Implementation\**" />
+		<EmbeddedResource Remove="Core\Implementation\**" />
+		<None Remove="Core\Implementation\**" />
+	</ItemGroup>
 
 </Project>
