@@ -22,14 +22,19 @@ namespace RTS.WpfApp
         public partial class MainWindow : Window
         {
             Unit unit;
+        Image CharacterImage;
 
-            public MainWindow()
+        public MainWindow()
             {
                 InitializeComponent();
             unit = new Unit();
+            
+           
+            unit = new Warrior();
             this.DataContext = unit;
             }
         public object PropertyChanged { get; private set; }
+       
 
 
         private void Button_Click_LevelUp(object sender, RoutedEventArgs e)
@@ -43,17 +48,19 @@ namespace RTS.WpfApp
                     unit.Vitality++;
                 this.DataContext = unit;
             }
-            
 
-            private void Button_Click_1(object sender, RoutedEventArgs e)
+      
+        private void Button_Click_1(object sender, RoutedEventArgs e)
             {
-                unit=(new Warrior());
+                unit= new Warrior();
+            
             this.DataContext = unit;
         }
 
             private void Button_Click_2(object sender, RoutedEventArgs e)
             {
                 unit=(new Rogue());
+           
             this.DataContext = unit;
         }
 
