@@ -6,17 +6,17 @@
         xmlns:local="clr-namespace:RTS.WpfApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="650" Width="800">
-	
+
 	<Window.Resources>
 
 		<Image x:Key="Warrior" Source="/Warior.jpg"></Image>
 		<Image x:Key="Wizard" Source="/wizard.jpg" ></Image>
 		<Image x:Key="Rogue" Source="/rogue.jpg"></Image>
 	</Window.Resources>
-	
+
 	<Grid>
-		
-		
+
+
 		<Grid.RowDefinitions>
 			<RowDefinition Height="auto"/>
 			<RowDefinition/>
@@ -30,7 +30,7 @@
 
 		<TextBlock FontSize="16" x:Name="LvlTB" Text="{Binding Level}" VerticalAlignment="Top" HorizontalAlignment="Center" Width="16" Margin="0,22,0,0" Grid.Row="1"/>
 
-		<StackPanel Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Margin="319,395,0,0">
+		<StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Horizontal" Margin="0,470,0,0">
 			<TextBlock x:Name="StrTB" FontSize="16" Padding="10" Text="{Binding Strength}"/>
 			<TextBlock x:Name="DexTB" FontSize="16" Padding="10" Text="{Binding Dexterity}"/>
 			<TextBlock x:Name="IntTB" FontSize="16" Padding="10" Text="{Binding Intelligence}"/>
@@ -39,6 +39,26 @@
 
 		</StackPanel>
 		<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="150" Margin="300,48,0,0" Grid.Row="1" VerticalAlignment="Top" Width="300"/>
-	
+		<StackPanel HorizontalAlignment="Left" Height="47" Margin="78,260,0,0" Grid.Row="1" VerticalAlignment="Top" Width="548">
+			<TextBlock TextWrapping="Wrap" Text="Strenght: " FontSize="24" Height="47"/>
+		</StackPanel>
+		<StackPanel HorizontalAlignment="Left" Height="47" Margin="78,312,0,0" Grid.Row="1" VerticalAlignment="Top" Width="541">
+			<TextBlock TextWrapping="Wrap" Text="Dexterity: " FontSize="24"/>
+		</StackPanel>
+		<StackPanel HorizontalAlignment="Left" Height="47" Margin="78,353,0,0" Grid.Row="1" VerticalAlignment="Top" Width="541">
+			<TextBlock TextWrapping="Wrap" Text="Intelligence: " FontSize="24"/>
+		</StackPanel>
+		<StackPanel HorizontalAlignment="Left" Height="47" Margin="78,405,0,0" Grid.Row="1" VerticalAlignment="Top" Width="541">
+			<TextBlock TextWrapping="Wrap" Text="Vitality: " FontSize="24"/>
+		</StackPanel>
+		<Button Content="-" HorizontalAlignment="Left" Height="42" Margin="582,260,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Click="StrenghtDown"/>
+		<Button Content="+" HorizontalAlignment="Left" Height="42" Margin="545,260,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Click="StrenghtUp"/>
+		<Button Content="-" HorizontalAlignment="Left" Height="39" Margin="582,312,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Click="DexterityDown"/>
+		<Button Content="+" HorizontalAlignment="Left" Height="39" Margin="545,312,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Click="DexterityUP" />
+		<Button Content="+" HorizontalAlignment="Left" Height="39" Margin="545,357,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Click="IntellligenceUp"/>
+		<Button Content="-" HorizontalAlignment="Left" Height="39" Margin="582,357,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Click="IntelligenceDown"/>
+		<Button Content="+" HorizontalAlignment="Left" Height="39" Margin="545,405,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Click="VitalityUp"/>
+		<Button Content="-" HorizontalAlignment="Left" Height="39" Margin="582,405,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Click="VitalityDown"/>
+
 	</Grid>
 </Window>
