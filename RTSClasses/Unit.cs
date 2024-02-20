@@ -1,29 +1,38 @@
-﻿namespace RTSClasses
+﻿
+using System.ComponentModel;
+
+namespace RTSClasses
 {
-    public class Unit : Creature
+    public class Unit : Nameable, IHealthHandler
     {
+        public int Health { get; set; }
+        public int MaxHealth { get; set; }
+
         public int PhysicalDamage { get; protected set; }
         public int Armor { get; protected set; }
         public int CriticalChance { get; protected set; }
         public int CriticalDamage { get; protected set; }
         public int MagicalDamage { get; protected set; }
         public int MagicDefense { get; protected set; }
-        public int Mana { get; protected set; }
+        public int Mana { get; set; }
 
-        public int Level { get; protected set; } = 1;
-        public int Experience { get => _exp; protected set { _exp = value; Level = calculateLevel(); } }
+        public int Level { get => _level; protected set { _level = value; } }
+        public long Experience { get => _exp; set { _exp = value; calculateLevel(); } }
+        public int ExpToNextLvl { get; set; } = 1000;
+        public int SkillPoints { get; set; }
         public int MaxLevel { get; protected set; } = 50;
 
-        protected int _exp;
+        protected long _exp;
+        protected int _level = 1;
         protected int _str;
         protected int _dex;
         protected int _int;
         protected int _vit;
 
-        public int Strenght { get => _str; protected set { _str = value; onStatChange?.Invoke(); } }
-        public int Dexterity { get => _dex; protected set { _dex = value; onStatChange?.Invoke(); } }
-        public int Intelligence { get => _int; protected set { _int = value; onStatChange?.Invoke(); } }
-        public int Vitality { get => _vit; protected set { _vit = value; onStatChange?.Invoke(); } }
+        public int Strenght { get => _str; set { _str = value; onStatChange?.Invoke(); } }
+        public int Dexterity { get => _dex; set { _dex = value; onStatChange?.Invoke(); } }
+        public int Intelligence { get => _int; set { _int = value; onStatChange?.Invoke(); } }
+        public int Vitality { get => _vit; set { _vit = value; onStatChange?.Invoke(); } }
 
         public int MaxStrenght { get; protected set; }
         public int MaxDexterity { get; protected set; }
@@ -46,7 +55,6 @@
             onStatChange = Calculate;
         }
 
-        public Unit(string name) : base(name) { onStatChange = Calculate; }
         public void ShowInfo()
         {
             Console.WriteLine($"HP:{Health}/{MaxHealth}\nMP:{Mana}/{MaxMana}\nSTR:{Strenght}\nDEX:{Dexterity}\nINT:{Intelligence}\nVIT:{Vitality}");
@@ -128,7 +136,7 @@
             calculateDefense();
         }
 
-        protected int calculateLevel()
+        protected void calculateLevel()
         {
             int temp = 0;
             int templvl = 0;
@@ -138,7 +146,13 @@
                 templvl = i;
             }
 
-            return templvl;
+            if (templvl != Level)
+            {
+                SkillPoints += (templvl - Level) * 5;
+                Level = templvl;
+            }
+
+            ExpToNextLvl = temp;
         }
 
         public void GainXp(int exp)

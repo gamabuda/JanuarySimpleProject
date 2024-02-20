@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RTSClasses
 {
-    public class Barrack : Creature
+    public class Barrack : Nameable
     {
         public Unit RecruitUnit(string UnitName)
         {

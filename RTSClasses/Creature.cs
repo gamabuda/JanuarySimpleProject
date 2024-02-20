@@ -1,23 +1,22 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace RTSClasses
 {
-    public class Creature
+    public class Nameable
     {
         public string Name { get; set; }
-        public int Health { get; set; }
-        public int MaxHealth { get; protected set; }
-
-        public Creature()
+        public string Icon { get; set; }
+        public Nameable()
         {
             Name = ToString().Split('.')[1];
         }
 
-        public Creature(string name)
+        public Nameable(string name)
         {
             Name = name;
         }

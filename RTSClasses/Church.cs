@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RTSClasses
 {
-    public class Church : Creature
+    public class Church : Building
     {
         private const int _regen = 10;
         public Church() : base() { }

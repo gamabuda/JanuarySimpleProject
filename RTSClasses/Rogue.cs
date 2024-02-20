@@ -1,13 +1,16 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace RTSClasses
 {
     public class Rogue : Unit
     {
+        public string Icon { get; set; } = "Icons\\Rogue.png";
         public Rogue() : base()
         {
             Strenght = 20;

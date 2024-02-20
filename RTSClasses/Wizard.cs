@@ -1,8 +1,10 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace RTSClasses
 {
@@ -11,6 +13,7 @@ namespace RTSClasses
         public int HealPoint { get; private set; } = 10;
         public int HealManaCost { get; private set; } = 15;
 
+        public string Icon { get; set; } = "Icons\\Wizard.png";
         public Wizard() : base()
         {
             Strenght = 15;

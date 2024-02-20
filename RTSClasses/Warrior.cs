@@ -1,13 +1,16 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace RTSClasses
 {
     public class Warrior : Unit
     {
+        public string Icon { get; set; } = "Icons\\Warrior.png";
         public Warrior() : base()
         {
             Strenght = 30;
@@ -18,7 +21,7 @@ namespace RTSClasses
             MaxStrenght = 250;
             MaxDexterity = 80;
             MaxIntelligence = 50;
-            MaxVitality = 25;
+            MaxVitality = 100;
 
             Calculate();
 
