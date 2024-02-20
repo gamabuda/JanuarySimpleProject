@@ -16,21 +16,15 @@
 
 	<Grid>
 
-
-		<Grid.RowDefinitions>
-			<RowDefinition Height="auto"/>
-			<RowDefinition/>
-		</Grid.RowDefinitions>
-
-		<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-			<Button Content="Warrior" Click="Button_Click_1"/>
+		<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="502,7,0,564" Width="160">
+			<Button Content="Warrior" Click="Button_Click_1" Height="63"/>
 			<Button Content="Rogue" Margin="5,0,5,0" Click="Button_Click_2"/>
 			<Button Content="Wizard" Click="Button_Click_3"/>
 		</StackPanel>
 
-		<TextBlock FontSize="16" x:Name="LvlTB" Text="{Binding Level}" VerticalAlignment="Top" HorizontalAlignment="Center" Width="16" Margin="0,22,0,0" Grid.Row="1"/>
+		<TextBlock FontSize="16" x:Name="LvlTB" Text="{Binding Level}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40" Margin="552,95,0,0" Height="60"/>
 
-		<StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Horizontal" Margin="0,470,0,0">
+		<StackPanel Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Margin="176,470,0,0" Grid.Column="2" Grid.ColumnSpan="2">
 			<TextBlock x:Name="StrTB" FontSize="16" Padding="10" Text="{Binding Strength}"/>
 			<TextBlock x:Name="DexTB" FontSize="16" Padding="10" Text="{Binding Dexterity}"/>
 			<TextBlock x:Name="IntTB" FontSize="16" Padding="10" Text="{Binding Intelligence}"/>
@@ -38,27 +32,31 @@
 			<Button FontSize="16" Margin="10" Padding="10" Content="Level up" Click="Button_Click_LevelUp"/>
 
 		</StackPanel>
-		<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="150" Margin="300,48,0,0" Grid.Row="1" VerticalAlignment="Top" Width="300"/>
-		<StackPanel HorizontalAlignment="Left" Height="47" Margin="78,260,0,0" Grid.Row="1" VerticalAlignment="Top" Width="548">
+		<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="150" Margin="116,61,0,0" Grid.Row="1" VerticalAlignment="Top" Width="300" Grid.Column="2" Grid.ColumnSpan="2"/>
+		<StackPanel HorizontalAlignment="Left" Height="47" Margin="32,260,0,0" Grid.Row="1" VerticalAlignment="Top" Width="548" Grid.Column="1" Grid.ColumnSpan="3">
 			<TextBlock TextWrapping="Wrap" Text="Strenght: " FontSize="24" Height="47"/>
 		</StackPanel>
-		<StackPanel HorizontalAlignment="Left" Height="47" Margin="78,312,0,0" Grid.Row="1" VerticalAlignment="Top" Width="541">
+		<StackPanel HorizontalAlignment="Left" Height="47" Margin="32,312,0,0" Grid.Row="1" VerticalAlignment="Top" Width="541" Grid.Column="1" Grid.ColumnSpan="3">
 			<TextBlock TextWrapping="Wrap" Text="Dexterity: " FontSize="24"/>
 		</StackPanel>
-		<StackPanel HorizontalAlignment="Left" Height="47" Margin="78,353,0,0" Grid.Row="1" VerticalAlignment="Top" Width="541">
+		<StackPanel HorizontalAlignment="Left" Height="47" Margin="32,353,0,0" Grid.Row="1" VerticalAlignment="Top" Width="541" Grid.Column="1" Grid.ColumnSpan="3">
 			<TextBlock TextWrapping="Wrap" Text="Intelligence: " FontSize="24"/>
 		</StackPanel>
-		<StackPanel HorizontalAlignment="Left" Height="47" Margin="78,405,0,0" Grid.Row="1" VerticalAlignment="Top" Width="541">
+		<StackPanel HorizontalAlignment="Left" Height="47" Margin="32,405,0,0" Grid.Row="1" VerticalAlignment="Top" Width="541" Grid.Column="1" Grid.ColumnSpan="3">
 			<TextBlock TextWrapping="Wrap" Text="Vitality: " FontSize="24"/>
 		</StackPanel>
-		<Button Content="-" HorizontalAlignment="Left" Height="42" Margin="582,260,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Click="StrenghtDown"/>
-		<Button Content="+" HorizontalAlignment="Left" Height="42" Margin="545,260,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Click="StrenghtUp"/>
-		<Button Content="-" HorizontalAlignment="Left" Height="39" Margin="582,312,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Click="DexterityDown"/>
-		<Button Content="+" HorizontalAlignment="Left" Height="39" Margin="545,312,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Click="DexterityUP" />
-		<Button Content="+" HorizontalAlignment="Left" Height="39" Margin="545,357,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Click="IntellligenceUp"/>
-		<Button Content="-" HorizontalAlignment="Left" Height="39" Margin="582,357,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Click="IntelligenceDown"/>
-		<Button Content="+" HorizontalAlignment="Left" Height="39" Margin="545,405,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Click="VitalityUp"/>
-		<Button Content="-" HorizontalAlignment="Left" Height="39" Margin="582,405,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Click="VitalityDown"/>
-
+		<Button Content="-" HorizontalAlignment="Left" Height="42" Margin="269,260,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Click="StrenghtDown" Grid.Column="3"/>
+		<Button Content="+" HorizontalAlignment="Left" Height="42" Margin="232,260,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Click="StrenghtUp" Grid.Column="3"/>
+		<Button Content="-" HorizontalAlignment="Left" Height="39" Margin="269,312,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Click="DexterityDown" Grid.Column="3"/>
+		<Button Content="+" HorizontalAlignment="Left" Height="39" Margin="232,312,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Click="DexterityUP" Grid.Column="3" />
+		<Button Content="+" HorizontalAlignment="Left" Height="39" Margin="232,357,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Click="IntellligenceUp" Grid.Column="3"/>
+		<Button Content="-" HorizontalAlignment="Left" Height="39" Margin="269,357,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Click="IntelligenceDown" Grid.Column="3"/>
+		<Button Content="+" HorizontalAlignment="Left" Height="39" Margin="232,405,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Click="VitalityUp" Grid.Column="3"/>
+		<Button Content="-" HorizontalAlignment="Left" Height="39" Margin="269,405,0,0" Grid.Row="1" VerticalAlignment="Top" Width="37" Click="VitalityDown" Grid.Column="3"/>
+		<TextBlock 
+    Text="{Binding Experience, StringFormat='Experience - {0}'}"
+    Padding="10" 
+    TextAlignment="Left" Grid.Column="1" Margin="0,540,361,22" Grid.Row="1" FontSize="16" Grid.ColumnSpan="3">
+		</TextBlock>
 	</Grid>
 </Window>

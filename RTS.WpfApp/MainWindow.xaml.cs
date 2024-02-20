@@ -46,6 +46,7 @@ namespace RTS.WpfApp
             unit.Dexterity++;
             unit.Intelligence++;
             unit.Vitality++;
+            unit.StartsPoints++;
             this.DataContext = unit;
         }
 
@@ -80,7 +81,14 @@ namespace RTS.WpfApp
             {
                 unit.StartsPoints--;
                 unit.Strength++;
+            //    if (unit.Vitality == 0)
+            //    return;
+            //else
+            //{
+            //    unit.StartsPoints++;
+            //    unit.Vitality--;
             }
+        }
 
             //private void Button_Click(object sender, RoutedEventArgs e)
             //{
@@ -127,6 +135,41 @@ namespace RTS.WpfApp
             //{
 
             //}
+        
+
+        private void StrenghtDown(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DexterityDown(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void IntelligenceDown(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void VitalityDown(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void VitalityUp(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void IntellligenceUp(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DexterityUP(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
