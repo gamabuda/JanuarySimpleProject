@@ -7,7 +7,87 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <StackPanel Grid.Row="1"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            
+        </Grid.ColumnDefinitions>
         
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <Label Content="Class"></Label>
+            <TextBlock></TextBlock>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="3" Grid.Column="1">
+            <Label Content="Level:"></Label>
+            <TextBlock></TextBlock>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="4" Grid.Column="1">
+            <Label Content="HP:"></Label>
+            <TextBlock></TextBlock>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="5" Grid.Column="1">
+            <Label Content="Mana:"></Label>
+            <TextBlock></TextBlock>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="3">
+            <Label Content="S"></Label>
+            <TextBlock></TextBlock>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="3">
+            <Label Content="D"></Label>
+            <TextBlock></TextBlock>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="3">
+            <Label Content="I"></Label>
+            <TextBlock></TextBlock>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Grid.Column="3">
+            <Label Content="V"></Label>
+            <TextBlock></TextBlock>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="4">
+            
+        </StackPanel>
+        
+        <StackPanel Grid.Row="2" Grid.Column="4">
+
+        </StackPanel>
+        
+        <StackPanel Grid.Row="2" Grid.Column="4">
+
+        </StackPanel>
+        
+        <StackPanel Grid.Row="2" Grid.Column="4">
+
+        </StackPanel>
     </Grid>
 </Window>
