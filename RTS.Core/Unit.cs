@@ -21,6 +21,16 @@ namespace RTS.Core
             }
 
         }
+        private int _startspoints;
+        public int StartsPoints
+        {
+            get => _startspoints;
+            set
+            {
+                _startspoints = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(StartsPoints)));
+            }
+        }
         public int MaxLevel { get; set; } = 50;
         public int Points { get; set; } = 0;
         public int LevelUpPoints { get; set; } = 1000;
