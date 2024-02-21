@@ -24,5 +24,10 @@ namespace RTS.WPF2
         {
             InitializeComponent();
         }
+
+        private void SBTNNplus_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

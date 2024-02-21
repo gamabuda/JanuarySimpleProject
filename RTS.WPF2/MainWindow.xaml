@@ -36,58 +36,82 @@
         
         <StackPanel Grid.Row="2" Grid.Column="1">
             <Label Content="Class"></Label>
-            <TextBlock></TextBlock>
+            <TextBlock x:Name="ClassN"></TextBlock>
         </StackPanel>
         
         <StackPanel Grid.Row="3" Grid.Column="1">
             <Label Content="Level:"></Label>
-            <TextBlock></TextBlock>
+            <TextBlock x:Name="LevelN"></TextBlock>
         </StackPanel>
         
         <StackPanel Grid.Row="4" Grid.Column="1">
             <Label Content="HP:"></Label>
-            <TextBlock></TextBlock>
+            <TextBlock x:Name="HPN"></TextBlock>
         </StackPanel>
         
         <StackPanel Grid.Row="5" Grid.Column="1">
             <Label Content="Mana:"></Label>
-            <TextBlock></TextBlock>
+            <TextBlock x:Name="ManaN"></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="3">
             <Label Content="S"></Label>
-            <TextBlock></TextBlock>
+            <TextBlock x:Name="SN"></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="3">
             <Label Content="D"></Label>
-            <TextBlock></TextBlock>
+            <TextBlock x:Name="DN"></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="3">
             <Label Content="I"></Label>
-            <TextBlock></TextBlock>
+            <TextBlock x:Name="IN"></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="5" Grid.Column="3">
             <Label Content="V"></Label>
-            <TextBlock></TextBlock>
+            <TextBlock x:Name="VN"></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="4">
-            
-        </StackPanel>
-        
-        <StackPanel Grid.Row="2" Grid.Column="4">
-
+            <Button x:Name="SBTNNplus" Content="+"></Button>
+            <Button x:Name="SBTNNminus" Content="-"></Button>
         </StackPanel>
         
-        <StackPanel Grid.Row="2" Grid.Column="4">
-
+        <StackPanel Grid.Row="3" Grid.Column="4">
+            <Button x:Name="DBTNNplus" Content="+"></Button>
+            <Button x:Name="DBTNNminus" Content="-"></Button>
         </StackPanel>
         
-        <StackPanel Grid.Row="2" Grid.Column="4">
+        <StackPanel Grid.Row="4" Grid.Column="4">
+            <Button x:Name="IBTNNplus" Content="+"></Button>
+            <Button x:Name="IBTNNminus" Content="="></Button>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="5" Grid.Column="4">
+            <Button x:Name="VBTNNplus" Content="+"></Button>
+            <Button x:Name="VBTNNminus" Content="="></Button>
+        </StackPanel>
 
+        <StackPanel Grid.Row="7" Grid.Column="1">
+            <Button x:Name="XPBTNN" Content="Get XP"></Button>
+            <Label Content="1000 за клик"></Label>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2"
+                    Grid.Column="6"
+                    Grid.ColumnSpan="4"
+                    Grid.RowSpan="4"
+                    Background="Red">
+        </StackPanel>
+
+        <StackPanel Grid.Row="6" Grid.Column="7">
+            <Button x:Name="Back" Content="←"></Button>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="6" Grid.Column="8">
+            <Button x:Name="" Content="→"></Button>
         </StackPanel>
     </Grid>
 </Window>
