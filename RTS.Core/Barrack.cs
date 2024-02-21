@@ -6,7 +6,20 @@ using System.Threading.Tasks;
 
 namespace RTS.Core
 {
-    internal class Barrack
+    public class Barrack
     {
+        public Unit CreateUnit(string type)
+        {
+            switch (type)
+            {
+                case "warrior":
+                    return new Warrior();
+                case "rogue":
+                    return new Rogue();
+                case "wizard":
+                    return new Wizard();
+                default: return null;
+            }
+        }
     }
 }

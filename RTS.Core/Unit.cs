@@ -18,6 +18,10 @@ namespace RTS.Core
         public int Dexterity { get; set; }
         public int Intelligence { get; set; }
         public int Vitality { get; set; }
+        public int MaxStrength { get; set; }
+        public int MaxDexterity { get; set; }
+        public int MaxIntelligence { get; set; }
+        public int MaxVitality { get; set; }
         public int PDamage { get; set; }
         public int MDamage { get; set; }
         public int Armor { get; set; }
@@ -40,18 +44,18 @@ namespace RTS.Core
 
         public void Attack(Unit unit)
         {
-            if (unit.Health - this.Damage < 1)
+            if (unit.Health - PDamage < 1)
             {
                 unit.Health = 0;
                 return;
             }
 
-            unit.Health -= this.Damage;
+            unit.Health -= PDamage;
         }
 
         public void LevelUp()
         {
-            if (this.Level <= 50)
+            if (Level <= 50)
             {
                 int index = (Level - 1) * 1000;
 
@@ -61,4 +65,5 @@ namespace RTS.Core
                     return;
             }
         }
+    }
 }
