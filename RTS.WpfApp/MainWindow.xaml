@@ -7,15 +7,19 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Content="Warrior" Click="Button_Click_1"/>
-            <Button Content="Rogue" Margin="5,0,5,0" Click="Button_Click_2"/>
-            <Button Content="Wizzzard" Click="Button_Click_3"/>
+            <Button Content="Warrior" Click="Button_Click_1" Width="80"/>
+            <Button Content="Rogue" Margin="5,0,5,0" Click="Button_Click_2" Width="80"/>
+            <Button Content="Wizzzard" Click="Button_Click_3" Width="80"/>
         </StackPanel>
 
         <TextBlock FontSize="16" 
@@ -48,5 +52,23 @@
          Text="{Binding Vitality}"/>
             <Button FontSize="16" Margin="10" Padding="10" Content="Level up" Click="Button_Click"/>
         </StackPanel>
+        <Image 
+            HorizontalAlignment="Center"
+            Grid.Column="1"
+            VerticalAlignment="Top"
+             Source="/warrior.png" Margin="0,56,0,0" Grid.Row="1"/>
+        <TextBlock
+            x:Name="TBWarrior"
+            FontSize="30"
+            
+            FontWeight="Bold"
+            FontStretch="Expanded"
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            Height="33"
+            TextWrapping="Wrap"
+            Text="Warrior"
+            VerticalAlignment="Top"
+            Width="109" Margin="0,1,0,0"/>
     </Grid>
 </Window>
