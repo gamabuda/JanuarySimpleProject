@@ -6,7 +6,17 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
+    <Window.Resources>
+        <Image x:Key="wizard" Source="/Снимок экрана 2024-02-21 110256.png"></Image>
+    </Window.Resources>
+    <Grid Background="LightSkyBlue">
+        <Button Content="Level Up" HorizontalAlignment="Center" Margin="0,345,0,0" VerticalAlignment="Top" Height="50" Width="102" Background="White"/>
+        
+        <Rectangle x:Name="rect" Fill="White" Margin="270,41,270,145" Stroke="Black"/>
+        <ContentPresenter x:Name="ContentPresenter" Margin="270,41,270,145"></ContentPresenter>
+        <RadioButton Content="Warrior" HorizontalAlignment="Left" Margin="548,56,0,0" VerticalAlignment="Top" GroupName="1" Checked="RadioButton_Checked"/>
+        <RadioButton Content="Rogue" HorizontalAlignment="Left" Margin="548,91,0,0" VerticalAlignment="Top" GroupName="1" Checked="RadioButton_Checked_1"/>
+        <RadioButton Content="Wizard" HorizontalAlignment="Left" Margin="548,126,0,0" VerticalAlignment="Top" GroupName="1" Checked="RadioButton_Checked_2"/>
+        <TextBlock x:Name="Textblock" HorizontalAlignment="Left" Margin="617,175,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
     </Grid>
 </Window>

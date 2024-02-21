@@ -8,7 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Снимок экрана 2024-02-21 110256.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\RTS.Core\RTS.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Снимок экрана 2024-02-21 110256.png" />
   </ItemGroup>
 
 </Project>

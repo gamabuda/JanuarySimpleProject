@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RTS.Core
 {
-    internal class Warrior : Unit
+    public class Warrior : Unit
     {
         public Warrior()
         {

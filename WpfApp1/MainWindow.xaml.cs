@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RTS.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,29 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        Unit unit;
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            unit = new Warrior();
+            Textblock.Text = unit.ToString();
+            ContentPresenter.Content = Resources["wizard"];
+        }
+
+        private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
+        {
+            unit = new Rogue();
+            Textblock.Text = unit.ToString();
+        }
+
+        private void RadioButton_Checked_2(object sender, RoutedEventArgs e)
+        {
+            unit = new Wizard();
+            Textblock.Text = unit.ToString();
         }
     }
 }
