@@ -9,7 +9,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="rogue.png" />
+    <None Remove="warrior.png" />
+    <None Remove="wizard.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\RTS.Lib\RTS.Lib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="rogue.png" />
+    <Resource Include="warrior.png" />
+    <Resource Include="wizard.png" />
   </ItemGroup>
 
 </Project>
