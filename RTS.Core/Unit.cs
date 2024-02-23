@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace RTS.Core
 {
-    public class Unit
+    public class Unit 
     {
         public int MaxHealth { get; set; }
         public int MaxMana { get; set; }
@@ -23,8 +24,9 @@ namespace RTS.Core
         public int MDefence { get; set; }
         public int CrtChance { get; set; }
         public int CrtDamage { get; set; }
-        public int Level { get; set; }
+        public int Level { get; set; } = 1;
         public int Exp { get; set; }
+        public int MaxLevel { get; set; } = 50;
 
         public void ShowInfo()
         {
@@ -49,7 +51,7 @@ namespace RTS.Core
 
         public void LevelUp(Unit unit)
         {
-            if (unit.Level < 50)
+            if (unit.Level < unit.MaxLevel)
             {
                 int NecessaryExp = (unit.Level - 1) * 1000;
 
