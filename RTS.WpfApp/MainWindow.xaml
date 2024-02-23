@@ -58,5 +58,6 @@
     Padding="10" 
     TextAlignment="Left" Grid.Column="1" Margin="0,540,361,22" Grid.Row="1" FontSize="16" Grid.ColumnSpan="3">
 		</TextBlock>
+		<TextBlock HorizontalAlignment="Left" Margin="500,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="ru-ru" Text="Уровень"/></TextBlock>
 	</Grid>
 </Window>
