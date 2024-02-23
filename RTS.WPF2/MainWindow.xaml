@@ -36,7 +36,7 @@
         
         <StackPanel Grid.Row="2" Grid.Column="1">
             <Label Content="Class"></Label>
-            <TextBlock x:Name="ClassN"></TextBlock>
+            <TextBlock x:Name="ClassN" Text="{Binding Source=unit }"></TextBlock>
         </StackPanel>
         
         <StackPanel Grid.Row="3" Grid.Column="1">
@@ -56,7 +56,7 @@
 
         <StackPanel Grid.Row="2" Grid.Column="3">
             <Label Content="S"></Label>
-            <TextBlock x:Name="SN"></TextBlock>
+            <TextBlock x:Name="SN" Text="{Binding Path=Strength}"></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="3">
@@ -111,7 +111,18 @@
         </StackPanel>
         
         <StackPanel Grid.Row="6" Grid.Column="8">
-            <Button x:Name="" Content="→"></Button>
+            <Button x:Name="Ahead" Content="→" Click="Ahead_Click"></Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="7" Grid.Column="4">
+            <Label Content="StartPoints:"></Label>
+            <TextBlock x:Name="SP" />
+           
+            
+        </StackPanel>
+        
+        <StackPanel Grid.Row="7"   Grid.Column="5" Grid.ColumnSpan="6">
+            <Label Content="За каңдый уровень + 1" Height="36"></Label>
         </StackPanel>
     </Grid>
 </Window>
