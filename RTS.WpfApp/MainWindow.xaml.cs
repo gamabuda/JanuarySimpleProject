@@ -61,6 +61,7 @@ namespace RTS.WpfApp
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             unit = new Warrior();
+            unit.Exp = 0;
             this.DataContext = unit;
 
             TBPerson.Text = "Warrior";
@@ -80,12 +81,14 @@ namespace RTS.WpfApp
             TBIntelligence.Text = $"Intelligence: {unit.Intelligence}";
             TBVitality.Text = $"Vitality: {unit.Vitality}";
 
+            HideAllImages();
             ImageWarrior.Visibility = Visibility.Visible;
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             unit = new Rogue();
+            unit.Exp = 0;
             this.DataContext = unit;
 
             TBPerson.Text = "Rogue";
@@ -105,13 +108,14 @@ namespace RTS.WpfApp
             TBIntelligence.Text = $"Intelligence: {unit.Intelligence}";
             TBVitality.Text = $"Vitality: {unit.Vitality}";
 
-            ImageWarrior.Visibility = Visibility.Collapsed;
+            HideAllImages();
             ImageRogue.Visibility = Visibility.Visible;
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             unit = new Wizard();
+            unit.Exp = 0;
             this.DataContext = unit;
 
             TBPerson.Text = "Wizard";
@@ -131,14 +135,23 @@ namespace RTS.WpfApp
             TBIntelligence.Text = $"Intelligence: {unit.Intelligence}";
             TBVitality.Text = $"Vitality: {unit.Vitality}";
 
-            
-            ImageRogue.Visibility = Visibility.Collapsed;
+            HideAllImages();
             ImageWizard.Visibility = Visibility.Visible;
         }
 
+        private void HideAllImages()
+        {
+            foreach (UIElement element in SPImages.Children)
+            {
+                if (element is Image image)
+                {
+                    image.Visibility = Visibility.Collapsed;
+                }
+            }
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            // Добавьте код для получения опыта здесь
+            unit.Exp += 1000;
         }
 
     }
