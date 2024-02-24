@@ -45,61 +45,52 @@
             VerticalAlignment="Top" 
             HorizontalAlignment="Center"/>
 
-        <StackPanel Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Grid.Column="1" Margin="294,319,0,0">
-            <Button FontSize="16" 
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Vertical" Grid.Column="1" Margin="0,277,0,0" Height="107" Width="321">
+            <Button FontSize="20" 
                     Margin="10" 
                     Padding="10"
                     Content="Get exp"
-                    Click="Button_Click"/>
+                    Click="Button_Click" Height="55" Width="186"/>
+            <TextBlock 
+                Text="Start Points" 
+                FontSize="20"
+                Margin="10,0,0,0" Width="102"/>
         </StackPanel>
 
-        <StackPanel x:Name="SPImages" Grid.Column="1" Grid.RowSpan="2">
-            <Image 
-                x:Name="ImageWarrior"
-                HorizontalAlignment="Center"
-                Grid.Column="1"
-                VerticalAlignment="Top"
-                Source="/warrior.png" 
-                Margin="0,40,0,0" 
-                Grid.Row="1" 
-                Height="244"
-                Visibility="Collapsed" 
-                Width="576"/>
-            <Image
-                x:Name="ImageRogue"
-                HorizontalAlignment="Left"
-                Grid.Column="1"
-                VerticalAlignment="Top"
-                Source="/rogue.png" 
-                Margin="121,82,0,0" 
-                Grid.Row="1" 
-                Height="200"
-                Visibility="Collapsed" 
-                Width="192"/>
+        <StackPanel x:Name="SPImages" Grid.RowSpan="2" Margin="382,41,10,121" Grid.ColumnSpan="2">
             <Image
                 x:Name="ImageWizard"
-                HorizontalAlignment="Left"
-                Grid.Column="1"
-                VerticalAlignment="Top"
                 Source="/wizard.png" 
-                Margin="36,55,0,0" 
-                Grid.Row="1" 
-                Height="243"
+                Height="270"
                 Visibility="Collapsed" 
-                Width="316"/>
-            <TextBlock
-                x:Name="TBPerson"
-                FontSize="30"
-                FontWeight="Bold"
-                Grid.Column="1"
-                HorizontalAlignment="Left"
-                Height="33"
-                TextWrapping="Wrap"
-                Text="Warrior"
-                VerticalAlignment="Top"
-                Width="109" 
-                Margin="139,41,0,0" 
-                Grid.RowSpan="2"/>
+                Width="256" RenderTransformOrigin="0.484,0.498"/>
+            <TextBlock 
+                x:Name="WizardLabel" 
+                Text="Wizard" 
+                FontSize="20" 
+                Visibility="Collapsed"/>
+            <Image
+                x:Name="ImageRogue"
+                Source="/rogue.png" 
+                Height="237"
+                Visibility="Collapsed" 
+                Width="174"/>
+            <TextBlock 
+                x:Name="RogueLabel" 
+                Text="Rogue" 
+                FontSize="20" 
+                Visibility="Collapsed"/>
+            <Image 
+                x:Name="ImageWarrior"
+                Source="/warrior.png" 
+                Height="244"
+                Visibility="Collapsed" 
+                Width="449"/>
+            <TextBlock 
+                x:Name="WarriorLabel" 
+                Text="Warrior" 
+                FontSize="20" 
+                Visibility="Collapsed"/>
         </StackPanel>
 
         <StackPanel Margin="8,35,80,264" Grid.Row="1">
@@ -112,26 +103,29 @@
                 x:Name="TBExp"
                 Text="{Binding Exp}"
                 FontSize="20"
-                Width="124"/>
+                Width="290"/>
             <TextBlock 
                 x:Name="TBMaxExp"
                 Height="28" 
+                FontSize="20"
                 TextWrapping="Wrap" 
                 Text="{Binding MaxExp}" 
-                Width="124"/>
+                Width="290"/>
         </StackPanel>
 
         <StackPanel Margin="0,116,75,217" Grid.Row="1">
-            <TextBlock 
-                x:Name="TBHealth"
-                Text="Health:" 
-                FontSize="20" 
-                Width="290"/>
-            <TextBlock 
-                x:Name="TBMana"
-                Text="Mana:" 
-                FontSize="20" 
-                Width="290"/>
+            <TextBlock x:Name="TBHealth" FontSize="20" Width="290">
+                <Run Text="Health: "/>
+                <Run Text="{Binding Health}"/>
+                <Run Text="/"/>
+                <Run Text="{Binding MaxHealth}"/>
+            </TextBlock>
+            <TextBlock x:Name="TBMana" FontSize="20" Width="290">
+                <Run Text="Mana: "/>
+                <Run Text="{Binding Mana}"/>
+                <Run Text="/"/>
+                <Run Text="{Binding MaxMana}"/>
+            </TextBlock>
         </StackPanel>
         <StackPanel Margin="10,197,82,36" Grid.Row="1">
             <TextBlock 
@@ -155,5 +149,13 @@
                 FontSize="20" 
                 Width="290"/>
         </StackPanel>
+        <TextBlock
+                x:Name="TBPerson"
+                FontSize="30"
+                FontWeight="Bold"
+                TextWrapping="Wrap"
+                Text="Warrior"
+                Grid.Column="1" Margin="132,1,160,7" 
+                />
     </Grid>
 </Window>

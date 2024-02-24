@@ -10,8 +10,6 @@ namespace RTS.Lib
     public class Unit : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        public int Health { get; set; }
-        public int Mana { get; set; }
 
         public int Strength { get; set; }
         public int Dexterity { get; set; }
@@ -23,8 +21,6 @@ namespace RTS.Lib
         public int MDefense { get; set; }
         public int CrtChance { get; set; }
         public int CrtDamage { get; set; }
-        public int MaxHealth { get; set; }
-        public int MaxMana { get; set; }
         public int MaxLvl { get; set; } = 50;
         
         public Unit()
@@ -39,7 +35,7 @@ namespace RTS.Lib
             get { return (Lvl - 1) * 1000; }
         }
 
-        private int _lvl;
+        public int _lvl;
         public int Lvl
         {
             get { return _lvl; }
@@ -66,6 +62,52 @@ namespace RTS.Lib
                     OnPropertyChanged(nameof(MaxExp));
                     LevelUp();
                 }
+            }
+        }
+
+        public int _health;
+        public int _maxHealth;
+
+        public int Health
+        {
+            get { return _health; }
+            set
+            {
+                _health = value;
+                OnPropertyChanged(nameof(Health));
+            }
+        }
+
+        public int MaxHealth
+        {
+            get { return _maxHealth; }
+            set
+            {
+                _maxHealth = value;
+                OnPropertyChanged(nameof(MaxHealth));
+            }
+        }
+
+        public int _mana;
+        public int _maxMana;
+
+        public int Mana
+        {
+            get { return _mana; }
+            set
+            {
+                _mana = value;  
+                OnPropertyChanged(nameof(Mana));
+            }
+        }
+
+        public int MaxMana
+        {
+            get { return _maxMana; }
+            set
+            {
+                _mana = value;
+                OnPropertyChanged(nameof(MaxMana));
             }
         }
 
@@ -111,29 +153,6 @@ namespace RTS.Lib
                     Console.WriteLine($"Вы достигли уровня {Lvl}!\nВаш текущий опыт: {Exp}");
                 }
             }
-
-            //public void LevelUp(Unit unit)
-            //{
-            //    if (unit.Lvl < unit.MaxLvl)
-            //    {
-            //        int Exptoneedlvl = (unit.Lvl - 1) * 1000;
-
-            //        if (unit.Exp >= Exptoneedlvl)
-            //        {
-            //            unit.Lvl++;
-            //            unit.Exp -= Exptoneedlvl; 
-            //            Console.WriteLine($"Вы достигли уровня {unit.Lvl}!\nВаш текцщий опыт: {unit.Exp}");
-            //        }
-            //        else
-            //        {
-            //            Console.WriteLine("Недостаточно опыта для повышения уровня.");
-            //        }
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine("Вы достигли максимального уровня!");
-            //    }
-            //}
         }
     }
 }

@@ -8,6 +8,8 @@
             this.Dexterity = 15;
             this.Intelligence = 10;
             this.Vitality = 25;
+            MaxHealth = 80;
+            MaxMana = 10;
 
             this.Health = (int) (Vitality * 2 + Strength);
             this.Mana = (int) (1 * Intelligence);

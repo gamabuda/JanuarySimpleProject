@@ -14,6 +14,8 @@ namespace RTS.Lib
             this.Dexterity = 30;
             this.Intelligence = 15;
             this.Vitality = 20;
+            MaxHealth = 60;
+            MaxMana = 15;
 
             this.Health = (int)(Vitality * 2 + Strength);
             this.Mana = (int)(1 * Intelligence);
