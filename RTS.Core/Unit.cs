@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace RTS.Core
 {
-    public class Unit 
-    {
+    public class Unit
+    { 
         public int MaxHealth { get; set; }
         public int MaxMana { get; set; }
         public int Health { get; set; }
@@ -28,6 +28,34 @@ namespace RTS.Core
         public int Exp { get; set; }
         public int MaxLevel { get; set; } = 50;
 
+        public int MaxStrenght { get;  set; } 
+        public int MaxDexterity { get;  set; } 
+        public int MaxIntelligence { get;  set; } 
+        public int MaxVitality { get;  set; }
+
+        public void Control()
+        {
+            if (Strength > MaxStrenght)
+            {
+                Strength = MaxStrenght;
+            }
+
+            if (Intelligence > MaxIntelligence)
+            {
+                Intelligence = MaxIntelligence;
+            }
+
+            if (Dexterity > MaxDexterity)
+            {
+                Dexterity = MaxDexterity;
+            }
+
+            if (Vitality > MaxVitality)
+            {
+                Vitality = MaxVitality;
+            }
+        }
+
         public void ShowInfo()
         {
             Console.WriteLine($"Health: {Health}\n" +
@@ -35,7 +63,7 @@ namespace RTS.Core
                 $"Strength: {Strength}\n\t" +
                 $"Dexterity: {Dexterity}\n\t" +
                 $"Intelligence: {Intelligence}\n\t" +
-                $"Virality: {Vitality}");
+                $"Vitality: {Vitality}");
         }
         public void Attack(Unit unit)
         {
@@ -49,21 +77,21 @@ namespace RTS.Core
 
         }
 
-        public void LevelUp(Unit unit)
+        public void LevelUp()
         {
-            if (unit.Level < unit.MaxLevel)
+            if (this.Level < this.MaxLevel)
             {
-                int NecessaryExp = (unit.Level - 1) * 1000;
+                int NecessaryExp = (this.Level - 1) * 1000;
 
-                while (unit.Exp < NecessaryExp)
+                if (this.Exp < NecessaryExp)
                 {
                     Console.WriteLine("Недостаточно опыта для повышения уровня");
                     return;
                 }
 
-                unit.Level++;
-                unit.Exp -= NecessaryExp;
-                Console.WriteLine($"Поздравляем, вы достигли уровня {unit.Level}! Текущий опыт: {unit.Exp}");
+                this.Level++;
+                this.Exp -= NecessaryExp;
+                Console.WriteLine($"Поздравляем, вы достигли уровня {this.Level}! Текущий опыт: {this.Exp}");
             }
             else
             {

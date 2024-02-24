@@ -5,40 +5,77 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RTS.WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="450">
+        Title="MKGame!" Height="480" Width="490">
     <Grid>
-        <TextBlock FontSize="16"
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="31*"/>
+            <ColumnDefinition Width="89*"/>
+            <ColumnDefinition Width="120*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Image x:Name="CharacterImage" Grid.ColumnSpan="3" Margin="1,33,230,152" Grid.RowSpan="2" Visibility="Collapsed" />
+        <TextBlock FontSize="18"
+                    FontFamily="Candara"
                    x:Name="LvlTB"
-                   Margin="10"
+                   Margin="58,10,0,0"
                    VerticalAlignment="Top"
-                   HorizontalAlignment="Center"/>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+                   HorizontalAlignment="Left" Grid.Column="1"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Vertical" Grid.Column="2" Margin="0,8,0,0" Width="240" Grid.Row="1" >
+            
             <TextBlock 
                 x:Name="StrTB"
-         FontSize="16" 
+                 FontFamily="Candara"
+         FontSize="18" 
          Margin="10" 
          Padding="10" 
          Text="{Binding Strength}"/>
             <TextBlock 
                 x:Name="DexTB"
-         FontSize="16" 
+                 FontFamily="Candara"
+         FontSize="18" 
          Margin="10" 
          Padding="10"
          Text="{Binding Dexterity}"/>
             <TextBlock 
                 x:Name="IntTB"
-         FontSize="16" 
+                 FontFamily="Candara"
+         FontSize="18" 
          Margin="10" 
          Padding="10" 
                 Text="{Binding Intelligence}"/>
             <TextBlock 
                 x:Name="VitTB"
-         FontSize="16" 
+                 FontFamily="Candara"
+         FontSize="18" 
          Margin="10" 
          Padding="10" 
          Text="{Binding Vitality}"/>
-            <Button FontSize="16" Margin="10" Padding="10" Content="Level up"/>
-        </StackPanel> 
+        </StackPanel>
+        <Button FontSize="18" Padding="10" Content="Level up"  Foreground="White" Click="Button_ClickLV" Width="103" FontFamily="Candara" Grid.Column="2" Margin="8,273,130,0" Grid.Row="1" VerticalAlignment="Top" >
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFDC49FB"/>
+                    <GradientStop Color="#FF2D0972" Offset="0.993"/>
+                    <GradientStop Color="#FFC805F9" Offset="0.099"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button FontSize="18" Padding="10" Content="Get Exp"  Foreground="White" Click="Button_ClickGE" Width="101" FontFamily="Candara" Grid.Column="2" Margin="118,273,21,0" Grid.Row="1" VerticalAlignment="Top" >
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF291D79" Offset="1"/>
+                    <GradientStop Color="#FFCC00FF" Offset="0"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <RadioButton Content="warrior" FontFamily="Candara" FontSize="20" HorizontalAlignment="Left" Margin="26,280,0,0" Grid.Row="1" VerticalAlignment="Top" Checked="WarriorRadio_Checked" Width="86" Grid.ColumnSpan="2"/>
+        <RadioButton Content="wizzard" FontFamily="Candara" FontSize="20" HorizontalAlignment="Left" Margin="26,309,0,0" Grid.Row="1" VerticalAlignment="Top" Checked="WizardRadio_Checked" Width="87" Grid.ColumnSpan="2"/>
+        <RadioButton Content="rogue" FontFamily="Candara" FontSize="20" HorizontalAlignment="Right" Margin="0,338,132,0" Grid.Row="1" VerticalAlignment="Top" Checked="RogueRadio_Checked" Width="87" Grid.ColumnSpan="2"/>
+        <TextBlock Text="Character information:" FontFamily="Candara" FontSize="20" Grid.Column="2" HorizontalAlignment="Center" Margin="0,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198"/>
 
 
     </Grid>
