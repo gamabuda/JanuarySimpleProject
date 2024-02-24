@@ -2,6 +2,7 @@
 {
     public class Unit
     {
+        
         public int OldXP { get; set; } = 0;
         int NewXp { get; set; } = 1000;
         int NextXp { get; set; }
@@ -24,7 +25,7 @@
         public double MagicalDefense { get; set; }
         public double CriticalChanse { get; set; }
         public double CriticalDamage { get; set; }
-
+        public int StartPoint{ get; set; } = 5;
         public void Attack(Unit u)
         {
             if (u.HP - u.Damage < 1)
@@ -48,6 +49,62 @@
             }
             
             NewXp += 1000;
+        }
+        public void GetStartPoints(Unit u)
+        {
+            if (StartPoint > 0)
+            {
+                if (u.Strength == u.Strength++)
+                {                   
+                    StartPoint -= 1;
+                    Strength += 1;
+                }
+
+                if(u.Vitality == u.Vitality++)
+                {
+                    StartPoint -= 1;
+                    Vitality += 1;
+                }
+
+                if (u.Dexterity == u.Dexterity++)
+                {
+                    StartPoint -= 1;
+                    Dexterity += 1;
+                }
+
+                if (u.Inteligence == u.Inteligence++)
+                {
+                    StartPoint -= 1;
+                    Inteligence += 1;
+                }
+            }
+           
+        }
+        public void ReturnStartPoints(Unit u)
+        {
+            if (u.Strength == u.Strength--)
+            {
+                StartPoint += 1;
+                Strength -= 1;
+            }
+
+            if (u.Vitality == u.Vitality--)
+            {
+                StartPoint += 1;
+                Vitality -= 1;
+            }
+
+            if (u.Dexterity == u.Dexterity--)
+            {
+                StartPoint += 1;
+                Dexterity -= 1;
+            }
+
+            if (u.Inteligence == u.Inteligence--)
+            {
+                StartPoint += 1;
+                Inteligence -= 1;
+            }
         }
     }
 
