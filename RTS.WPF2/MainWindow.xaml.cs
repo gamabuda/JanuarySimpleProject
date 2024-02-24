@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,93 +21,32 @@ namespace RTS.WPF2
     
     public partial class MainWindow : Window
     {
-         Unit unit {  get; set; }
+         Unit unit;
         public MainWindow()
         {
             InitializeComponent();
-            Unit unit = new Unit();
-            DataContext = unit;
+            unit = new Unit();
+            this.DataContext = unit;
         }
-
-        public class Unit : INotifyPropertyChanged
+        
+        public double Vitaluty
         {
-            
-          
-            private double _strength;
-            private double _vitality;
-            private double _dexterity;
-            private double _inteligence;
-
-            
-            
-           
-            public double Strength
+            get { return unit.Vitality; }
+            set
             {
-                get { return _strength; }
-                set
+                if (unit.Vitality != value)
                 {
-                    if (_strength != value)
-                    {
-                        _strength = value;
-                        OnPropertyChanged("Strength");
-                    }
+                    unit.Vitality = value;
+                    OnPropertyChanged("Counter");
                 }
             }
-
-            public double Vitality
-            {
-                get { return _vitality; }
-                set
-                {
-                    if (_vitality != value)
-                    {
-                        _vitality = value;
-                        OnPropertyChanged("Vitality");
-                    }
-                }
-            }
-
-            public double Inteligence
-            {
-                get { return _vitality; }
-                set
-                {
-                    if (_inteligence != value)
-                    {
-                        _inteligence = value;
-                        OnPropertyChanged("Dexterity");
-                    }
-                }
-            }
-
-            public double Dexterity
-            {
-                get { return _vitality; }
-                set
-                {
-                    if (_dexterity != value)
-                    {
-                        _dexterity = value;
-                        OnPropertyChanged("Dexterity");
-                    }
-                }
-            }
-
-            public event PropertyChangedEventHandler PropertyChanged;
-
-            protected virtual void OnPropertyChanged(string propertyName)
-            {
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            }
-
-           
         }
-        private void SBTNNplus_Click(object sender, RoutedEventArgs e)
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
         {
-            
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-       
         private void Wizard_Click(object sender, RoutedEventArgs e)
         {           
             Wizzard wizzard = new Wizzard();         
@@ -144,42 +84,47 @@ namespace RTS.WPF2
             ManaN.Text = rogue.Mana.ToString();
             HPN.Text = rogue.HP.ToString();
             LevelN.Text = rogue.Level.ToString();
+            SP.Text = rogue.StartPoint.ToString();
         }
 
         private void SBTNNplus_Click_1(object sender, RoutedEventArgs e)
         {
-            //Unit u = new Unit();
-            //if (u.StartPoint > 0)
-            //{
-            //    if (u.Strength == u.Strength++)
-            //    {
-            //        StartPoint -= 1;
-            //        Strength += 1;
-            //    }
+            
+            if (unit.StartPoint > 0)
+            {
+                if (unit.Strength == unit.Strength++)
+                {
+                    unit.StartPoint -= 1;
+                    unit.Strength += 1;
+                }
 
-            //    if (u.Vitality == u.Vitality++)
-            //    {
-            //        StartPoint -= 1;
-            //        Vitality += 1;
-            //    }
+                if (unit.Vitality == unit.Vitality++)
+                {
+                    unit.StartPoint -= 1;
+                    unit.Vitality += 1;
+                }
 
-            //    if (u.Dexterity == u.Dexterity++)
-            //    {
-            //        StartPoint -= 1;
-            //        Dexterity += 1;
-            //    }
+                if (unit.Dexterity == unit.Dexterity++)
+                {
+                    unit.StartPoint -= 1;
+                    unit.Dexterity += 1;
+                }
 
-            //    if (u.Inteligence == u.Inteligence++)
-            //    {
-            //        StartPoint -= 1;
-            //        Inteligence += 1;
-            //    }
-            //}
+                if (unit.Inteligence == unit.Inteligence++)
+                {
+                    unit.StartPoint -= 1;
+                    unit.Inteligence += 1;
+                }
+            }
         }
 
         private void SBTNNminus_Click(object sender, RoutedEventArgs e)
         {
+            
+            if (unit.StartPoint == unit.StartPoint++)
+            {
 
+            }
         }
 
         private void DBTNNplus_Click(object sender, RoutedEventArgs e)

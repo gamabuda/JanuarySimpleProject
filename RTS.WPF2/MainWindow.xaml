@@ -120,7 +120,7 @@
 
         <StackPanel Grid.Row="7" Grid.Column="4">
             <Label Content="StartPoints:"></Label>
-            <TextBlock x:Name="SP" />
+            <TextBlock x:Name="SP" Text="{Binding Path=StartPoints}" />
            
             
         </StackPanel>
