@@ -29,7 +29,7 @@ namespace RTS.WPF2
             this.DataContext = unit;
         }
         
-        public double Vitaluty
+        public double Vitality
         {
             get { return unit.Vitality; }
             set
@@ -41,6 +41,56 @@ namespace RTS.WPF2
                 }
             }
         }
+        public double Inteligence
+        {
+            get { return unit.Inteligence; }
+            set
+            {
+                if (unit.Inteligence != value)
+                {
+                    unit.Inteligence = value;
+                    OnPropertyChanged("Counter");
+                }
+            }
+        }
+        public double Dexterity
+        {
+            get { return unit.Dexterity; }
+            set
+            {
+                if (unit.Dexterity != value)
+                {
+                    unit.Dexterity = value;
+                    OnPropertyChanged("Counter");
+                }
+            }
+        }
+
+        public double Mana
+        {
+            get { return unit.Mana; }
+            set
+            {
+                if (unit.Mana != value)
+                {
+                    unit.Mana = value;
+                    OnPropertyChanged("Counter");
+                }
+            }
+        }
+
+        public double Strength
+        {
+            get { return unit.Strength; }
+            set
+            {
+                if (unit.Strength != value)
+                {
+                    unit.Strength = value;
+                    OnPropertyChanged("Counter");
+                }
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)
@@ -48,43 +98,18 @@ namespace RTS.WPF2
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         private void Wizard_Click(object sender, RoutedEventArgs e)
-        {           
-            Wizzard wizzard = new Wizzard();         
-            ClassN.Text = wizzard.ToString();
-            SN.Text = wizzard.Strength.ToString();
-            VN.Text = wizzard.Vitality.ToString();
-            IN.Text = wizzard.Inteligence.ToString();
-            DN.Text = wizzard.Dexterity.ToString();
-            ManaN.Text = wizzard.Mana.ToString();
-            HPN.Text = wizzard.HP.ToString();
-            LevelN.Text = wizzard.Level.ToString();
+        {
+            new Wizzard();
         }
 
         private void Warrior_Click(object sender, RoutedEventArgs e)
         {
-            Warrior warrior = new Warrior();
-            ClassN.Text = warrior.ToString();
-            SN.Text = warrior.Strength.ToString();
-            VN.Text = warrior.Vitality.ToString();
-            IN.Text = warrior.Inteligence.ToString();
-            DN.Text = warrior.Dexterity.ToString();
-            ManaN.Text = warrior.Mana.ToString();
-            HPN.Text = warrior.HP.ToString();
-            LevelN.Text = warrior.Level.ToString();
+            new Warrior();
         }
 
         private void Rogue_Click(object sender, RoutedEventArgs e)
         {
-            Rogue rogue = new Rogue();
-            ClassN.Text = rogue.ToString();
-            SN.Text = rogue.Strength.ToString();
-            VN.Text = rogue.Vitality.ToString();
-            IN.Text = rogue.Inteligence.ToString();
-            DN.Text = rogue.Dexterity.ToString();
-            ManaN.Text = rogue.Mana.ToString();
-            HPN.Text = rogue.HP.ToString();
-            LevelN.Text = rogue.Level.ToString();
-            SP.Text = rogue.StartPoint.ToString();
+            new Rogue();
         }
 
         private void SBTNNplus_Click_1(object sender, RoutedEventArgs e)
