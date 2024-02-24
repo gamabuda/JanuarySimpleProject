@@ -119,7 +119,15 @@ namespace RTS.WpfApp
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            unit.Exp += 1000;
+            if (unit.Lvl >= 50)
+            {
+                MessageBox.Show("Поздравляем! Вы достигли максимального уровня!");
+                return;
+            }
+            else
+            {
+                unit.Exp += 1000;
+            }
         }
 
     }

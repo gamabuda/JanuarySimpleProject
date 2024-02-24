@@ -30,11 +30,6 @@ namespace RTS.Lib
             MaxLvl = 50; 
         }
 
-        public int MaxExp
-        {
-            get { return (Lvl - 1) * 1000; }
-        }
-
         public int _lvl;
         public int Lvl
         {
@@ -50,6 +45,7 @@ namespace RTS.Lib
         }
 
         public int _exp;
+        public int _maxExp;
         public int Exp
         {
             get { return _exp; }
@@ -59,9 +55,18 @@ namespace RTS.Lib
                 {
                     _exp = value;
                     OnPropertyChanged(nameof(Exp));
-                    OnPropertyChanged(nameof(MaxExp));
                     LevelUp();
                 }
+            }
+        }
+
+        public int MaxExp
+        {
+            get { return (Lvl - 1) * 1000; }
+            set
+            {
+                _maxExp = value;
+                OnPropertyChanged(nameof(MaxExp));
             }
         }
 
@@ -106,7 +111,7 @@ namespace RTS.Lib
             get { return _maxMana; }
             set
             {
-                _mana = value;
+                _maxMana = value;
                 OnPropertyChanged(nameof(MaxMana));
             }
         }
