@@ -120,26 +120,42 @@
             </TextBlock>
         </StackPanel>
         <StackPanel Margin="10,197,82,36" Grid.Row="1">
-            <TextBlock 
-                x:Name="TBStrength"
-                Text="Strength:" 
-                FontSize="20" 
-                Width="290"/>
-            <TextBlock 
-                x:Name="TBDexterity"
-                Text="Dexterity:" 
-                FontSize="20" 
-                Width="290"/>
-            <TextBlock 
-                x:Name="TBIntelligence"
-                Text="Intelligence:" 
-                FontSize="20" 
-                Width="290"/>
-            <TextBlock 
-                x:Name="TBVitality"
-                Text="Vitality:" 
-                FontSize="20" 
-                Width="290"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock 
+                    x:Name="TBStrength" 
+                    Text="Strength:"
+                    FontSize="20" 
+                    Width="160"/>
+                <Button Content="+" Click="IncreaseStrength" Width="30"/>
+                <Button Content="-" Click="DecreaseStrength" Width="30"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock 
+                    x:Name="TBDexterity"
+                    Text="Dexterity:" 
+                    FontSize="20" 
+                    Width="160"/>
+                <Button Content="+" Click="IncreaseStrength" Width="30"/>
+                <Button Content="-" Click="DecreaseStrength" Width="30"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock 
+                    x:Name="TBIntelligence"
+                    Text="Intelligence:" 
+                    FontSize="20" 
+                    Width="160"/>
+                <Button Content="+" Click="IncreaseStrength" Width="30"/>
+                <Button Content="-" Click="DecreaseStrength" Width="30"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock 
+                    x:Name="TBVitality"
+                    Text="Vitality:" 
+                    FontSize="20" 
+                    Width="160"/>
+                <Button Content="+" Click="IncreaseStrength" Width="30"/>
+                <Button Content="-" Click="DecreaseStrength" Width="30"/>
+            </StackPanel>
         </StackPanel>
         <TextBlock
                 x:Name="TBPerson"

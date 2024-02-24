@@ -11,10 +11,6 @@ namespace RTS.Lib
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public int Strength { get; set; }
-        public int Dexterity { get; set; }
-        public int Intelligence { get; set; }
-        public int Vitality { get; set; }
         public int PDamage { get; set; }
         public int MDamage { get; set; }
         public int Armor { get; set; }
@@ -113,6 +109,50 @@ namespace RTS.Lib
             {
                 _maxMana = value;
                 OnPropertyChanged(nameof(MaxMana));
+            }
+        }
+
+        public int _strength;
+        public int Strength
+        {
+            get { return _strength; }
+            set
+            {
+                _strength = value;
+                OnPropertyChanged(nameof(Strength));
+            }
+        }
+
+        public int _dexterity;
+        public int Dexterity
+        {
+            get { return _dexterity; }
+            set
+            {
+                _dexterity = value;
+                OnPropertyChanged(nameof(Dexterity));
+            }
+        }
+
+        public int _intelligence;
+        public int Intelligence
+        {
+            get { return _intelligence; }
+            set
+            {
+                _intelligence = value;
+                OnPropertyChanged(nameof(Intelligence));
+            }
+        }
+
+        public int _vitality;
+        public int Vitality
+        {
+            get { return _vitality; }
+            set
+            {
+                _vitality = value;
+                OnPropertyChanged(nameof(Vitality));
             }
         }
 
