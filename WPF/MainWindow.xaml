@@ -113,34 +113,30 @@
             <StackPanel HorizontalAlignment="Left" Orientation="Vertical">
 
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
-                    <Button x:Name="StrPlus" Width="112" Height="50" Background="brown" Content="+" FontSize="36" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{x:Null}" Cursor="Hand"></Button>
-                    <Button x:Name="StrMinus" Width="112" Height="50" Margin="16,0,0,0" Background="brown" Content="–" FontSize="36" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,-7,1,0" BorderBrush="{x:Null}" Cursor="Hand"></Button>
+                    <Button x:Name="StrPlus" Width="110" Height="50" Background="brown" Content="+" FontSize="36" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{x:Null}" Cursor="Hand" Margin="0,50,0,0"></Button>
+                    <Button x:Name="StrMinus" Width="110" Height="50" Margin="16,50,0,0" Background="brown" Content="–" FontSize="36" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,-7,1,0" BorderBrush="{x:Null}" Cursor="Hand"></Button>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
-                    <Button x:Name="DexPlus" Width="112" Height="50" Background="brown" Content="+" FontSize="36" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{x:Null}" Cursor="Hand"></Button>
-                    <Button x:Name="DexMinus" Width="112" Height="50" Margin="16,0,0,0" Background="brown" Content="–" FontSize="36" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,-7,1,0" BorderBrush="{x:Null}" Cursor="Hand"></Button>
+                    <Button x:Name="DexPlus" Width="110" Height="50" Background="brown" Content="+" FontSize="36" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{x:Null}" Cursor="Hand" Margin="0,10,0,0"></Button>
+                    <Button x:Name="DexMinus" Width="110" Height="50" Margin="16,10,0,0" Background="brown" Content="–" FontSize="36" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,-7,1,0" BorderBrush="{x:Null}" Cursor="Hand"></Button>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
-                    <Button x:Name="IntPlus" Width="112" Height="50" Background="brown" Content="+" FontSize="36" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{x:Null}" Cursor="Hand"></Button>
-                    <Button x:Name="IntMinus" Width="112" Height="50" Margin="16,0,0,0" Background="brown" Content="–" FontSize="36" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,-7,1,0" BorderBrush="{x:Null}" Cursor="Hand"></Button>
+                    <Button x:Name="IntPlus" Width="110" Height="50" Background="brown" Content="+" FontSize="36" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{x:Null}" Cursor="Hand" Margin="0,10,0,0"></Button>
+                    <Button x:Name="IntMinus" Width="110" Height="50" Margin="16,10,0,0" Background="brown" Content="–" FontSize="36" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,-7,1,0" BorderBrush="{x:Null}" Cursor="Hand"></Button>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="VitPlus" Width="112" Height="50" Background="brown" Content="+" FontSize="36" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"></Button>
-                    <Button x:Name="VitMinus" Width="112" Height="50" Margin="16,0,0,0" Background="brown" Content="–" FontSize="36" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,-7,1,0"></Button>
-                </StackPanel>
-
-                <StackPanel>
-                    <TextBlock Text="+1000 ex." FontSize="24" HorizontalAlignment="Right" Margin="0,178,0,0"></TextBlock>
+                    <Button x:Name="VitPlus" Width="110" Height="50" Background="brown" Content="+" FontSize="36" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,0"></Button>
+                    <Button x:Name="VitMinus" Width="110" Height="50" Margin="16,10,0,0" Background="brown" Content="–" FontSize="36" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,-7,1,0"></Button>
                 </StackPanel>
 
             </StackPanel>
 
         </StackPanel>
 
-        <Button x:Name="GetExp" Content="GET EXPERIENCE" Height="100" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="1" Margin="100,750,200,0" VerticalAlignment="Top" Foreground="White" Background="DarkSlateGray" BorderBrush="{x:Null}" FontSize="36" FontWeight="Bold" BorderThickness="0,0,0,0" Cursor="Hand" Width="640"/>
+        <Button x:Name="GetExp" Content="GET EXPERIENCE" Height="100" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="1" Margin="100,700,200,0" VerticalAlignment="Top" Foreground="White" Background="DarkSlateGray" BorderBrush="{x:Null}" FontSize="36" FontWeight="Bold" BorderThickness="0,0,0,0" Cursor="Hand" Width="640"/>
 
     </Grid>
 </Window>
