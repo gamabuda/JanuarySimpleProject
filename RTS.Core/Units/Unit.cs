@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RTS.Core
+namespace RTS.Core.Units
 {
     public class Unit : IHealthHandler, IManaHandler, IAttackHandler
     {
@@ -48,13 +48,13 @@ namespace RTS.Core
 
         public void Attack(Unit unit)
         {
-            if (unit.Health - this.PDamage < 1)
+            if (unit.Health - PDamage < 1)
             {
                 unit.Health = 0;
                 return;
             }
 
-            unit.Health -= this.PDamage;
+            unit.Health -= PDamage;
         }
 
         public void LevelUp()
@@ -72,7 +72,7 @@ namespace RTS.Core
                         Console.WriteLine("Уровень персонажа повышен до 50. Достигнут максимальный уровень!");
                         Console.ResetColor();
                         return;
-                    } 
+                    }
                     Console.WriteLine("Уровень персонажа повышен до " + Level);
                     Console.ResetColor();
                 }
@@ -82,7 +82,8 @@ namespace RTS.Core
                     Console.WriteLine($"Недостаточно опыта для повышения уровня. Необходимо: {_levelUpMinExperience}");
                     Console.ResetColor();
                 }
-            } else
+            }
+            else
                 return;
         }
     }

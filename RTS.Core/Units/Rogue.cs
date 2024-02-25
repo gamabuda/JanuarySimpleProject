@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RTS.Core
+namespace RTS.Core.Units
 {
     public class Rogue : Unit
     {
         public Rogue()
         {
-            this.Strength = 20;
-            this.Dexterity = 30;
-            this.Intelligence = 15;
-            this.Vitality = 20;
+            Strength = 20;
+            Dexterity = 30;
+            Intelligence = 15;
+            Vitality = 20;
 
             MaxStrength = 65;
             MaxDexterity = 250;

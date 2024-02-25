@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RTS.Core.Interfaces;
+using RTS.Core.Units;
 
 namespace RTS.Core.Buildings
 {

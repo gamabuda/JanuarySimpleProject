@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RTS.Core
+namespace RTS.Core.Units
 {
     public class Warrior : Unit
     {
         public Warrior()
         {
-            this.Strength = 30;
-            this.Dexterity = 15;
-            this.Intelligence = 10;
-            this.Vitality = 25;
+            Strength = 30;
+            Dexterity = 15;
+            Intelligence = 10;
+            Vitality = 25;
 
             MaxStrength = 250;
             MaxDexterity = 80;

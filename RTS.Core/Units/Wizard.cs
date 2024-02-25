@@ -4,18 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RTS.Core
+namespace RTS.Core.Units
 {
     public class Wizard : Unit
     {
         public int HealPoint { get; set; } = 10;
         public Wizard()
         {
-            this.Strength = 15;
-            this.Dexterity = 20;
-            this.Intelligence = 35;
-            this.Vitality = 15;
-            this.HealPoint = 10;
+            Strength = 15;
+            Dexterity = 20;
+            Intelligence = 35;
+            Vitality = 15;
+            HealPoint = 10;
 
             MaxStrength = 45;
             MaxDexterity = 80;
@@ -25,9 +25,9 @@ namespace RTS.Core
             Health = (int)(Vitality * 1.4 + Strength * 0.2);
             Mana = (int)(1.5 * Intelligence);
             PDamage = (int)(0.5 * Strength);
-            Armor = (int)(Dexterity);
-            MDamage = (int)(Intelligence);
-            MDefense = (int)(1 * Intelligence);
+            Armor = Dexterity;
+            MDamage = Intelligence;
+            MDefense = 1 * Intelligence;
             CrtChance = (int)(0.2 * Dexterity);
             CrtDamage = (int)(0.1 * Dexterity);
 
@@ -40,9 +40,9 @@ namespace RTS.Core
             Health = (int)(Vitality * 1.4 + Strength * 0.2);
             Mana = (int)(1.5 * Intelligence);
             PDamage = (int)(0.5 * Strength);
-            Armor = (int)(Dexterity);
-            MDamage = (int)(Intelligence);
-            MDefense = (int)(Intelligence);
+            Armor = Dexterity;
+            MDamage = Intelligence;
+            MDefense = Intelligence;
             CrtChance = (int)(0.2 * Dexterity);
             CrtDamage = (int)(0.1 * Dexterity);
         }
