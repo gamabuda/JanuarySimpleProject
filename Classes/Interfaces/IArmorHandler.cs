@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Classes
 {
-    internal interface Building
+    public interface IArmorHandler: IHealthHandler
     {
+        int Armor { get; set; }
     }
 }

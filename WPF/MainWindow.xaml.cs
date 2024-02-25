@@ -18,8 +18,8 @@ namespace WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        Unit Unit { get { return _unit; } set { _unit = value; DataContext = _unit; DefStatsUpdate(); ElementsUpdate(); } }
-        Unit _unit;
+        Hero Unit { get { return _unit; } set { _unit = value; DataContext = _unit; DefStatsUpdate(); ElementsUpdate(); } }
+        Hero _unit;
         int defStr;
         int defDex;
         int defInt;
@@ -29,6 +29,7 @@ namespace WPF
         {
             InitializeComponent();
             Unit = new Warrior();
+            Unit.onStatChange += ElementsUpdate;
             DefStatsUpdate();
         }
         private void SwipeLeft(object sender, RoutedEventArgs e)
@@ -156,7 +157,7 @@ namespace WPF
 
         private void ElementsUpdate()
         {
-            Name.Content = Unit.Name;
+            Name.Content = Unit.ToString().Split('.')[1];
             Strenght.Text = Unit.Strenght.ToString();
             StrPlus.Text = (Unit.Strenght - defStr != 0) ? $"(+{Unit.Strenght - defStr})" : "";
             Dexterity.Text = Unit.Dexterity.ToString();
@@ -165,25 +166,15 @@ namespace WPF
             IntPlus.Text = (Unit.Intelligence - defInt != 0) ? $"(+{Unit.Intelligence - defInt})" : "";
             Vitality.Text = Unit.Vitality.ToString();
             VitPlus.Text = (Unit.Vitality - defVit != 0) ? $"(+{Unit.Vitality - defVit})" : "";
-            if (Unit.Strenght == Unit.MaxStrenght && defStr == Unit.Strenght)
-                StrPlus.Text = " MAX";
-            if (Unit.Dexterity == Unit.MaxDexterity && defDex == Unit.Dexterity)
-                DexPlus.Text = " MAX";
-            if (Unit.Intelligence == Unit.MaxIntelligence && defInt == Unit.Intelligence)
-                IntPlus.Text = " MAX";
-            if (Unit.Vitality == Unit.MaxVitality && defVit == Unit.Vitality)
-                VitPlus.Text = " MAX";
-            LvlBlock.Text = Unit.Level == Unit.MaxLevel ? $"{Unit.Level} MAX" : $"{Unit.Level}/{Unit.MaxLevel}";
+            LvlBlock.Text = Unit.Level.ToString();
             ExpBlock.Text = Unit.Experience.ToString();
             SkillPointsBlock.Text = Unit.SkillPoints.ToString();
             if (Unit.Level != 50)
                 ExpToNextLvl.Text = $"/{Unit.ExpToNextLvl}";
             else
-            {
                 ExpToNextLvl.Text = "";
-            }
             HpMp.Text = $"HP: {Unit.Health}/{Unit.MaxHealth}{(Unit.MaxHealth - Unit.Health == 0 ? "" : $"(+{Unit.MaxHealth - Unit.Health})")}\tMP: {Unit.Mana}/{Unit.MaxMana}{(Unit.MaxMana - Unit.Mana == 0 ? "" : $"(+{Unit.MaxMana - Unit.Mana})")}";
-            HeroIcon.Content = Resources[$"{Unit.Name}"];
+            HeroIcon.Content = Resources[$"{Unit.ToString().Split('.')[1]}"];
         }
 
         private void Confirm(object sender, RoutedEventArgs e)

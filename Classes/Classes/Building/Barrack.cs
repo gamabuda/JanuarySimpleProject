@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 
 namespace Classes
 {
-    public class Barrack : Creature
+    public class Barrack : Building
     {
+        public Barrack()
+        {
+            Health = 150;
+            MaxHealth = 150;
+        }
+
         public Unit RecruitUnit(string UnitName)
         {
-            switch(UnitName)
+            switch (UnitName)
             {
                 case "Warrior": return new Warrior();
                 case "Rogue": return new Rogue();
