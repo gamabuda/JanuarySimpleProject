@@ -133,6 +133,7 @@ namespace RTS.WPF
         {
             unit = new Warrior();
 
+            UnitClass.Text = "Warrior";
             MyImage.Content = Resources["Warrior"];
 
             this.DataContext = unit;
@@ -142,6 +143,7 @@ namespace RTS.WPF
         {
             unit = new Wizzard();
 
+            UnitClass.Text = "Wizzard";
             MyImage.Content = Resources["Wizzard"];
 
             this.DataContext = unit;
@@ -151,6 +153,7 @@ namespace RTS.WPF
         {
             unit = new Rogue();
 
+            UnitClass.Text = "Rogue";
             MyImage.Content = Resources["Rogue"];
 
             this.DataContext = unit;

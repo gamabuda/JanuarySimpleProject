@@ -18,7 +18,8 @@
 
             <StackPanel>
                 <TextBlock 
-                    Text="{Binding Unit}"
+                    x:Name="UnitClass"
+                    Text=""
                     Padding="10" 
                     TextAlignment="Left">
                 </TextBlock>
