@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace RTS
 {
-    public class Bilding : IUnit
+    public class Bilding : IHealthHandler, IArmorHandler, IInfoHandler
     {
         public int Health { get; set; }
-        public int Mana { get; set; }
         public int MaxHealth { get; set; }
-        public int MaxMana { get; set; }
 
         //Armor
         public int Armor { get; set; }
@@ -19,7 +17,7 @@ namespace RTS
 
         public void ShowInfo()
         {
-            Console.WriteLine($"HP:{Health}/{MaxHealth}\nMP:{Mana}/{MaxMana}\nArmor:{Armor}\nMDefense{MDefense}");
+            Console.WriteLine($"HP:{Health}/{MaxHealth}\nArmor:{Armor}\nMDefense{MDefense}");
         }
     }
 }

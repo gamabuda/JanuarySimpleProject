@@ -20,7 +20,7 @@ namespace RTS.Units
             MaxInteligence = 50;
             MaxVitality = 100;
 
-            CheckingAttributes();
+            //CheckingAttributes();
 
             Health = MaxHealth;
             Mana = MaxMana;

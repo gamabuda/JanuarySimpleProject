@@ -3,13 +3,13 @@ using System.ComponentModel.Design;
 
 namespace RTS
 {
-    public class Unit : IUnit
+    public class Unit : IAttackHandler, IHealthHandler, IManaHandler, IArmorHandler, IInfoHandler
     {
         //Attributes
-        protected int Strength { get => _strength; set { _strength = value; } }
-        protected int Dexterity { get => _dexterity; set { _dexterity = value; } }
-        protected int Inteligence { get => _inteligence; set { _inteligence = value; } }
-        protected int Vitality { get => _vitality; set { _vitality = value; } }
+        public int Strength { get => _strength; set { _strength = value; CheckingAttributes(); } }
+        protected int Dexterity { get => _dexterity; set { _dexterity = value; CheckingAttributes(); } }
+        protected int Inteligence { get => _inteligence; set { _inteligence = value; CheckingAttributes(); } }
+        protected int Vitality { get => _vitality; set { _vitality = value; CheckingAttributes(); } }
 
         private int _strength;
         private int _dexterity;
@@ -46,6 +46,13 @@ namespace RTS
         //Level
         public int Level { get; set; }
         public int Experience { get; set; }
+
+        protected event Action onStatChange;
+
+        public Unit() : base()
+        {
+            onStatChange += CheckingAttributes;
+        }
 
 
 
