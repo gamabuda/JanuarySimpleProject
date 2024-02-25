@@ -49,11 +49,6 @@ namespace JanuarySimpleProject
         {
             get { return _count; }
         }
-        public void Clear()
-        {
-            _array = new TCLass[6];
-            _count = 0;
-        }
         public void Sort()
         {
             Array.Sort(_array, 0, _count);

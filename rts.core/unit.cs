@@ -28,23 +28,23 @@ namespace RTS.Core
         public void ShowInfo()
         {
 
-            Console.WriteLine($"Health: {HealPoint}\n" +
+            Console.WriteLine($"Health: {Health}\n" +
                 $"Mana: {Mana}\n" +
-                $"Strength: {Strength}\n" +
+                $"Strength: {Strenght}\n" +
                 $"Dexterity: {Dexterity}\n" +
-                $"Intelligence: {Inteligence}\n" +
+                $"Intelligence: {Intelligense}\n" +
                 $"Vitality: {Vitality}");
         }
 
         public void Attack(Unit unit)
         {
-            if (unit.HealPoint - this.Damage < 1)
+            if (unit.Health - Damage < 1)
             {
-                unit.HealPoint = 0;
+                unit.Health = 0;
                 return;
             }
 
-            unit.HealPoint -= this.Damage;
+            unit.Health -= Damage;
         }
     }
 }
