@@ -15,6 +15,7 @@ namespace RTS.WpfApp
     public partial class MainWindow : Window
     {
         Unit unit = new Unit();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -132,56 +133,15 @@ namespace RTS.WpfApp
             }
         }
 
-        private void IncreaseStrength(object sender, RoutedEventArgs e)
+        private void IncreaseCharacteristic(object sender, RoutedEventArgs e)
         {
-            unit.Strength++;
+            unit.IncreaseStrength();
         }
 
-        private void DecreaseStrength(object sender, RoutedEventArgs e)
+        private void DecreaseCharacteristic(object sender, RoutedEventArgs e)
         {
-            if (unit.Strength > 0)
-            {
-                unit.Strength--;
-            }
+            unit.DecreaseStrength();
         }
 
-        private void IncreaseDexterity(object sender, RoutedEventArgs e)
-        {
-            unit.Dexterity++;
-        }
-
-        private void DecreaseDexterity(object sender, RoutedEventArgs e)
-        {
-            if (unit.Dexterity > 0)
-            {
-                unit.Dexterity--;
-            }
-        }
-
-        private void IncreaseIntelligence(object sender, RoutedEventArgs e)
-        {
-            unit.Intelligence++;
-        }
-
-        private void DecreaseIntelligence(object sender, RoutedEventArgs e)
-        {
-            if (unit.Intelligence > 0)
-            {
-                unit.Intelligence--;
-            }
-        }
-
-        private void IncreaseVitality(object sender, RoutedEventArgs e)
-        {
-            unit.Vitality++;
-        }
-
-        private void DecreaseVitality(object sender, RoutedEventArgs e)
-        {
-            if (unit.Vitality > 0)
-            {
-                unit.Vitality--;
-            }
-        }
     }
 }

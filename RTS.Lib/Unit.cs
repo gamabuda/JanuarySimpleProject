@@ -156,6 +156,84 @@ namespace RTS.Lib
             }
         }
 
+        public bool _strengthIncreased;
+        public bool _dexterityIncreased;
+        public bool _intelligenceIncreased;
+        public bool _vitalityIncreased;
+        public void IncreaseCharacteristic(ref int characteristic, ref bool increased, string propertyName)
+        {
+            if (StartPoints > 0)
+            {
+                characteristic++;
+                StartPoints--;
+                increased = true;
+                OnPropertyChanged(nameof(StartPoints));
+                OnPropertyChanged(propertyName);
+            }
+        }
+
+        public void DecreaseCharacteristic(ref int characteristic, ref bool increased, string propertyName)
+        {
+            if (increased && characteristic > 0)
+            {
+                characteristic--;
+                StartPoints++;
+                increased = false;
+                OnPropertyChanged(nameof(StartPoints));
+                OnPropertyChanged(propertyName);
+            }
+        }
+
+        public void IncreaseStrength()
+        {
+            IncreaseCharacteristic(ref _strength, ref _strengthIncreased, nameof(Strength));
+        }
+        public void DecreaseStrength()
+        {
+            DecreaseCharacteristic(ref _strength, ref _strengthIncreased, nameof(Strength));
+        }
+
+        public void IncreaseDexterity()
+        {
+            IncreaseCharacteristic(ref _dexterity, ref _dexterityIncreased, nameof(Dexterity));
+        }
+        public void DecreaseDexterity()
+        {
+            DecreaseCharacteristic(ref _dexterity, ref _dexterityIncreased, nameof(Dexterity));
+        }
+
+        public void IncreaseIntelligence()
+        {
+            IncreaseCharacteristic(ref _intelligence, ref _intelligenceIncreased, nameof(Intelligence));
+        }
+        public void DecreaseIntelligence()
+        {
+            DecreaseCharacteristic(ref _intelligence, ref _intelligenceIncreased, nameof(Intelligence));
+        }
+
+        public void IncreaseVitality()
+        {
+            IncreaseCharacteristic(ref _vitality, ref _vitalityIncreased, nameof(Vitality));
+        }
+        public void DecreaseVitality()
+        {
+            DecreaseCharacteristic(ref _vitality, ref _vitalityIncreased, nameof(Vitality));
+        }
+
+        public int _startPoints = 5;
+        public int StartPoints
+        {
+            get { return _startPoints; }
+            set
+            {
+                if (_startPoints != value)
+                {
+                    _startPoints = value;
+                    OnPropertyChanged(nameof(StartPoints));
+                }
+            }
+        }
+
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -192,9 +270,11 @@ namespace RTS.Lib
                 {
                     Lvl++;
                     Exp -= expToNextLevel;
+                    StartPoints++;
                     OnPropertyChanged(nameof(Lvl));
                     OnPropertyChanged(nameof(Exp));
                     OnPropertyChanged(nameof(MaxExp));
+                    OnPropertyChanged(nameof(StartPoints));
                     Console.WriteLine($"Вы достигли уровня {Lvl}!\nВаш текущий опыт: {Exp}");
                 }
             }

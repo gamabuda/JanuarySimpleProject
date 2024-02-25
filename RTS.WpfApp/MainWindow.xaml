@@ -51,10 +51,10 @@
                     Padding="10"
                     Content="Get exp"
                     Click="Button_Click" Height="55" Width="186"/>
-            <TextBlock 
-                Text="Start Points" 
-                FontSize="20"
-                Margin="10,0,0,0" Width="102"/>
+            <TextBlock FontSize="20" Margin="10,0,0,0" Width="150">
+                <Run Text="Start Points: "/>
+                <Run Text="{Binding StartPoints}"/>
+            </TextBlock>
         </StackPanel>
 
         <StackPanel x:Name="SPImages" Grid.RowSpan="2" Margin="382,41,10,121" Grid.ColumnSpan="2">
@@ -126,8 +126,16 @@
                     Text="Strength:"
                     FontSize="20" 
                     Width="160"/>
-                <Button Content="+" Click="IncreaseStrength" Width="30"/>
-                <Button Content="-" Click="DecreaseStrength" Width="30"/>
+                <Button 
+                    Content="+" 
+                    Command="{Binding IncreaseStrengthCommand}"
+                    Click="IncreaseCharacteristic" 
+                    Width="30"/>
+                <Button 
+                    Content="-" 
+                    Command="{Binding DecreaseStrengthCommand}"
+                    Click="DecreaseCharacteristic" 
+                    Width="30"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock 
@@ -135,8 +143,14 @@
                     Text="Dexterity:" 
                     FontSize="20" 
                     Width="160"/>
-                <Button Content="+" Click="IncreaseStrength" Width="30"/>
-                <Button Content="-" Click="DecreaseStrength" Width="30"/>
+                <Button 
+                    Content="+" 
+                    Click="IncreaseCharacteristic" 
+                    Width="30"/>
+                <Button 
+                    Content="-" 
+                    Click="DecreaseCharacteristic" 
+                    Width="30"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock 
@@ -144,8 +158,14 @@
                     Text="Intelligence:" 
                     FontSize="20" 
                     Width="160"/>
-                <Button Content="+" Click="IncreaseStrength" Width="30"/>
-                <Button Content="-" Click="DecreaseStrength" Width="30"/>
+                <Button 
+                    Content="+" 
+                    Click="IncreaseCharacteristic" 
+                    Width="30"/>
+                <Button 
+                    Content="-" 
+                    Click="DecreaseCharacteristic" 
+                    Width="30"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock 
@@ -153,8 +173,14 @@
                     Text="Vitality:" 
                     FontSize="20" 
                     Width="160"/>
-                <Button Content="+" Click="IncreaseStrength" Width="30"/>
-                <Button Content="-" Click="DecreaseStrength" Width="30"/>
+                <Button 
+                    Content="+" 
+                    Click="IncreaseCharacteristic" 
+                    Width="30"/>
+                <Button 
+                    Content="-" 
+                    Click="DecreaseCharacteristic" 
+                    Width="30"/>
             </StackPanel>
         </StackPanel>
         <TextBlock
