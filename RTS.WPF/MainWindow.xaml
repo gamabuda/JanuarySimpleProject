@@ -6,12 +6,19 @@
         xmlns:local="clr-namespace:RTS.WPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+
+    <Window.Resources>
+        <Image x:Key="Wizzard" Source="/Wizzard.jpg"></Image>
+        <Image x:Key="Warrior" Source="/Warrior.jpg"></Image>
+        <Image x:Key="Rogue" Source="/Rogue.jpg"></Image>
+        <Image x:Key="blank" Source="/blank.jpg"></Image>
+    </Window.Resources>
     <Grid>
         <StackPanel HorizontalAlignment="Left">
 
             <StackPanel>
                 <TextBlock 
-                    Text="{Binding Class}"
+                    Text="{Binding Unit}"
                     Padding="10" 
                     TextAlignment="Left">
                 </TextBlock>
@@ -32,7 +39,14 @@
                     TextAlignment="Left">
                 </TextBlock>
             </StackPanel>
-
+            <StackPanel>
+                <TextBlock 
+                    Text="{Binding TotalExp, StringFormat='TotalExp - {0}'}"
+                    Padding="10" 
+                    TextAlignment="Left">
+                </TextBlock>
+            </StackPanel>
+            
             <StackPanel>
                 <TextBlock 
                     Text="{Binding Experience, StringFormat='Experience - {0}'}"
@@ -159,10 +173,9 @@
             
             <StackPanel>
                 <Border BorderBrush="Black" BorderThickness="1">
-                    <Image
+                    <ContentPresenter
+                        Content=""
                         Height="200"
-                        Source="/blank.jpg"
-                        Stretch="Fill"
                         Width="200"
                         x:Name="MyImage"/>
                 </Border>

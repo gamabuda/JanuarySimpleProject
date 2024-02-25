@@ -10,9 +10,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace RTS.WPF
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window
     {
         Unit unit;
@@ -20,6 +18,8 @@ namespace RTS.WPF
         {
             InitializeComponent();
             unit = new Unit();
+
+            MyImage.Content = Resources["blank"];
 
             this.DataContext = unit;
         }
@@ -29,6 +29,7 @@ namespace RTS.WPF
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             unit.Experience = unit.Experience + 1000;
+            unit.TotalExp = unit.TotalExp + unit.Experience;
             unit.LevelUp();
 
             unit.Strength++;
@@ -132,6 +133,8 @@ namespace RTS.WPF
         {
             unit = new Warrior();
 
+            MyImage.Content = Resources["Warrior"];
+
             this.DataContext = unit;
         }
 
@@ -139,7 +142,7 @@ namespace RTS.WPF
         {
             unit = new Wizzard();
 
-            MyImage = Properties.Resources.Wizzard;
+            MyImage.Content = Resources["Wizzard"];
 
             this.DataContext = unit;
         }
@@ -148,7 +151,7 @@ namespace RTS.WPF
         {
             unit = new Rogue();
 
-
+            MyImage.Content = Resources["Rogue"];
 
             this.DataContext = unit;
         }

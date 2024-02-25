@@ -8,7 +8,7 @@ namespace RTS.Core
         public int MaxHealth { get; set; }
         public int MaxMana { get; set; }
         public int Armor { get; set; }
-        private int _startspoints;
+        private int _startspoints = 5;
         public int StartsPoints 
         {
             get => _startspoints;
@@ -30,6 +30,17 @@ namespace RTS.Core
             {
                 _level = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Level)));
+            }
+        }
+
+        private int _totalExp;
+        public int TotalExp 
+        {
+            get => _totalExp;
+            set
+            {
+                _totalExp = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TotalExp)));
             }
         }
         private int _experience;
@@ -128,6 +139,7 @@ namespace RTS.Core
                 {
                     Level++;
                     Experience = currentExperience - necessaryEXP;
+                    TotalExp = TotalExp + Experience;
                 }
             }
         }

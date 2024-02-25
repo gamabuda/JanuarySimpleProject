@@ -8,7 +8,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="blank.jpg" />
+    <None Remove="Rogue.jpg" />
+    <None Remove="Warrior.jpg" />
+    <None Remove="Wizzard.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\RTS.Core\RTS.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="blank.jpg" />
+    <Resource Include="Rogue.jpg" />
+    <Resource Include="Warrior.jpg" />
+    <Resource Include="Wizzard.jpg" />
   </ItemGroup>
 
 </Project>
