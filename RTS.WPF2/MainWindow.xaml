@@ -34,10 +34,7 @@
             
         </Grid.ColumnDefinitions>
         
-        <StackPanel Grid.Row="2" Grid.Column="1">
-            <Label Content="Class"></Label>
-            <TextBlock x:Name="ClassN" Text="{Binding unit }"></TextBlock>
-        </StackPanel>
+        
         
         <StackPanel Grid.Row="3" Grid.Column="1">
             <Label Content="Level:"></Label>

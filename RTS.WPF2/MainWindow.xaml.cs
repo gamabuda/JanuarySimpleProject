@@ -97,17 +97,35 @@ namespace RTS.WPF2
 
         private void Wizard_Click(object sender, RoutedEventArgs e)
         {
-           ClassN.Text = new Wizzard().ToString();
+            Wizzard wizzard = new Wizzard();
+            SN.Text = wizzard.Strength.ToString();
+            VN.Text = wizzard.Vitality.ToString();
+            IN.Text = wizzard.Inteligence.ToString();
+            DN.Text = wizzard.Dexterity.ToString();
+            ManaN.Text = wizzard.Mana.ToString();
+            LevelN.Text = wizzard.Level.ToString();
         }
 
         private void Warrior_Click(object sender, RoutedEventArgs e)
         {
-            new Warrior();
+            Warrior warrior = new Warrior();
+            SN.Text = warrior.Strength.ToString();
+            VN.Text = warrior.Vitality.ToString();
+            IN.Text = warrior.Inteligence.ToString();
+            DN.Text = warrior.Dexterity.ToString();
+            ManaN.Text = warrior.Mana.ToString();
+            LevelN.Text = warrior.Level.ToString();
         }
 
         private void Rogue_Click(object sender, RoutedEventArgs e)
         {
-            new Rogue();
+            Rogue rogue = new Rogue();
+            SN.Text = rogue.Strength.ToString();
+            VN.Text = rogue.Vitality.ToString();
+            IN.Text = rogue.Inteligence.ToString();
+            DN.Text = rogue.Dexterity.ToString();
+            ManaN.Text = rogue.Mana.ToString();
+            LevelN.Text = rogue.Level.ToString();
         }
 
         private void SBTNNplus_Click_1(object sender, RoutedEventArgs e)
@@ -119,24 +137,6 @@ namespace RTS.WPF2
                 {
                     unit.StartPoint -= 1;
                     unit.Strength += 1;
-                }
-
-                if (unit.Vitality == unit.Vitality++)
-                {
-                    unit.StartPoint -= 1;
-                    unit.Vitality += 1;
-                }
-
-                if (unit.Dexterity == unit.Dexterity++)
-                {
-                    unit.StartPoint -= 1;
-                    unit.Dexterity += 1;
-                }
-
-                if (unit.Inteligence == unit.Inteligence++)
-                {
-                    unit.StartPoint -= 1;
-                    unit.Inteligence += 1;
                 }
             }
         }
@@ -152,7 +152,12 @@ namespace RTS.WPF2
 
         private void DBTNNplus_Click(object sender, RoutedEventArgs e)
         {
-
+            
+                if (unit.Dexterity == unit.Dexterity++)
+                {
+                    unit.StartPoint -= 1;
+                    unit.Dexterity += 1;
+                }
         }
 
         private void DBTNNminus_Click(object sender, RoutedEventArgs e)
@@ -162,7 +167,11 @@ namespace RTS.WPF2
 
         private void IBTNNplus_Click(object sender, RoutedEventArgs e)
         {
-
+            if (unit.Inteligence == unit.Inteligence++)
+            {
+                unit.StartPoint -= 1;
+                unit.Inteligence += 1;
+            }
         }
 
         private void IBTNNminus_Click(object sender, RoutedEventArgs e)
@@ -173,6 +182,10 @@ namespace RTS.WPF2
         private void VBTNNplus_Click(object sender, RoutedEventArgs e)
         {
 
+            
+                unit.StartPoint -= 1;
+                  unit.Vitality += 1;
+            
         }
 
         private void VBTNNminus_Click(object sender, RoutedEventArgs e)
