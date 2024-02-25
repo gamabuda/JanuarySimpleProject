@@ -11,15 +11,19 @@ namespace RTS.Core
         public Rogue()
         {
             Strength = 20;
+            BaseStrength = 20;
             MaxStrength = 65;
 
             Dexterity = 30;
+            BaseDexterity = 30;
             MaxDexterity = 250;
 
             Intelligence = 15;
+            BaseIntelligence = 15;
             MaxIntelligence = 70;
 
             Vitality = 20;
+            BaseVitality = 20;
             MaxVitality = 80;
 
             UpdateStats();

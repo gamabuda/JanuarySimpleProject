@@ -11,15 +11,19 @@ namespace RTS.Core
         public Warrior()
         {
             Strength = 30;
+            BaseStrength = 30;
             MaxStrength = 250;
 
             Dexterity = 15;
+            BaseDexterity = 15;
             MaxDexterity = 80;
 
             Intelligence = 10;
+            BaseIntelligence = 10;
             MaxIntelligence = 50;
 
             Vitality = 25;
+            BaseVitality = 25;
             MaxVitality = 100;
 
             UpdateStats();

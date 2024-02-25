@@ -16,6 +16,10 @@ namespace RTS.Core
         public int MaxIntelligence { get; set; }
         public int Vitality { get => _vit ; set { _vit = value; UpdateStats(); } }
         public int MaxVitality { get; set; }
+        public int BaseStrength { get; set; }
+        public int BaseDexterity { get; set; }
+        public int BaseIntelligence { get; set; }
+        public int BaseVitality { get; set; }
 
         private int _str;
         private int _dex;
@@ -34,6 +38,7 @@ namespace RTS.Core
 
         public int Level { get; set; } = 1;
         public int Exp { get => _exp; set { _exp = value; UpdateLevel(); } }
+        public int SkillPoints { get; set; } = 5;
 
         public void Attack(IHealthHandler unit)
         {
@@ -64,9 +69,11 @@ namespace RTS.Core
             int nextLevel = Level + 1;
             int requiredExperience = 1000 * nextLevel * (nextLevel - 1) / 2;
             while (Exp >= requiredExperience)
-            {
+            { 
+                nextLevel = Level + 1;
                 Level++;
-                requiredExperience = 1000 * nextLevel * (nextLevel - 1) / 2;
+                SkillPoints++;
+                requiredExperience += 1000 * nextLevel * (nextLevel - 1) / 2;
             }
         }
 

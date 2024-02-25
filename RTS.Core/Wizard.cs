@@ -6,20 +6,24 @@ using System.Threading.Tasks;
 
 namespace RTS.Core
 {
-    public class Wizard: Hero
+    public class Wizard : Hero
     {
         public Wizard()
         {
             Strength = 15;
+            BaseStrength = 15;
             MaxStrength = 45;
 
             Dexterity = 20;
+            BaseDexterity = 20;
             MaxDexterity = 80;
 
             Intelligence = 35;
+            BaseIntelligence = 35;
             MaxIntelligence = 250;
 
             Vitality = 15;
+            BaseVitality = 15;
             MaxVitality = 70;
 
             UpdateStats();
@@ -38,4 +42,5 @@ namespace RTS.Core
             CriticalChance = Dexterity / 5;
             CriticalDamage = Dexterity / 10;
         }
+    }
 }

@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="rogue-icon.png" />
+    <None Remove="warrior-icon.png" />
+    <None Remove="wizard-icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RTS.Core\RTS.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="icons\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="rogue-icon.png" />
+    <Resource Include="warrior-icon.png" />
+    <Resource Include="wizard-icon.png" />
+  </ItemGroup>
+
+</Project>
