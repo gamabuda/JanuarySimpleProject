@@ -31,19 +31,21 @@ namespace WpfApp1
         {
             unit = new Warrior();
             Textblock.Text = unit.ToString();
-            ContentPresenter.Content = Resources["wizard"];
+            ContentPresenter.Content = Resources["warrior"];
         }
 
         private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
         {
             unit = new Rogue();
             Textblock.Text = unit.ToString();
+            ContentPresenter.Content = Resources["rogue"];
         }
 
         private void RadioButton_Checked_2(object sender, RoutedEventArgs e)
         {
             unit = new Wizard();
             Textblock.Text = unit.ToString();
+            ContentPresenter.Content = Resources["wizard"];
         }
     }
 }
