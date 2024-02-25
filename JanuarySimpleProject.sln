@@ -5,9 +5,11 @@ VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JanuarySimpleProject", "JanuarySimpleProject\JanuarySimpleProject.csproj", "{9FF10828-B750-461D-84C7-7DA83FDCDE6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTS.Core", "RTS.Core\RTS.Core.csproj", "{1DDF2666-0A72-4F13-96C5-746C477F7D21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RTS.Core", "RTS.Core\RTS.Core.csproj", "{1DDF2666-0A72-4F13-96C5-746C477F7D21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTS.WPF2", "RTS.WPF2\RTS.WPF2.csproj", "{4C724280-CE24-4BE2-9C73-8946E4724C42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RTS.WPF2", "RTS.WPF2\RTS.WPF2.csproj", "{4C724280-CE24-4BE2-9C73-8946E4724C42}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "img", "img", "{3E1B4DB0-D33F-48D9-B8EE-945474AD6CF4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

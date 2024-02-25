@@ -3,8 +3,8 @@
     public class Unit
     {
         
-        public int OldXP { get; set; } = 0;
-        int NewXp { get; set; } = 1000;
+        public int OldXP { get; set; } 
+        public int NewXp { get; set; } = 1000;
         
 
         public int Level { get; set; } = 1;

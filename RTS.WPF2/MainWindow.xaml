@@ -6,6 +6,14 @@
         xmlns:local="clr-namespace:RTS.WPF2"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+
+    <Window.Resources>
+        
+        <Image x:Key="Warrior" Source="imges/Warrior.jpg"></Image>
+        <Image x:Key="Wizard" Source="imges/Wizard.jpg" ></Image>
+        <Image x:Key="Rogue" Source="imges/Rogue.jpg"></Image>
+    </Window.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -36,17 +44,17 @@
 
         <StackPanel Grid.Row="2" Grid.Column="1">
             <Label Content="XP"></Label>
-            <TextBlock x:Name="XPN" Text="{Binding XP}"></TextBlock>
+            <TextBlock x:Name="XPN" Text="{Binding XP, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
         </StackPanel>
         
         <StackPanel Grid.Row="3" Grid.Column="1">
             <Label Content="Level:"></Label>
-            <TextBlock x:Name="LevelN" Text="{Binding LEVEL}"></TextBlock>
+            <TextBlock x:Name="LevelN" Text="{Binding LEVEL, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
         </StackPanel>
         
         <StackPanel Grid.Row="4" Grid.Column="1">
             <Label Content="HP:"></Label>
-            <TextBlock x:Name="HPN" Text="{Binding HP}" ></TextBlock>
+            <TextBlock x:Name="HPN" Text="{Binding HP , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
         </StackPanel>
         
         <StackPanel Grid.Row="5" Grid.Column="1">
@@ -103,7 +111,8 @@
                     Grid.Column="6"
                     Grid.ColumnSpan="4"
                     Grid.RowSpan="4"
-                    Background="Red">
+
+                    Background="Aqua">
         </StackPanel>
 
         <StackPanel Grid.Row="6" Grid.Column="7">

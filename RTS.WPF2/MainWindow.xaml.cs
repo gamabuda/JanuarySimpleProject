@@ -14,20 +14,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 using RTS.Core;
 
 namespace RTS.WPF2
 {
-    
-    public partial class MainWindow : Window
+
+    public partial class MainWindow : INotifyPropertyChanged 
     {
         
-        Unit unit;
+        Unit unit = new Unit();
         
         public MainWindow()
         {
             InitializeComponent();
-            
+            unit = new Unit();
+            DataContext = unit;
             this.DataContext = this;
         }
         
@@ -38,7 +40,12 @@ namespace RTS.WPF2
                 get { return unit.Vitality; }
                 set
                 {
-                    unit.Vitality = value;
+                    if (unit.Vitality != value)
+                    {
+                        unit.Vitality = value;
+                        OnPropertyChanged("Vitality");
+                    }
+               
                 }
             }
             public double Inteligence
@@ -46,7 +53,11 @@ namespace RTS.WPF2
                 get { return unit.Inteligence; }
                 set
                 {
-                    unit.Inteligence = value;
+                    if (unit.Inteligence != value)
+                    {
+                        unit.Inteligence = value;
+                        OnPropertyChanged("Inteligence");
+                    }
                 }
             }
             public double Dexterity
@@ -54,7 +65,11 @@ namespace RTS.WPF2
                 get { return unit.Dexterity; }
                 set
                 {
-                    unit.Dexterity = value;
+                    if (unit.Dexterity != value)
+                    {
+                        unit.Dexterity = value;
+                        OnPropertyChanged("Dexterity");
+                    }
                 }
             }
 
@@ -63,7 +78,11 @@ namespace RTS.WPF2
                 get { return unit.Mana; }
                 set
                 {
-                   unit.Mana = value;
+                    if (unit.Mana != value)
+                    {
+                        unit.Mana = value;
+                        OnPropertyChanged("Mana");
+                    }
                 }
             }
 
@@ -72,7 +91,11 @@ namespace RTS.WPF2
                 get { return unit.Strength; }
                 set
                 {
-                    unit.Strength = value;
+                    if (unit.Strength != value)
+                    {
+                        unit.Strength = value;
+                        OnPropertyChanged("Strength");
+                    }
                 }
             }
 
@@ -81,7 +104,11 @@ namespace RTS.WPF2
                 get { return unit.Level; }
                 set
                 {
-                    unit.Level = value;
+                    if (unit.Level != value)
+                    {
+                        unit.Level = value;
+                        OnPropertyChanged("Level");
+                    }
                 }
             }
 
@@ -90,7 +117,11 @@ namespace RTS.WPF2
                 get { return unit.HP; }
                 set
                 {
-                    unit.HP = value;
+                    if (unit.HP != value)
+                    {
+                        unit.HP = value;
+                        OnPropertyChanged("HP");
+                    }
                 }
             }
 
@@ -100,42 +131,50 @@ namespace RTS.WPF2
                 get { return unit.StartPoint; }
                 set
                 {
-                    unit.StartPoint = value;
+                    if (unit.StartPoint != value)
+                    {
+                        unit.StartPoint = value;
+                        OnPropertyChanged("StartPoint");
+                    }
                 }
              }
 
             public int XP
             {
-                get { return unit.OldXP; }
+                get { return  unit?.OldXP ?? 0; }
                 set
                 {
-                   unit.OldXP = value;
+                    if (unit.OldXP != value)
+                    {
+                        unit.OldXP = value;
+                        OnPropertyChanged("XP");
+                    }
                 }
             }
         private void Wizard_Click(object sender, RoutedEventArgs e)
         {
-            Wizzard wizzard = new Wizzard();
-            SN.Text = wizzard.Strength.ToString();
-            VN.Text = wizzard.Vitality.ToString();
-            IN.Text = wizzard.Inteligence.ToString();
-            DN.Text = wizzard.Dexterity.ToString();
-            ManaN.Text = wizzard.Mana.ToString();
-            LevelN.Text = wizzard.Level.ToString();
-            XPN.Text = wizzard.OldXP.ToString();
-            SP.Text = wizzard.StartPoint.ToString();
+            unit = new Wizzard();
+            SN.Text = Strength.ToString();
+            VN.Text =Vitality.ToString();
+            IN.Text = Inteligence.ToString();
+            DN.Text = Dexterity.ToString();
+            ManaN.Text = Mana.ToString();
+            LevelN.Text = LEVEL.ToString();
+            XPN.Text = XP.ToString();
+            SP.Text =StartPoint.ToString();
         }
 
         private void Warrior_Click(object sender, RoutedEventArgs e)
         {
-            Warrior warrior = new Warrior();
-            SN.Text = warrior.Strength.ToString();
-            VN.Text = warrior.Vitality.ToString();
-            IN.Text = warrior.Inteligence.ToString();
-            DN.Text = warrior.Dexterity.ToString();
-            ManaN.Text = warrior.Mana.ToString();
-            LevelN.Text = warrior.Level.ToString();
-            XPN.Text = warrior.OldXP.ToString();
-            SP.Text = warrior.StartPoint.ToString();
+            unit = new Warrior();
+            SN.Text = unit.Strength.ToString();
+            VN.Text = unit.Vitality.ToString();
+            IN.Text = unit.Inteligence.ToString();
+            DN.Text = unit.Dexterity.ToString();
+            ManaN.Text = unit.Mana.ToString();
+            LevelN.Text = unit.Level.ToString();
+            XPN.Text = unit.OldXP.ToString();
+            SP.Text = unit.StartPoint.ToString();
         }
 
         private void Rogue_Click(object sender, RoutedEventArgs e)
@@ -154,13 +193,10 @@ namespace RTS.WPF2
         private void SBTNNplus_Click_1(object sender, RoutedEventArgs e)
         {
             
-            if (unit.StartPoint > 0)
-            {
-                if (unit.Strength == unit.Strength++)
-                {
-                    unit.StartPoint -= 1;
-                    unit.Strength += 1;
-                }
+            if (StartPoint > 0)
+            {             
+                    StartPoint -= 1;
+                    Strength += 1;            
             }
         }
 
@@ -192,35 +228,43 @@ namespace RTS.WPF2
 
         private void IBTNNplus_Click(object sender, RoutedEventArgs e)
         {
-            if (unit.Inteligence == unit.Inteligence++)
-            {
-                unit.StartPoint -= 1;
-                unit.Inteligence += 1;
+            if (Inteligence == Inteligence++)
+            { 
+                .StartPoint -= 1;
+                Inteligence += 1;
             }
         }
 
         private void IBTNNminus_Click(object sender, RoutedEventArgs e)
         {
-            unit.StartPoint += 1;
-            unit.Dexterity -= 1;
+         
+            .StartPoint += 1;
+            Dexterity -= 1;
         }
 
         private void VBTNNplus_Click(object sender, RoutedEventArgs e)
         {           
-                unit.StartPoint -= 1;
-                unit.Vitality += 1;
+                StartPoint -= 1;
+                Vitality += 1;
                 
         }
 
         private void VBTNNminus_Click(object sender, RoutedEventArgs e)
         {
-            unit.StartPoint += 1;
-            unit.Dexterity -= 1;
+            StartPoint += 1;
+            Dexterity -= 1;
         }
 
         private void XPBTNN_Click(object sender, RoutedEventArgs e)
         {
-            unit.OldXP += 1000;
+           XP += 1000;
+            
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
