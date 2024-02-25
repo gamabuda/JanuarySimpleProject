@@ -1,0 +1,131 @@
+﻿<Page x:Class="CharacterEdit.Pages.CharacterPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CharacterEdit.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CharacterPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Margin="5" Grid.Column="0" HorizontalAlignment="Left">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock>Класс:</TextBlock>
+                <ComboBox x:Name="ClassComb" Width="200" SelectionChanged="ComboBox_SelectionChanged">
+                    <ComboBoxItem>Воин</ComboBoxItem>
+                    <ComboBoxItem>Разбойник</ComboBoxItem>
+                    <ComboBoxItem>Маг</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock>Имя:</TextBlock>
+                <TextBox x:Name="NameTb" Width="200"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock>Уровень:</TextBlock>
+                <TextBlock x:Name="LevelTb" Width="200"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock>Опыт:</TextBlock>
+                <TextBlock x:Name="CurrentExpTb"></TextBlock>
+                <TextBlock>/</TextBlock>
+                <TextBlock Width="200" x:Name="MaxExpTb"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock>HP:</TextBlock>
+                <TextBlock x:Name="CurrentHPTb"></TextBlock>
+                <TextBlock>/</TextBlock>
+                <TextBlock Width="200" x:Name="MaxHPTb"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock>Мана:</TextBlock>
+                <TextBlock x:Name="CurrentManaTb"></TextBlock>
+                <TextBlock>/</TextBlock>
+                <TextBlock Width="200" x:Name="MaxManaTb"></TextBlock>
+            </StackPanel>
+            <StackPanel Margin="0 2" Orientation="Horizontal" HorizontalAlignment="Left">
+                <TextBlock>S:</TextBlock>
+                <TextBlock x:Name="StrTb"></TextBlock>
+                <TextBlock>/</TextBlock>
+                <TextBlock x:Name="MaxStrTb"></TextBlock>
+                <Button x:Name="PlusStrButton" Click="PlusStrButton_Click">+</Button>
+                <Button x:Name="MinusStrButton" Click="MinusStrButton_Click">-</Button>
+            </StackPanel>
+            <StackPanel Margin="0 2" Orientation="Horizontal" HorizontalAlignment="Left">
+                <TextBlock>D:</TextBlock>
+                <TextBlock x:Name="DexTb"></TextBlock>
+                <TextBlock>/</TextBlock>
+                <TextBlock x:Name="MaxDexTb"></TextBlock>
+                <Button x:Name="PlusDexButton" Click="PlusDexButton_Click">+</Button>
+                <Button x:Name="MinusDexButton" Click="MinusDexButton_Click">-</Button>
+            </StackPanel>
+            <StackPanel Margin="0 2" Orientation="Horizontal" HorizontalAlignment="Left">
+                <TextBlock>I:</TextBlock>
+                <TextBlock x:Name="IntTb"></TextBlock>
+                <TextBlock>/</TextBlock>
+                <TextBlock x:Name="MaxIntTb"></TextBlock>
+                <Button x:Name="PlusIntButton" Click="PlusIntButton_Click">+</Button>
+                <Button x:Name="MinusIntButton" Click="MinusIntButton_Click">-</Button>
+            </StackPanel>
+            <StackPanel Margin="0 2" Orientation="Horizontal" HorizontalAlignment="Left">
+                <TextBlock>V:</TextBlock>
+                <TextBlock x:Name="VitTb"></TextBlock>
+                <TextBlock>/</TextBlock>
+                <TextBlock x:Name="MaxVitTb"></TextBlock>
+                <Button x:Name="PlusVitButton" Click="PlusVitButton_Click">+</Button>
+                <Button x:Name="MinusVitButton" Click="MinusVitButton_Click">-</Button>
+            </StackPanel>
+            <Button Margin="0 5" Width="150" Click="Button_Click">Сохранить</Button>
+        </StackPanel>
+        <StackPanel Margin="5" Grid.Column="1">
+            <Border Width="275" Height="250" BorderBrush="#FF150470" BorderThickness="2">
+                <StackPanel>
+                    <Image Visibility="Collapsed" x:Name="RogueImage" Source="/Resources/Rogue.png" />
+                    <Image Visibility="Collapsed" x:Name="WizardImage" Source="/Resources/Wizard.png" />
+                    <Image Visibility="Collapsed" x:Name="WarriorImage" Source="/Resources/Warrior.png" />
+                </StackPanel>
+            </Border>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock>Физ. урон:</TextBlock>
+                    <TextBlock x:Name="PDamageTb" Width="50" TextAlignment="Center"></TextBlock>
+                </StackPanel>
+                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock>Защита:</TextBlock>
+                    <TextBlock x:Name="ArmorTb" Width="50" TextAlignment="Center"></TextBlock>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                 <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock >Маг. урон:</TextBlock>
+                    <TextBlock x:Name="MDamageTb" Width="50" TextAlignment="Center"></TextBlock>
+                </StackPanel>
+                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock >Маг. защита:</TextBlock>
+                    <TextBlock x:Name="MDefenceTb" Width="50" TextAlignment="Center"></TextBlock>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock >Шанс крита:</TextBlock>
+                    <TextBlock x:Name="CrtChanceTb" Width="50" TextAlignment="Center"></TextBlock>
+                </StackPanel>
+                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock >Крит. урон:</TextBlock>
+                    <TextBlock x:Name="CrtDamageTb" Width="50" TextAlignment="Center"></TextBlock>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock>Очки прокачки:</TextBlock>
+                <TextBlock x:Name="StatPointsTb"></TextBlock>
+            </StackPanel>
+            <Button Width="150" x:Name="GiveExpButton" Click="Button_Click_1">+1000 опыта</Button>
+        </StackPanel>
+    </Grid>
+</Page>
