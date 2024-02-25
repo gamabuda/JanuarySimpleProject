@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace RTS.Core
 {
-    internal class Bildings
+    public class Buildings
     {
+        public int Health { get; set; }
+        public int MaxHealth { get; set; }
     }
 }
