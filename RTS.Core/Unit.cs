@@ -2,7 +2,7 @@
 {
     public class Unit
     {
-        public int Vitality { get; set; }
+        public int Vitality { get; set; } //выносливость
         public int Mana { get; set; }
         public int Health { get; set; } //здоровье
         public int Strenght { get; set; } //сила
@@ -29,7 +29,7 @@
         {
             if (unit.Health - this.PDamage < 1)
             {
-                Unit.Health = 0;
+                unit.Health = 0;
                 return;
             }
 
