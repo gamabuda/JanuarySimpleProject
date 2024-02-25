@@ -51,7 +51,7 @@
                     Padding="10"
                     Content="Get exp"
                     Click="Button_Click" Height="55" Width="186"/>
-            <TextBlock FontSize="20" Margin="10,0,0,0" Width="150">
+            <TextBlock x:Name="TBStartPoints" FontSize="20" Margin="10,0,0,0" Width="150">
                 <Run Text="Start Points: "/>
                 <Run Text="{Binding StartPoints}"/>
             </TextBlock>
@@ -119,70 +119,41 @@
                 <Run Text="{Binding MaxMana}"/>
             </TextBlock>
         </StackPanel>
-        <StackPanel Margin="10,197,82,36" Grid.Row="1">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock 
-                    x:Name="TBStrength" 
-                    Text="Strength:"
-                    FontSize="20" 
-                    Width="160"/>
-                <Button 
-                    Content="+" 
-                    Command="{Binding IncreaseStrengthCommand}"
-                    Click="IncreaseCharacteristic" 
-                    Width="30"/>
-                <Button 
-                    Content="-" 
-                    Command="{Binding DecreaseStrengthCommand}"
-                    Click="DecreaseCharacteristic" 
-                    Width="30"/>
+        <StackPanel Margin="0,193,80,40" Grid.Row="1">
+            <StackPanel Orientation="Horizontal" Height="27" Width="296">
+                <TextBlock x:Name="TBStrength" FontSize="20" Width="160">
+                    <Run Text="Strength: "/>
+                    <Run Text="{Binding Strength}"/>
+                </TextBlock>
+                <Button Content="+" Click="IncreaseStrength" Height="25" Width="25"/>
+                <Button Content="-" Click="DecreaseStrength" Height="25" Width="25"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock 
-                    x:Name="TBDexterity"
-                    Text="Dexterity:" 
-                    FontSize="20" 
-                    Width="160"/>
-                <Button 
-                    Content="+" 
-                    Click="IncreaseCharacteristic" 
-                    Width="30"/>
-                <Button 
-                    Content="-" 
-                    Click="DecreaseCharacteristic" 
-                    Width="30"/>
+            <StackPanel Orientation="Horizontal" Height="27" Width="296">
+                <TextBlock x:Name="TBDexterity" FontSize="20" Width="160">
+                    <Run Text="Dexterity: "/>
+                    <Run Text="{Binding Dexterity}"/>
+                </TextBlock>
+                <Button Content="+" Click="IncreaseDexterity" Height="25" Width="25"/>
+                <Button Content="-" Click="DecreaseDexterity" Height="25" Width="25"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock 
-                    x:Name="TBIntelligence"
-                    Text="Intelligence:" 
-                    FontSize="20" 
-                    Width="160"/>
-                <Button 
-                    Content="+" 
-                    Click="IncreaseCharacteristic" 
-                    Width="30"/>
-                <Button 
-                    Content="-" 
-                    Click="DecreaseCharacteristic" 
-                    Width="30"/>
+            <StackPanel Orientation="Horizontal" Height="27" Width="296">
+                <TextBlock x:Name="TBIntelligence" FontSize="20" Width="160">
+                    <Run Text="Intelligence: "/>
+                    <Run Text="{Binding Intelligence}"/>
+                </TextBlock>
+                <Button Content="+" Click="IncreaseIntelligence" Height="25" Width="25"/>
+                <Button Content="-" Click="DecreaseIntelligence" Height="25" Width="25"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock 
-                    x:Name="TBVitality"
-                    Text="Vitality:" 
-                    FontSize="20" 
-                    Width="160"/>
-                <Button 
-                    Content="+" 
-                    Click="IncreaseCharacteristic" 
-                    Width="30"/>
-                <Button 
-                    Content="-" 
-                    Click="DecreaseCharacteristic" 
-                    Width="30"/>
+            <StackPanel Orientation="Horizontal" Height="27" Width="296">
+                <TextBlock x:Name="TBVitality" FontSize="20" Width="160">
+                    <Run Text="Vitality: "/>
+                    <Run Text="{Binding Vitality}"/>
+                </TextBlock>
+                <Button Content="+" Click="IncreaseVitality" Height="25" Width="25"/>
+                <Button Content="-" Click="DecreaseVitality" Height="25" Width="25"/>
             </StackPanel>
         </StackPanel>
+            
         <TextBlock
                 x:Name="TBPerson"
                 FontSize="30"

@@ -133,15 +133,88 @@ namespace RTS.WpfApp
             }
         }
 
-        private void IncreaseCharacteristic(object sender, RoutedEventArgs e)
+        private void IncreaseStrength(object sender, RoutedEventArgs e)
         {
-            unit.IncreaseStrength();
+            if (unit.StartPoints > 0)
+            {
+                unit.Strength++;
+                unit.StartPoints--;
+                TBStrength.Text = $"Strength: {unit.Strength}";
+                TBStartPoints.Text = $"Start Points: {unit.StartPoints}";
+            }
+        }
+        private void DecreaseStrength(object sender, RoutedEventArgs e)
+        {
+            if (unit.Strength > 0)
+            {
+                unit.Strength--;
+                unit.StartPoints++;
+                TBStrength.Text = $"Strength: {unit.Strength}";
+                TBStartPoints.Text = $"Start Points: {unit.StartPoints}";
+            }
         }
 
-        private void DecreaseCharacteristic(object sender, RoutedEventArgs e)
+        private void IncreaseDexterity(object sender, RoutedEventArgs e)
         {
-            unit.DecreaseStrength();
+            if (unit.StartPoints > 0)
+            {
+                unit.Dexterity++;
+                unit.StartPoints--;
+                TBDexterity.Text = $"Dexterity: {unit.Dexterity}";
+                TBStartPoints.Text = $"Start Points: {unit.StartPoints}";
+            }
+        }
+        private void DecreaseDexterity(object sender, RoutedEventArgs e)
+        {
+            if (unit.Dexterity > 0)
+            {
+                unit.Dexterity--;
+                unit.StartPoints++;
+                TBDexterity.Text = $"Dexterity: {unit.Dexterity}";
+                TBStartPoints.Text = $"Start Points: {unit.StartPoints}";
+            }
         }
 
+        private void IncreaseIntelligence(object sender, RoutedEventArgs e)
+        {
+            if (unit.StartPoints > 0)
+            {
+                unit.Intelligence++;
+                unit.StartPoints--;
+                TBIntelligence.Text = $"Intelligence: {unit.Intelligence}";
+                TBStartPoints.Text = $"Start Points: {unit.StartPoints}";
+            }
+        }
+        private void DecreaseIntelligence(object sender, RoutedEventArgs e)
+        {
+            if (unit.Intelligence > 0)
+            {
+                unit.Intelligence--;
+                unit.StartPoints++;
+                TBIntelligence.Text = $"Intelligence: {unit.Intelligence}";
+                TBStartPoints.Text = $"Start Points: {unit.StartPoints}";
+            }
+        }
+
+        private void IncreaseVitality(object sender, RoutedEventArgs e)
+        {
+           if (unit.StartPoints > 0)
+            {
+                unit.Vitality++;
+                unit.StartPoints--;
+                TBVitality.Text = $"Vitality: {unit.Vitality}";
+                TBStartPoints.Text = $"Start Points: {unit.StartPoints}";
+            }
+        }
+        private void DecreaseVitality(object sender, RoutedEventArgs e)
+        {
+            if (unit.Vitality > 0)
+            {
+                unit.Vitality--;
+                unit.StartPoints++;
+                TBVitality.Text = $"Vitality: {unit.Vitality}";
+                TBStartPoints.Text = $"Start Points: {unit.StartPoints}";
+            }
+        }
     }
 }
