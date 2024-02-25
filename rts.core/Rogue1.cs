@@ -10,14 +10,16 @@ namespace RTS.Core
     {
         public Rogue()
         {
-            this.Strength = 20;
-            this.Dexterity = 30;
-            this.Intelligence = 15;
-            this.Vitality = 20;
+            Strength = 20;
+            Dexterity = 30;
+            Intelligence = 15;
+            Vitality = 20;
 
             Health = (int)(Vitality * 1.5 + Strength * 0.5);
+            MaxHealth = Health;
             Mana = (int)(Intelligence * 1.2);
-            PDamage = (int)(0.5 * Strength + 0.5 * Dexterity);
+            MaxMana = Mana;
+            Damage = (int)(0.5 * Strength + 0.5 * Dexterity);
             Armor = (int)(1.5 * Dexterity);
             MagicalDefense = (int)(Intelligence * 0.5);
             MagicalDamage = (int)(Intelligence * 0.2);
