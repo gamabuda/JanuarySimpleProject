@@ -11,6 +11,7 @@ namespace RTS.Core.Interfaces
     {
         public int PDamage { get; set; }
         public int MDamage { get; set; }
-        public void Attack(Unit unit) {}
+        public void PAttack(Unit unit) {}
+        public void MAttack(Unit unit) { }
     }
 }

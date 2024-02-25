@@ -46,15 +46,41 @@ namespace RTS.Core.Units
                 $"Vitality: {Vitality}");
         }
 
-        public void Attack(Unit unit)
+        public void PAttack(Unit unit)
         {
-            if (unit.Health - PDamage < 1)
+            int damage = (int)(PDamage - 0.3 * unit.Armor - 0.1 * unit.Vitality - 0.1 * unit.Dexterity);
+
+            if (damage < 1)
+                damage = 1;
+
+            if (unit.Health - damage < 1)
             {
                 unit.Health = 0;
                 return;
             }
 
-            unit.Health -= PDamage;
+            unit.Health -= damage;
+        }
+
+        public void MAttack(Unit unit)
+        {
+            int damage = MDamage;
+
+            if (unit is Wizard)
+            {
+                damage = (int)(MDamage - 0.3 * unit.Armor - 0.1 * unit.Vitality);
+            }
+
+            if (damage < 1)
+                damage = 1;
+
+            if (unit.Health - damage < 1)
+            {
+                unit.Health = 0;
+                return;
+            }
+
+            unit.Health -= damage;
         }
 
         public void LevelUp()
