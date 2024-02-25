@@ -31,11 +31,13 @@ namespace RTS.WPF.Intrefaces
 
             if (target.Armor > 0)
             {
-                if(damage > target.Armor)
+                if (damage > target.Armor)
                 {
                     int RestOfDamage = damage - target.Armor;
                     target.HP -= RestOfDamage;
                 }
+                else
+                    target.Armor -= damage;
             }
             else
                 target.HP -= damage;
