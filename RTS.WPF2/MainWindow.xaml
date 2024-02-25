@@ -33,17 +33,20 @@
             <ColumnDefinition/>
             
         </Grid.ColumnDefinitions>
-        
-        
+
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <Label Content="XP"></Label>
+            <TextBlock x:Name="XPN" Text="{Binding XP}"></TextBlock>
+        </StackPanel>
         
         <StackPanel Grid.Row="3" Grid.Column="1">
             <Label Content="Level:"></Label>
-            <TextBlock x:Name="LevelN"></TextBlock>
+            <TextBlock x:Name="LevelN" Text="{Binding LEVEL}"></TextBlock>
         </StackPanel>
         
         <StackPanel Grid.Row="4" Grid.Column="1">
             <Label Content="HP:"></Label>
-            <TextBlock x:Name="HPN"></TextBlock>
+            <TextBlock x:Name="HPN" Text="{Binding HP}" ></TextBlock>
         </StackPanel>
         
         <StackPanel Grid.Row="5" Grid.Column="1">
@@ -92,7 +95,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="7" Grid.Column="1">
-            <Button x:Name="XPBTNN" Content="Get XP"></Button>
+            <Button x:Name="XPBTNN" Content="Get XP" Click="XPBTNN_Click"></Button>
             <Label Content="1000 за клик"></Label>
         </StackPanel>
 
@@ -117,7 +120,7 @@
 
         <StackPanel Grid.Row="7" Grid.Column="4">
             <Label Content="StartPoints:"></Label>
-            <TextBlock x:Name="SP" Text="{Binding StartPoints}" />
+            <TextBlock x:Name="SP" Text="{Binding StartPoint, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
            
             
         </StackPanel>

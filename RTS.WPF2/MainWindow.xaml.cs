@@ -93,8 +93,24 @@ namespace RTS.WPF2
                 }
             }
 
+           
+             public int StartPoint
+             {
+                get { return unit.StartPoint; }
+                set
+                {
 
+                }
+             }
 
+            public int XP
+            {
+                get { return unit.OldXP; }
+                set
+                {
+
+                }
+            }
         private void Wizard_Click(object sender, RoutedEventArgs e)
         {
             Wizzard wizzard = new Wizzard();
@@ -104,6 +120,8 @@ namespace RTS.WPF2
             DN.Text = wizzard.Dexterity.ToString();
             ManaN.Text = wizzard.Mana.ToString();
             LevelN.Text = wizzard.Level.ToString();
+            XPN.Text = wizzard.OldXP.ToString();
+            SP.Text = wizzard.StartPoint.ToString();
         }
 
         private void Warrior_Click(object sender, RoutedEventArgs e)
@@ -115,17 +133,21 @@ namespace RTS.WPF2
             DN.Text = warrior.Dexterity.ToString();
             ManaN.Text = warrior.Mana.ToString();
             LevelN.Text = warrior.Level.ToString();
+            XPN.Text = warrior.OldXP.ToString();
+            SP.Text = warrior.StartPoint.ToString();
         }
 
         private void Rogue_Click(object sender, RoutedEventArgs e)
         {
-            Rogue rogue = new Rogue();
-            SN.Text = rogue.Strength.ToString();
-            VN.Text = rogue.Vitality.ToString();
-            IN.Text = rogue.Inteligence.ToString();
-            DN.Text = rogue.Dexterity.ToString();
-            ManaN.Text = rogue.Mana.ToString();
-            LevelN.Text = rogue.Level.ToString();
+            unit = new Rogue();
+            SN.Text = unit.Strength.ToString();
+            VN.Text = unit.Vitality.ToString();
+            IN.Text = unit.Inteligence.ToString();
+            DN.Text = unit.Dexterity.ToString();
+            ManaN.Text = unit.Mana.ToString();
+            LevelN.Text = unit.Level.ToString();
+            XPN.Text = unit.OldXP.ToString();
+            SP.Text = unit.StartPoint.ToString();
         }
 
         private void SBTNNplus_Click_1(object sender, RoutedEventArgs e)
@@ -146,7 +168,8 @@ namespace RTS.WPF2
             
             if (unit.StartPoint == unit.StartPoint++)
             {
-
+                unit.StartPoint += 1;
+                unit.Strength -= 1;
             }
         }
 
@@ -162,7 +185,8 @@ namespace RTS.WPF2
 
         private void DBTNNminus_Click(object sender, RoutedEventArgs e)
         {
-
+            unit.StartPoint += 1;
+            unit.Dexterity -= 1;
         }
 
         private void IBTNNplus_Click(object sender, RoutedEventArgs e)
@@ -176,21 +200,26 @@ namespace RTS.WPF2
 
         private void IBTNNminus_Click(object sender, RoutedEventArgs e)
         {
-
+            unit.StartPoint += 1;
+            unit.Dexterity -= 1;
         }
 
         private void VBTNNplus_Click(object sender, RoutedEventArgs e)
-        {
-
-            
+        {           
                 unit.StartPoint -= 1;
-                  unit.Vitality += 1;
-            
+                unit.Vitality += 1;
+                
         }
 
         private void VBTNNminus_Click(object sender, RoutedEventArgs e)
         {
+            unit.StartPoint += 1;
+            unit.Dexterity -= 1;
+        }
 
+        private void XPBTNN_Click(object sender, RoutedEventArgs e)
+        {
+            unit.OldXP += 1000;
         }
     }
 }

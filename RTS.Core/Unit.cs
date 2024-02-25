@@ -5,7 +5,7 @@
         
         public int OldXP { get; set; } = 0;
         int NewXp { get; set; } = 1000;
-        int NextXp { get; set; }
+        
 
         public int Level { get; set; } = 1;
         public double MaxHealth { get; set; }
