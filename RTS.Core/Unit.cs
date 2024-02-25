@@ -1,4 +1,6 @@
-﻿namespace RTS.Core
+﻿using System.Reflection.Emit;
+
+namespace RTS.Core
 {
     public class Unit
     {
@@ -18,7 +20,9 @@
         public int MDefense { get; set; }
         public int CrtChance { get; set; }
         public int CrtDamage { get; set; }
-      
+
+        public int Level { get; set; } = 1;
+        public int Experience = 0;
 
         public void ShowInfo()
         {
@@ -36,5 +40,16 @@
             unit.Health -= this.PDamage;
         }
 
+        public void LevelUp()
+        {
+            if (Level < 50)
+            {
+            }
+
+            else
+            {
+                Console.WriteLine("Вы достигли максимального уровня");
+            }
+        }
     }
 }
