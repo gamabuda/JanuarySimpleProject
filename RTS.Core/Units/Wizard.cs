@@ -8,6 +8,7 @@ namespace RTS.Core.Units
 {
     public class Wizard : Unit
     {
+        public string Icon = ".\\RTS.WPF\\img\\Units\\wizard.png";
         public int HealPoint { get; set; } = 10;
         public Wizard()
         {

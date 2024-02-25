@@ -8,6 +8,8 @@ namespace RTS.Core.Units
 {
     public class Warrior : Unit
     {
+        public string Icon = ".\\RTS.WPF\\img\\Units\\warrior.png";
+
         public Warrior()
         {
             Strength = 30;
