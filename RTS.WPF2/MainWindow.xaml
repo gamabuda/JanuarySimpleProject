@@ -36,7 +36,7 @@
         
         <StackPanel Grid.Row="2" Grid.Column="1">
             <Label Content="Class"></Label>
-            <TextBlock x:Name="ClassN" Text="{Binding Path=unit }"></TextBlock>
+            <TextBlock x:Name="ClassN" Text="{Binding Path=Warrior||Rogue||Wizard }"></TextBlock>
         </StackPanel>
         
         <StackPanel Grid.Row="3" Grid.Column="1">
@@ -107,7 +107,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="6" Grid.Column="7">
-            <Button  x:Name="Wizard" Content="Wizard" Click="Wizard_Click"></Button>
+            <Button x:Name="Wizard" Content="Wizard" Click="Wizard_Click"></Button>
         </StackPanel>
         
         <StackPanel Grid.Row="6" Grid.Column="8">

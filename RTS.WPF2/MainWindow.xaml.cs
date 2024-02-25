@@ -91,6 +91,61 @@ namespace RTS.WPF2
                 }
             }
         }
+
+        public int LEVEL
+        {
+            get { return unit.Level; }
+            set
+            {
+                if (unit.Level != value)
+                {
+                    unit.Level = value;
+                    OnPropertyChanged("Level");
+                }
+            }
+        }
+
+        public double HP
+        {
+            get { return unit.HP; }
+            set
+            {
+                if (unit.HP != value)
+                {
+                    unit.HP = value;
+                    OnPropertyChanged("HP");
+                }
+            }
+        }
+
+        public Unit Warrior
+        {
+            get { return new Warrior(); }
+            set
+            {
+               
+            }
+        }
+        public Unit Rogue
+        {
+            get { return new Rogue(); }
+            set
+            {
+
+            }
+        }
+
+        public Unit Wizard
+        {
+            get { return new Wizzard(); }
+            set
+            {
+
+            }
+        }
+
+       
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)
