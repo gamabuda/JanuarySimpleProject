@@ -36,7 +36,7 @@
         
         <StackPanel Grid.Row="2" Grid.Column="1">
             <Label Content="Class"></Label>
-            <TextBlock x:Name="ClassN" Text="{Binding Path=Warrior||Rogue||Wizard }"></TextBlock>
+            <TextBlock x:Name="ClassN" Text="{Binding unit }"></TextBlock>
         </StackPanel>
         
         <StackPanel Grid.Row="3" Grid.Column="1">
@@ -51,27 +51,27 @@
         
         <StackPanel Grid.Row="5" Grid.Column="1">
             <Label Content="Mana:"></Label>
-            <TextBlock x:Name="ManaN" Text="{Binding Path=Mana, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+            <TextBlock x:Name="ManaN" Text="{Binding Mana, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="3">
             <Label Content="S"></Label>
-            <TextBlock x:Name="SN" Text="{Binding Path=Strength , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+            <TextBlock x:Name="SN" Text="{Binding Strength , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="3">
             <Label Content="D"></Label>
-            <TextBlock x:Name="DN" Text="{Binding Path=Dexterity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"></TextBlock>
+            <TextBlock x:Name="DN" Text="{Binding Dexterity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="3">
             <Label Content="I"></Label>
-            <TextBlock x:Name="IN" Text="{Binding Path=Inteligence , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+            <TextBlock x:Name="IN" Text="{Binding Inteligence , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="5" Grid.Column="3">
             <Label Content="V"></Label>
-            <TextBlock x:Name="VN" Text="{Binding Path=Vitality, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+            <TextBlock x:Name="VN" Text="{Binding Vitality, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="4">
@@ -120,7 +120,7 @@
 
         <StackPanel Grid.Row="7" Grid.Column="4">
             <Label Content="StartPoints:"></Label>
-            <TextBlock x:Name="SP" Text="{Binding Path=StartPoints}" />
+            <TextBlock x:Name="SP" Text="{Binding StartPoints}" />
            
             
         </StackPanel>

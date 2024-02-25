@@ -21,7 +21,9 @@ namespace RTS.WPF2
     
     public partial class MainWindow : Window
     {
-         Unit unit;
+        
+        Unit unit;
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -29,132 +31,73 @@ namespace RTS.WPF2
             this.DataContext = unit;
         }
         
-        public double Vitality
-        {
-            get { return unit.Vitality; }
-            set
+        
+           
+            public double Vitality
             {
-                if (unit.Vitality != value)
+                get { return unit.Vitality; }
+                set
                 {
-                    unit.Vitality = value;
-                    OnPropertyChanged("Counter");
+                    
                 }
             }
-        }
-        public double Inteligence
-        {
-            get { return unit.Inteligence; }
-            set
+            public double Inteligence
             {
-                if (unit.Inteligence != value)
+                get { return unit.Inteligence; }
+                set
                 {
-                    unit.Inteligence = value;
-                    OnPropertyChanged("Counter");
+                    
                 }
             }
-        }
-        public double Dexterity
-        {
-            get { return unit.Dexterity; }
-            set
+            public double Dexterity
             {
-                if (unit.Dexterity != value)
+                get { return unit.Dexterity; }
+                set
                 {
-                    unit.Dexterity = value;
-                    OnPropertyChanged("Counter");
+                    
                 }
             }
-        }
 
-        public double Mana
-        {
-            get { return unit.Mana; }
-            set
+            public double Mana
             {
-                if (unit.Mana != value)
+                get { return unit.Mana; }
+                set
                 {
-                    unit.Mana = value;
-                    OnPropertyChanged("Counter");
+                   
                 }
             }
-        }
 
-        public double Strength
-        {
-            get { return unit.Strength; }
-            set
+            public double Strength
             {
-                if (unit.Strength != value)
+                get { return unit.Strength; }
+                set
                 {
-                    unit.Strength = value;
-                    OnPropertyChanged("Counter");
+                    
                 }
             }
-        }
 
-        public int LEVEL
-        {
-            get { return unit.Level; }
-            set
+            public int LEVEL
             {
-                if (unit.Level != value)
+                get { return unit.Level; }
+                set
                 {
-                    unit.Level = value;
-                    OnPropertyChanged("Level");
                 }
             }
-        }
 
-        public double HP
-        {
-            get { return unit.HP; }
-            set
+            public double HP
             {
-                if (unit.HP != value)
+                get { return unit.HP; }
+                set
                 {
-                    unit.HP = value;
-                    OnPropertyChanged("HP");
+
                 }
             }
-        }
 
-        public Unit Warrior
-        {
-            get { return new Warrior(); }
-            set
-            {
-               
-            }
-        }
-        public Unit Rogue
-        {
-            get { return new Rogue(); }
-            set
-            {
 
-            }
-        }
 
-        public Unit Wizard
-        {
-            get { return new Wizzard(); }
-            set
-            {
-
-            }
-        }
-
-       
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
         private void Wizard_Click(object sender, RoutedEventArgs e)
         {
-            new Wizzard();
+           ClassN.Text = new Wizzard().ToString();
         }
 
         private void Warrior_Click(object sender, RoutedEventArgs e)
