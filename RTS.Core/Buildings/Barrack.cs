@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RTS.Core.Interfaces;
 
 namespace RTS.Core.Buildings
 {
-    public class Barrack : IBuilding
+    public class Barrack : IBuilding, IHealthHandler
     {
-        public int HP { get; set; } = 1000;
+        public int Health { get; set; }
+        public int MaxHealth { get; set; }
 
         public static Unit CreateUnit(string type)
         {

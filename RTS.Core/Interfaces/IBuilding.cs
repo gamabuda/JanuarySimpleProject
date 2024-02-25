@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RTS.Core.Buildings
+namespace RTS.Core.Interfaces
 {
     public interface IBuilding
     {
-        public int HP { get; set; }
     }
 }

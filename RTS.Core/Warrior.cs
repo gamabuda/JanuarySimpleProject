@@ -15,17 +15,30 @@ namespace RTS.Core
             this.Intelligence = 10;
             this.Vitality = 25;
 
-            MaxMana = 50;
-            MaxHealth = 100;
             MaxStrength = 250;
             MaxDexterity = 80;
             MaxIntelligence = 50;
             MaxVitality = 100;
 
             Health = Vitality * 2 + Strength;
-            Mana = 1 * Intelligence;
-            PDamage = 1 * Strength;
-            Armor = 1 * Dexterity;
+            Mana = Intelligence;
+            PDamage = Strength;
+            Armor = Dexterity;
+            MDamage = (int)(0.2 * Intelligence);
+            MDefense = (int)(0.5 * Intelligence);
+            CrtChance = (int)(0.2 * Dexterity);
+            CrtDamage = (int)(0.1 * Dexterity);
+
+            MaxMana = Mana;
+            MaxHealth = Health;
+        }
+
+        public void CalculateStats()
+        {
+            Health = Vitality * 2 + Strength;
+            Mana = Intelligence;
+            PDamage = Strength;
+            Armor = Dexterity;
             MDamage = (int)(0.2 * Intelligence);
             MDefense = (int)(0.5 * Intelligence);
             CrtChance = (int)(0.2 * Dexterity);

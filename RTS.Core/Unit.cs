@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RTS.Core.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RTS.Core
 {
-    public class Unit
+    public class Unit : IHealthHandler, IManaHandler, IAttackHandler
     {
         public int Level { get; set; } = 1;
         private int _maxLevel = 50;

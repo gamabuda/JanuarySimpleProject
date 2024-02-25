@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RTS.Core.Interfaces;
 
 namespace RTS.Core.Buildings
 {
-    public class Church : IBuilding
+    public class Church : IBuilding, IHealthHandler
     {
-        public int HP { get; set; } = 100;
+        public int Health { get; set; }
+        public int MaxHealth { get; set; }
         public int HealPoint { get; set; } = 10;
         public void Pray(Unit unit)
         {
