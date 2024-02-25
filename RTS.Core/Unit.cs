@@ -1,12 +1,11 @@
 ﻿using System.ComponentModel;
 using System.Xml.Linq;
+using RTS.WPF.Intrefaces;
 
 namespace RTS.Core
 {
-    public class Unit : INotifyPropertyChanged
+    public class Unit : INotifyPropertyChanged, IAttackHandler, IHpHandler, IManaHandler
     {
-        public int MaxHealth { get; set; }
-        public int MaxMana { get; set; }
         public int Armor { get; set; }
         private int _startspoints = 5;
         public int StartsPoints 
@@ -21,6 +20,8 @@ namespace RTS.Core
 
         public int HP { get; set; }
         public int Mana { get; set; }
+        public int MaxHealth { get; set; }
+        public int MaxMana { get; set; }
         private int _level;
         public int MaxLevel { get; set; } = 50;
         public int Level
@@ -111,22 +112,13 @@ namespace RTS.Core
             Level = 1;
         }
 
+        public Random random = new Random();
 
         public void ShowInfo()
         {
             Console.WriteLine($"Health: {HP}\nMana: {Mana}\nStrength: {Strength}\nDexterity: {Dexterity}\nVitality: {Vitality}");
         }
 
-        public void DealDamage(Unit target)
-        {
-            if(target.HP - this.Damage < 1)
-            {
-                target.HP = 0;
-                return;
-            }
-
-            target.HP -= this.Damage;
-        }
         public void LevelUp()
         {
             if (Level < MaxLevel)
