@@ -27,8 +27,8 @@ namespace RTS.WPF2
         public MainWindow()
         {
             InitializeComponent();
-            unit = new Unit();
-            this.DataContext = unit;
+            
+            this.DataContext = this;
         }
         
         
@@ -38,7 +38,7 @@ namespace RTS.WPF2
                 get { return unit.Vitality; }
                 set
                 {
-                    
+                    unit.Vitality = value;
                 }
             }
             public double Inteligence
@@ -46,7 +46,7 @@ namespace RTS.WPF2
                 get { return unit.Inteligence; }
                 set
                 {
-                    
+                    unit.Inteligence = value;
                 }
             }
             public double Dexterity
@@ -54,7 +54,7 @@ namespace RTS.WPF2
                 get { return unit.Dexterity; }
                 set
                 {
-                    
+                    unit.Dexterity = value;
                 }
             }
 
@@ -63,7 +63,7 @@ namespace RTS.WPF2
                 get { return unit.Mana; }
                 set
                 {
-                   
+                   unit.Mana = value;
                 }
             }
 
@@ -72,7 +72,7 @@ namespace RTS.WPF2
                 get { return unit.Strength; }
                 set
                 {
-                    
+                    unit.Strength = value;
                 }
             }
 
@@ -81,6 +81,7 @@ namespace RTS.WPF2
                 get { return unit.Level; }
                 set
                 {
+                    unit.Level = value;
                 }
             }
 
@@ -89,7 +90,7 @@ namespace RTS.WPF2
                 get { return unit.HP; }
                 set
                 {
-
+                    unit.HP = value;
                 }
             }
 
@@ -99,7 +100,7 @@ namespace RTS.WPF2
                 get { return unit.StartPoint; }
                 set
                 {
-
+                    unit.StartPoint = value;
                 }
              }
 
@@ -108,7 +109,7 @@ namespace RTS.WPF2
                 get { return unit.OldXP; }
                 set
                 {
-
+                   unit.OldXP = value;
                 }
             }
         private void Wizard_Click(object sender, RoutedEventArgs e)
