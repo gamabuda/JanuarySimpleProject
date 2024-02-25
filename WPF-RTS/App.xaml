@@ -1,7 +1,7 @@
-﻿<Application x:Class="RTS.WPF.App"
+﻿<Application x:Class="WPF_RTS.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:RTS.WPF"
+             xmlns:local="clr-namespace:WPF_RTS"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          

@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace RTS.WPF
+namespace WPF_RTS
 {
     /// <summary>
     /// Interaction logic for App.xaml
