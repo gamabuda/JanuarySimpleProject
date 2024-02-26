@@ -174,19 +174,20 @@ namespace RTS.Core1
 
         public void LevelUp()
         {
-            NecessaryExp = (this.Level - 1) * 1000;
+            this.NecessaryExp = (this.Level - 1) * 1000;
 
             if (this.Level < this.MaxLevel)
             {
 
-                if (this.Exp < NecessaryExp)
+                if (this.Exp < this.NecessaryExp)
                 {
-                    Console.WriteLine("Недостаточно опыта для повышения уровня");
+                    Console.WriteLine($"Недостаточно опыта для повышения уровня: {this.NecessaryExp}");
                     return;
                 }
 
                 this.Level++;
-                this.Exp -= NecessaryExp;
+                Points++;
+                this.Exp -= this.NecessaryExp;
                 Console.WriteLine($"Поздравляем, вы достигли уровня {this.Level}! Текущий опыт: {this.Exp}");
             }
             else

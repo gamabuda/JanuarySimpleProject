@@ -69,14 +69,14 @@
                    FontFamily="Candara" 
                    FontSize="17" 
                    Grid.Column="2" 
-                   Margin="27,325,163,145"/>
+                   Margin="35,325,155,145"/>
         <TextBlock 
              x:Name="Points"
                    Text="{Binding Points}"
                    FontFamily="Candara" 
                    FontSize="17" 
                    Grid.Column="2" 
-                   Margin="82,325,143,139"/>
+                   Margin="93,325,132,139"/>
 
         <Button FontSize="18" Padding="10" Content="Get Exp"  Foreground="White" Click="Button_ClickGE" FontFamily="Candara" Grid.Column="2" Margin="21,361,32,0" VerticalAlignment="Top" Height="49" >
             <Button.RenderTransform>
@@ -95,7 +95,7 @@
             </Button.Background>
         </Button>
 
-        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Bottom" Grid.Column="2" Margin="150,0,0,150" Height="19" Width="44">
+        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Bottom" Grid.Column="2" Margin="167,0,0,150" Height="19" Width="44">
             <TextBlock x:Name="Exp"
                        Text="{Binding Exp}"
                        TextAlignment="Right"
@@ -133,22 +133,7 @@
             Text="Exp: "
                        FontFamily="Candara" 
                        FontSize="17"
-                       Grid.Column="2" Margin="112,325,95,140"
+                       Grid.Column="2" Margin="126,325,81,140"
                        />
-        <TextBlock x:Name="NecessaryExp" Text="{Binding NecessaryExp}"
-                       FontFamily="Candara" 
-                       FontSize="17"
-                   TextAlignment="Right"
-                   Grid.Column="2" Margin="183,325,22,149" RenderTransformOrigin="0.5,0.5"
-                       >
-            <TextBlock.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleX="1.128"/>
-                    <RotateTransform/>
-                    <TranslateTransform X="0.18"/>
-                </TransformGroup>
-            </TextBlock.RenderTransform>
-        </TextBlock>
     </Grid>
 </Window>

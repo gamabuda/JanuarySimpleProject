@@ -70,10 +70,9 @@ namespace RTS.WpfApp1
 
         private void GetExp(Unit unit)
         {
-                unit.Level++;
-                unit.Exp -= unit.NecessaryExp;
-                unit.Points += 1;
-            unit.LevelUp();
+                unit.Exp += 1000;
+                Exp.Text = unit.Exp.ToString();
+                unit.LevelUp();
         }
 
 
