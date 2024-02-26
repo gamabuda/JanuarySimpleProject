@@ -77,6 +77,14 @@ namespace RTS.WPF
             Points.Text = $"{unit.Points}";
         }
 
+        private void CheckConfirmBtnEnabled()
+        {
+            if (unit.Strength == minStr && unit.Dexterity == minDex && unit.Intelligence == minInt && unit.Vitality == minVit)
+                ConfirmSkillChange.IsEnabled = false;
+            else
+                ConfirmSkillChange.IsEnabled = true;
+        }
+
         private void ChooseClassWarrior_Click(object sender, RoutedEventArgs e)
         {
             unit = Barrack.CreateUnit("warrior");
@@ -145,7 +153,7 @@ namespace RTS.WPF
 
         private void GetExp_Click(object sender, RoutedEventArgs e)
         {
-            unit.Experience += 10000;
+            unit.Experience += 1000;
             unit.LevelUp();
             StatsUpdate();
         }
@@ -157,7 +165,7 @@ namespace RTS.WPF
             minInt = unit.Intelligence;
             minVit = unit.Vitality;
 
-            ConfirmSkillChange.IsEnabled = false;
+            CheckConfirmBtnEnabled();
         }
 
         private void StrPlus_Click(object sender, RoutedEventArgs e)
@@ -171,7 +179,7 @@ namespace RTS.WPF
             unit.Strength++;
             unit.Points--;
 
-            ConfirmSkillChange.IsEnabled = true;
+            CheckConfirmBtnEnabled();
             StatsUpdate();
         }
 
@@ -182,7 +190,8 @@ namespace RTS.WPF
 
             unit.Strength--;
             unit.Points++;
-            ConfirmSkillChange.IsEnabled = true;
+
+            CheckConfirmBtnEnabled();
             StatsUpdate();
         }
 
@@ -197,7 +206,7 @@ namespace RTS.WPF
             unit.Dexterity++;
             unit.Points--;
 
-            ConfirmSkillChange.IsEnabled = true;
+            CheckConfirmBtnEnabled();
             StatsUpdate();
         }
 
@@ -208,7 +217,8 @@ namespace RTS.WPF
 
             unit.Dexterity--;
             unit.Points++;
-            ConfirmSkillChange.IsEnabled = true;
+
+            CheckConfirmBtnEnabled();
             StatsUpdate();
         }
 
@@ -223,7 +233,7 @@ namespace RTS.WPF
             unit.Intelligence++;
             unit.Points--;
 
-            ConfirmSkillChange.IsEnabled = true;
+            CheckConfirmBtnEnabled();
             StatsUpdate();
         }
 
@@ -234,7 +244,8 @@ namespace RTS.WPF
 
             unit.Intelligence--;
             unit.Points++;
-            ConfirmSkillChange.IsEnabled = true;
+
+            CheckConfirmBtnEnabled();
             StatsUpdate();
         }
 
@@ -249,7 +260,7 @@ namespace RTS.WPF
             unit.Vitality++;
             unit.Points--;
 
-            ConfirmSkillChange.IsEnabled = true;
+            CheckConfirmBtnEnabled();
             StatsUpdate();
         }
 
@@ -260,7 +271,8 @@ namespace RTS.WPF
 
             unit.Vitality--;
             unit.Points++;
-            ConfirmSkillChange.IsEnabled = true;
+
+            CheckConfirmBtnEnabled();
             StatsUpdate();
         }
     }
