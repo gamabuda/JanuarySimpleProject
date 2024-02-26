@@ -278,6 +278,11 @@ namespace RTS.WpfApp1
                 }
             }
         }
+
+        private void checkBox_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
     }
 
