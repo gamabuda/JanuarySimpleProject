@@ -18,8 +18,26 @@ namespace RTS.Core
             }
         }
 
-        public int HP { get; set; }
-        public int Mana { get; set; }
+        private int _hp;
+        public int HP 
+        {
+            get => _hp;
+            set
+            {
+                _hp = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(HP)));
+            }
+        }
+        private int _mana;
+        public int Mana 
+        {
+            get => _mana;
+            set
+            {
+                _mana = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Mana)));
+            }
+        }
         public int MaxHealth { get; set; }
         public int MaxMana { get; set; }
         private int _level;
@@ -134,6 +152,45 @@ namespace RTS.Core
                     TotalExp = TotalExp + Experience;
                 }
             }
+        }
+
+        public void DealDamage(Unit target)
+        {
+            CheckForCritical();
+            int damage = 0;
+
+            if (CheckForCritical() == true)
+                damage = this.CriticalDamage + this.Damage;
+            else
+                damage = this.Damage;
+
+            if (target.HP - damage < 1)
+            {
+                target.HP = 0;
+                return;
+            }
+
+            if (target.Armor > 0)
+            {
+                if (damage > target.Armor)
+                {
+                    int RestOfDamage = damage - target.Armor;
+                    target.HP -= RestOfDamage;
+                }
+                else
+                    target.Armor -= damage;
+            }
+            else
+                target.HP -= damage;
+        }
+        public bool CheckForCritical()
+        {
+            Random random = new Random();
+            int chance = random.Next(0, 101);
+            if (chance < CriticalChanse)
+                return true;
+            else
+                return false;
         }
     }
 }

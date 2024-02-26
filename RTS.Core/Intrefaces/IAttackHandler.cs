@@ -13,44 +13,8 @@ namespace RTS.WPF.Intrefaces
         public int MagicalDamage { get; set; }
         public int CriticalChanse { get; set; }
         public int CriticalDamage { get; set; }
-        public void DealDamage(Unit target)
-        {
-            CheckForCritical();
-            int damage = 0;
+        public void DealDamage(Unit target);
 
-            if (CheckForCritical() == true)
-                damage = this.CriticalDamage;
-            else
-                damage = this.Damage;
-
-            if (target.HP - damage < 1)
-            {
-                target.HP = 0;
-                return;
-            }
-
-            if (target.Armor > 0)
-            {
-                if (damage > target.Armor)
-                {
-                    int RestOfDamage = damage - target.Armor;
-                    target.HP -= RestOfDamage;
-                }
-                else
-                    target.Armor -= damage;
-            }
-            else
-                target.HP -= damage;
-        }
-
-        public bool CheckForCritical()
-        {
-            Random random = new Random();
-            int chance = random.Next(0, 101);
-            if (chance < CriticalChanse) 
-                return true;
-            else 
-                return false;
-        }
+        public bool CheckForCritical();
     }
 }
