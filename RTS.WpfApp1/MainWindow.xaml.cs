@@ -70,27 +70,10 @@ namespace RTS.WpfApp1
 
         private void GetExp(Unit unit)
         {
-            unit.NecessaryExp = (unit.Level - 1) * 1000;
-
-            if (unit.Level < unit.MaxLevel)
-            {
-
-                if (unit.Exp < unit.NecessaryExp)
-                {
-                    MessageBox.Show($"Недостаточно опыта для повышения уровня: {unit.NecessaryExp}");
-                    return;
-                }
-
                 unit.Level++;
                 unit.Exp -= unit.NecessaryExp;
                 unit.Points += 1;
-                Characteristics(unit);
-                MessageBox.Show($"Поздравляем, вы достигли уровня {unit.Level}! Текущий опыт: {unit.Exp}");
-            }
-            else
-            {
-                MessageBox.Show("Вы достигли максимального уровня! Поздравляем!");
-            }
+            unit.LevelUp();
         }
 
 
