@@ -1,4 +1,4 @@
-﻿using RTS.Core;
+﻿using RTS.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,27 +7,41 @@ using System.Threading.Tasks;
 
 namespace RTS.Core
 {
-    public class Barracks : Buildings
+    public class Barracks : IHPHandler, IArmorHandler, IAttackHandler
     {
-        public Barracks(string unitType)
+        public int Health { get; set; }
+        public int MaxHealth { get; set; }
+        public int PDamage { get; set; }
+        public void Armorr(Unit unit)
         {
-            Unit unit = null;
 
+        }
+        public void PAttack(Unit unit)
+        {
+
+        }
+        public int MDamage { get; set; }
+        public void MAttack(Unit unit) 
+        {
+
+        }
+        public int CrtChance { get; set; }
+        public int CrtDamage { get; set; }
+        public int Armor { get; set; }
+        public int MDefence { get; set; }
+        public Unit CreateUnit(string unitType)
+        {
             switch (unitType)
             {
-                case "Wizzard":
-                    unit = new Wizard();
-                    break;
+                case "Wizard":
+                    return new Wizard();
                 case "Warrior":
-                    unit = new Warrior();
-                    break;
+                    return new Warrior();
                 case "Rogue":
-                    unit = new Rogue();
-                    break;
+                    return new Rogue();
                 default:
                     throw new ArgumentException("Unknown unit type");
             }
-            return;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using RTS.Core;
+﻿using RTS.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +7,29 @@ using System.Threading.Tasks;
 
 namespace RTS.Core
 {
-    public class Church : Buildings
+    public class Church : IHPHandler, IArmorHandler, IAttackHandler
     {
+        public int Health { get; set; }
+        public int MaxHealth { get; set; }
+        public int PDamage { get; set; }
+        public void Armorr(Unit unit)
+        {
+
+        }
+        public void PAttack(Unit unit)
+        {
+
+        }
+        public int MDamage { get; set; }
+        public void MAttack(Unit unit)
+        {
+
+        }
+        public int CrtChance { get; set; }
+        public int CrtDamage { get; set; }
+        public int Armor { get; set; }
+        public int MDefence { get; set; }
+
         public int RegenMana { get; set; } = 15;
 
         public void Pray(Unit unit)

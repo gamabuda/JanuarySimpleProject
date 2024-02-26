@@ -25,7 +25,7 @@ namespace RTS.Core
         public int MDefence { get; set; }
         public int CrtChance { get; set; }
         public int CrtDamage { get; set; }
-        public int Level { get; set; } = 1;
+        public int Level { get; set; } = 0;
         public int _exp;
         public int Exp
         {
