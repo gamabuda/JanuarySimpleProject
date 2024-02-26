@@ -9,14 +9,14 @@
 
 	<Window.Resources>
 
-		<Image x:Key="Warrior" Source="/Warrior.jpg"></Image>
-		<Image x:Key="Wizard" Source="/wizard.jpg" ></Image>
+		<Image x:Key="Warrior" Source="/warrior.jpeg"></Image>
+		<Image x:Key="Wizard" Source="/wizard.jpeg" ></Image>
 		<Image x:Key="Rogue" Source="/rogue.jpg"></Image>
-		<Image x:Key="CharacterImage" Stretch="Uniform"/>
+		
 	</Window.Resources>
 
 	<Grid>
-
+		
 		<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="502,7,0,564" Width="160">
 			<Button Content="Warrior" Click="Button_Click_1" Height="63"/>
 			<Button Content="Rogue" Margin="5,0,5,0" Click="Button_Click_2"/>
@@ -33,6 +33,7 @@
 			<Button FontSize="16" Margin="10" Padding="10" Content="Level up" Click="Button_Click_LevelUp"/>
 
 		</StackPanel>
+		<Image x:Name="CharacterImage" Stretch="Uniform"/>
 		<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="150" Margin="116,61,0,0" Grid.Row="1" VerticalAlignment="Top" Width="300" Grid.Column="2" Grid.ColumnSpan="2"/>
 		<StackPanel HorizontalAlignment="Left" Height="47" Margin="32,260,0,0" Grid.Row="1" VerticalAlignment="Top" Width="548" Grid.Column="1" Grid.ColumnSpan="3">
 			<TextBlock TextWrapping="Wrap" Text="Strenght: " FontSize="24" Height="47"/>

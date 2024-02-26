@@ -42,15 +42,15 @@ namespace RTS.WpfApp
         {
             if (unit is Warrior)
             {
-                CharacterImage.Source = (Image)Resources["Warrior"];
+                CharacterImage.Source = (Image)FindResource("Warrior");
             }
             else if (unit is Rogue)
             {
-                CharacterImage.Source = (Image)Resources["Rogue"];
+                CharacterImage.Source = (Image)FindResource("Rogue");
             }
             else if (unit is Wizard)
             {
-                CharacterImage.Source = (Image)Resources["Wizard"];
+                CharacterImage.Source = (Image)FindResource("Wizard");
             }
         }
 
