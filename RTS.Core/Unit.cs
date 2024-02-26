@@ -11,6 +11,11 @@ namespace RTS.Core
         public int Dexterity { get; set; } //ловкость
         public int Inteligense { get; set; } //интеллект
 
+        public int MaxStrenght { get; set; }
+        public int MaxDexterity { get; set; }
+        public int MaxIntelligence { get; set; }
+        public int MaxVitality { get; set; }
+
         public int MaxHealth { get; set; }
         public int MaxMana { get; set; }
 
