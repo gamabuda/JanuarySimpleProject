@@ -10,6 +10,9 @@ namespace RTS.Core
 {
     public class Unit : INotifyPropertyChanged
     {
+        private string imageSource;
+
+
         private int _level;
         public int Level
         {
@@ -91,7 +94,26 @@ namespace RTS.Core
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Intelligence)));
             }
         }
-        public int Experience { get; set; }
+        private int _totalExp;
+        public int TotalExp
+        {
+            get => _totalExp;
+            set
+            {
+                _totalExp = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TotalExp)));
+            }
+        }
+        private int _experience;
+        public int Experience
+        {
+            get => _experience;
+            set
+            {
+                _experience = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Experience)));
+            }
+        }
         public int Damage { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;

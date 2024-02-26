@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace RTS.WpfApp
 
@@ -20,46 +21,34 @@ namespace RTS.WpfApp
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
+
     public partial class MainWindow : Window
     {
         Unit unit;
-        Image CharacterImage;
+        //Image CharacterImage;
 
         public MainWindow()
         {
             InitializeComponent();
             unit = new Unit();
+            MyImage.Content = Resources["blank"];
 
-
-            unit = new Warrior();
             this.DataContext = unit;
         }
         public object PropertyChanged { get; private set; }
 
 
 
-        private void UpdateCharacterImage(Unit unit)
-        {
-            if (unit is Warrior)
-            {
-                CharacterImage.Source = (Image)FindResource("Warrior");
-            }
-            else if (unit is Rogue)
-            {
-                CharacterImage.Source = (Image)FindResource("Rogue");
-            }
-            else if (unit is Wizard)
-            {
-                CharacterImage.Source = (Image)FindResource("Wizard");
-            }
-        }
 
 
         private void Button_Click_LevelUp(object sender, RoutedEventArgs e)
         {
 
             unit.Experience = unit.Experience + 1000;
+            unit.TotalExp = unit.TotalExp + unit.Experience;
             unit.LevelUp();
+
             unit.Strength++;
             unit.Dexterity++;
             unit.Intelligence++;
@@ -71,22 +60,34 @@ namespace RTS.WpfApp
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            //unit = new Warrior();
+
+            //this.DataContext = unit;
             unit = new Warrior();
-            UpdateCharacterImage(unit);
+
+            UnitClass.Text = "Warrior";
+            MyImage.Content = Resources["Warrior"];
+
             this.DataContext = unit;
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            unit = (new Rogue());
-            UpdateCharacterImage(unit);
+            unit = new Rogue();
+
+            UnitClass.Text = "Rogue";
+            MyImage.Content = Resources["Rogue"];
+
             this.DataContext = unit;
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            unit = (new Wizard());
-            UpdateCharacterImage(unit);
+            unit = new Wizard();
+
+            UnitClass.Text = "Wizzard";
+            MyImage.Content = Resources["Wizard"];
+
             this.DataContext = unit;
         }
 
