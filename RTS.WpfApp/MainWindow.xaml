@@ -22,6 +22,14 @@
     TextAlignment="Left" RenderTransformOrigin="0.066,0.046">
 		</TextBlock>
 		<Border BorderBrush="Black" BorderThickness="1">
+			<TextBlock HorizontalAlignment="Left" Height="22" Margin="108,194,0,0" TextWrapping="Wrap" Text="{Binding TotalExp, StringFormat='TotalExp - {0}'}" VerticalAlignment="Top" Width="167"/>
+		</Border>
+		<!--<TextBlock 
+    Text="{Binding TotalExp, StringFormat='TotalExp - {0}'}"
+    Padding="10" 
+    TextAlignment="Left">
+		</TextBlock>-->
+		<Border BorderBrush="Black" BorderThickness="1">
 			<ContentPresenter
         Content=""
         Height="200"
