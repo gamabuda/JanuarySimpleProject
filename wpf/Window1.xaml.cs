@@ -23,5 +23,15 @@ namespace wpf
         {
             InitializeComponent();
         }
+
+        private void Warrior_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_ClickGE(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

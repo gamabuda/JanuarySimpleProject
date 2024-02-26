@@ -14,16 +14,16 @@ namespace rts.core.units
         public int Health { get; set; }
         public int Strenght { get; set; }
         public int Dexterity { get; set; }
-        public int Intelligense { get; set; }
+        public int Intelligence { get; set; }
 
         public int MaxHealth { get; set; }
         public int MaxMana { get; set; }
 
-        public int Damage { get; set; }
-        public int MagicalDamage { get; set; }
-        public int MagicalDefense { get; set; }
-        public int CriticalChanse { get; set; }
-        public int CriticalDamage { get; set; }
+        public int PDamage { get; set; }
+        public int MDamage { get; set; }
+        public int MDefense { get; set; }
+        public int CrtChanse { get; set; }
+        public int CrtDamage { get; set; }
 
         public void ShowInfo()
         {
@@ -32,19 +32,19 @@ namespace rts.core.units
                 $"Mana: {Mana}\n" +
                 $"Strength: {Strenght}\n" +
                 $"Dexterity: {Dexterity}\n" +
-                $"Intelligence: {Intelligense}\n" +
+                $"Intelligence: {Intelligence}\n" +
                 $"Vitality: {Vitality}");
         }
 
         public void Attack(Unit unit)
         {
-            if (unit.Health - Damage < 1)
+            if (unit.Health - PDamage < 1)
             {
                 unit.Health = 0;
                 return;
             }
 
-            unit.Health -= Damage;
+            unit.Health -= PDamage;
         }
     }
 }

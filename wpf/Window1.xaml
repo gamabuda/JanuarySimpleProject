@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf"
         mc:Ignorable="d"
-        Title="Window1" Height="1000" Width="1200">
+        Title="Window1" Height="1200" Width="1200">
     <Window.Resources>
         <Image x:Key="Warrior" Source="/img/warrior.jpg"></Image>
         <Image x:Key="Rogue" Source="/img/rogue.jpg"></Image>
-        <Image x:Key="Wizzard" Source="/img/wizard.jpg"></Image>
+        <Image x:Key="Wizard" Source="/img/wizard.jpg"></Image>
     </Window.Resources>
-    <Grid>
+    <Grid Margin="0,0,0,-107">
         <Grid.RowDefinitions>
             <RowDefinition Height="100"></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -22,8 +22,8 @@
             <Button x:Name="Rogue" Content="Rogue" FontSize="30" Width="168" Margin="0,0,10,0" Background="Azure"/>
             <Button x:Name="Wizard" Content="Wizard" FontSize="30" Width="168" Background="Azure"/>
         </StackPanel>
-        <Image Source="/img/wizard.PNG" HorizontalAlignment="Left" Width="auto" Grid.Row="1" Height="auto" Margin="526,0,0,220"/>
-        <StackPanel Grid.Column="0" Grid.Row="1">
+        <Image Source="/img/wizard.PNG" HorizontalAlignment="Left" Width="600" Height="auto" Margin="600,7,0,358" Grid.RowSpan="2"/>
+        <StackPanel Grid.Column="0" Margin="-10,77,10,116" Grid.RowSpan="2">
 
             <StackPanel Margin="60,40,700,0" Orientation="Vertical" Width="500">
                 <TextBlock x:Name="Class" FontSize="70" Text="Волшебник" Foreground="Black" Background="Aqua" Width="496"/>
@@ -37,11 +37,14 @@
                             <TranslateTransform/>
                         </TransformGroup>
                     </StackPanel.RenderTransform>
-                    <TextBlock Text="Уровень 1"  FontSize="55" Margin="0,20,0,4" Background="Azure" Height="86"/>
+                    <TextBlock Text="Уровень "  FontSize="55" Margin="0,20,0,4" Background="Azure" Height="86"/>
+                    <TextBlock Text="1"  FontSize="55" Margin="0,20,0,4" Background="Azure" Height="86"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock x:Name="CurrentPoint" FontSize="40" Text="1700/3000" Background="Aquamarine"/>
+                    <TextBlock x:Name="CurrentPoint" FontSize="40" Text="1700" Background="Aquamarine"/>
+                    <TextBlock x:Name="CurrentPoint1" FontSize="40" Text="|" Background="Aquamarine"/>
+                    <TextBlock x:Name="CurrentPoint3" FontSize="40" Text="3000" Background="Aquamarine"/>
                 </StackPanel>
             </StackPanel>
 
@@ -49,16 +52,93 @@
 
                 <StackPanel Orientation="Horizontal" Width="278">
                     <TextBlock Text="HP:  " FontSize="50" Margin="0,0,0,6" Background="Aqua"/>
-                    <TextBlock x:Name="Health" Text="340/340" FontSize="47" Margin="0,0,0,6" Background="Aqua"/>
+                    <TextBlock x:Name="n3" FontSize="50" Text="340" Margin="0,0,0,6" Background="Aqua"/>
+                    <TextBlock x:Name="n1" FontSize="50" Text="|" Background="Aqua"/>
+                    <TextBlock x:Name="n2" FontSize="50" Text="340" Margin="0,0,0,6" Background="Aqua"/>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Mana:  " FontSize="47" Margin="0,0,0,6" Background="Azure"/>
-                    <TextBlock x:Name="Mana" Text="209/250" FontSize="35" Background="Azure"/>
+                <StackPanel Orientation="Horizontal" Width="400" Height="58">
+                    <TextBlock Text="Mana: " FontSize="40" Margin="0,0,0,6" Background="Aqua"/>
+                    <TextBlock x:Name="m1" FontSize="40" Text="209" Margin="0,0,0,6" Background="Aqua"/>
+                    <TextBlock x:Name="m2" FontSize="40" Text="|" Margin="0,0,0,6" Background="Aqua"/>
+                    <TextBlock x:Name="m3" FontSize="40" Text="250" Margin="0,0,0,6" Background="Aqua" Width="144" Height="84"/>
                 </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Width="760" RenderTransformOrigin="0,0" Height="413">
+                <StackPanel.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleY="0.433"/>
+                        <RotateTransform/>
+                        <TranslateTransform Y="-6.667"/>
+                    </TransformGroup>
+                </StackPanel.RenderTransform>
+                <StackPanel Grid.Column="0" Grid.Row="1" Margin="100,50,0,0" Orientation="Vertical" Width="919">
 
+                    <StackPanel Orientation="Horizontal" Width="400" Height="58" HorizontalAlignment="Left">
+                        <TextBlock Text="Сила: " FontSize="40" Margin="0,0,0,6" Background="Aqua"/>
+                        <TextBlock x:Name="C1" FontSize="40" Text="15" Margin="0,0,0,6" Background="Aqua" HorizontalAlignment="Left"/>
+                        <TextBlock x:Name="c2" FontSize="40" Text="|" Margin="0,0,0,6" Background="Aqua"/>
+                        <TextBlock x:Name="c3" FontSize="40" Text="45" Margin="0,0,0,6" Background="Aqua" Width="95" Height="84" RenderTransformOrigin="0.5,0.5">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-0.395"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left">
+                        <TextBlock Text="Ловкость: " FontSize="40" Margin="0,0,0,6" Background="Aqua"/>
+                        <TextBlock x:Name="l1" FontSize="40" Text="15" Margin="0,0,0,6" Background="Aqua" HorizontalAlignment="Left"/>
+                        <TextBlock x:Name="l2" FontSize="40" Text="|" Margin="0,0,0,6" Background="Aqua"/>
+                        <TextBlock x:Name="l3" FontSize="40" Text="45" Margin="0,0,0,6" Background="Aqua" Width="61" Height="84"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left">
+                        <TextBlock Text="Интелект: " FontSize="40" Margin="0,0,0,6" Background="Aqua"/>
+                        <TextBlock x:Name="i1" FontSize="40" Text="15" Margin="0,0,0,6" Background="Aqua" HorizontalAlignment="Left"/>
+                        <TextBlock x:Name="i2" FontSize="40" Text="|" Margin="0,0,0,6" Background="Aqua"/>
+                        <TextBlock x:Name="i3" FontSize="40" Text="45" Margin="0,0,0,6" Background="Aqua" Width="61" Height="84"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left">
+                        <TextBlock Text="Жизненая сила:" FontSize="40" Margin="0,0,0,6" Background="Aqua"/>
+                        <TextBlock x:Name="s1" FontSize="40" Text="15" Margin="0,0,0,6" Background="Aqua" HorizontalAlignment="Left"/>
+                        <TextBlock x:Name="s2" FontSize="40" Text="|" Margin="0,0,0,6" Background="Aqua"/>
+                        <TextBlock x:Name="s3" FontSize="40" Text="70" Margin="0,0,0,6" Background="Aqua" Width="61" Height="84"/>
+                    </StackPanel>
+                </StackPanel>
             </StackPanel>
 
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" HorizontalAlignment="Right">
+                <TextBlock Text="Количество очков: " FontSize="40" Background="Aquamarine"/>
+                <TextBlock x:Name="p1" FontSize="40" Text="5" Margin="0,0,0,6" Background="Aquamarine" HorizontalAlignment="Left"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" HorizontalAlignment="Right">
+                <TextBlock Text="За каждый уровень +1" FontSize="40" Margin="0,0,0,6" Background="Aquamarine"/>
+            </StackPanel>
+            <Button FontSize="48" Padding="10" Content="Get Exp"  Foreground="White" Click="Button_ClickGE" FontFamily="Segoe UI Light" Height="92" Width="210" Margin="0,0,900,0" >
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF291D79" Offset="1"/>
+                        <GradientStop Color="#FF3122C1" Offset="0"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Orientation="Vertical">
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Orientation="Vertical">
         </StackPanel>
     </Grid>
 </Window>

@@ -12,22 +12,21 @@ namespace rts.core.units
 
         public Wizard()
         {
-            Strength = 15;
+            Strenght = 15;
             Dexterity = 20;
             Intelligence = 35;
             Vitality = 15;
 
-            Health = (int)(Vitality * 1.4 + Strength * 0.2);
+            Health = (int)(Vitality * 1.4 + Strenght * 0.2);
             MaxHealth = Health;
             MaxMana = (int)(Intelligence * 1.5);
             MaxMana = Mana;
-
-            Damage = (int)(Strength * 0.5);
-            Armor = 1 * Dexterity;
-            MagicalDamage = (int)(1 * Inteligence);
-            MagicalDefense = (int)(1 * Inteligence);
-            CriticalChanse = (int)(Dexterity * 0.2);
-            CriticalDamage = (int)(Dexterity * 0.1);
+            Mana = (int)(Intelligence * 1.5);
+            PDamage = (int)(Strenght * 0.5);
+            MDamage = (int)(1 * Intelligence);
+            MDefense = (int)(1 * Intelligence);
+            CrtChanse = (int)(Dexterity * 0.2);
+            CrtDamage = (int)(Dexterity * 0.1);
         }
 
         public void Heal(Unit unit)
@@ -38,7 +37,7 @@ namespace rts.core.units
             if (Mana < 15)
                 return;
             Mana -= 15;
-            unit.HealPoint += HealPoint;
+            units.HealPoint += HealPoint;
         }
     }
 }

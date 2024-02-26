@@ -1,11 +1,11 @@
-﻿using RTS.Core.Interfaces;
+﻿using rts.core.interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RTS.Core
+namespace rts.core
 {
     public class Catapulta 
     {

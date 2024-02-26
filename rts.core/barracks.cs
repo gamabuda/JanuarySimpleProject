@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using rts.core.units;
 
-namespace RTS.Core
+namespace rts.core
 {
     public class Barrack 
     {

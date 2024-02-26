@@ -10,22 +10,20 @@ namespace rts.core.units
     {
         public Warrior()
         {
-            Strength = 30;
+            Strenght = 30;
             Dexterity = 15;
-            Inteligence = 10;
+            Intelligence = 10;
             Vitality = 25;
 
-            Health = (Vitality + Strength) / 2;
+            Health = (Vitality + Strenght) / 2;
             MaxHealth = Health;
-            Mana = 1 * Inteligence;
             MaxMana = Mana;
 
-            Damage = 1 * Strength;
-            Armor = 1 * Dexterity;
-            MagicalDefense = (int)(Inteligence * 0.5);
-            MagicalDamage = (int)(Inteligence * 0.2);
-            CriticalChanse = (int)(Dexterity * 0.2);
-            CriticalDamage = (int)(Dexterity * 0.1);
+            PDamage = 1 * Strenght;
+            MDefense = (int)(Strenght * 0.5);
+            MDamage = (int)(Intelligence * 0.2);
+            CrtChanse = (int)(Dexterity * 0.2);
+            CrtDamage = (int)(Dexterity * 0.1);
         }
     }
 }
