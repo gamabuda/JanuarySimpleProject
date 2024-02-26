@@ -9,9 +9,10 @@
 
 	<Window.Resources>
 
-		<Image x:Key="Warrior" Source="/Warior.jpg"></Image>
+		<Image x:Key="Warrior" Source="/Warrior.jpg"></Image>
 		<Image x:Key="Wizard" Source="/wizard.jpg" ></Image>
 		<Image x:Key="Rogue" Source="/rogue.jpg"></Image>
+		<Image x:Key="CharacterImage" Stretch="Uniform"/>
 	</Window.Resources>
 
 	<Grid>

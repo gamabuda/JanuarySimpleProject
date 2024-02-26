@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace RTS.WpfApp
+
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -37,6 +38,23 @@ namespace RTS.WpfApp
 
 
 
+        private void UpdateCharacterImage(Unit unit)
+        {
+            if (unit is Warrior)
+            {
+                CharacterImage.Source = (Image)Resources["Warrior"];
+            }
+            else if (unit is Rogue)
+            {
+                CharacterImage.Source = (Image)Resources["Rogue"];
+            }
+            else if (unit is Wizard)
+            {
+                CharacterImage.Source = (Image)Resources["Wizard"];
+            }
+        }
+
+
         private void Button_Click_LevelUp(object sender, RoutedEventArgs e)
         {
 
@@ -54,20 +72,21 @@ namespace RTS.WpfApp
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             unit = new Warrior();
-
+            UpdateCharacterImage(unit);
             this.DataContext = unit;
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             unit = (new Rogue());
-
+            UpdateCharacterImage(unit);
             this.DataContext = unit;
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             unit = (new Wizard());
+            UpdateCharacterImage(unit);
             this.DataContext = unit;
         }
 

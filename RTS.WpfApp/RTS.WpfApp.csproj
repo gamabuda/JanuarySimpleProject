@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <None Remove="rogue.jpg" />
-    <None Remove="warior.jpeg" />
+    <None Remove="warrior.jpeg" />
     <None Remove="wizard.jpeg" />
   </ItemGroup>
 
@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <Resource Include="rogue.jpg" />
-    <Resource Include="warior.jpeg" />
+    <Resource Include="warrior.jpeg" />
     <Resource Include="wizard.jpeg" />
   </ItemGroup>
 
