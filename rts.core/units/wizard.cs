@@ -8,7 +8,8 @@ namespace rts.core.units
 {
     public class Wizard : Unit
     {
-        public int HealPoint { get; set; }
+        public string Icons = ".\\wpf\\img\\Units\\wizard.png";
+        public int HealPoint { get; set; } = 10;
 
         public Wizard()
         {
@@ -16,7 +17,11 @@ namespace rts.core.units
             Dexterity = 20;
             Intelligence = 35;
             Vitality = 15;
-
+            MaxStrength = 45;
+            MaxDexterity = 80;
+            MaxIntelligence = 250;
+            MaxVitality = 70;
+            Armor = Dexterity;
             Health = (int)(Vitality * 1.4 + Strenght * 0.2);
             MaxHealth = Health;
             MaxMana = (int)(Intelligence * 1.5);
@@ -29,9 +34,9 @@ namespace rts.core.units
             CrtDamage = (int)(Dexterity * 0.1);
         }
 
-        public void Heal(Unit unit)
+        public void Heal(Units units)
         {
-            if (unit.Health == unit.MaxHealth)
+            if (units.Health == units.MaxHealth)
                 return;
 
             if (Mana < 15)

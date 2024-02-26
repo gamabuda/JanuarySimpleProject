@@ -8,6 +8,7 @@ namespace rts.core.units
 {
     public class Rogue : Unit
     {
+        public string Icon = ".\\wpf\\img\\Units\\rogue.png";
         public Rogue()
         {
             Strenght = 20;

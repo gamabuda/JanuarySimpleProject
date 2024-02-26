@@ -9,15 +9,25 @@ namespace rts.core.units
 {
     public class Unit
     {
+        public int Level { get; set; } = 1;
+        public int MaxLevel { get; private set; } = 50;
+        public int Experience { get; set; } = 0;
         public int Vitality { get; set; }
         public int Mana { get; set; }
         public int Health { get; set; }
         public int Strenght { get; set; }
         public int Dexterity { get; set; }
         public int Intelligence { get; set; }
-
+        public int Points { get; set; } = 5;
+        public string? Icon { get; set; }
         public int MaxHealth { get; set; }
         public int MaxMana { get; set; }
+        public int MaxStrength { get; set; }
+        public int MaxDexterity { get; set; }
+        public int MaxIntelligence { get; set; }
+        public int MaxVitality { get; set; }
+        public int Armor { get; set; }
+
 
         public int PDamage { get; set; }
         public int MDamage { get; set; }
