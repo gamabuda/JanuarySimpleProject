@@ -20,16 +20,20 @@ namespace RTS.Units
             MaxInteligence = 50;
             MaxVitality = 100;
 
-            //CheckingAttributes();
+            CheckingAttributes();
 
             Health = MaxHealth;
             Mana = MaxMana;
+
+            Class = "Warrior";
         }
 
         protected override void CheckStats()
         {
             MaxHealth = (int)(Strength * 15 + Vitality * 5);
+            Health = MaxHealth;
             MaxMana = (int)(Inteligence * 10);
+            Mana = MaxMana;
             PDamage = (int)(Strength * 2);
             Armor = (int)(Dexterity * 0.5);
             MDamage = (int)(Inteligence * 2);

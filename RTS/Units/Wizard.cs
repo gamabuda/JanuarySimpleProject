@@ -26,6 +26,8 @@ namespace RTS.Units
 
             Health = MaxHealth;
             Mana = MaxMana;
+
+            Class = "Wizard";
         }
 
         protected override void CheckStats()

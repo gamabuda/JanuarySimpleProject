@@ -1,15 +1,16 @@
 ﻿
+using System.ComponentModel;
 using System.ComponentModel.Design;
 
 namespace RTS
 {
-    public class Unit : IAttackHandler, IHealthHandler, IManaHandler, IArmorHandler, IInfoHandler
+    public class Unit : IAttackHandler, IHealthHandler, IManaHandler, IArmorHandler, IInfoHandler, INotifyPropertyChanged
     {
         //Attributes
-        public int Strength { get => _strength; set { _strength = value; CheckingAttributes(); } }
-        protected int Dexterity { get => _dexterity; set { _dexterity = value; CheckingAttributes(); } }
-        protected int Inteligence { get => _inteligence; set { _inteligence = value; CheckingAttributes(); } }
-        protected int Vitality { get => _vitality; set { _vitality = value; CheckingAttributes(); } }
+        public int Strength { get => _strength; set { _strength = value; OnPropertyChanged("Strength"); } }
+        public int Dexterity { get => _dexterity; set { _dexterity = value;OnPropertyChanged("Dexterity"); } }
+        public int Inteligence { get => _inteligence; set { _inteligence = value; OnPropertyChanged("Inteligence"); } }
+        public int Vitality { get => _vitality; set { _vitality = value; OnPropertyChanged("Vitality"); } }
 
         private int _strength;
         private int _dexterity;
@@ -17,10 +18,10 @@ namespace RTS
         private int _vitality;
 
         //MaxAtributes
-        protected int MaxStrength { get => _maxStrength; set { _maxStrength = value; } }
-        protected int MaxDexterity { get => _maxDexterity; set { _maxDexterity = value; } }
-        protected int MaxInteligence { get => _maxInteligence; set { _maxInteligence = value; } }
-        protected int MaxVitality { get => _maxVitality; set { _maxVitality = value; } }
+        public int MaxStrength { get => _maxStrength; set { _maxStrength = value; } }
+        public int MaxDexterity { get => _maxDexterity; set { _maxDexterity = value; } }
+        public int MaxInteligence { get => _maxInteligence; set { _maxInteligence = value; } }
+        public int MaxVitality { get => _maxVitality; set { _maxVitality = value; } }
 
         private int _maxStrength;
         private int _maxDexterity;
@@ -28,8 +29,10 @@ namespace RTS
         private int _maxVitality;
 
         // HP and MP
-        public int Health { get; set; }
-        public int Mana { get; set; }
+        int _health;
+        int _mana;
+        public int Health { get => _health; set { _health = value; OnPropertyChanged("Health"); } }
+        public int Mana { get => _mana; set { _mana = value; OnPropertyChanged("Mana"); } }
         public int MaxHealth { get; set; }
         public int MaxMana { get; set; }
 
@@ -44,19 +47,23 @@ namespace RTS
         public int MDefense { get; set; }
 
         //Level
-        public int Level { get; set; }
-        public int Experience { get; set; }
+        int _lvl = 1;
+        public int Level { get => _lvl; set { _lvl = value; OnPropertyChanged("Level"); } } 
+        public int MinLvlExperience { get; set; } = 0;
 
-        protected event Action onStatChange;
+        int _currentExp = 0;
+        public int CurrentExperience { get => _currentExp; set { _currentExp = value; OnPropertyChanged("CurrentExperience"); } } 
+        public int ExtraExperience { get; set; }
 
-        public Unit() : base()
-        {
-            onStatChange += CheckingAttributes;
-        }
+        int _levelingPoints = 5;
+        public int LevelingPoints { get => _levelingPoints; set { _levelingPoints = value; OnPropertyChanged("LevelingPoints"); } }
+        public int AllLevelingPoints { get; set; } = 5;
+
+        public string Class { get; set; }
 
 
 
-        protected void CheckingAttributes()
+        public void CheckingAttributes()
         {
             if (_strength > _maxStrength) 
                 Strength = MaxStrength;
@@ -92,21 +99,37 @@ namespace RTS
 
         }
 
-        public void LevelUp(Unit target)
+        public void LevelUp(int gainedExperience)
         {
-            if (target.Level < 50)
+            if (Level < 50)
             {
-                int CurrentLevel = target.Level;
-                int CurrentExperience = target.Experience;
-                int NeccecaryEXP = (CurrentLevel - 1) * 1000;
+                int rightExperience = MinLvlExperience + Level * 1000 - ExtraExperience;
 
-                if (CurrentExperience >= CurrentExperience + NeccecaryEXP)
-                    target.Level++;
+                if (CurrentExperience + gainedExperience >= CurrentExperience + rightExperience)
+                {
+                    Level++;
+                    LevelingPoints++;
+                    AllLevelingPoints++;
+                    CurrentExperience += gainedExperience;
+                    MinLvlExperience += rightExperience;
+                    ExtraExperience = 0;
+                }
                 else
+                {
+                    CurrentExperience += gainedExperience;
+                    ExtraExperience += gainedExperience;
                     return;
+                }
             }
             else
                 return;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 

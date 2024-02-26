@@ -9,4 +9,16 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Warrior.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RTS\RTS.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Warrior.jpg" />
+  </ItemGroup>
+
 </Project>

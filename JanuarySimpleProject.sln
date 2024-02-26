@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JanuarySimpleProject", "Jan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTS", "RTS\RTS.csproj", "{23F1DEFE-1C31-4F97-B1F4-1E66A0B30266}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF-RTS", "WPF-RTS\WPF-RTS.csproj", "{D1BB438A-FC97-4DB9-8E46-20CA9402D984}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{23F1DEFE-1C31-4F97-B1F4-1E66A0B30266}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23F1DEFE-1C31-4F97-B1F4-1E66A0B30266}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23F1DEFE-1C31-4F97-B1F4-1E66A0B30266}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1BB438A-FC97-4DB9-8E46-20CA9402D984}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1BB438A-FC97-4DB9-8E46-20CA9402D984}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1BB438A-FC97-4DB9-8E46-20CA9402D984}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1BB438A-FC97-4DB9-8E46-20CA9402D984}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

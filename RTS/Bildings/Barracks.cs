@@ -15,7 +15,7 @@ namespace RTS.Bildings
             {
                 case "Warrior":
                     return new Warrior();
-                case "Wizzard":
+                case "Wizard":
                     return new Wizard();
                 case "Rogue":
                     return new Rogue();
