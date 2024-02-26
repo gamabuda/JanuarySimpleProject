@@ -17,7 +17,8 @@ namespace RTS.Core.Units
 
         public int Health { get; set; }
         public int Mana { get; set; }
-        public int Points { get; set; }
+        public int Points { get; set; } = 5;
+        public string Icon { get; set; }
 
         public int Strength { get; set; }
         public int Dexterity { get; set; }
@@ -91,6 +92,7 @@ namespace RTS.Core.Units
                 if (Experience >= LevelUpMinExperience)
                 {
                     Level++;
+                    Points++;
                     LevelUpExperience += 1000;
                     LevelUpMinExperience += LevelUpExperience + 1000;
                     Console.ForegroundColor = ConsoleColor.Green;

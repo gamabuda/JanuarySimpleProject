@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="img\Buildings\barrack.png" />
+    <None Remove="img\Icons\window-icon.png" />
+    <None Remove="img\Units\rogue.png" />
+    <None Remove="img\Units\warrior.png" />
+    <None Remove="img\Units\wizard.png" />
+    <None Remove="img\Units\worker.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JanuarySimpleProject\JanuarySimpleProject.csproj" />
+    <ProjectReference Include="..\RTS.Core\RTS.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="img\Buildings\barrack.png" />
+    <Resource Include="img\Icons\window-icon.png" />
+    <Resource Include="img\Units\rogue.png" />
+    <Resource Include="img\Units\warrior.png" />
+    <Resource Include="img\Units\wizard.png" />
+    <Resource Include="img\Units\worker.png" />
+  </ItemGroup>
+
+</Project>
