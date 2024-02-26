@@ -5,15 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RTS.Core
+namespace rts.core.units
 {
     public class Unit
     {
-        public int Vitality { get; set; } 
+        public int Vitality { get; set; }
         public int Mana { get; set; }
-        public int Health { get; set; } 
-        public int Strenght { get; set; } 
-        public int Dexterity { get; set; } 
+        public int Health { get; set; }
+        public int Strenght { get; set; }
+        public int Dexterity { get; set; }
         public int Intelligense { get; set; }
 
         public int MaxHealth { get; set; }

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using rts.core.units;
 
-namespace RTS.Core
+namespace rts.core.interfaces
 {
     public interface IAttackHandler
     {
