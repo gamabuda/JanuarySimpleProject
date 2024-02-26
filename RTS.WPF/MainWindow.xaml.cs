@@ -1,0 +1,43 @@
+﻿using RTS.Core.Characters;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace RTS.WPF
+{
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private void WarriorButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenCharacterInfoWindow(new Warrior());
+        }
+
+        private void RogueButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenCharacterInfoWindow(new Rogue());
+        }
+
+        private void WizardButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenCharacterInfoWindow(new Wizard());
+        }
+
+        private void OpenCharacterInfoWindow(Unit unit)
+        {
+            CharacterInfoWindow characterInfoWindow = new CharacterInfoWindow(unit);
+            characterInfoWindow.Show();
+        }
+    }
+}

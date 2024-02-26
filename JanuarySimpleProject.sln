@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JanuarySimpleProject", "Jan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTS.Core", "RTS.Core\RTS.Core.csproj", "{F2ED17A4-0128-4685-AA3B-7BA9D7F8D0CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTS.WPF", "RTS.WPF\RTS.WPF.csproj", "{615876E0-BAD8-4005-A5C4-496F34C3A4DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F2ED17A4-0128-4685-AA3B-7BA9D7F8D0CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2ED17A4-0128-4685-AA3B-7BA9D7F8D0CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2ED17A4-0128-4685-AA3B-7BA9D7F8D0CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{615876E0-BAD8-4005-A5C4-496F34C3A4DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{615876E0-BAD8-4005-A5C4-496F34C3A4DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{615876E0-BAD8-4005-A5C4-496F34C3A4DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{615876E0-BAD8-4005-A5C4-496F34C3A4DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
