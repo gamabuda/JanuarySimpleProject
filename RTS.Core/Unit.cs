@@ -73,17 +73,17 @@ namespace RTS.Core
                 $"Intelligence: {Intelligence}\n\t" +
                 $"Vitality: {Vitality}");
         }
-        public void Attack(Unit unit)
-        {
-            if (unit.Health - this.PDamage < 1)
-            {
-                unit.Health = 0;
-                return;
-            }
+        //public void Attack(Unit unit)
+        //{
+        //    if (unit.Health - this.PDamage < 1)
+        //    {
+        //        unit.Health = 0;
+        //        return;
+        //    }
 
-            unit.Health -= this.PDamage;
+        //    unit.Health -= this.PDamage;
 
-        }
+        //}
 
         public void PAttack(Unit unit)
         {
@@ -91,7 +91,14 @@ namespace RTS.Core
             {
                 unit.PDamage += CrtDamage;
             }
-           
+
+            if (unit.Health - (this.PDamage - unit.Armor) < 1)
+            {
+                unit.Health = 0;
+                return;
+            }
+
+            unit.Health -= (this.PDamage - unit.Armor);
         }
 
         public void MAttack(Unit unit)
@@ -100,7 +107,14 @@ namespace RTS.Core
             {
                 unit.MDamage += CrtDamage;
             }
-          
+
+            if (unit.Health - (this.MDamage - unit.MDefence) < 1)
+            {
+                unit.Health = 0;
+                return;
+            }
+
+            unit.Health -= (this.MDamage - unit.MDefence);
         }
 
         private bool IsCriticalHit()
