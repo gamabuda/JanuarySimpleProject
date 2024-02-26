@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RTS.Core.Units
+namespace rts.core.units
 {
     public class Worker : IHealthHandler
     {
