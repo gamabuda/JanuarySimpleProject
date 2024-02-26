@@ -19,9 +19,36 @@ namespace WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        private int Experience = 1700;
+        private int Level = 1;
+        private const int ExpForLevelUp = 3000;
+        private const int MaxLevel = 50;
+
         public MainWindow()
         {
             InitializeComponent();
         }
+
+        private void GetExp_Click(object sender, RoutedEventArgs e)
+        {
+            Experience += 1000;
+        }
+
+        private void UpdateExpAndLevel()
+        {
+            CurrentExp.Text = Experience.ToString();
+            CurrentLevel.Text = Level.ToString();
+
+            if (Level >= MaxLevel)
+            {
+                MessageBox.Show("Максимальный уровень достигнут!");
+                return;
+            }
+
+             Level++;
+             Experience -= ExpForLevelUp;
+             CurrentLevel.Text = Level.ToString();
+        }
     }
 }
+

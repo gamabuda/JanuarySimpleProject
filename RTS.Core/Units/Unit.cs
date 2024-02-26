@@ -1,6 +1,11 @@
 ﻿namespace RTS.Core;
 public class Unit
 {
+	public int Level { get; set; } = 1;
+	public int MaxLevel { get; set; } = 50;
+	public int Experience { get; set; } = 1000;
+	public int ExpForLevelUp { get; set; } = 3000;
+	
 	public int MaxHealth { get; set; }
 	public int Health { get; set; }
 	public int Mana { get; set; }
@@ -39,8 +44,4 @@ public class Unit
 
 	}
 
-	public void Kill(Unit unit)
-	{
-
-	}
 }

@@ -1,4 +1,6 @@
-﻿namespace RTS.Core.Buildings
+﻿using RTS.Core.Units;
+
+namespace RTS.Core.Buildings
 {
     public class Barrack
     {
