@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace RTSClasses
 {
-    internal interface Building
+    public class Building : IHealthHandler
     {
+        public int Health { get; set; }
+        public int MaxHealth { get; set; }
     }
 }

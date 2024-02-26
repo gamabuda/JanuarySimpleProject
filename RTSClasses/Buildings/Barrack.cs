@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace RTSClasses
 {
-    public class Barrack : Nameable
+    public class Barrack : Building
     {
+        public Barrack() 
+        {
+            Health = 125;
+            MaxHealth = 125;
+        }
         public Unit RecruitUnit(string UnitName)
         {
             switch (UnitName)

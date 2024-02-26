@@ -2,14 +2,26 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\RTSClasses\RTSClasses.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="Rogue.jpg" />
+		<None Remove="Warrior.jpg" />
+		<None Remove="Wizard.jpg" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\RTSClasses\RTSClasses.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="Rogue.jpg" />
+		<Resource Include="Warrior.jpg" />
+		<Resource Include="Wizard.jpg" />
+	</ItemGroup>
 
 </Project>
