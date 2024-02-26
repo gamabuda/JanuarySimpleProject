@@ -1,42 +1,53 @@
-﻿using JanuarySimpleProject.Core;
+﻿using RTS.Core;
 
-/*
- * Я накидал вам базы по прошлому полугодию, друзья!
- * Надеюсь пример получился не перегруженным, а даже если и так, то это к лучшему
- * Покопаетесь, вспомните, подучите то что пропустили
- * Deadline: 27.01.24
- * Задание: Необходимо закрыть все TODO-шки
- * 
- * P/s
- * Удобно просмотреть их можно во вкладке: Вид > Список задач
- * This message for my English-speaking friends: View > Tasks
- * 
- * Залил в main = не любишь маму
- * Тудушка с отпимизацией = плюс балл и респект (делать по желанию)
- * Одна тудушка = один коммит (в ином исходе будет засчитано половина от всех баллов)
- * Одна тудушка = 2 балла
- */
+using RTS.Core.Characters;
+using RTS.Core.Interfaces;
+using RTS.Core.Building;
+using System;
+using RTS.Core.Building;
+using RTS.Core.Interfaces;
 
-Node node = Node.CreateEmptyNode();
-node.ShowInfo();
-
-node.Value = "Str";
-node.ShowInfo();
-
-node.AddValue(Node.CreateEmptyNode());
-node.ShowInfo();
-
-List<int> ints = new List<int>()
+class Program
 {
-    1, 2, 3
-};
-node.AddValue(ints);
-node.ShowInfo();
+    static void Main(string[] args)
+    {
+        Warrior warrior = new Warrior();
+        Rogue rogue = new Rogue();
+        Wizard wizard = new Wizard();
 
-node.RemoveValue("Str");
-node.ShowInfo();
+        Barrack barrack = new Barrack();
+        Church church = new Church();
 
-Console.WriteLine(node.JSON);
+        Unit warriorFromBarrack = barrack.CreateCharacter("warrior");
+        Unit rogueFromBarrack = barrack.CreateCharacter("rogue");
+        Unit wizardFromBarrack = barrack.CreateCharacter("wizard");
 
+        Console.WriteLine("Warrior from Barrack:");
+        warriorFromBarrack.ShowInfo();
+        Console.WriteLine();
 
-Console.ReadKey();
+        Console.WriteLine("Rogue from Barrack:");
+        rogueFromBarrack.ShowInfo();
+        Console.WriteLine();
+
+        Console.WriteLine("Wizard from Barrack:");
+        wizardFromBarrack.ShowInfo();
+        Console.WriteLine();
+
+        church.Pray(warrior);
+        church.Pray(rogue);
+        church.Pray(wizard);
+
+        warrior.Attack(rogue);
+        rogue.Attack(wizard);
+        wizard.Attack(warrior);
+
+        wizard.GetExperience(1200);
+
+        Console.WriteLine($"Wizard's Level: {wizard.Level}");
+
+        wizard.Heal(warrior);
+
+        Console.WriteLine($"Warrior's Health after healing: {warrior.Health}");
+    }
+}
