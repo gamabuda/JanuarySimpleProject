@@ -11,6 +11,8 @@
         <Image x:Key="Wizzard" Source="/Wizzard.jpg"></Image>
         <Image x:Key="Warrior" Source="/Warrior.jpg"></Image>
         <Image x:Key="Rogue" Source="/Rogue.jpg"></Image>
+        <Image x:Key="Peasant" Source="/Peasant.jpg"></Image>
+        <Image x:Key="Catapult" Source="/Catapult.jpg"></Image>
         <Image x:Key="blank" Source="/blank.jpg"></Image>
     </Window.Resources>
     <Grid>
@@ -85,13 +87,13 @@
                         Background="White" 
                         Width="20"
                         Height="20"
-                        Margin="1" Click="Button_Click_2">
+                        Margin="1" Click="PlusStrength">
                     </Button>
                     <Button
                         Content="-"
                         Background="White"
                         Width="20"
-                        Height="20" Click="Button_Click_1">
+                        Height="20" Click="MinusStrength">
                     </Button>
                 </StackPanel>
             </StackPanel>
@@ -108,14 +110,14 @@
                         Content="+"
                         Background="White" 
                         Width="20"
-                        Height="20" Click="Button_Click_3">
+                        Height="20" Click="PlusDexterity">
                     </Button>
                     <Button
                         Content="-"
                         Background="White"
                         Width="20"
                         Height="20"
-                        Margin="1" Click="Button_Click_4">
+                        Margin="1" Click="MinusDexterity">
                     </Button>
                 </StackPanel>
             </StackPanel>
@@ -133,13 +135,13 @@
                         Background="White" 
                         Width="20"
                         Height="20"
-                        Margin="1" Click="Button_Click_5">
+                        Margin="1" Click="PlusInteligence">
                     </Button>
                     <Button
                         Content="-"
                         Background="White"
                         Width="20"
-                        Height="20" Click="Button_Click_6">
+                        Height="20" Click="MinusInteligence">
                     </Button>
                 </StackPanel>
             </StackPanel>
@@ -157,13 +159,13 @@
                         Margin="1"
                         Background="White" 
                         Width="20"
-                        Height="20" Click="Button_Click_7">
+                        Height="20" Click="PlusVitality">
                     </Button>
                     <Button
                         Content="-"
                         Background="White"
                         Width="20"
-                        Height="20" Click="Button_Click_8">
+                        Height="20" Click="MinusVitality">
                     </Button>
                 </StackPanel>
             </StackPanel>
@@ -199,7 +201,7 @@
                 Width="100"
                 Height="25"
                 Content="GetEXP"
-                Click="Button_Click">
+                Click="GetExp">
             </Button>
 
             <TextBlock 
@@ -213,21 +215,35 @@
                 Content="Warrior"
                 Margin="10"
                 Height="20"
-                Width="100" Click="Button_Click_9">
+                Width="100" Click="CreateWarrior">
             </Button>
 
             <Button
                 Content="Wizzard"
                 Margin="10" 
                 Height="20"
-                Width="100" Click="Button_Click_10">
+                Width="100" Click="CreateWizzard">
             </Button>
 
             <Button
                 Content="Rogue"
                 Margin="10"
                 Height="20"
-                Width="100" Click="Button_Click_11">
+                Width="100" Click="CreateRogue">
+            </Button>
+
+            <Button
+                Content="Peasant"
+                Margin="10"
+                Height="20"
+                Width="100" Click="CreatePeasant">
+            </Button>
+
+            <Button
+                Content="Catapult"
+                Margin="10"
+                Height="20"
+                Width="100" Click="CreateCatapult">
             </Button>
         </StackPanel>
     </Grid>

@@ -5,7 +5,7 @@ namespace RTS.Core
     public class Wizzard : Unit
     {
         public int HealPoint { get; set; }
-
+        public int FireballDamage { get; set; }
         public Wizzard()
         {
             this.Strength = 15;
@@ -26,6 +26,8 @@ namespace RTS.Core
 
             this.CriticalChanse = (int)(Dexterity / 0.2);
             this.CriticalDamage = (int)(Dexterity / 0.1);
+
+            this.FireballDamage = (int)((this.Inteligence / 2) + this.MagicalDamage);
         }
 
         public void Heal(Unit target)
@@ -36,6 +38,17 @@ namespace RTS.Core
             {
                 Mana -= 15;
                 target.HP += HealPoint;
+            }
+        }
+
+        public void Fireball(Unit target)
+        {
+            if (Mana < 24)
+                return;
+            else
+            {
+                Mana -= 24;
+                FireballDamage = this.FireballDamage - target.MagicalDefense / 2;
             }
         }
     }

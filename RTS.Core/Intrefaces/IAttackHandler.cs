@@ -13,6 +13,8 @@ namespace RTS.WPF.Intrefaces
         public int MagicalDamage { get; set; }
         public int CriticalChanse { get; set; }
         public int CriticalDamage { get; set; }
+        public int MinDamage { get; set; }
+        public int MaxDamage { get; set; }
         public void DealDamage(Unit target);
 
         public bool CheckForCritical();

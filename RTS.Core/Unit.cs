@@ -119,16 +119,23 @@ namespace RTS.Core
 
         public int Damage { get; set; }
         public int MagicalDamage { get; set; }
+        public int MinDamage 
+        {
+            get { return Damage; }
+            set { MinDamage = Damage - (Damage / 100 * 5); }
+        }
+        public int MaxDamage 
+        { 
+            get { return Damage; }
+            set { MaxDamage = Damage + (Damage / 100 * 5); }
+        }
         public int MagicalDefense { get; set; }
         public int CriticalChanse { get; set; }
         public int CriticalDamage { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public Unit()
-        {
-            Level = 1;
-        }
+        public Unit() { Level = 1; }
 
         public Random random = new Random();
 
@@ -158,6 +165,10 @@ namespace RTS.Core
         {
             CheckForCritical();
             int damage = 0;
+
+            //minMaxDamage?
+            Random random = new Random();
+            this.Damage = random.Next(MinDamage, MaxDamage);
 
             if (CheckForCritical() == true)
                 damage = this.CriticalDamage + this.Damage;

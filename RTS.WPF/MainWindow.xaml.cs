@@ -14,6 +14,12 @@ namespace RTS.WPF
     public partial class MainWindow : Window
     {
         Unit unit;
+
+        int CountOfPointsS = 0;
+        int CountOfPointsD = 0;
+        int CountOfPointsV = 0;
+        int CountOfPointsI = 0;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -26,7 +32,7 @@ namespace RTS.WPF
 
         public object PropertyChanged { get; private set; }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void GetExp(object sender, RoutedEventArgs e)
         {
             unit.Experience = unit.Experience + 1000;
             unit.TotalExp = unit.TotalExp + unit.Experience;
@@ -37,21 +43,50 @@ namespace RTS.WPF
             unit.Vitality++;
             unit.Dexterity++;
             unit.StartsPoints++;
+
+            if (unit is Wizzard)
+            {
+                unit.HP = (int)(unit.Vitality / 1.5 + unit.Strength / 0.5);
+                unit.Mana = (int)(unit.Inteligence / 1.5);
+            }
+            else if (unit is Warrior)
+            {
+                unit.HP = (int)(unit.Vitality / 2 + unit.Strength);
+                unit.Mana = (int)(unit.Inteligence);
+            }
+            else if (unit is Rogue)
+            {
+                unit.HP = (int)(unit.Vitality / 1.5 + unit.Strength / 0.5);
+                unit.Mana = (int)(unit.Inteligence / 1.2);
+            }
+            else if (unit is Peasant)
+            {
+                unit.HP = (int)(unit.Vitality / 1 + unit.Strength);
+                unit.Mana = (int)(unit.Inteligence);
+            } 
+            else if (unit is Catapult)
+            {
+                unit.HP = (int)(unit.Vitality / 1 + unit.Strength);
+                unit.Mana = (int)(unit.Inteligence / 0.4);
+            }   
+            else
+                throw new Exception("Unit is doesnot exist");
             this.DataContext = unit;
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void MinusStrength(object sender, RoutedEventArgs e)
         {
-            if (unit.Strength == 0)
+            if (CountOfPointsS == 0)
                 return;
             else
             {
                 unit.StartsPoints++;
                 unit.Strength--;
+                CountOfPointsS--;
             }
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void PlusStrength(object sender, RoutedEventArgs e)
         {
             if (unit.StartsPoints == 0)
                 return;
@@ -59,11 +94,12 @@ namespace RTS.WPF
             {
                 unit.StartsPoints--;
                 unit.Strength++;
+                CountOfPointsS++;
             }
         }
 
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private void PlusDexterity(object sender, RoutedEventArgs e)
         {
             if (unit.StartsPoints == 0)
                 return;
@@ -71,21 +107,23 @@ namespace RTS.WPF
             {
                 unit.StartsPoints--;
                 unit.Dexterity++;
+                CountOfPointsD++;
             }
         }
 
-        private void Button_Click_4(object sender, RoutedEventArgs e)
+        private void MinusDexterity(object sender, RoutedEventArgs e)
         {
-            if (unit.Dexterity == 0)
+            if (CountOfPointsD == 0)
                 return;
             else
             {
                 unit.StartsPoints++;
                 unit.Dexterity--;
+                CountOfPointsD--;
             }
         }
 
-        private void Button_Click_5(object sender, RoutedEventArgs e)
+        private void PlusInteligence(object sender, RoutedEventArgs e)
         {
             if (unit.StartsPoints == 0)
                 return;
@@ -93,21 +131,23 @@ namespace RTS.WPF
             {
                 unit.StartsPoints--;
                 unit.Inteligence++;
+                CountOfPointsI++;
             }
         }
 
-        private void Button_Click_6(object sender, RoutedEventArgs e)
+        private void MinusInteligence(object sender, RoutedEventArgs e)
         {
-            if (unit.Inteligence == 0)
+            if (CountOfPointsI == 0)
                 return;
             else
             {
                 unit.StartsPoints++;
                 unit.Inteligence--;
+                CountOfPointsI--;
             }
         }
 
-        private void Button_Click_7(object sender, RoutedEventArgs e)
+        private void PlusVitality(object sender, RoutedEventArgs e)
         {
             if (unit.StartsPoints == 0)
                 return;
@@ -115,21 +155,23 @@ namespace RTS.WPF
             {
                 unit.StartsPoints--;
                 unit.Vitality++;
+                CountOfPointsV++;
             }
         }
 
-        private void Button_Click_8(object sender, RoutedEventArgs e)
+        private void MinusVitality(object sender, RoutedEventArgs e)
         {
-            if (unit.Vitality == 0)
+            if (CountOfPointsV == 0)
                 return;
             else
             {
                 unit.StartsPoints++;
                 unit.Vitality--;
+                CountOfPointsV--;
             }
         }
 
-        private void Button_Click_9(object sender, RoutedEventArgs e)
+        private void CreateWarrior(object sender, RoutedEventArgs e)
         {
             unit = new Warrior();
 
@@ -139,7 +181,7 @@ namespace RTS.WPF
             this.DataContext = unit;
         }
 
-        private void Button_Click_10(object sender, RoutedEventArgs e)
+        private void CreateWizzard(object sender, RoutedEventArgs e)
         {
             unit = new Wizzard();
 
@@ -149,12 +191,32 @@ namespace RTS.WPF
             this.DataContext = unit;
         }
 
-        private void Button_Click_11(object sender, RoutedEventArgs e)
+        private void CreateRogue(object sender, RoutedEventArgs e)
         {
             unit = new Rogue();
 
             UnitClass.Text = "Rogue";
             MyImage.Content = Resources["Rogue"];
+
+            this.DataContext = unit;
+        }
+
+        private void CreatePeasant(object sender, RoutedEventArgs e)
+        {
+            unit = new Peasant();
+
+            UnitClass.Text = "Peasant";
+            MyImage.Content = Resources["Peasant"];
+
+            this.DataContext = unit;
+        }
+
+        private void CreateCatapult(object sender, RoutedEventArgs e)
+        {
+            unit = new Catapult();
+
+            UnitClass.Text = "Catapult";
+            MyImage.Content = Resources["Catapult"];
 
             this.DataContext = unit;
         }

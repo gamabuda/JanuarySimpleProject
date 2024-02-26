@@ -14,6 +14,10 @@ namespace RTS.Core
                     return new Wizzard();
                 case "Rogue":
                     return new Rogue();
+                case "Peasant":
+                    return new Peasant();
+                case "Catapult":
+                    return new Catapult();
                 default:
                     throw new Exception("This unit doesn`t exist");
             }
