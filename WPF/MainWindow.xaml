@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RTS.WPF"
         mc:Ignorable="d"
-        Icon="\img\Buildings\barrack.png"
+        Icon="/img/Icons/window-icon.png"
         WindowStartupLocation="CenterScreen"
         Title="RTS" 
         Height="1080" Width="1920" 
