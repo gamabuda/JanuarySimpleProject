@@ -23,25 +23,5 @@ namespace wpf
         {
             InitializeComponent();
         }
-
-        private void Warrior_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("кнопка нажата");
-        }
-
-        private void Barracks_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("кнопка нажата");
-        }
-
-        private void Wizzard_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("кнопка нажата");
-        }
-
-        private void Warrior_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

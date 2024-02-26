@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="Window1" Height="1000" Width="1200">
     <Window.Resources>
-        <Image x:Key="Warrior" Source="/images/warrior.jpg"></Image>
-        <Image x:Key="Rogue" Source="/images/rogue.jpg"></Image>
-        <Image x:Key="Wizard" Source="/images/wizard.jpg"></Image>
+        <Image x:Key="Warrior" Source="/img/warrior.jpg"></Image>
+        <Image x:Key="Rogue" Source="/img/rogue.jpg"></Image>
+        <Image x:Key="Wizzard" Source="/img/wizard.jpg"></Image>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -21,6 +21,44 @@
             <Button x:Name="Warrior" Content="Warrior" FontSize="30" Width="168" Margin="0,0,10,0" Background="Azure"/>
             <Button x:Name="Rogue" Content="Rogue" FontSize="30" Width="168" Margin="0,0,10,0" Background="Azure"/>
             <Button x:Name="Wizard" Content="Wizard" FontSize="30" Width="168" Background="Azure"/>
+        </StackPanel>
+        <Image Source="/img/wizard.PNG" HorizontalAlignment="Left" Width="auto" Grid.Row="1" Height="auto" Margin="526,0,0,220"/>
+        <StackPanel Grid.Column="0" Grid.Row="1">
+
+            <StackPanel Margin="60,40,700,0" Orientation="Vertical" Width="500">
+                <TextBlock x:Name="Class" FontSize="70" Text="Волшебник" Foreground="Black" Background="Aqua" Width="496"/>
+
+                <StackPanel Orientation="Horizontal" Height="117" RenderTransformOrigin="0.5,0.5">
+                    <StackPanel.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-0.106"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </StackPanel.RenderTransform>
+                    <TextBlock Text="Уровень 1"  FontSize="55" Margin="0,20,0,4" Background="Azure" Height="86"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="CurrentPoint" FontSize="40" Text="1700/3000" Background="Aquamarine"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Column="0" Grid.Row="1" Margin="60,40,850,0" Orientation="Vertical" Width="277">
+
+                <StackPanel Orientation="Horizontal" Width="278">
+                    <TextBlock Text="HP:  " FontSize="50" Margin="0,0,0,6" Background="Aqua"/>
+                    <TextBlock x:Name="Health" Text="340/340" FontSize="47" Margin="0,0,0,6" Background="Aqua"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Mana:  " FontSize="47" Margin="0,0,0,6" Background="Azure"/>
+                    <TextBlock x:Name="Mana" Text="209/250" FontSize="35" Background="Azure"/>
+                </StackPanel>
+
+            </StackPanel>
+
         </StackPanel>
     </Grid>
 </Window>
