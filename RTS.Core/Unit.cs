@@ -22,7 +22,7 @@ namespace RTS.Core
         public int CrtDamage { get; set; }
 
         public int Level { get; set; } = 1;
-        public int Experience = 0;
+        public int MyExperience = 0;
 
         public void ShowInfo()
         {
@@ -42,8 +42,19 @@ namespace RTS.Core
 
         public void LevelUp()
         {
-            if (Level < 50)
+            if (Level <= 50)
             {
+                int NewExperience = (Level - 1) * 1000;
+
+                if (MyExperience >= MyExperience + NewExperience)
+                {
+                    Level++;
+                    return;
+                }
+                else
+                {
+                    Console.WriteLine("У вас мало опыта");
+                }
             }
 
             else
