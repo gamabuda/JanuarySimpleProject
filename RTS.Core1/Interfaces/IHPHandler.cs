@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RTS.Core1
+namespace RTS.Core1.Interfaces
 {
-    public class Buildings
+    public interface IHPHandler
     {
-        public int Health { get; set; }
-        public int MaxHealth { get; set; }
+         int Health { get; set; }
+         int MaxHealth { get; set; }
     }
 }
