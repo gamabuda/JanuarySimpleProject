@@ -110,37 +110,79 @@ namespace RTS.WpfApp
 
         private void StrenghtDown(object sender, RoutedEventArgs e)
         {
-
+            if (unit.Strength == 0)
+                return;
+            else
+            {
+                unit.StartsPoints++;
+                unit.Strength--;
+            }
         }
 
         private void DexterityDown(object sender, RoutedEventArgs e)
         {
-
+            if (unit.Dexterity == 0)
+                return;
+            else
+            {
+                unit.StartsPoints++;
+                unit.Dexterity--;
+            }
         }
 
         private void IntelligenceDown(object sender, RoutedEventArgs e)
         {
-
+            if (unit.Intelligence == 0)
+                return;
+            else
+            {
+                unit.StartsPoints++;
+                unit.Intelligence--;
+            }
         }
 
         private void VitalityDown(object sender, RoutedEventArgs e)
         {
-
+            if (unit.Vitality == 0)
+                return;
+            else
+            {
+                unit.StartsPoints++;
+                unit.Vitality--;
+            }
         }
 
         private void VitalityUp(object sender, RoutedEventArgs e)
         {
-
+            if (unit.StartsPoints == 0)
+                return;
+            else
+            {
+                unit.StartsPoints--;
+                unit.Vitality++;
+            }
         }
 
         private void IntellligenceUp(object sender, RoutedEventArgs e)
         {
-
+            if (unit.StartsPoints == 0)
+                return;
+            else
+            {
+                unit.StartsPoints--;
+                unit.Intelligence++;
+            }
         }
 
         private void DexterityUP(object sender, RoutedEventArgs e)
         {
-
+            if (unit.StartsPoints == 0)
+                return;
+            else
+            {
+                unit.StartsPoints--;
+                unit.Dexterity++;
+            }
         }
     }
 }

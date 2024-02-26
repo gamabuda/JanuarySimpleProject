@@ -19,7 +19,7 @@
     x:Name="UnitClass"
     Text=""
     Padding="10" 
-    TextAlignment="Left" RenderTransformOrigin="0.072,0.075">
+    TextAlignment="Left" RenderTransformOrigin="0.066,0.046">
 		</TextBlock>
 		<Border BorderBrush="Black" BorderThickness="1">
 			<ContentPresenter
