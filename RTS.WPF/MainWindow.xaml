@@ -32,7 +32,7 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="62,246,558,160" Height="28">
-                <TextBlock Text="S:  " FontSize="23" Height="26" Width="21"/>
+            <TextBlock Text="S:" FontSize="23" Height="26" Width="21"/>
                 <TextBlock x:Name="Strenght1" Text="30" FontSize="23"/>
                 <TextBlock x:Name="Strenght2" Text="/" FontSize="23"/>
                 <TextBlock x:Name="Strenght3" Text="250" FontSize="23"/>
