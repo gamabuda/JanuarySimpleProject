@@ -1,31 +1,116 @@
-﻿namespace RTS.Core
+﻿using System.ComponentModel;
+using System.Xml.Linq;
+
+namespace RTS.Core
 {
     public class Unit
     {
-        
-        public int OldXP { get; set; } 
+        private int _xp;
+        public int OldXP 
+        { 
+            get => _xp;
+            set
+            {
+                if (_xp != value)
+                {
+                    _xp = value;
+                    OnPropertyChanged("XP");
+                }
+            }
+        } 
         public int NewXp { get; set; } = 1000;
-        
 
-        public int Level { get; set; } = 1;
+        private int _level = 1;
+        public int Level 
+        {
+            get => _level;
+            set
+            {
+                if (_level != value)
+                {
+                    _level = value;
+                    OnPropertyChanged("Level");
+                }
+
+            }
+        } 
         public double MaxHealth { get; set; }
         public double MaxMana { get; set; }
         public double Armor { get; set; }
 
         public double HP { get; set; }
         public double Mana { get; set; }
-
-        public double Vitality { get; set; }
-        public double Strength { get; set; }
-        public double Inteligence { get; set; }
-        public double Dexterity { get; set; }
+        private int _vitality;
+        public int Vitality 
+        { 
+            get => _vitality;
+            set
+            {
+                if (_vitality != value)
+                {
+                    _vitality = value;
+                    OnPropertyChanged("Vitality");
+                }
+            }
+        }
+        private int _strength;
+        public int Strength 
+        { 
+            get => _strength;
+            set
+            {
+                if (_strength != value)
+                {
+                    _strength = value;
+                    OnPropertyChanged("Strength");
+                }
+            }
+        }
+        private int _inteligence;
+        public int Inteligence 
+        { 
+            get => _inteligence;
+            set
+            {
+                if (_inteligence != value)
+                {
+                    _inteligence = value;
+                    OnPropertyChanged("Inteligence");
+                }
+            }
+        }
+        private int _dexterity;
+        public int Dexterity
+        {
+            get => _dexterity;
+            set
+            {
+                if (_dexterity != value)
+                {
+                    _dexterity = value;
+                    OnPropertyChanged("Dexterity");
+                }
+            }
+        } 
 
         public double Damage { get; set; }
         public double MagicalDamage { get; set; }
         public double MagicalDefense { get; set; }
         public double CriticalChanse { get; set; }
         public double CriticalDamage { get; set; }
-        public int StartPoint{ get; set; } = 5;
+        private int _startPoint = 5;
+        public int StartPoint
+        { 
+            get => _startPoint;
+            set
+            {
+                if (_startPoint != value)
+                {
+                    _startPoint = value;
+                    OnPropertyChanged("StartPoint");
+                }
+            }
+        } 
         public void Attack(Unit u)
         {
             if (u.HP - u.Damage < 1)
@@ -50,61 +135,11 @@
             
             NewXp += 1000;
         }
-        public void GetStartPoints(Unit u)
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
         {
-            if (StartPoint > 0)
-            {
-                if (u.Strength == u.Strength++)
-                {                   
-                    StartPoint -= 1;
-                    Strength += 1;
-                }
-
-                if(u.Vitality == u.Vitality++)
-                {
-                    StartPoint -= 1;
-                    Vitality += 1;
-                }
-
-                if (u.Dexterity == u.Dexterity++)
-                {
-                    StartPoint -= 1;
-                    Dexterity += 1;
-                }
-
-                if (u.Inteligence == u.Inteligence++)
-                {
-                    StartPoint -= 1;
-                    Inteligence += 1;
-                }
-            }
-           
-        }
-        public void ReturnStartPoints(Unit u)
-        {
-            if (u.Strength == u.Strength--)
-            {
-                StartPoint += 1;
-                Strength -= 1;
-            }
-
-            if (u.Vitality == u.Vitality--)
-            {
-                StartPoint += 1;
-                Vitality -= 1;
-            }
-
-            if (u.Dexterity == u.Dexterity--)
-            {
-                StartPoint += 1;
-                Dexterity -= 1;
-            }
-
-            if (u.Inteligence == u.Inteligence--)
-            {
-                StartPoint += 1;
-                Inteligence -= 1;
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 

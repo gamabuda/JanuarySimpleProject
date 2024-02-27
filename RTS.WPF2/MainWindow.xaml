@@ -9,9 +9,9 @@
 
     <Window.Resources>
         
-        <Image x:Key="Warrior" Source="imges/Warrior.jpg"></Image>
-        <Image x:Key="Wizard" Source="imges/Wizard.jpg" ></Image>
-        <Image x:Key="Rogue" Source="imges/Rogue.jpg"></Image>
+        <Image x:Key="Warrior" Source="/Warrior.jpg"></Image>
+        <Image x:Key="Wizard" Source="/Wizard.jpg" ></Image>
+        <Image x:Key="Rogue" Source="/Rogue.jpg"></Image>
     </Window.Resources>
     
     <Grid>
@@ -44,42 +44,42 @@
 
         <StackPanel Grid.Row="2" Grid.Column="1">
             <Label Content="XP"></Label>
-            <TextBlock x:Name="XPN" Text="{Binding XP, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+            <TextBlock x:Name="XPN" Text="{Binding OldXP}"></TextBlock>
         </StackPanel>
         
         <StackPanel Grid.Row="3" Grid.Column="1">
             <Label Content="Level:"></Label>
-            <TextBlock x:Name="LevelN" Text="{Binding LEVEL, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+            <TextBlock x:Name="LevelN" Text="{Binding Level}"></TextBlock>
         </StackPanel>
         
         <StackPanel Grid.Row="4" Grid.Column="1">
             <Label Content="HP:"></Label>
-            <TextBlock x:Name="HPN" Text="{Binding HP , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
+            <TextBlock x:Name="HPN" Text="{Binding HP }" ></TextBlock>
         </StackPanel>
         
         <StackPanel Grid.Row="5" Grid.Column="1">
             <Label Content="Mana:"></Label>
-            <TextBlock x:Name="ManaN" Text="{Binding Mana, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+            <TextBlock x:Name="ManaN" Text="{Binding Mana}"></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="3">
             <Label Content="S"></Label>
-            <TextBlock x:Name="SN" Text="{Binding Strength , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+            <TextBlock x:Name="SN" Text="{Binding Strength}"></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="3">
             <Label Content="D"></Label>
-            <TextBlock x:Name="DN" Text="{Binding Dexterity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"></TextBlock>
+            <TextBlock x:Name="DN" Text="{Binding Dexterity}"></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="4" Grid.Column="3">
             <Label Content="I"></Label>
-            <TextBlock x:Name="IN" Text="{Binding Inteligence , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+            <TextBlock x:Name="IN" Text="{Binding Inteligence }"></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="5" Grid.Column="3">
             <Label Content="V"></Label>
-            <TextBlock x:Name="VN" Text="{Binding Vitality, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+            <TextBlock x:Name="VN" Text="{Binding Vitality}"></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="4">
@@ -111,8 +111,14 @@
                     Grid.Column="6"
                     Grid.ColumnSpan="4"
                     Grid.RowSpan="4"
-
-                    Background="Aqua">
+                    >
+                <Border>
+                     <ContentPresenter
+                        Content=""
+                        Height="200"
+                        Width="200"
+                        x:Name="Picture"/> 
+                </Border>   
         </StackPanel>
 
         <StackPanel Grid.Row="6" Grid.Column="7">
@@ -129,9 +135,13 @@
 
         <StackPanel Grid.Row="7" Grid.Column="4">
             <Label Content="StartPoints:"></Label>
-            <TextBlock x:Name="SP" Text="{Binding StartPoint, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock x:Name="SP" Text="{Binding StartPoint}" />
            
             
+        </StackPanel>
+
+        <StackPanel Grid.Row="6" Grid.Column="6">
+            <TextBlock x:Name="Class" ></TextBlock>
         </StackPanel>
         
         <StackPanel Grid.Row="7"   Grid.Column="5" Grid.ColumnSpan="6">
