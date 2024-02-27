@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RTS.Core1;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +9,10 @@ namespace RTS.Core1.Interfaces
 {
     public interface IAttackHandler
     {
-         int PDamage { get; set; }
-         void PAttack(Unit unit);
-         int MDamage { get; set; }
-         void MAttack(Unit unit);
-         int CrtChance { get; set; }
-         int CrtDamage { get; set; }
+        public int PDamage { get; set; }
+        public void Attack(Unit unit);
+        public int MDamage { get; set; }
+        public int CrtChance { get; set; }
+        public int CrtDamage { get; set; }
     }
 }

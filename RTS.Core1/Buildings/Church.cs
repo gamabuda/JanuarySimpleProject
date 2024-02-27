@@ -6,30 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RTS.Core
+namespace RTS.Core1
 {
-    public class Church : IHPHandler, IArmorHandler, IAttackHandler
+    public class Church : IHPHandler, IManaHandler
     {
         public int Health { get; set; }
         public int MaxHealth { get; set; }
-        public int PDamage { get; set; }
-        public void Armorr(Unit unit)
-        {
-
-        }
-        public void PAttack(Unit unit)
-        {
-
-        }
-        public int MDamage { get; set; }
-        public void MAttack(Unit unit)
-        {
-
-        }
-        public int CrtChance { get; set; }
-        public int CrtDamage { get; set; }
-        public int Armor { get; set; }
-        public int MDefence { get; set; }
+        int MaxMana { get; set; }
+        int Mana { get; set; }
 
         public int RegenMana { get; set; } = 15;
 

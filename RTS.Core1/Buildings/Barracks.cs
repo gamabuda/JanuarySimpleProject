@@ -7,28 +7,11 @@ using System.Threading.Tasks;
 
 namespace RTS.Core1
 {
-    public class Barracks : IHPHandler, IArmorHandler, IAttackHandler
+    public class Barracks : IHPHandler
     {
         public int Health { get; set; }
         public int MaxHealth { get; set; }
-        public int PDamage { get; set; }
-        public void Armorr(Unit unit)
-        {
-
-        }
-        public void PAttack(Unit unit)
-        {
-
-        }
-        public int MDamage { get; set; }
-        public void MAttack(Unit unit)
-        {
-
-        }
-        public int CrtChance { get; set; }
-        public int CrtDamage { get; set; }
-        public int Armor { get; set; }
-        public int MDefence { get; set; }
+       
         public Unit CreateUnit(string unitType)
         {
             switch (unitType)
