@@ -7,20 +7,25 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
-        <Image x:Key="Warrior" Source="/warrior.png"></Image>
-        <Image x:Key="Wizard" Source="/wizard.png" ></Image>
-        <Image x:Key="Rogue" Source="/rogue.png"></Image>
+        <Image x:Key ="Warrior" Source="/warrior.png" Height="298"/>
+        <Image x:Key ="Wizard" Source="/wizard.png" Height="298"/>
+        <Image x:Key ="Rogue" Source="/rogue.png" Height="298"/>
     </Window.Resources>
 
-
     <Grid Background="LightSkyBlue">
+        <Rectangle x:Name="rect" Fill="white" Margin="270,41,270,145" Stroke="Black"/>
+        <ContentPresenter x:Name="image" Margin="300,50,300,160"></ContentPresenter>
         <Button Content="Level Up" HorizontalAlignment="Center" Margin="0,345,0,0" VerticalAlignment="Top" Height="50" Width="102" Background="White"/>
-
-        <Rectangle x:Name="rect" Fill="White" Margin="270,41,270,145" Stroke="Black"/>
-        <ContentPresenter x:Name="ContentPresenter" Margin="270,41,270,145"></ContentPresenter>
-        <RadioButton Content="Warrior" HorizontalAlignment="Left" Margin="548,56,0,0" VerticalAlignment="Top" GroupName="1" Checked="RadioButton_Checked"/>
-        <RadioButton Content="Rogue" HorizontalAlignment="Left" Margin="548,91,0,0" VerticalAlignment="Top" GroupName="1" Checked="RadioButton_Checked_1"/>
-        <RadioButton Content="Wizard" HorizontalAlignment="Left" Margin="548,126,0,0" VerticalAlignment="Top" GroupName="1" Checked="RadioButton_Checked_2"/>
-        <TextBlock x:Name="Textblock" HorizontalAlignment="Left" Margin="617,175,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <Button Content="Warrior" HorizontalAlignment="Left" Margin="547,124,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button Content="Rogue" HorizontalAlignment="Left" Margin="548,99,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="20" Width="41"/>
+        <Button Content="Wizard" HorizontalAlignment="Left" Margin="548,74,0,0" VerticalAlignment="Top" Click="Button_Click_2"/>
+        <StackPanel Margin="28,41,562,50">
+            <TextBlock TextWrapping="Wrap" Text="Health:"/>
+            <TextBlock TextWrapping="Wrap" Text="Mana:"/>
+            <TextBlock TextWrapping="Wrap" Text="Strength:"/>
+            <TextBlock TextWrapping="Wrap" Text="Dexterity:"/>
+            <TextBlock TextWrapping="Wrap" Text="Intelligence:"/>
+            <TextBlock TextWrapping="Wrap" Text="Vitality:"/>
+        </StackPanel>
     </Grid>
 </Window>

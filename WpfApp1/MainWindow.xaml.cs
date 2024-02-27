@@ -27,25 +27,31 @@ namespace WpfApp1
             InitializeComponent();
         }
 
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             unit = new Warrior();
-            Textblock.Text = unit.ToString();
-            ContentPresenter.Content = Resources["warrior"];
+
+            image.Content = Resources["Warrior"];
+
+            DataContext = unit;
         }
 
-        private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             unit = new Rogue();
-            Textblock.Text = unit.ToString();
-            ContentPresenter.Content = Resources["rogue"];
+
+            image.Content = Resources["Rogue"];
+
+            DataContext = unit;
         }
 
-        private void RadioButton_Checked_2(object sender, RoutedEventArgs e)
+        private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             unit = new Wizard();
-            Textblock.Text = unit.ToString();
-            ContentPresenter.Content = Resources["wizard"];
+
+            image.Content = Resources["Wizard"];
+
+            DataContext = unit;
         }
     }
 }

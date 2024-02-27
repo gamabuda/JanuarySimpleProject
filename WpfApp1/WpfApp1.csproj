@@ -8,6 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="rogue.png" />
+    <None Remove="warrior.png" />
+    <None Remove="wizard.png" />
     <None Remove="Снимок экрана 2024-02-21 110256.png" />
   </ItemGroup>
 
@@ -16,7 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Снимок экрана 2024-02-21 110256.png" />
+    <Resource Include="rogue.png" />
+    <Resource Include="warrior.png" />
+    <Resource Include="wizard.png" />
   </ItemGroup>
 
 </Project>
