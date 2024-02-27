@@ -1,4 +1,10 @@
-﻿
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System;
 
 namespace JanuarySimpleProject
@@ -65,7 +71,7 @@ namespace JanuarySimpleProject
             _items = new T[6];
             _count = 0;
         }
-        public T[] Sort()
+        public T[] GerArray()
         {
             T[] array = new T[_count];
 
@@ -103,6 +109,11 @@ namespace JanuarySimpleProject
                 Console.WriteLine(_items[i] + " ");
             }
             Console.WriteLine();
+        }
+
+        internal object GetArray()
+        {
+            throw new NotImplementedException();
         }
     }
 }

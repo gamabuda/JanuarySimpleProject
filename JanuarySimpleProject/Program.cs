@@ -1,4 +1,5 @@
-﻿using JanuarySimpleProject.Core;
+﻿using JanuarySimpleProject;
+using JanuarySimpleProject.Core;
 using System.Formats.Asn1;
 
 /*
@@ -38,12 +39,21 @@ using System.Formats.Asn1;
 //node.ShowInfo();
 
 //Console.WriteLine(node.JSON);
+MyNode myNode = new MyNode("здоровье");
+myNode.Value = "Money";
+myNode.ShowInfo();
+myNode.Transaction(1000);
+Console.WriteLine();
+myNode.ShowInfo();
 
-Mynode mynode = new Mynode();
-mynode.AddValue("7");
-mynode.ShowInfo();
-DinamicArray<string> dinamicArray = new DinamicArray<string>();
-dinamicArray.Add("нет");
-dinamicArray.Sort();
-dinamicArray.Print();
-Console.WriteLine(dinamicArray.BinarySearch("да"));
+myNode.AddValue("еда");
+myNode.AddValue("спорт");
+myNode.AddValue("настрой");
+
+myNode.Sort();
+string sport = myNode.PrintArray();
+Console.WriteLine("\tMetals in the Healf: " + sport);
+
+Console.WriteLine("\n\tIndex of Silver: " + myNode.BinarySearch("еда"));
+Console.WriteLine("\tIndex of Gold: " + myNode.BinarySearch("спорт"));
+Console.WriteLine("\tIndex of Bronze: " + myNode.BinarySearch("настрой"));

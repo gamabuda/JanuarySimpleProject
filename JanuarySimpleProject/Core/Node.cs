@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using JanuarySimpleProject.Core.Implementation;
 
 namespace JanuarySimpleProject.Core
@@ -7,7 +8,7 @@ namespace JanuarySimpleProject.Core
     public class Node : INode
     {
         //TODO switch list to array
-        private string[] _values = new string[0];
+        private DynamicArray<string> _values = new DynamicArray<string>(0);
         private string _value;
 
         private Node()
@@ -73,8 +74,10 @@ namespace JanuarySimpleProject.Core
         private void CheckNode()
         {
             var temp = String.Empty;
-            foreach (var v in _values)
-                temp += v;
+            for (var i = 0; i < _value.Count; i++)
+            {
+                temp += _values.GetArray()[i];
+            }
 
             if (_value != temp)
                 throw new Exception("Node is not correct or broken");
@@ -91,10 +94,10 @@ namespace JanuarySimpleProject.Core
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                throw new Exception("не может быть нулем");
+                throw new Exception("The value is null");
 
             if (_values.Contains(strValue))
-                throw new Exception("значение уже есть");
+                throw new Exception("The value is already contained in the Node");
 
             _values.Add(strValue);
             _value += $"{strValue}";
@@ -102,22 +105,21 @@ namespace JanuarySimpleProject.Core
             OnNodeChange?.Invoke();
         }
 
-
         //TODO switch all returns to throw Exception
         public void AddValue<TValue>(List<TValue> values)
         {
             if (values.Count <= 0)
-                throw new Exception("Список значений пуст");
+                throw new Exception("The list is empty");
 
             foreach (var value in values)
             {
                 string strValue = value.ToString().Trim();
 
                 if (strValue == null)
-                    throw new Exception("значение ноль");
+                    throw new Exception("The value is null");
 
                 if (_values.Contains(strValue))
-                    throw new Exception("значение уже есть");
+                    throw new Exception("The value is already contained in the Node");
 
                 _values.Add(strValue);
                 _value += $"{strValue}";
@@ -125,16 +127,17 @@ namespace JanuarySimpleProject.Core
                 OnNodeChange?.Invoke();
             }
         }
+
         //TODO switch all returns to throw Exception and add the ability to delete a list of objects
-         public void RemoveValue<TValue>(TValue value)
+        public void RemoveValue<TValue>(TValue value)
         {
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                throw new Exception("неправильно");
+                throw new Exception("The value is null");
 
             if (!_values.Contains(strValue))
-                throw new Exception("неправильно");
+                throw new Exception("The value is not contained in the node");
 
             _values.Remove(strValue);
             _value = Value.Replace(strValue, "");
@@ -142,9 +145,107 @@ namespace JanuarySimpleProject.Core
             OnNodeChange?.Invoke();
         }
 
+        public void RemoveValue<TValue>(List<TValue> values)
+        {
+            if (values.Count <= 0)
+                throw new Exception("The list is empty");
+
+            foreach (var value in values)
+            {
+                string strValue = value.ToString().Trim();
+
+                if (strValue == null)
+                    throw new Exception("The value is null");
+
+                if (!_values.Contains(strValue))
+                    throw new Exception("The value is not contained in the Node");
+
+                _values.Remove(strValue);
+                _value = Value.Replace(strValue, "");
+
+                OnNodeChange?.Invoke();
+            }
+        }
+
+        public string UpdateValue(string value)
+        {
+            string oldValue = _value;
+            _value = value;
+            return oldValue;
+        }
+
         public static Node CreateEmptyNode()
         {
             return new Node();
+        }
+
+        public int CompareTo(object? obj)
+        {
+            return _value.CompareTo(obj);
+        }
+
+        public DynamicArray<string> Get_values()
+        {
+            return _values;
+        }
+
+        public string PrintArray()
+        {
+            return _values.Print();
+        }
+
+        public void Sort()
+        {
+            string[] array = _values.GetArray();
+
+            for (int i = 0; i < _values.Count - 1; i++)
+            {
+                int minIndex = i;
+                for (int j = i + 1; j < _values.Count; j++)
+                {
+                    if (array[j].CompareTo(array[minIndex]) < 0)
+                    {
+                        minIndex = j;
+                    }
+                }
+
+                if (minIndex != i)
+                {
+                    string temp = array[i];
+                    array[i] = array[minIndex];
+                    array[minIndex] = temp;
+                }
+            }
+
+            _values.Clear();
+            foreach (string value in array)
+            {
+                _values.Add(value);
+            }
+        }
+
+        public int BinarySearch(string item)
+        {
+            Sort();
+
+            string[] array = _values.GetArray();
+            int left = 0;
+            int right = _values.Count - 1;
+
+            while (left <= right)
+            {
+                int middle = left + (right - left) / 2;
+
+                if (array[middle].CompareTo(item) == 0)
+                    return middle;
+
+                if (array[middle].CompareTo(item) < 0)
+                    left = middle + 1;
+                else
+                    right = middle - 1;
+            }
+
+            return -1;
         }
 
         public void UpdateValue<TValue>(TValue oldValue, TValue newValue)

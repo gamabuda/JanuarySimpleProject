@@ -11,9 +11,9 @@ namespace JanuarySimpleProject.Core
 {
     public delegate void TransactionOperation(string msg);
 
-    public class SpecialNode : INode
+    public class MyNode : INode
     {
-        public SpecialNode(string name)
+        public MyNode(string name)
         {
             Id = Guid.NewGuid().ToString();
 
@@ -64,7 +64,7 @@ namespace JanuarySimpleProject.Core
             var temp = String.Empty;
             for (var i = 0; i < _items.Count; i++)
             {
-                temp += _items.GetArray()[i];
+                temp += _item.Sort()[i];
             }
         }
 
@@ -119,7 +119,7 @@ namespace JanuarySimpleProject.Core
 
         public void Sort()
         {
-            string[] array = _items.GetArray();
+            string[] array = _item.GetArray();
 
             for (int i = 0; i < _items.Count - 1; i++)
             {
@@ -146,16 +146,13 @@ namespace JanuarySimpleProject.Core
                 _items.Add(value);
             }
         }
-        public string PrintArray()
-        {
-            return _items.Print();
-        }
+        public string PrintArray() => _item.Print();
 
         public int BinarySearch(string item)
         {
             Sort();
 
-            string[] array = _items.GetArray();
+            string[] array = _item.GetArray();
             int left = 0;
             int right = _items.Count - 1;
 
