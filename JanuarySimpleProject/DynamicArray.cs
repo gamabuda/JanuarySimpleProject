@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 
 namespace JanuarySimpleProject
 {
-    internal class DynamicArray<T> where T : IComparable<T>
+    public class DArray<T> where T : IComparable<T>
     {
-        private T[] _array; 
+        private T[] _array;
         private int _count;
-        public DynamicArray(int len)
+
+        public DArray(int len)
         {
             _array = new T[len];
             _count = 0;
         }
+
         private void ArrSize()
         {
             int _count1 = _count + _count / 2;
@@ -29,95 +31,67 @@ namespace JanuarySimpleProject
             }
             _array = item;
         }
-        public void Add(T str)
+
+        public void Add(T s)
         {
             if (_count == _array.Length)
             {
-             
-              Resize();
+                ArrSize();
             }
-            _array[_count] = str;
+            _array[_count] = s;
             _count++;
         }
-        public void Remove(T str)
+
+        public void Print()
         {
-            int index = Array.IndexOf(_array, str, 0, _count); if (index != -1)
+            foreach (var s in _array)
             {
-                for (int i = 0; i < _count - 1; i++)
+                if (s != null)
+                    Console.WriteLine(s);
+            }
+        }
+
+        public void Remove(T s)
+        {
+            int index = -1;
+            for (int i = 0; i < _count; i++)
+            {
+                if (_array[i].Equals(s))
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            if (index != -1)
+            {
+                for (int i = index; i < _count - 1; i++)
                 {
                     _array[i] = _array[i + 1];
                 }
                 _count--;
             }
         }
-        public bool Contains(T str)
-        {
-            return Array.IndexOf(_array, str, 0, _count) != -1;
-        }
 
-        private void Resize()
+        public bool Contains(T s)
         {
-            T[] temp = new T[_array.Length * 2];
-            _array.CopyTo(temp, 0);
-            _array = temp;   
-        }
-        public void Sort()
-        {
-            int step = _count / 2;
-            while (step > 0)
+            if (_array.Contains(s))
             {
-                for (int i = step; i < _count; i++)
-                {
-                    T temp = _array[i];
-                    int j;
-                    for (j = i; j >= step && _array[j - step].CompareTo(temp) > 0; j -= step)
-                    {
-                        _array[j] = _array[j - step];
-                    }
-                    _array[j] = temp;
-                }
-                step /= 2;
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
-        public int BinarySearch(T value)
-        {
-            Array.Sort(_array);
-            int left = 0;
-            int right = _count - 1;
-
-            while (left <= right)
-            {
-                int mid = left + (right - left) / 2;
-
-                if (_array[mid].CompareTo(value) == 0)
-                    return mid;
-
-                if (_array[mid].CompareTo(value) < 0)
-                    left = mid + 1;
-
-                else
-                    right = mid - 1;
-            }
-
-            return -1;
-        }
-
-        public void Print()
-        {
-            for (int i = 0; i < _count; i++)
-            {
-                Console.WriteLine(_array[i] + "");
-            }
-            Console.WriteLine();
-        }
         public void Clear()
         {
-            List<T> newItems = _array.ToList();
-            newItems.Clear();
-            _array = newItems.ToArray();
+            var Arr = new T[15];
+            _array = Arr;
             _count = 0;
         }
+
         public T[] GetArray()
         {
             return _array;
@@ -126,6 +100,45 @@ namespace JanuarySimpleProject
         public int Count()
         {
             return _count;
+        }
+
+        public int BinarySearch(T s)
+        {
+            int left = 0;
+            int right = _count - 1;
+            while (left <= right)
+            {
+                int mid = (left + right) / 2;
+                if (_array[mid].CompareTo(s) == 0)
+                {
+                    return mid;
+                }
+                else if (_array[mid].CompareTo(s) < 0)
+                {
+                    left = mid + 1;
+                }
+                else
+                {
+                    right = mid - 1;
+                }
+            }
+            return -1;
+        }
+
+        public void Sort()
+        {
+            for (int i = 0; i < _count - 1; i++)
+            {
+                for (int j = i + 1; j < _count; j++)
+                {
+                    if (_array[i].CompareTo(_array[j]) > 0)
+                    {
+                        T temp = _array[i];
+                        _array[i] = _array[j];
+                        _array[j] = temp;
+                    }
+                }
+            }
         }
 
     }

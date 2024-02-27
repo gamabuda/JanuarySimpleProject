@@ -10,7 +10,7 @@ namespace JanuarySimpleProject
 {
     public class NewNode : INode
     {
-        DynamicArray<string> _values = new DynamicArray<string>(0);
+        DArray<string> _values = new DArray<string>(0);
         private string _value;
 
         private NewNode()
