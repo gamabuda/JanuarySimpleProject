@@ -8,11 +8,13 @@ namespace RTS.Core
 {
     public class Unit
     {
-        public int Level { get; set; } = 0;
-        public int Points { get; set; } = 0;
+        public int Level { get; set; } = 1;
+        public int Points { get; set; } = 5;
         public int LevelUpPoints { get; set; } = 1000;
         public int Health { get; set; }
         public int Mana { get; set; }
+        public int Experience { get; set; } = 0;
+
 
         public int Strength { get; set; }
         public int Dexterity { get; set; }

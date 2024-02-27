@@ -13,19 +13,65 @@
     </Window.Resources>
 
     <Grid Background="LightSkyBlue">
-        <Rectangle x:Name="rect" Fill="white" Margin="270,41,270,145" Stroke="Black"/>
-        <ContentPresenter x:Name="image" Margin="300,50,300,160"></ContentPresenter>
-        <Button Content="Level Up" HorizontalAlignment="Center" Margin="0,345,0,0" VerticalAlignment="Top" Height="50" Width="102" Background="White"/>
-        <Button Content="Warrior" HorizontalAlignment="Left" Margin="547,124,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <Button Content="Rogue" HorizontalAlignment="Left" Margin="548,99,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="20" Width="41"/>
-        <Button Content="Wizard" HorizontalAlignment="Left" Margin="548,74,0,0" VerticalAlignment="Top" Click="Button_Click_2"/>
-        <StackPanel Margin="28,41,562,50">
-            <TextBlock TextWrapping="Wrap" Text="Health:"/>
-            <TextBlock TextWrapping="Wrap" Text="Mana:"/>
-            <TextBlock TextWrapping="Wrap" Text="Strength:"/>
-            <TextBlock TextWrapping="Wrap" Text="Dexterity:"/>
-            <TextBlock TextWrapping="Wrap" Text="Intelligence:"/>
-            <TextBlock TextWrapping="Wrap" Text="Vitality:"/>
+        <Rectangle x:Name="rect" Fill="white" Margin="540,0,0,186" Stroke="Black"/>
+        <ContentPresenter x:Name="image" Margin="570,12,30,198"></ContentPresenter>
+        <Button Content="GetEXP" HorizontalAlignment="Center" Margin="0,345,0,0" VerticalAlignment="Top" Height="50" Width="102" Background="White"/>
+        <Button Content="Warrior" HorizontalAlignment="Left" Margin="463,74,0,0" VerticalAlignment="Top" Click="Button_Click" Height="38" Width="77"/>
+        <Button Content="Rogue" HorizontalAlignment="Left" Margin="463,37,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="38" Width="77"/>
+        <Button Content="Wizard" HorizontalAlignment="Left" Margin="463,0,0,0" VerticalAlignment="Top" Click="Button_Click_2" Height="38" Width="77"/>
+
+        <StackPanel Margin="570,253,44,120">
+            <TextBlock TextWrapping="Wrap" Height="50"><Run Text="Starts points:" FontSize="22"/><Run Text=" "/><Run Text="{Binding Points}" FontSize="22"/></TextBlock>
+        </StackPanel>
+
+        <StackPanel Margin="10,37,546,51">
+            <TextBlock TextWrapping="Wrap" Height="35">
+            <Run Text="Level:" FontSize="22"/> 
+            <Run Text="{Binding Level}" FontSize="22"/>
+            </TextBlock>
+
+            <TextBlock TextWrapping="Wrap" Height="35">
+                <Run Text="Experience:" FontSize="22"/> 
+                <Run Text="{Binding Experience}" FontSize="22"/>
+            </TextBlock>
+
+            <TextBlock TextWrapping="Wrap" Height="35">
+                <Run Text="Health:" FontSize="22"/> 
+                <Run Text="{Binding Health}" FontSize="22"/>
+            </TextBlock>
+
+            <TextBlock TextWrapping="Wrap" Height="35" > 
+                <Run Text="Mana:" FontSize="22"/>
+                <Run Text="{Binding Mana}" FontSize="22"/>
+            </TextBlock>
+
+            <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Height="35" >
+                <Run Text="Strength:" FontSize="22"/>
+                <Run Text="{Binding Strength}" FontSize="22"/>
+                <Button Content="↑" Click="IncreaseStrength_Click" FontSize="20" Height="30" Width="30"/>
+                <Button Content="↓" Click="DecreaseStrength_Click" FontSize="20" Height="30" Width="30"/>
+            </TextBlock>
+
+            <TextBlock TextWrapping="Wrap" Height="35">
+                <Run Text="Dexterity:" FontSize="22"/>
+                <Run Text="{Binding Dexterity}" FontSize="22"/>
+                <Button Content="↑" Click="IncreaseDexterity_Click" FontSize="20" Height="30" Width="30"/>
+                <Button Content="↓" Click="DecreaseDexterity_Click" FontSize="20" Height="30" Width="30"/>
+            </TextBlock>
+
+            <TextBlock TextWrapping="Wrap" Height="35">
+                <Run Text="Intelligence:" FontSize="22"/>
+                <Run Text="{Binding Intelligence}" FontSize="22"/>
+                <Button Content="↑" Click="IncreaseIntelligence_Click" FontSize="20" Height="30" Width="30"/>
+                <Button Content="↓" Click="DecreaseIntelligence_Click" FontSize="20" Height="30" Width="30"/>
+            </TextBlock>
+
+            <TextBlock TextWrapping="Wrap" Height="35">
+                <Run Text="Vitality:" FontSize="22"/>
+                <Run Text="{Binding Vitality}" FontSize="22" />
+                <Button Content="↑" Click="IncreaseVitality_Click" FontSize="20" Height="30" Width="30"/>
+                <Button Content="↓" Click="DecreaseVitality_Click" FontSize="20" Height="30" Width="30"/>
+            </TextBlock>
         </StackPanel>
     </Grid>
 </Window>

@@ -1,6 +1,7 @@
 ﻿using RTS.Core;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,6 +53,47 @@ namespace WpfApp1
             image.Content = Resources["Wizard"];
 
             DataContext = unit;
+        }
+
+        private void IncreaseVitality_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DecreaseVitality_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void IncreaseIntelligence_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DecreaseIntelligence_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void IncreaseDexterity_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DecreaseDexterity_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void IncreaseStrength_Click(object sender, RoutedEventArgs e)
+        {
+           
+           
+        }
+
+        private void DecreaseStrength_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
