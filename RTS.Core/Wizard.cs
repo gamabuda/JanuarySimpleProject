@@ -42,5 +42,19 @@ namespace RTS.Core
             u.HP += HPPoint;
             return (int)u.HP;
         }
+
+        public void FireBall(Unit u)
+        {
+            if (Mana < 15)
+            {
+                return;
+            }
+            else
+            {
+                u.Mana -= 15;
+                u.HP = u.HP + u.MagicalDefense  - u.MagicalDamage;
+            }
+           
+        }
     }
 }

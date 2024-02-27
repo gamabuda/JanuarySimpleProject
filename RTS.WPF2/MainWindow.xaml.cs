@@ -32,36 +32,36 @@ namespace RTS.WPF2
             unit = new Unit();           
             this.DataContext = unit;
         }
-        public object PropertyChanged { get; private set; }
+        
         private void Wizard_Click(object sender, RoutedEventArgs e)
         {
             unit = new Wizzard();
-            Class.Text = "Wizard";
-            this.DataContext = unit;
+            Class.Text = "Wizard";            
             Picture.Content = Resources["Wizard"];
+            this.DataContext = unit;
         }
 
         private void Warrior_Click(object sender, RoutedEventArgs e)
         {
             unit = new Warrior();
-            Class.Text = "Warrior";
-            this.DataContext = unit;
+            Class.Text = "Warrior";           
             Picture.Content = Resources["Warrior"];
+            this.DataContext = unit;
 
         }
 
         private void Rogue_Click(object sender, RoutedEventArgs e)
         {
             unit = new Rogue();
-            Class.Text = "Rogue";
-            this.DataContext = unit;
+            Class.Text = "Rogue";           ;
             Picture.Content = Resources["Rogue"];
+            this.DataContext = unit;
         }
 
         private void SBTNNplus_Click_1(object sender, RoutedEventArgs e)
         {
-            unit.StartPoint--;
-            unit.Strength++;
+            unit.StartPoint-=1;
+            unit.Strength += 1;
         }
 
         private void SBTNNminus_Click(object sender, RoutedEventArgs e)

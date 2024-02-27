@@ -37,9 +37,32 @@ namespace RTS.Core
         public double MaxHealth { get; set; }
         public double MaxMana { get; set; }
         public double Armor { get; set; }
-
-        public double HP { get; set; }
-        public double Mana { get; set; }
+        private double _healthpoint;
+        public double HP 
+        { 
+            get => _healthpoint;
+            set
+            {
+                if (_healthpoint != value)
+                {
+                    _healthpoint = value;
+                    OnPropertyChanged("HP");
+                }
+            }
+        }
+        private double _mana;
+        public double Mana 
+        { 
+            get => _mana;
+            set
+            {
+                if (_mana != value)
+                {
+                    _mana = value;
+                    OnPropertyChanged("Mana");
+                }
+            }
+        }
         private int _vitality;
         public int Vitality 
         { 
