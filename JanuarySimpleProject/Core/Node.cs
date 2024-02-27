@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Text.Json;
-using System.Text.RegularExpressions;
 using JanuarySimpleProject.Core.Implementation;
 
 namespace JanuarySimpleProject.Core
 {
     public class Node : INode
     {
+        private static readonly DynamicArray<string> dynamicArray = new();
+
         //TODO switch list to array
-        private DynamicArray<string> _values = new DynamicArray<string>(0);
+        private DynamicArray<string> _values = dynamicArray;
         private string _value;
 
         private Node()
@@ -74,10 +75,8 @@ namespace JanuarySimpleProject.Core
         private void CheckNode()
         {
             var temp = String.Empty;
-            for (var i = 0; i < _value.Count; i++)
-            {
-                temp += _values.GetArray()[i];
-            }
+            foreach (var v in _value)
+                temp += v;
 
             if (_value != temp)
                 throw new Exception("Node is not correct or broken");
@@ -94,10 +93,10 @@ namespace JanuarySimpleProject.Core
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                throw new Exception("The value is null");
+                throw new Exception("you cannot add a null value");
 
             if (_values.Contains(strValue))
-                throw new Exception("The value is already contained in the Node");
+                throw new Exception("this value is already in the array"); ;
 
             _values.Add(strValue);
             _value += $"{strValue}";
@@ -106,20 +105,20 @@ namespace JanuarySimpleProject.Core
         }
 
         //TODO switch all returns to throw Exception
-        public void AddValue<TValue>(List<TValue> values)
+        public void AddValue<TAnswer>(List<TAnswer> values)
         {
             if (values.Count <= 0)
-                throw new Exception("The list is empty");
+                throw new Exception("you cannot add a list if it is empty");
 
             foreach (var value in values)
             {
                 string strValue = value.ToString().Trim();
 
                 if (strValue == null)
-                    throw new Exception("The value is null");
+                    throw new Exception("you cannot add a null value");
 
                 if (_values.Contains(strValue))
-                    throw new Exception("The value is already contained in the Node");
+                    throw new Exception("the list of elements is already in the array");
 
                 _values.Add(strValue);
                 _value += $"{strValue}";
@@ -129,36 +128,35 @@ namespace JanuarySimpleProject.Core
         }
 
         //TODO switch all returns to throw Exception and add the ability to delete a list of objects
-        public void RemoveValue<TValue>(TValue value)
+        public void RemoveValue<TAnswer>(TAnswer value)
         {
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                throw new Exception("The value is null");
+                throw new Exception("you cannot add a null value");
 
             if (!_values.Contains(strValue))
-                throw new Exception("The value is not contained in the node");
+                throw new Exception("there is no such value in the array");
 
             _values.Remove(strValue);
             _value = Value.Replace(strValue, "");
 
             OnNodeChange?.Invoke();
         }
-
-        public void RemoveValue<TValue>(List<TValue> values)
+        public void RemoveValue<TAnswer>(List<TAnswer> values)
         {
             if (values.Count <= 0)
-                throw new Exception("The list is empty");
+                return;
 
             foreach (var value in values)
             {
                 string strValue = value.ToString().Trim();
 
                 if (strValue == null)
-                    throw new Exception("The value is null");
+                    throw new Exception("you are trying to delete a null value");
 
-                if (!_values.Contains(strValue))
-                    throw new Exception("The value is not contained in the Node");
+                if (_values.Contains(strValue))
+                    throw new Exception("this element is not in the array");
 
                 _values.Remove(strValue);
                 _value = Value.Replace(strValue, "");
@@ -167,10 +165,10 @@ namespace JanuarySimpleProject.Core
             }
         }
 
-        public string UpdateValue(string value)
+        public string Update(string strValue)
         {
             string oldValue = _value;
-            _value = value;
+            _value = strValue;
             return oldValue;
         }
 
@@ -179,73 +177,9 @@ namespace JanuarySimpleProject.Core
             return new Node();
         }
 
-        public int CompareTo(object? obj)
+        public string UpdateValue(string s)
         {
-            return _value.CompareTo(obj);
-        }
-
-        public DynamicArray<string> Get_values()
-        {
-            return _values;
-        }
-
-        public string PrintArray()
-        {
-            return _values.Print();
-        }
-
-        public void Sort()
-        {
-            string[] array = _values.GetArray();
-
-            for (int i = 0; i < _values.Count - 1; i++)
-            {
-                int minIndex = i;
-                for (int j = i + 1; j < _values.Count; j++)
-                {
-                    if (array[j].CompareTo(array[minIndex]) < 0)
-                    {
-                        minIndex = j;
-                    }
-                }
-
-                if (minIndex != i)
-                {
-                    string temp = array[i];
-                    array[i] = array[minIndex];
-                    array[minIndex] = temp;
-                }
-            }
-
-            _values.Clear();
-            foreach (string value in array)
-            {
-                _values.Add(value);
-            }
-        }
-
-        public int BinarySearch(string item)
-        {
-            Sort();
-
-            string[] array = _values.GetArray();
-            int left = 0;
-            int right = _values.Count - 1;
-
-            while (left <= right)
-            {
-                int middle = left + (right - left) / 2;
-
-                if (array[middle].CompareTo(item) == 0)
-                    return middle;
-
-                if (array[middle].CompareTo(item) < 0)
-                    left = middle + 1;
-                else
-                    right = middle - 1;
-            }
-
-            return -1;
+            throw new NotImplementedException();
         }
 
         public void UpdateValue<TValue>(TValue oldValue, TValue newValue)

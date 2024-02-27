@@ -8,11 +8,13 @@ namespace JanuarySimpleProject.Core.Implementation
         string Value { get; set; }
         DateTime DateTimeCreate { get; }
         DateTime DateTimeUpdate { get; }
-        void UpdateValue<TValue>(TValue oldValue, TValue newValue);
+
         void ShowInfo();
         void AddValue<TValue>(TValue value);
         void RemoveValue<TValue>(TValue value);
 
+        //TODO write UpadateValue method *
+        string UpdateValue(string s);
 
         event Action OnNodeChange;
     }

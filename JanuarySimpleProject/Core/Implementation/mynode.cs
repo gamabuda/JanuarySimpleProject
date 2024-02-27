@@ -5,14 +5,27 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace JanuarySimpleProject.Core
 {
-    public delegate void TransactionOperation(string msg);
-
     public class MyNode : INode
     {
+        private DynamicArray<string> _values = new DynamicArray<string>();
+        private string _value;
+
+        private MyNode()
+        {
+            Id = Guid.NewGuid().ToString();
+
+            Name = "NewNode";
+            DateTimeCreate = DateTime.Now;
+            DateTimeUpdate = DateTimeCreate;
+
+            OnNodeChange += CheckNode;
+            OnNodeChange += DateTimeEditChange;
+            OnNodeChange += SerializeNode2Json;
+        }
+
         public MyNode(string name)
         {
             Id = Guid.NewGuid().ToString();
@@ -23,36 +36,37 @@ namespace JanuarySimpleProject.Core
 
             OnNodeChange += CheckNode;
             OnNodeChange += DateTimeEditChange;
-            TransactionOperationHandler(PrintMessage);
+            OnNodeChange += SerializeNode2Json;
         }
-
-        private DynamicArray<string> _items = new DynamicArray<string>(0);
-        private string _item;
 
         public string Id { get; }
+
         public string Name { get; set; }
-        public string Value { get; set; }
 
-        private decimal _balance = 0;
-        private string _password;
-
-        public decimal Balance
+        public string Value
         {
-            get => _balance;
+            get => _value;
             set
             {
-                _balance = value;
+                _value = value.Trim();
+
+                _values.Clear();
+                _values.Add(_value);
+                OnNodeChange?.Invoke();
             }
         }
+
+        public string JSON { get; set; }
 
         public DateTime DateTimeCreate { get; }
         public DateTime DateTimeUpdate { get; private set; }
 
         public event Action OnNodeChange;
 
-        public TransactionOperation? Operation;
-        public void TransactionOperationHandler(TransactionOperation del) => Operation += del;
-        private static void PrintMessage(string msg) => Console.WriteLine(msg);
+        private void SerializeNode2Json()
+        {
+            JSON = JsonSerializer.Serialize(this);
+        }
 
         private void DateTimeEditChange()
         {
@@ -62,10 +76,16 @@ namespace JanuarySimpleProject.Core
         private void CheckNode()
         {
             var temp = String.Empty;
-            for (var i = 0; i < _items.Count; i++)
-            {
-                temp += _item.Sort()[i];
-            }
+            foreach (var v in _value)
+                temp += v;
+
+            if (_value != temp)
+                throw new Exception("Node is not correct or broken");
+        }
+
+        public void ShowInfo()
+        {
+            Console.WriteLine($"Node:\tName:{Name} ID:{Id}\n\tDateTime create:{DateTimeCreate}\n\tDateTime last update:{DateTimeUpdate}\n\tValue:{Value}");
         }
 
         public void AddValue<TValue>(TValue value)
@@ -73,117 +93,97 @@ namespace JanuarySimpleProject.Core
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                throw new Exception("The value is null");
+                throw new Exception("you cannot add a null value");
 
-            if (_items.Contains(strValue))
-                throw new Exception("The value is already contained in the Node");
+            if (_values.Contains(strValue))
+                throw new Exception("this value is already in the array"); ;
 
-            _items.Add(strValue);
-            _item += $"{strValue}";
+            _values.Add(strValue);
+            _value += $"{strValue}";
 
             OnNodeChange?.Invoke();
         }
 
-        public void RemoveValue<TValue>(TValue value)
+        public void AddValue<TAnswer>(List<TAnswer> values)
+        {
+            if (values.Count <= 0)
+                throw new Exception("you cannot add a list if it is empty");
+
+            foreach (var value in values)
+            {
+                string strValue = value.ToString().Trim();
+
+                if (strValue == null)
+                    throw new Exception("you cannot add a null value");
+
+                if (_values.Contains(strValue))
+                    throw new Exception("the list of elements is already in the array");
+
+                _values.Add(strValue);
+                _value += $"{strValue}";
+
+                OnNodeChange?.Invoke();
+            }
+        }
+
+        public void RemoveValue<TAnswer>(TAnswer value)
         {
             string strValue = value.ToString().Trim();
 
             if (strValue == null)
-                throw new Exception("The value is null");
+                throw new Exception("you cannot add a null value");
 
-            if (!_items.Contains(strValue))
-                throw new Exception("The value is not contained in the node");
+            if (!_values.Contains(strValue))
+                throw new Exception("there is no such value in the array");
 
-            _items.Remove(strValue);
-            _item = Value.Replace(strValue, "");
+            _values.Remove(strValue);
+            _value = Value.Replace(strValue, "");
 
             OnNodeChange?.Invoke();
         }
-
-        public void ShowInfo()
+        public void RemoveValue<TAnswer>(List<TAnswer> values)
         {
-            Console.WriteLine($"Node:" +
-                 $"\tName: {Name} ID:{Id}\n" +
-                 $"\tDateTime create: {DateTimeCreate}\n" +
-                 $"\tDateTime last update: {DateTimeUpdate}\n" +
-                 $"\tValue: {Value}");
-            Operation?.Invoke($"\tBalance: {_balance}₽");
+            if (values.Count <= 0)
+                return;
+
+            foreach (var value in values)
+            {
+                string strValue = value.ToString().Trim();
+
+                if (strValue == null)
+                    throw new Exception("you are trying to delete a null value");
+
+                if (_values.Contains(strValue))
+                    throw new Exception("this element is not in the array");
+
+                _values.Remove(strValue);
+                _value = Value.Replace(strValue, "");
+
+                OnNodeChange?.Invoke();
+            }
         }
 
-        public string UpdateValue(string value)
+        public string Update(string strValue)
         {
-            string oldValue = _item;
-            _item = value;
+            string oldValue = _value;
+            _value = strValue;
             return oldValue;
         }
 
-        public void Sort()
+        public static MyNode CreateEmptyNode()
         {
-            string[] array = _item.GetArray();
-
-            for (int i = 0; i < _items.Count - 1; i++)
-            {
-                int minIndex = i;
-                for (int j = i + 1; j < _items.Count; j++)
-                {
-                    if (array[j].CompareTo(array[minIndex]) < 0)
-                    {
-                        minIndex = j;
-                    }
-                }
-
-                if (minIndex != i)
-                {
-                    string temp = array[i];
-                    array[i] = array[minIndex];
-                    array[minIndex] = temp;
-                }
-            }
-
-            _items.Clear();
-            foreach (string value in array)
-            {
-                _items.Add(value);
-            }
-        }
-        public string PrintArray() => _item.Print();
-
-        public int BinarySearch(string item)
-        {
-            Sort();
-
-            string[] array = _item.GetArray();
-            int left = 0;
-            int right = _items.Count - 1;
-
-            while (left <= right)
-            {
-                int middle = left + (right - left) / 2;
-
-                if (array[middle].CompareTo(item) == 0)
-                    return middle;
-
-                if (array[middle].CompareTo(item) < 0)
-                    left = middle + 1;
-                else
-                    right = middle - 1;
-            }
-
-            return -1;
+            return new MyNode();
         }
 
-        public void Transaction(int total)
-        {
-            Balance += total;
-            Console.ForegroundColor = ConsoleColor.Green;
-            Operation?.Invoke($"Операция выполнена успешно! Счет пополнен на сумму {total}₽. Ваш текущий баланс: {_balance}₽");
-            Console.ResetColor();
-            OnNodeChange?.Invoke();
-        }
-
-        public void UpdateValue<TValue>(TValue oldValue, TValue newValue)
+        public string UpdateValue(string s)
         {
             throw new NotImplementedException();
+        }
+        public void ClearValues()
+        {
+            _values.Clear();
+            _value = string.Empty;
+            OnNodeChange?.Invoke();
         }
     }
 }

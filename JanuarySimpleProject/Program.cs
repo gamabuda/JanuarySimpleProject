@@ -39,21 +39,13 @@ using System.Formats.Asn1;
 //node.ShowInfo();
 
 //Console.WriteLine(node.JSON);
-MyNode myNode = new MyNode("здоровье");
-myNode.Value = "Money";
-myNode.ShowInfo();
-myNode.Transaction(1000);
-Console.WriteLine();
-myNode.ShowInfo();
-
-myNode.AddValue("еда");
-myNode.AddValue("спорт");
-myNode.AddValue("настрой");
-
-myNode.Sort();
-string sport = myNode.PrintArray();
-Console.WriteLine("\tMetals in the Healf: " + sport);
-
-Console.WriteLine("\n\tIndex of Silver: " + myNode.BinarySearch("еда"));
-Console.WriteLine("\tIndex of Gold: " + myNode.BinarySearch("спорт"));
-Console.WriteLine("\tIndex of Bronze: " + myNode.BinarySearch("настрой"));
+DynamicArray<string> dynamicArray = new();
+dynamicArray.Add("здоровье");
+dynamicArray.Add("сон");
+dynamicArray.Add("еда");
+dynamicArray.GetArray();
+foreach (var item in dynamicArray.Value)
+{
+    Console.Write(item + " ");
+}
+Console.WriteLine(dynamicArray.BinarySearch("сон"));
