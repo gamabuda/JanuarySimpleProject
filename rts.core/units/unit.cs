@@ -56,5 +56,10 @@ namespace rts.core.units
 
             unit.Health -= PDamage;
         }
+        public static void Main(string[]args)
+        {
+            Unit unit = new Unit();
+            unit.ShowInfo();
+        }
     }
 }

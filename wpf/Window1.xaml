@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf"
         mc:Ignorable="d"
-        Title="Window1" Height="1200" Width="1200">
+        Title="Window1" Height="1080" Width="1200">
     <Window.Resources>
         <Image x:Key="Warrior" Source="/img/warrior.jpg"></Image>
         <Image x:Key="Rogue" Source="/img/rogue.jpg"></Image>
@@ -73,7 +73,7 @@
                         <TranslateTransform Y="-6.667"/>
                     </TransformGroup>
                 </StackPanel.RenderTransform>
-                <StackPanel Grid.Column="0" Grid.Row="1" Margin="100,50,0,0" Orientation="Vertical" Width="919">
+                <StackPanel Grid.Column="0" Grid.Row="1" Margin="100,130,0,70" Orientation="Vertical" Width="919">
 
                     <StackPanel Orientation="Horizontal" Width="400" Height="58" HorizontalAlignment="Left">
                         <TextBlock Text="Сила: " FontSize="40" Margin="0,0,0,6" Background="Aqua"/>
@@ -111,12 +111,12 @@
                 </StackPanel>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" HorizontalAlignment="Right">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,100" HorizontalAlignment="Right">
                 <TextBlock Text="Количество очков: " FontSize="40" Background="Aquamarine"/>
                 <TextBlock x:Name="p1" FontSize="40" Text="5" Margin="0,0,0,6" Background="Aquamarine" HorizontalAlignment="Left"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" HorizontalAlignment="Right">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,-200" HorizontalAlignment="Right">
                 <TextBlock Text="За каждый уровень +1" FontSize="40" Margin="0,0,0,6" Background="Aquamarine"/>
             </StackPanel>
             <Button FontSize="48" Padding="10" Content="Get Exp"  Foreground="White" Click="Button_ClickGE" FontFamily="Segoe UI Light" Height="92" Width="210" Margin="0,0,900,0" >
@@ -140,5 +140,38 @@
         </StackPanel>
         <StackPanel HorizontalAlignment="Left" Orientation="Vertical">
         </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="1" Margin="50,200,898,221" Height="650">
+
+            <StackPanel Margin="0,0,20,280" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="" FontSize="36" HorizontalAlignment="Right" Foreground="DarkSlateGray"></TextBlock>
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Left" Orientation="Vertical" Height="337" Margin="0,0,0,300">
+
+                <StackPanel Orientation="Horizontal" Width="300" Height="93">
+                    <Button x:Name="SPlus" Width="110" Height="50"  Content="+" FontSize="36" Background="Aqua" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{x:Null}" Cursor="Hand" Margin="0,50,0,0"></Button>
+                    <Button x:Name="SMinus" Width="110" Height="50" Margin="16,50,0,0" Content="–" FontSize="36" Background="Aqua" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,-7,1,0" BorderBrush="{x:Null}" Cursor="Hand"></Button>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,-15" Width="300" Height="100">
+                    <Button x:Name="XPlus" Width="110" Height="50"  Content="+" FontSize="36" Background="Aqua" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{x:Null}" Cursor="Hand" Margin="0,10,0,0"></Button>
+                    <Button x:Name="XMinus" Width="110" Height="50" Margin="16,10,0,0" Content="–" FontSize="36" Background="Aqua" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,-7,1,0" BorderBrush="{x:Null}" Cursor="Hand"></Button>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                    <Button x:Name="IPlus" Width="110" Height="50"  Content="+" FontSize="36" Background="Aqua" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{x:Null}" Cursor="Hand" Margin="0,10,0,0"></Button>
+                    <Button x:Name="IMinus" Width="110" Height="50" Margin="16,10,0,0" Content="–" FontSize="36" Background="Aqua" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,-7,1,0" BorderBrush="{x:Null}" Cursor="Hand"></Button>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                    <Button x:Name="VPlus" Width="110" Height="50" Content="+" FontSize="36"  Background="Aqua" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,0"></Button>
+                    <Button x:Name="VMinus" Width="110" Height="50" Margin="16,10,0,0" Content="–" FontSize="36" Background="Aqua" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="1,-7,1,0"></Button>
+                </StackPanel>
+
+            </StackPanel>
+        </StackPanel>
+        <Button x:Name="GetExp" Content="Get Experience" Height="70" Grid.Row="1" Margin="54,870,858,0" VerticalAlignment="Top" Foreground="White" Background="#FF3DCFCF" FontSize="36" Width="250"/>
+
     </Grid>
 </Window>
+    
