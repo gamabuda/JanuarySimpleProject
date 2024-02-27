@@ -14,7 +14,6 @@ namespace RTS.Core
         public int MaxMana { get; set; }
         public int Health { get; set; }
         public int Mana { get; set; }
-
         public int Strength { get; set; }
         public int Dexterity { get; set; }
         public int Intelligence { get; set; }
@@ -42,26 +41,26 @@ namespace RTS.Core
         public int MaxIntelligence { get;  set; } 
         public int MaxVitality { get;  set; }
 
-        public void Control()
+        public void Control(Unit unit)
         {
-            if (Strength > MaxStrenght)
+            if (unit.Strength > unit.MaxStrenght)
             {
-                Strength = MaxStrenght;
+                unit.Strength = unit.MaxStrenght;
             }
 
-            if (Intelligence > MaxIntelligence)
+            if (unit.Intelligence > unit.MaxIntelligence)
             {
-                Intelligence = MaxIntelligence;
+                unit.Intelligence = unit.MaxIntelligence;
             }
 
-            if (Dexterity > MaxDexterity)
+            if (unit.Dexterity > unit.MaxDexterity)
             {
-                Dexterity = MaxDexterity;
+                unit.Dexterity = unit.MaxDexterity;
             }
 
-            if (Vitality > MaxVitality)
+            if (unit.Vitality > unit.MaxVitality)
             {
-                Vitality = MaxVitality;
+                unit.Vitality = unit.MaxVitality;
             }
         }
 
@@ -86,92 +85,52 @@ namespace RTS.Core
 
         //}
 
-        public void PAttack(Unit unit)
+        public void Attack(Unit unit)
         {
-            if (IsCriticalHit())
+            if (unit.Health <= 0)
             {
-                unit.PDamage += CrtDamage;
-            }
-
-            if (unit.Health - (this.PDamage - unit.Armor) < 1)
-            {
-                unit.Health = 0;
+                Console.WriteLine($"{unit} cannot be attacked");
                 return;
             }
 
-            unit.Health -= (this.PDamage - unit.Armor);
-        }
-
-        public void MAttack(Unit unit)
-        {
-            if (IsCriticalHit())
-            {
-                unit.MDamage += CrtDamage;
-            }
-
-            if (unit.Health - (this.MDamage - unit.MDefence) < 1)
-            {
-                unit.Health = 0;
-                return;
-            }
-
-            unit.Health -= (this.MDamage - unit.MDefence);
-        }
-
-        private bool IsCriticalHit()
-        {
             Random rand = new Random();
-            return rand.Next(50) <= CrtChance;
-        }
+            int randomNumber = rand.Next(0, 21);
+            bool isCriticalHit = randomNumber <= CrtChance;
 
-        public void TakeDamage(Unit unit)
-        {
-            if (unit.PDamage - this.Armor < 1)
+            int damage = CalculateArmor(this.PDamage, unit.Armor);
+
+            if (isCriticalHit)
             {
-                unit.PDamage = 0; 
+                damage += CrtDamage;
+                Console.WriteLine("Critical hit!");
             }
 
-            if (MDefence > 0)
-            {
-                unit.PDamage -= MDefence;
-                if (unit.PDamage < 0)
-                {
-                    unit.PDamage = 0; 
-                }
-            }
-
-            unit.Health -= unit.PDamage;
+            unit.TakeDamage(damage);
+            Console.WriteLine($"{this} attacks {unit} with a physical attack on {damage} damage");
 
             if (unit.Health <= 0)
             {
-                unit.Health = 0; 
                 Console.WriteLine($"{unit} has died >~<!!");
             }
         }
 
-        public void Armorr(Unit unit)
+        private int CalculateArmor(int damage, int armor)
         {
-            if (Armor > 0)
-            {
-                Armor -= unit.Armor;
+            // Броня снижает урон атаки на 30%
+            return (int)(damage * (1 - Math.Min(armor / 100.0, 0.3)));
+        }
 
-                if (Armor < 0)
-                {
-                    unit.Health += Armor;
-                    Armor = 0;
-                }
-            }
-            else
-            {
-                unit.Health -= unit.Armor;
-            }
+        public void TakeDamage(int damage)
+        {
+            this.Health -= damage;
 
-            if (unit.Health <= 0)
+            if (this.Health <= 0)
             {
-                unit.Health = 0;
-                Console.WriteLine($"{unit} has died >~<!!");
+                this.Health = 0;
+                Console.WriteLine($"{this} has died >~<!!");
             }
         }
+
 
         public void LevelUp()
         {

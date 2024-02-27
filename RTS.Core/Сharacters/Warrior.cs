@@ -1,11 +1,10 @@
-﻿using RTS.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RTS.Core
+namespace RTS.Core.Сharacters
 {
     public class Warrior : Unit
     {
@@ -21,11 +20,9 @@ namespace RTS.Core
             MaxIntelligence = 50;
             MaxVitality = 100;
 
-            Control();
-
             Health = MaxHealth;
             Mana = MaxMana;
-       
+
             Health = (Vitality + Strength) / 2;
             MaxHealth = Health;
             Mana = 1 * Intelligence;

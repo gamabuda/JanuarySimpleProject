@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace RTS.Core.Interfaces
 {
-    public interface IArmorHandler
+    public interface IManaHandler
     {
-        public int Armor { get; set; }
-        public void Armorr(Unit unit);
-        public int MDefence { get; set; }
+        public int Mana { get; set; }
+        public int MaxMana { get; set; }
     }
 }

@@ -135,9 +135,5 @@
                        FontSize="17"
                        Grid.Column="2" Margin="126,325,81,140"
             />
-        <CheckBox x:Name="checkBox" IsChecked="False" Height="20" Content="save changes"
-    FontFamily="Candara" 
-    FontSize="14"
-     Grid.Column="2" Margin="128,295,10,179" />
     </Grid>
 </Window>

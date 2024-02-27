@@ -1,4 +1,4 @@
-﻿using RTS.Core;
+﻿using RTS.Core.Сharacters;
 
 Wizard unit1 = new Wizard();
 Wizard unit2 = new Wizard();

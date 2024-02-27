@@ -1,5 +1,6 @@
 ﻿
 using RTS.Core;
+using RTS.Core.Сharacters;
 using System;
 using System.Collections.Generic;
 using System.Reflection.Emit;
@@ -22,10 +23,12 @@ namespace RTS.WpfApp1
     {
 
         Unit unit;
+
         public Window1()
         {
             InitializeComponent();
             this.DataContext = unit;
+            unit = new Unit();
         }
 
 
@@ -65,30 +68,35 @@ namespace RTS.WpfApp1
 
         private void Button_ClickGE(object sender, RoutedEventArgs e)
         {
-            unit.Exp += 1000;
-            Exp.Text = unit.Exp.ToString();
-            unit.LevelUp();
-            Characteristics();
+            if (unit != null)
+            {
+                unit.Exp += 1000;
+                Exp.Text = unit.Exp.ToString();
+                unit.LevelUp();
+                Characteristics();
+            }
         }
 
         private void Characteristics()
         {
-            HPTB.Text = $"Health: {unit.Health} / {unit.MaxHealth}";
-            ManaTB.Text = $"Mana: {unit.Mana} / {unit.MaxMana}";
-            StrTB.Text = $"Strength: {unit.Strength} / {unit.MaxStrenght}";
-            DexTB.Text = $"Dexterity: {unit.Dexterity} / {unit.MaxDexterity}";
-            IntTB.Text = $"Intelligence: {unit.Intelligence} / {unit.MaxIntelligence}";
-            VitTB.Text = $"Vitality: {unit.Vitality} / {unit.MaxVitality}";
-            LvlTB.Text = $"Level: {unit.Level} / {unit.MaxLevel}";
-            Exp.Text = unit.Exp.ToString();
-            Points.Text = unit.Points.ToString();
+            if (unit != null)
+            {
+                HPTB.Text = $"Health: {unit.Health} / {unit.MaxHealth}";
+                ManaTB.Text = $"Mana: {unit.Mana} / {unit.MaxMana}";
+                StrTB.Text = $"Strength: {unit.Strength} / {unit.MaxStrenght}";
+                DexTB.Text = $"Dexterity: {unit.Dexterity} / {unit.MaxDexterity}";
+                IntTB.Text = $"Intelligence: {unit.Intelligence} / {unit.MaxIntelligence}";
+                VitTB.Text = $"Vitality: {unit.Vitality} / {unit.MaxVitality}";
+                LvlTB.Text = $"Level: {unit.Level} / {unit.MaxLevel}";
+                Exp.Text = unit.Exp.ToString();
+                Points.Text = unit.Points.ToString();
+            }
         }
 
         private void STRUp(object sender, RoutedEventArgs e)
         {
             if (unit != null && unit.Points > 0 && unit.Strength + 1 < unit.MaxStrenght)
             {
-                history.Push(unit);
                 unit.Points--;
                 unit.Strength++;
                 Characteristics();
@@ -102,7 +110,6 @@ namespace RTS.WpfApp1
             {
                 if (unit != null && unit.Strength - 1 >= 30)
                 {
-                    history.Push(unit);
                     unit.Points++;
                     unit.Strength--;
                     Characteristics();
@@ -112,7 +119,7 @@ namespace RTS.WpfApp1
             {
                 if (unit != null && unit.Strength - 1 >= 15)
                 {
-                    history.Push(unit);
+
                     unit.Points++;
                     unit.Strength--;
                     Characteristics();
@@ -122,7 +129,7 @@ namespace RTS.WpfApp1
             {
                 if (unit != null && unit.Strength - 1 >= 20)
                 {
-                    history.Push(unit);
+
                     unit.Points++;
                     unit.Strength--;
                     Characteristics();
@@ -134,7 +141,6 @@ namespace RTS.WpfApp1
         {
             if (unit != null && unit.Points > 0 && unit.Dexterity + 1 < unit.MaxDexterity)
             {
-                history.Push(unit);
                 unit.Points--;
                 unit.Dexterity++;
                 Characteristics();
@@ -148,7 +154,7 @@ namespace RTS.WpfApp1
             {
                 if (unit != null && unit.Dexterity - 1 >= 15)
                 {
-                    history.Push(unit);
+
                     unit.Points++;
                     unit.Dexterity--;
                     Characteristics();
@@ -158,7 +164,7 @@ namespace RTS.WpfApp1
             {
                 if (unit != null && unit.Dexterity - 1 >= 20)
                 {
-                    history.Push(unit);
+   
                     unit.Points++;
                     unit.Dexterity--;
                     Characteristics();
@@ -168,7 +174,7 @@ namespace RTS.WpfApp1
             {
                 if (unit != null && unit.Dexterity - 1 >= 30)
                 {
-                    history.Push(unit);
+               
                     unit.Points++;
                     unit.Dexterity--;
                     Characteristics();
@@ -180,7 +186,6 @@ namespace RTS.WpfApp1
         {
             if (unit != null && unit.Points > 0 && unit.Intelligence + 1 < unit.MaxIntelligence)
             {
-                history.Push(unit);
                 unit.Points--;
                 unit.Intelligence++;
                 Characteristics();
@@ -194,7 +199,6 @@ namespace RTS.WpfApp1
             {
                 if (unit != null && unit.Intelligence - 1 >= 10)
                 {
-                    history.Push(unit);
                     unit.Points++;
                     unit.Intelligence--;
                     Characteristics();
@@ -205,7 +209,6 @@ namespace RTS.WpfApp1
             {
                 if (unit != null && unit.Intelligence - 1 >= 35)
                 {
-                    history.Push(unit);
                     unit.Points++;
                     unit.Intelligence--;
                     Characteristics();
@@ -216,7 +219,6 @@ namespace RTS.WpfApp1
             {
                 if (unit != null && unit.Intelligence - 1 >= 15)
                 {
-                    history.Push(unit);
                     unit.Points++;
                     unit.Intelligence--;
                     Characteristics();
@@ -229,7 +231,6 @@ namespace RTS.WpfApp1
         {
             if (unit != null && unit.Points > 0 && unit.Vitality + 1 < unit.MaxVitality)
             {
-                history.Push(unit);
                 unit.Points--;
                 unit.Vitality++;
                 Characteristics();
@@ -243,7 +244,6 @@ namespace RTS.WpfApp1
             {
                 if (unit != null && unit.Vitality - 1 >= 25)
                 {
-                    history.Push(unit);
                     unit.Points++;
                     unit.Vitality--;
                     Characteristics();
@@ -254,7 +254,6 @@ namespace RTS.WpfApp1
             {
                 if (unit != null && unit.Vitality - 1 >= 15)
                 {
-                    history.Push(unit);
                     unit.Points++;
                     unit.Vitality--;
                     Characteristics();
@@ -265,26 +264,11 @@ namespace RTS.WpfApp1
             {
                 if (unit != null && unit.Vitality - 1 >= 20)
                 {
-                    history.Push(unit);
                     unit.Points++;
                     unit.Vitality--;
                     Characteristics();
                 }
             }
-        }
-        private Stack<Unit> history = new Stack<Unit>();
-
-
-        private void SaveChangesCheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            history.Push(unit);
-            Characteristics();
-        }
-
-        private void SaveChangesCheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            // Revert changes when the checkbox is unchecked
-            // You can implement your own logic here
         }
     }
 }

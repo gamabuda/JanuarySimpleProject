@@ -1,11 +1,10 @@
-﻿using RTS.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RTS.Core
+namespace RTS.Core.Сharacters
 {
     public class Rogue : Unit
     {
@@ -21,7 +20,6 @@ namespace RTS.Core
             MaxIntelligence = 70;
             MaxVitality = 80;
 
-            Control();
             Health = (int)(Vitality * 1.5 + Strength * 0.5);
             MaxHealth = Health;
             Mana = (int)(Intelligence * 1.2);
