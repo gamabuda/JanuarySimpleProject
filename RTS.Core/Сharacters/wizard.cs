@@ -65,30 +65,30 @@ namespace RTS.Core.Сharacters
             Console.WriteLine($"{this} uses a fireball on {unit} for {damage} damage.");
         }
 
-        public void DoubleDamageAttack(Unit unit)
-        {
-            if (Mana <= FPoint)
-            {
-                Console.WriteLine("There is not enough mana to use double damage.");
-                return;
-            }
+        //public void DoubleDamageAttack(Unit unit)
+        //{
+        //    if (Mana <= FPoint)
+        //    {
+        //        Console.WriteLine("There is not enough mana to use double damage.");
+        //        return;
+        //    }
 
-            Mana -= FPoint;
-            int physicalDamage = PDamage;
-            int magicalDamage = MDamage;
-            magicalDamage -= MDefence;
+        //    Mana -= FPoint;
+        //    int physicalDamage = PDamage;
+        //    int magicalDamage = MDamage;
+        //    magicalDamage -= MDefence;
 
-            if (magicalDamage < 0)
-            {
-                magicalDamage = 0;
-            }
-            if (physicalDamage < 0)
-            {
-                physicalDamage = 0;
-            }
+        //    if (magicalDamage < 0)
+        //    {
+        //        magicalDamage = 0;
+        //    }
+        //    if (physicalDamage < 0)
+        //    {
+        //        physicalDamage = 0;
+        //    }
 
-            unit.TakeDamage(physicalDamage + magicalDamage);
-            Console.WriteLine($"{this} uses double damage on {unit} for {physicalDamage + magicalDamage} damage.");
-        }
+        //    unit.TakeDamage(physicalDamage + magicalDamage);
+        //    Console.WriteLine($"{this} uses double damage on {unit} for {physicalDamage + magicalDamage} damage.");
+        //}
     }
 }
