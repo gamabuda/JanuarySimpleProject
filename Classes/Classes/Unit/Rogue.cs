@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Classes
 {
-    public class Rogue : Hero
+    public class Rogue : Hero, IArmorHandler, IAttackHandler, IMagicHandler
     {
         
         public Rogue()
@@ -30,7 +30,7 @@ namespace Classes
             MaxHealth = (int)(Vitality * 1.5 + Strenght * 0.5);
             MaxMana = (int)(Intelligence * 1.2);
             PhysicalDamage = (int)(Strenght * 0.5 + Dexterity * 0.5);
-            MagicalDamage = (int)(Intelligence * 0.2);
+            MagicDamage = (int)(Intelligence * 0.2);
             Armor = (int)(Dexterity * 1.5);
             MagicDefense = (int)(Intelligence * 0.5);
             CriticalChance = (int)(Dexterity * 0.05);

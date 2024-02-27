@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Classes
 {
-    public class Wizard : Hero
+    public class Wizard : Hero, IArmorHandler, IAttackHandler, IMagicHandler
     {
         public int HealPoint { get; private set; } = 10;
         public int HealManaCost { get; private set; } = 15;
@@ -40,11 +40,35 @@ namespace Classes
             MaxHealth = (int)(Vitality * 1.4 + Strenght * 0.2);
             MaxMana = (int)(Intelligence * 1.5);
             PhysicalDamage = (int)(Strenght * 0.5);
-            MagicalDamage = Intelligence;
+            MagicDamage = Intelligence;
             Armor = Dexterity;
             MagicDefense = Intelligence;
             CriticalChance = (int)(Dexterity * 0.05);
             CriticalDamage = (int)(Dexterity * 0.1);
+        }
+
+        public void Fireball(IMagicHandler magicHandler)
+        {
+            if (Mana < 10)
+                return;
+            
+            Random rng = new Random();
+            int damage = Intelligence / 2 + MagicDamage + rng.Next((int)(-MagicDamage * 0.05), (int)(MagicDamage * 0.05)) - magicHandler.MagicDefense / 2;
+
+            magicHandler.InflictDamage(damage);
+            Mana -= 10;
+        }
+
+        public void Fireball(IHealthHandler healthHandler)
+        {
+            if (Mana < 10)
+                return;
+
+            Random rng = new Random();
+            int damage = Intelligence / 2 + MagicDamage + rng.Next((int)(-MagicDamage * 0.05), (int)(MagicDamage * 0.05));
+
+            healthHandler.InflictDamage(damage);
+            Mana -= 10;
         }
     }
 }

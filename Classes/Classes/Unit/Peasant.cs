@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Classes
 {
-    public class Peasant: Unit
+    public class Peasant: Unit, IHealthHandler
     {
         public Peasant() { }
     }
