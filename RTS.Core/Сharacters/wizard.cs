@@ -9,6 +9,7 @@ namespace RTS.Core.Сharacters
     public class Wizard : Unit
     {
         public int HealPoint { get; set; } = 10;
+        public int FPoint { get; set; } = 3;
         public Wizard()
         {
             Strength = 15;
@@ -37,21 +38,21 @@ namespace RTS.Core.Сharacters
 
         public void Heal(Unit unit)
         {
-            if (Mana < 15)
+            if (Mana < HealPoint)
                 return;
-            Mana -= 15;
+            Mana -= HealPoint;
             unit.Health += HealPoint;
         }
 
         public void Fireball(Unit unit)
         {
-            if (Mana <= 3)
+            if (Mana <= FPoint)
             {
                 Console.WriteLine("Not enough mana to use the fireball");
                 return;
             }
 
-            Mana -= 3;
+            Mana -= FPoint;
             int damage = (Intelligence / 2) + PDamage;
             damage -= MDefence;
 
@@ -66,13 +67,13 @@ namespace RTS.Core.Сharacters
 
         public void DoubleDamageAttack(Unit unit)
         {
-            if (Mana <= 5)
+            if (Mana <= FPoint)
             {
                 Console.WriteLine("There is not enough mana to use double damage.");
                 return;
             }
 
-            Mana -= 5;
+            Mana -= FPoint;
             int physicalDamage = PDamage;
             int magicalDamage = MDamage;
             magicalDamage -= MDefence;

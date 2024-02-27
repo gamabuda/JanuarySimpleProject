@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RTS.Core
 {
-    public class Unit 
+    public class Unit : IHPHandler, IManaHandler, IAttackHandler
     { 
         public int MaxHealth { get; set; }
         public int MaxMana { get; set; }

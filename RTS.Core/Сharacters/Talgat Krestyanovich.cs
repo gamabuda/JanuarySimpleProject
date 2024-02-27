@@ -26,8 +26,6 @@ namespace RTS.Core.Сharacters
             MaxMana = Mana;
             PDamage = (int)(Strength * 0.2 + Dexterity * 0.2);
             Armor = (int)(Dexterity * 0.5);
-            MDefence = (int)(Intelligence * 0.1);
-            MDamage = (int)(Intelligence * 0.1);
             CrtChance = (int)(Dexterity * 0.1);
             CrtDamage = (int)(Dexterity * 0.01);
         }
