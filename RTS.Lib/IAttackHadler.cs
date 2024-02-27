@@ -8,7 +8,11 @@ namespace RTS.Lib
 {
     public interface IAttackHadler
     {
-        void AttackHadler();
+        public int PDamage { get; set; }
+        public int MDamage { get; set; }
+        public int CrtChance { get; set; }
+        public int CrtDamage { get; set; }
 
+        public void Attack(Unit unit);
     }
 }

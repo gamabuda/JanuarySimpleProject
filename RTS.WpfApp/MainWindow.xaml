@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RTS.WpfApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="470" Width="820">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -99,7 +99,7 @@
                 <Run Text="{Binding Lvl}"/>
             </TextBlock>
             <TextBlock x:Name="TBExp" FontSize="20" Width="290">
-                <Run Text="{Binding Exp}"/>
+                <Run Text="{Binding totalExp}"/>
                 <Run Text="/"/>
                 <Run Text="{Binding MaxExp}"/>
             </TextBlock>

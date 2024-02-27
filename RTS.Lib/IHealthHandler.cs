@@ -8,6 +8,7 @@ namespace RTS.Lib
 {
     public interface IHealthHandler
     {
-
+        public int Health { get; set; }
+        public int MaxHealth { get; set; }
     }
 }

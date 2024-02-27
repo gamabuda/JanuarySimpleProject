@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RTS.Lib
 {
-    public class Unit : INotifyPropertyChanged
+    public class Unit : INotifyPropertyChanged, IAttackHadler, IHealthHandler, IManaHandler
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -18,7 +18,7 @@ namespace RTS.Lib
         public int CrtChance { get; set; }
         public int CrtDamage { get; set; }
         public int MaxLvl { get; set; } = 50;
-        
+
         public Unit()
         {
             Lvl = 1; 
@@ -156,6 +156,50 @@ namespace RTS.Lib
             }
         }
 
+        private int _minStrength; // Минимальное значение для Strength
+        public int MinStrength
+        {
+            get { return _minStrength; }
+            set
+            {
+                _minStrength = value;
+                OnPropertyChanged(nameof(MinStrength));
+            }
+        }
+
+        private int _minDexterity; // Минимальное значение для Dexterity
+        public int MinDexterity
+        {
+            get { return _minDexterity; }
+            set
+            {
+                _minDexterity = value;
+                OnPropertyChanged(nameof(MinDexterity));
+            }
+        }
+
+        private int _minIntelligence; // Минимальное значение для Intelligence
+        public int MinIntelligence
+        {
+            get { return _minIntelligence; }
+            set
+            {
+                _minIntelligence = value;
+                OnPropertyChanged(nameof(MinIntelligence));
+            }
+        }
+
+        private int _minVitality; // Минимальное значение для Vitality
+        public int MinVitality
+        {
+            get { return _minVitality; }
+            set
+            {
+                _minVitality = value;
+                OnPropertyChanged(nameof(MinVitality));
+            }
+        }
+
         public int _startPoints = 5;
         public int StartPoints
         {
@@ -185,13 +229,32 @@ namespace RTS.Lib
 
         public void Attack(Unit unit)
         {
-            if (unit.Health - this.PDamage < 1)
+            if (unit.Health - this.PDamage < 1 && unit.Armor == 0 || unit.Health - (PDamage / 2) < 1 && unit.Armor > 1)
             {
                 unit.Health = 0;
                 return;
             }
 
-            unit.Health -= this.PDamage;
+            if (unit.Armor > 1)
+            {
+                unit.Health -= (int)(this.PDamage * 0.5);
+                unit.Armor = (int)(unit.Armor * 0.5);
+            }
+            else
+            {
+                unit.Health -= this.PDamage;
+            }
+        }
+
+        private int _totalExp;
+        public int totalExp
+        {
+            get => _totalExp;
+            set
+            {
+                _totalExp = value;
+                OnPropertyChanged(nameof(totalExp));
+            }
         }
 
         public void LevelUp()

@@ -130,6 +130,8 @@ namespace RTS.WpfApp
             else
             {
                 unit.Exp += 1000;
+                unit.totalExp += 1000;
+                this.DataContext = unit;
             }
         }
 
@@ -145,7 +147,7 @@ namespace RTS.WpfApp
         }
         private void DecreaseStrength(object sender, RoutedEventArgs e)
         {
-            if (unit.Strength > 0)
+            if (unit.Strength > unit.MinStrength)
             {
                 unit.Strength--;
                 unit.StartPoints++;
@@ -166,7 +168,7 @@ namespace RTS.WpfApp
         }
         private void DecreaseDexterity(object sender, RoutedEventArgs e)
         {
-            if (unit.Dexterity > 0)
+            if (unit.Dexterity > unit.MinDexterity)
             {
                 unit.Dexterity--;
                 unit.StartPoints++;
@@ -187,7 +189,7 @@ namespace RTS.WpfApp
         }
         private void DecreaseIntelligence(object sender, RoutedEventArgs e)
         {
-            if (unit.Intelligence > 0)
+            if (unit.Intelligence > unit.MinIntelligence)
             {
                 unit.Intelligence--;
                 unit.StartPoints++;
@@ -208,7 +210,7 @@ namespace RTS.WpfApp
         }
         private void DecreaseVitality(object sender, RoutedEventArgs e)
         {
-            if (unit.Vitality > 0)
+            if (unit.Vitality > unit.MinVitality)
             {
                 unit.Vitality--;
                 unit.StartPoints++;

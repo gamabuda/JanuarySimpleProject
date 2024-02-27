@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -13,9 +14,13 @@ namespace RTS.Lib
         public Wizard()
         {
             this.Strength = 15;
+            MinStrength = 15;
             this.Dexterity = 20;
+            MinDexterity = 20;
             this.Intelligence = 35;
+            MinIntelligence = 35;
             this.Vitality = 15;
+            MinVitality = 15;
             MaxHealth = 45;
             MaxMana = 35;
 
@@ -35,5 +40,33 @@ namespace RTS.Lib
             Mana -= 15;
             unit.Health += HealPoint;
         }
+
+        int Damage;
+        public void FireBall(Unit unit)
+        {
+            int Damage;
+            if (Mana < 1)
+            {
+                return;
+            }
+            else
+            {
+                Mana -= 1;
+                Damage = (int)(Intelligence / 2 - unit.MDefense / 2);
+                FireBallAttack(unit);
+            }
+        }
+
+        public void FireBallAttack(Unit unit)
+        {
+            if (unit.Health - Damage < 1)
+            {
+                unit.Health = 0;
+                return;
+            }
+
+            unit.Health -= Damage;
+        }
+
     }
 }

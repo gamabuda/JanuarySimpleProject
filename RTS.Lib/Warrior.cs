@@ -5,9 +5,13 @@
         public Warrior()
         {
             this.Strength = 30;
+            MinStrength = 30;
             this.Dexterity = 15;
+            MinDexterity = 15;
             this.Intelligence = 10;
+            MinIntelligence = 10;
             this.Vitality = 25;
+            MinVitality = 25;
             MaxHealth = 80;
             MaxMana = 10;
 
