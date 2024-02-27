@@ -8,7 +8,7 @@ using RTS.Core.Units;
 
 namespace RTS.Core.Buildings
 {
-    public class Barrack : IBuilding, IHealthHandler
+    public class Barrack : IBuilding
     {
         public int Health { get; set; }
         public int MaxHealth { get; set; }

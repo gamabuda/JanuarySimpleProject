@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace RTS.Core.Interfaces
 {
-    public interface IBuilding : IHealthHandler
+    public interface IArmorHandler : IHealthHandler
     {
+        int Armor { get; set; }
     }
 }

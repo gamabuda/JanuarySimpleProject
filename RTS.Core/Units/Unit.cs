@@ -24,12 +24,13 @@ namespace RTS.Core.Units
         public int Dexterity { get; set; }
         public int Intelligence { get; set; }
         public int Vitality { get; set; }
+
         public int PDamage { get; set; }
         public int MDamage { get; set; }
         public int Armor { get; set; }
         public int MDefense { get; set; }
-        public int CrtChance { get; set; }
-        public int CrtDamage { get; set; }
+        public int CritChance { get; set; }
+        public int CritDamage { get; set; }
 
         public int MaxHealth { get; set; }
         public int MaxMana { get; set; }
@@ -48,41 +49,26 @@ namespace RTS.Core.Units
                 $"Vitality: {Vitality}");
         }
 
-        public void PAttack(Unit unit)
+        public void Attack(IArmorHandler armorHandler)
         {
-            int damage = (int)(PDamage - 0.3 * unit.Armor - 0.1 * unit.Vitality - 0.1 * unit.Dexterity);
+            Random random = new Random();
+            int damage = random.Next((int)(PDamage - 0.05 * PDamage), (int)(PDamage + 0.05 * PDamage));
+            int totalDamage = damage - armorHandler.Armor;
 
-            if (damage < 1)
-                damage = 1;
+            if (totalDamage < 1)
+                totalDamage = 1;
 
-            if (unit.Health - damage < 1)
+            if (armorHandler.Health - (int)0.5 * totalDamage < 1)
             {
-                unit.Health = 0;
+                armorHandler.Health = 0;
                 return;
             }
 
-            unit.Health -= damage;
-        }
+            armorHandler.Health -= (int)0.5 * totalDamage;
+            armorHandler.Armor -= (int)0.5 * totalDamage;
 
-        public void MAttack(Unit unit)
-        {
-            int damage = MDamage;
-
-            if (unit is Wizard)
-            {
-                damage = (int)(MDamage - 0.3 * unit.Armor - 0.1 * unit.Vitality);
-            }
-
-            if (damage < 1)
-                damage = 1;
-
-            if (unit.Health - damage < 1)
-            {
-                unit.Health = 0;
-                return;
-            }
-
-            unit.Health -= damage;
+            if (armorHandler.Armor < 1)
+                armorHandler.Armor = 0;
         }
 
         public void LevelUp()

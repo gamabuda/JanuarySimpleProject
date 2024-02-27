@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RTS.Core.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace RTS.Core.Units
     {
         public string Icon = ".\\RTS.WPF\\img\\Units\\wizard.png";
         public int HealPoint { get; set; } = 10;
+        public int FireballPoint { get; set; } = 10;
         public Wizard()
         {
             Strength = 15;
@@ -29,8 +31,8 @@ namespace RTS.Core.Units
             Armor = Dexterity;
             MDamage = Intelligence;
             MDefense = 1 * Intelligence;
-            CrtChance = (int)(0.2 * Dexterity);
-            CrtDamage = (int)(0.1 * Dexterity);
+            CritChance = (int)(0.2 * Dexterity);
+            CritDamage = (int)(0.1 * Dexterity);
 
             MaxMana = Mana;
             MaxHealth = Health;
@@ -44,8 +46,8 @@ namespace RTS.Core.Units
             Armor = Dexterity;
             MDamage = Intelligence;
             MDefense = Intelligence;
-            CrtChance = (int)(0.2 * Dexterity);
-            CrtDamage = (int)(0.1 * Dexterity);
+            CritChance = (int)(0.2 * Dexterity);
+            CritDamage = (int)(0.1 * Dexterity);
         }
 
         public void Heal(Unit unit)
@@ -59,6 +61,27 @@ namespace RTS.Core.Units
             unit.Health += HealPoint;
 
             Mana -= HealPoint;
+        }
+
+        public void Fireball(IMagicHandler magicHandler)
+        {
+            if (Mana < FireballPoint)
+                return;
+
+            Random random = new Random();
+            int damage = Intelligence / 2 + random.Next((int)(MDamage - 0.05 * MDamage), (int)(MDamage + 0.05 * MDamage)) - magicHandler.MDefense / 2;
+
+            if (damage < 1)
+                damage = 1;
+
+            if (magicHandler.Health - damage < 1)
+            {
+                magicHandler.Health = 0;
+                return;
+            }
+
+            magicHandler.Health -= damage;
+            Mana -= FireballPoint;
         }
     }
 }

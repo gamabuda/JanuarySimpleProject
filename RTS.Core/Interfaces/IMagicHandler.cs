@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace RTS.Core.Interfaces
 {
-    public interface IBuilding : IHealthHandler
+    public interface IMagicHandler : IHealthHandler, IAttackHandler
     {
+        public int MDefense { get; set; }
+
     }
 }

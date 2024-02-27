@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace RTS.Core.Units
 {
-    public class Worker : IHealthHandler
+    public class Worker : Unit, IHealthHandler
     {
         public string Icon = ".\\RTS.WPF\\img\\Units\\worker.png";
-        public int Health { get; set; }
-        public int MaxHealth { get; set; }
     }
 }

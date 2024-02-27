@@ -28,8 +28,8 @@ namespace RTS.Core.Units
             Armor = Dexterity;
             MDamage = (int)(0.2 * Intelligence);
             MDefense = (int)(0.5 * Intelligence);
-            CrtChance = (int)(0.2 * Dexterity);
-            CrtDamage = (int)(0.1 * Dexterity);
+            CritChance = (int)(0.2 * Dexterity);
+            CritDamage = (int)(0.1 * Dexterity);
 
             MaxMana = Mana;
             MaxHealth = Health;
@@ -43,8 +43,8 @@ namespace RTS.Core.Units
             Armor = Dexterity;
             MDamage = (int)(0.2 * Intelligence);
             MDefense = (int)(0.5 * Intelligence);
-            CrtChance = (int)(0.2 * Dexterity);
-            CrtDamage = (int)(0.1 * Dexterity);
+            CritChance = (int)(0.2 * Dexterity);
+            CritDamage = (int)(0.1 * Dexterity);
         }
     }
 }

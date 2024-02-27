@@ -7,11 +7,12 @@ using RTS.Core.Units;
 
 namespace RTS.Core.Interfaces
 {
-    internal interface IAttackHandler
+    public interface IAttackHandler
     {
         public int PDamage { get; set; }
         public int MDamage { get; set; }
-        public void PAttack(Unit unit) {}
-        public void MAttack(Unit unit) { }
+        public int CritDamage { get; set; }
+        public int CritChance { get; set; }
+        public void Attack(IArmorHandler armorHandler);
     }
 }
