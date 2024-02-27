@@ -175,5 +175,49 @@ namespace RTS.Core.Characters
                 target.Health = 0;
             }
         }
+
+        public void UpdateStats()
+        {
+            RecalculateStats();
+        }
+
+        public void RecalculateStats()
+        {
+            if (this is Warrior)
+            {
+                Health = 2 * Vitality + Strength;
+                Mana = 1 * Intelligence;
+                PDamage = 1 * Strength;
+                Armor = 1 * Dexterity;
+                MDamage = (int)(0.2 * Intelligence);
+                MDefense = (int)(0.5 * Intelligence);
+                CrtChance = (int)(0.2 * Dexterity);
+                CrtDamage = (int)(0.1 * Dexterity);
+            }
+
+            else if (this is Rogue)
+            {
+                Health = (int)(1.5 * Vitality + 0.5 * Strength);
+                Mana = (int)(1.2 * Intelligence);
+                PDamage = (int)(0.5 * Strength + 0.5 * Dexterity);
+                Armor = (int)(1.5 * Dexterity);
+                MDamage = (int)(0.2 * Intelligence);
+                MDefense = (int)(0.5 * Intelligence);
+                CrtChance = (int)(0.2 * Dexterity);
+                CrtDamage = (int)(0.1 * Dexterity);
+            }
+
+            else if (this is Wizard)
+            {
+                Health = (int)(Vitality * 1.5 + Strength * 0.2);
+                Mana = (int)(Intelligence * 1.5);
+                PDamage = (int)(0.5 * Strength);
+                MDamage = (int)(1 * Intelligence);
+                MDefense = (int)(1 * Intelligence);
+                Armor = 1 * Dexterity;
+                CrtChance = (int)(0.2 * Dexterity);
+                CrtDamage = (int)(0.1 * Dexterity);
+            }
+        }
     }
 }

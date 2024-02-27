@@ -12,7 +12,7 @@ namespace RTS.Core.Characters
         public int HealPoint { get; set; } = 10;
         public Wizard()
         {
-            Image = ".\\RTS.Core\\Characters\\img\\wizard.jpg";
+            Image = ".\\RTS.WPF\\Characters\\img\\wizard.jpg";
             Name = "Wizard";
             Strength = 15;
             Dexterity = 20;

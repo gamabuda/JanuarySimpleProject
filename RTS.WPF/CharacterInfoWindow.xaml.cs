@@ -17,43 +17,68 @@ namespace RTS.WPF
 {
     public partial class CharacterInfoWindow : Window
     {
-        private Unit unit;
+        private Unit character;
 
-        public CharacterInfoWindow(Unit unit)
+        public CharacterInfoWindow(Unit character)
         {
             InitializeComponent();
-            this.unit = unit;
+            this.character = character;
             DisplayCharacterInfo();
         }
 
         private void DisplayCharacterInfo()
         {
-            DataContext = unit;
+            DataContext = character;
         }
 
         private void Strength_Click(object sender, RoutedEventArgs e)
         {
-            unit.Strength++;
+            character.Strength++;
+            UpdateStats();
         }
 
         private void Dexterity_Click(object sender, RoutedEventArgs e)
         {
-            unit.Dexterity++;
+            character.Dexterity++;
+            UpdateStats();
         }
 
         private void Intelligence_Click(object sender, RoutedEventArgs e)
         {
-            unit.Intelligence++;
+            character.Intelligence++;
+            UpdateStats();
         }
 
         private void Vitality_Click(object sender, RoutedEventArgs e)
         {
-            unit.Vitality++;
+            character.Vitality++;
+            UpdateStats();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            unit.GetExperience(100);
+            character.GetExperience(1000);
+        }
+
+        private void AcceptButton_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateStats();
+        }
+
+        private void UpdateStats()
+        {
+            if (character is Warrior warrior)
+            {
+                warrior.RecalculateStats();
+            }
+            else if (character is Rogue rogue)
+            {
+                rogue.RecalculateStats();
+            }
+            else if (character is Wizard wizard)
+            {
+                wizard.RecalculateStats();
+            }
         }
     }
 }

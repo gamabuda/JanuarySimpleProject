@@ -9,7 +9,7 @@
     <Grid>
         <StackPanel Margin="10">
             <TextBlock Text="{Binding Name}" FontSize="22" FontWeight="Bold" Margin="0,0,0,10" FontFamily="Comic Sans MS" TextAlignment="Center"/>
-            <Image Source="{Binding Image}" Width="150" Height="150" Margin="0,0,0,20"/>
+            <Image Source="{Binding Image}" Width="150" Height="150" Margin="0,0,0,20" OpacityMask="Black"/>
             <StackPanel/>
             <Grid Height="192" Width="726">
                 <TextBlock Text="Level:" FontWeight="Bold" FontFamily="Comic Sans MS" FontSize="16" Margin="0,0,671,170"/>
@@ -39,7 +39,8 @@
                 <TextBlock Text="{Binding CrtDamage}" HorizontalAlignment="Left" Height="19" Margin="385,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="104" FontSize="14" FontFamily="Comic Sans MS"/>
                 <Button Content="Click!" HorizontalAlignment="Left" Height="67" Margin="572,109,0,0" VerticalAlignment="Top" Width="144" Click="Button_Click" Background="#FF577E43" FontFamily="Comic Sans MS" FontSize="20"/>
                 <TextBlock HorizontalAlignment="Left" Height="26" Margin="560,89,0,0" TextWrapping="Wrap" Text="Click to get more experience!" VerticalAlignment="Top" Width="168" FontFamily="Comic Sans MS"/>
-                <Button Content="Church" HorizontalAlignment="Left" Height="48" Margin="570,3,0,0" VerticalAlignment="Top" Width="146" Click="Button_Click" FontFamily="Comic Sans MS"/>
+                <Button Content="Church" HorizontalAlignment="Left" Height="48" Margin="570,3,0,0" VerticalAlignment="Top" Width="146" FontFamily="Comic Sans MS" Background="#FF95B4D8"/>
+                <Button Content="Accept" HorizontalAlignment="Left" Height="102" Margin="196,70,0,0" VerticalAlignment="Top" Width="66" FontFamily="Comic Sans MS" FontSize="14" Background="#FF95B4D8" Click="AcceptButton_Click"/>
             </Grid>
         </StackPanel>
     </Grid>

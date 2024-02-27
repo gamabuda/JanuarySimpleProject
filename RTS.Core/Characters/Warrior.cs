@@ -11,7 +11,7 @@ namespace RTS.Core.Characters
     {
         public Warrior()
         {
-            Image = ".\\RTS.Core\\Characters\\img\\warrior.jpg";
+            Image = ".\\RTS.WPF\\Characters\\img\\warrior.jpg";
             Name = "Warrior";
             Strength = 30;
             Dexterity = 15;

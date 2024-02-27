@@ -7,11 +7,15 @@
         mc:Ignorable="d"
         Title="Barrack" Height="450" Width="800">
     <Grid>
+
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Content="Warrior" Click="WarriorButton_Click" Height="35" Width="250" BorderBrush="Black" Background="#FF9DD2F5" FontSize="18" FontFamily="Comic Sans MS"/>
-            <Button Content="Rogue" Click="RogueButton_Click" Height="35" Width="250" Background="#FF9DD2F5" FontFamily="Comic Sans MS" FontSize="18"/>
-            <Button Content="Wizard" Click="WizardButton_Click" Height="35" Width="250" Background="#FF9DD2F5" FontFamily="Comic Sans MS" FontSize="18"/>
+            <Button Content="Warrior" Click="WarriorButton_Click" Height="35" Width="250" BorderBrush="Black" Background="#FFEAEAEA" FontSize="18" FontFamily="Comic Sans MS" FontWeight="Bold"/>
+            <Button Content="Rogue" Click="RogueButton_Click" Height="35" Width="250" Background="#FFEAEAEA" FontFamily="Comic Sans MS" FontSize="18" FontWeight="Bold" BorderBrush="Black"/>
+            <Button Content="Wizard" Click="WizardButton_Click" Height="35" Width="250" Background="#FFEAEAEA" FontFamily="Comic Sans MS" FontSize="18" FontWeight="Bold" BorderBrush="Black"/>
         </StackPanel>
-        <TextBlock HorizontalAlignment="Center" Height="40" Margin="0,120,0,0" TextWrapping="Wrap" Text="Choose your character!" VerticalAlignment="Top" Width="250" TextAlignment="Center" FontFamily="Comic Sans MS" FontSize="22"/>
+        <TextBlock HorizontalAlignment="Center" Height="40" Margin="0,89,0,0" TextWrapping="Wrap" Text="Choose your character!" VerticalAlignment="Top" Width="344" TextAlignment="Center" FontFamily="Comic Sans MS" FontSize="26" FontWeight="Bold"/>
+        
     </Grid>
+    
 </Window>
+    
