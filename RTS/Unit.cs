@@ -89,13 +89,15 @@ namespace RTS
 
         public void Attack(Unit unit)
         {
+            Random rnd = new Random();
+
             if (unit.Health - this.PDamage < 1)
             {
                 unit.Health = 0;
                 return;
             }
 
-            unit.Health -= this.PDamage;
+            unit.Health -= rnd.Next(this.PDamage-5, this.PDamage+5) - unit.Armor;
 
         }
 

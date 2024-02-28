@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RTS.Bildings
 {
-    public class Church
+    public class Church : Bilding
     {
         public int RegenerateMana { get; set; }
         public void Pray(Unit target)

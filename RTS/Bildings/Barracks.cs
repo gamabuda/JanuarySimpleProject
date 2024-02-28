@@ -19,6 +19,8 @@ namespace RTS.Bildings
                     return new Wizard();
                 case "Rogue":
                     return new Rogue();
+                case "Peasant":
+                    return new Peasant();
                 default:
                     throw new Exception("This unit doesn`t exist");
             }

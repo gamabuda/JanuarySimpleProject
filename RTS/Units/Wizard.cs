@@ -52,5 +52,16 @@ namespace RTS.Units
                 target.Health += HealPoint;
             }
         }
+
+        public void FireBall(Unit target)
+        {
+            if (Mana < 50)
+                return;
+            else
+            {
+                Mana -= 50;
+                target.Health -= MDamage - target.MDefense;
+            }
+        }
     }
 }

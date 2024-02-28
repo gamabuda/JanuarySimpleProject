@@ -7,4 +7,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Rogue.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Rogue.jpg" />
+  </ItemGroup>
+
 </Project>
