@@ -23,6 +23,44 @@ namespace RTS.WpfApp
             this.DataContext = unit;
         }
 
+        public void RecountHealth()
+        {
+            if (unit is Warrior)
+            {
+                unit.Health = (int)(unit.Vitality * 2 + unit.Strength);
+            }
+            else if (unit is Wizard)
+            {
+                unit.Health = (int)(unit.Vitality * 2 + unit.Strength);
+            }
+            else if (unit is Rogue)
+            {
+                unit.Health = (int)(unit.Vitality * 2 + unit.Strength);
+            }
+            else
+                throw new Exception("Unit is not correct");
+            this.DataContext = unit;
+        }
+
+        public void RecountMana()
+        {
+            if (unit is Warrior)
+            {
+                unit.Mana = (int)(1 * unit.Intelligence);
+            }
+            else if (unit is Wizard)
+            {
+                unit.Mana = (int)(1 * unit.Intelligence);
+            }
+            else if (unit is Rogue)
+            {
+                unit.Mana = (int)(1 * unit.Intelligence);
+            }
+            else
+                throw new Exception("Unit is not correct");
+            this.DataContext = unit;
+        }
+
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             unit = new Warrior();
@@ -135,88 +173,95 @@ namespace RTS.WpfApp
             }
         }
 
-        private void IncreaseStrength(object sender, RoutedEventArgs e)
+        private void ChangeCharacteristic(object sender, RoutedEventArgs e)
         {
-            if (unit.StartPoints > 0)
+            Button button = (Button)sender;
+            string action = (string)button.Tag;
+
+            switch (action)
             {
-                unit.Strength++;
-                unit.StartPoints--;
-                TBStrength.Text = $"Strength: {unit.Strength}";
-                TBStartPoints.Text = $"Start Points: {unit.StartPoints}";
+                case "IncreaseStrength":
+                    if (unit.StartPoints > 0)
+                    {
+                        unit.Strength++;
+                        unit.StartPoints--;
+                        RecountHealth();
+                        RecountMana();
+                    }
+                    break;
+                case "DecreaseStrength":
+                    if (unit.Strength > unit.MinStrength)
+                    {
+                        unit.Strength--;
+                        unit.StartPoints++;
+                        RecountHealth();
+                        RecountMana();
+                    }
+                    break;
+                case "IncreaseDexterity":
+                    if (unit.StartPoints > 0)
+                    {
+                        unit.Dexterity++;
+                        unit.StartPoints--;
+                        RecountHealth();
+                        RecountMana();
+                    }
+                    break;
+                case "DecreaseDexterity":
+                    if (unit.Dexterity > unit.MinDexterity)
+                    {
+                        unit.Dexterity--;
+                        unit.StartPoints++;
+                        RecountHealth();
+                        RecountMana();
+                    }
+                    break;
+                case "IncreaseIntelligence":
+                    if (unit.StartPoints > 0)
+                    {
+                        unit.Intelligence++;
+                        unit.StartPoints--;
+                        RecountMana();
+                    }
+                    break;
+                case "DecreaseIntelligence":
+                    if (unit.Intelligence > unit.MinIntelligence)
+                    {
+                        unit.Intelligence--;
+                        unit.StartPoints++;
+                        RecountMana();
+                    }
+                    break;
+                case "IncreaseVitality":
+                    if (unit.StartPoints > 0)
+                    {
+                        unit.Vitality++;
+                        unit.StartPoints--;
+                        RecountHealth();
+                    }
+                    break;
+                case "DecreaseVitality":
+                    if (unit.Vitality > unit.MinVitality)
+                    {
+                        unit.Vitality--;
+                        unit.StartPoints++;
+                        RecountHealth();
+                    }
+                    break;
             }
-        }
-        private void DecreaseStrength(object sender, RoutedEventArgs e)
-        {
-            if (unit.Strength > unit.MinStrength)
-            {
-                unit.Strength--;
-                unit.StartPoints++;
-                TBStrength.Text = $"Strength: {unit.Strength}";
-                TBStartPoints.Text = $"Start Points: {unit.StartPoints}";
-            }
+
+            UpdateTextBlocks();
         }
 
-        private void IncreaseDexterity(object sender, RoutedEventArgs e)
+        private void UpdateTextBlocks()
         {
-            if (unit.StartPoints > 0)
-            {
-                unit.Dexterity++;
-                unit.StartPoints--;
-                TBDexterity.Text = $"Dexterity: {unit.Dexterity}";
-                TBStartPoints.Text = $"Start Points: {unit.StartPoints}";
-            }
-        }
-        private void DecreaseDexterity(object sender, RoutedEventArgs e)
-        {
-            if (unit.Dexterity > unit.MinDexterity)
-            {
-                unit.Dexterity--;
-                unit.StartPoints++;
-                TBDexterity.Text = $"Dexterity: {unit.Dexterity}";
-                TBStartPoints.Text = $"Start Points: {unit.StartPoints}";
-            }
-        }
+            TBStrength.Text = $"Strength: {unit.Strength}";
+            TBDexterity.Text = $"Dexterity: {unit.Dexterity}";
+            TBIntelligence.Text = $"Intelligence: {unit.Intelligence}";
+            TBVitality.Text = $"Vitality: {unit.Vitality}";
 
-        private void IncreaseIntelligence(object sender, RoutedEventArgs e)
-        {
-            if (unit.StartPoints > 0)
-            {
-                unit.Intelligence++;
-                unit.StartPoints--;
-                TBIntelligence.Text = $"Intelligence: {unit.Intelligence}";
-                TBStartPoints.Text = $"Start Points: {unit.StartPoints}";
-            }
-        }
-        private void DecreaseIntelligence(object sender, RoutedEventArgs e)
-        {
-            if (unit.Intelligence > unit.MinIntelligence)
-            {
-                unit.Intelligence--;
-                unit.StartPoints++;
-                TBIntelligence.Text = $"Intelligence: {unit.Intelligence}";
-                TBStartPoints.Text = $"Start Points: {unit.StartPoints}";
-            }
-        }
-
-        private void IncreaseVitality(object sender, RoutedEventArgs e)
-        {
-           if (unit.StartPoints > 0)
-            {
-                unit.Vitality++;
-                unit.StartPoints--;
-                TBVitality.Text = $"Vitality: {unit.Vitality}";
-                TBStartPoints.Text = $"Start Points: {unit.StartPoints}";
-            }
-        }
-        private void DecreaseVitality(object sender, RoutedEventArgs e)
-        {
-            if (unit.Vitality > unit.MinVitality)
-            {
-                unit.Vitality--;
-                unit.StartPoints++;
-                TBVitality.Text = $"Vitality: {unit.Vitality}";
-                TBStartPoints.Text = $"Start Points: {unit.StartPoints}";
-            }
+            TBHealth.Text = $"Health: {unit.Health} / {unit.MaxHealth}";
+            TBMana.Text = $"Mana: {unit.Mana} / {unit.MaxMana}";
         }
     }
 }

@@ -156,7 +156,7 @@ namespace RTS.Lib
             }
         }
 
-        private int _minStrength; // Минимальное значение для Strength
+        private int _minStrength; 
         public int MinStrength
         {
             get { return _minStrength; }
@@ -167,7 +167,7 @@ namespace RTS.Lib
             }
         }
 
-        private int _minDexterity; // Минимальное значение для Dexterity
+        private int _minDexterity; 
         public int MinDexterity
         {
             get { return _minDexterity; }
@@ -178,7 +178,7 @@ namespace RTS.Lib
             }
         }
 
-        private int _minIntelligence; // Минимальное значение для Intelligence
+        private int _minIntelligence; 
         public int MinIntelligence
         {
             get { return _minIntelligence; }
@@ -189,7 +189,7 @@ namespace RTS.Lib
             }
         }
 
-        private int _minVitality; // Минимальное значение для Vitality
+        private int _minVitality; 
         public int MinVitality
         {
             get { return _minVitality; }

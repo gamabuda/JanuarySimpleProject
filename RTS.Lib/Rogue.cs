@@ -11,15 +11,15 @@ namespace RTS.Lib
         public Rogue()
         {
             this.Strength = 20;
-            MinStrength = 20;
+            this.MinStrength = 20;
             this.Dexterity = 30;
-            MinDexterity = 30;
+            this.MinDexterity = 30;
             this.Intelligence = 15;
-            MinIntelligence = 15;
+            this.MinIntelligence = 15;
             this.Vitality = 20;
-            MinVitality = 20;
-            MaxHealth = 60;
-            MaxMana = 15;
+            this.MinVitality = 20;
+            this.MaxHealth = 60;
+            this.MaxMana = 15;
 
             this.Health = (int)(Vitality * 2 + Strength);
             this.Mana = (int)(1 * Intelligence);
