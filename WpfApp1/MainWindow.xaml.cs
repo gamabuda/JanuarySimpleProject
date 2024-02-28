@@ -57,15 +57,9 @@ namespace WpfApp1
 
         private void IncreaseVitality_Click(object sender, RoutedEventArgs e)
         {
-            if (unit.Points == 0)
-            {
-                return;
-            }
-            else
-            {
-                unit.Strength++;
-                unit.Points--;
-            }
+            unit.Vitality++;
+            unit.Points--;
+            DataContext = unit;
         }
 
         private void DecreaseVitality_Click(object sender, RoutedEventArgs e)
