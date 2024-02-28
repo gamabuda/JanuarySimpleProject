@@ -91,6 +91,13 @@ namespace JanuarySimpleProject.Core
 
             OnNodeChange?.Invoke();
         }
+        public string[] GetArray()
+        {
+            string[] result = new string[_values.Count()];
+            Array.Copy(_values.GetArray(), result, _values.Count());
+            return result;
+        }
+
         public void AddValue<TValue>(List<TValue> values)
         {
             if (values.Count <= 0)

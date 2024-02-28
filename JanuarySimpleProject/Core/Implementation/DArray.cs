@@ -68,8 +68,46 @@ namespace JanuarySimpleProject.Core.Implementation
         }
         private void Resize()
         {
-            int newLenght = _array.Length + _array.Length / 2;
-            Array.Resize(ref _array, newLenght);
+            int newCount = _count + _count / 2;
+            if (_count == 0)
+            {
+                newCount = 10;
+            }
+
+            var newArray = new string[newCount];
+            for (int i = 0; i < _count; i++)
+            {
+                newArray[i] = _array[i];
+            }
+
+            _array = newArray;
+        }
+
+        public int BinarySearch(string s)
+        {
+            int low = 0;
+            int high = _count - 1;
+
+            while (low <= high)
+            {
+                int mid = (low + high) / 2;
+                int compareResult = String.Compare(_array[mid], s);
+
+                if (compareResult == 0)
+                {
+                    return mid;
+                }
+                else if (compareResult < 0)
+                {
+                    low = mid + 1;
+                }
+                else
+                {
+                    high = mid - 1;
+                }
+            }
+
+            return -1;
         }
     }
 }
