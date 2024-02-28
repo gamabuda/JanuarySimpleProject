@@ -42,6 +42,8 @@ namespace RTS.WPF
 
         private void StatsUpdate()
         {
+            unit.CalculateStats();
+
             if (unit is Warrior)
                 CurrentClass.Text = "WARRIOR";
             else if (unit is Rogue)

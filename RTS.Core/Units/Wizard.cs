@@ -25,20 +25,10 @@ namespace RTS.Core.Units
             MaxIntelligence = 250;
             MaxVitality = 70;
 
-            Health = (int)(Vitality * 1.4 + Strength * 0.2);
-            Mana = (int)(1.5 * Intelligence);
-            PDamage = (int)(0.5 * Strength);
-            Armor = Dexterity;
-            MDamage = Intelligence;
-            MDefense = 1 * Intelligence;
-            CritChance = (int)(0.2 * Dexterity);
-            CritDamage = (int)(0.1 * Dexterity);
-
-            MaxMana = Mana;
-            MaxHealth = Health;
+            CalculateStats();
         }
 
-        public void CalculateStats()
+        public override void CalculateStats()
         {
             Health = (int)(Vitality * 1.4 + Strength * 0.2);
             Mana = (int)(1.5 * Intelligence);
@@ -48,6 +38,8 @@ namespace RTS.Core.Units
             MDefense = Intelligence;
             CritChance = (int)(0.2 * Dexterity);
             CritDamage = (int)(0.1 * Dexterity);
+            MaxMana = Mana;
+            MaxHealth = Health;
         }
 
         public void Heal(Unit unit)

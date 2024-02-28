@@ -49,6 +49,8 @@ namespace RTS.Core.Units
                 $"Vitality: {Vitality}");
         }
 
+        public virtual void CalculateStats() {}
+
         public void Attack(IArmorHandler armorHandler)
         {
             Random random = new Random();
