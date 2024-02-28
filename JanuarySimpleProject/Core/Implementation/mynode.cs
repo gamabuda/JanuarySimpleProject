@@ -1,189 +1,56 @@
-﻿using JanuarySimpleProject.Core.Implementation;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace JanuarySimpleProject.Core
+
+namespace JanuarySimpleProject.Core.Implementation
 {
-    public class MyNode : INode
+    public class MyNode : Node
     {
-        private DArray<string> _values = new DArray<string>();
-        private string _value;
-
-        private MyNode()
+        DArray array = new DArray(1);
+        public MyNode(string name) : base(name)
         {
-            Id = Guid.NewGuid().ToString();
-
-            Name = "NewNode";
-            DateTimeCreate = DateTime.Now;
-            DateTimeUpdate = DateTimeCreate;
-
-            OnNodeChange += CheckNode;
-            OnNodeChange += DateTimeEditChange;
-            OnNodeChange += SerializeNode2Json;
         }
 
-        public MyNode(string name)
+        public void AddValues<TValue>(params TValue[] values)
         {
-            Id = Guid.NewGuid().ToString();
-
-            Name = name;
-            DateTimeCreate = DateTime.Now;
-            DateTimeUpdate = DateTimeCreate;
-
-            OnNodeChange += CheckNode;
-            OnNodeChange += DateTimeEditChange;
-            OnNodeChange += SerializeNode2Json;
-        }
-
-        public string Id { get; }
-
-        public string Name { get; set; }
-
-        public string Value
-        {
-            get => _value;
-            set
-            {
-                _value = value.Trim();
-
-                _values.Clear();
-                _values.Add(_value);
-                OnNodeChange?.Invoke();
-            }
-        }
-
-        public string JSON { get; set; }
-
-        public DateTime DateTimeCreate { get; }
-        public DateTime DateTimeUpdate { get; private set; }
-
-        public event Action OnNodeChange;
-
-        private void SerializeNode2Json()
-        {
-            JSON = JsonSerializer.Serialize(this);
-        }
-
-        private void DateTimeEditChange()
-        {
-            DateTimeUpdate = DateTime.Now;
-        }
-
-        private void CheckNode()
-        {
-            var temp = String.Empty;
-            foreach (var v in _value)
-                temp += v;
-
-            if (_value != temp)
-                throw new Exception("Node is not correct or broken");
-        }
-
-        public void ShowInfo()
-        {
-            Console.WriteLine($"Node:\tName:{Name} ID:{Id}\n\tDateTime create:{DateTimeCreate}\n\tDateTime last update:{DateTimeUpdate}\n\tValue:{Value}");
-        }
-
-        public void AddValue<TValue>(TValue value)
-        {
-            string strValue = value.ToString().Trim();
-
-            if (strValue == null)
-                throw new Exception("you cannot add a null value");
-
-            if (_values.Contains(strValue))
-                throw new Exception("this value is already in the array"); ;
-
-            _values.Add(strValue);
-            _value += $"{strValue}";
-
-            OnNodeChange?.Invoke();
-        }
-
-        public void AddValue<TAnswer>(List<TAnswer> values)
-        {
-            if (values.Count <= 0)
-                throw new Exception("you cannot add a list if it is empty");
-
             foreach (var value in values)
             {
-                string strValue = value.ToString().Trim();
-
-                if (strValue == null)
-                    throw new Exception("you cannot add a null value");
-
-                if (_values.Contains(strValue))
-                    throw new Exception("the list of elements is already in the array");
-
-                _values.Add(strValue);
-                _value += $"{strValue}";
-
-                OnNodeChange?.Invoke();
+                AddValue(value);
             }
         }
 
-        public void RemoveValue<TAnswer>(TAnswer value)
+        public void ShowValues()
         {
-            string strValue = value.ToString().Trim();
-
-            if (strValue == null)
-                throw new Exception("you cannot add a null value");
-
-            if (!_values.Contains(strValue))
-                throw new Exception("there is no such value in the array");
-
-            _values.Remove(strValue);
-            _value = Value.Replace(strValue, "");
-
-            OnNodeChange?.Invoke();
+            Console.WriteLine("Values in MyNode:");
+            foreach (var value in array.GetArray())
+            {
+                Console.WriteLine(value);
+            }
         }
-        public void RemoveValue<TAnswer>(List<TAnswer> values)
-        {
-            if (values.Count <= 0)
-                return;
 
+        public bool ContainsValue(string value)
+        {
+            return array.Contains(value);
+        }
+
+        public void RemoveValues<TValue>(params TValue[] values)
+        {
             foreach (var value in values)
             {
-                string strValue = value.ToString().Trim();
-
-                if (strValue == null)
-                    throw new Exception("you are trying to delete a null value");
-
-                if (_values.Contains(strValue))
-                    throw new Exception("this element is not in the array");
-
-                _values.Remove(strValue);
-                _value = Value.Replace(strValue, "");
-
-                OnNodeChange?.Invoke();
+                RemoveValue(value);
             }
         }
 
-        public string Update(string strValue)
+        public void UpdateValues<TValue>(params TValue[] values)
         {
-            string oldValue = _value;
-            _value = strValue;
-            return oldValue;
+            foreach (var value in values)
+            {
+                UpdateValue(value);
+            }
         }
 
-        public static MyNode CreateEmptyNode()
-        {
-            return new MyNode();
-        }
-
-        public string UpdateValue(string s)
-        {
-            throw new NotImplementedException();
-        }
-        public void ClearValues()
-        {
-            _values.Clear();
-            _value = string.Empty;
-            OnNodeChange?.Invoke();
-        }
     }
 }

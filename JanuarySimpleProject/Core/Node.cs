@@ -6,10 +6,7 @@ namespace JanuarySimpleProject.Core
 {
     public class Node : INode
     {
-        private static readonly DArray<string> dynamicArray = new();
-
-        //TODO switch list to array
-        private DArray<string> _values = dynamicArray;
+        private DArray _values = new DArray(10);
         private string _value;
 
         private Node()
@@ -48,8 +45,7 @@ namespace JanuarySimpleProject.Core
             set
             {
                 _value = value.Trim();
-                //TODO need optimize
-                _values.Clear();
+                _values = new DArray(10);
                 _values.Add(_value);
                 OnNodeChange?.Invoke();
             }
@@ -74,10 +70,7 @@ namespace JanuarySimpleProject.Core
 
         private void CheckNode()
         {
-            var temp = String.Empty;
-            foreach (var v in _value)
-                temp += v;
-
+            var temp = string.Join("", _values = new DArray(10));
             if (_value != temp)
                 throw new Exception("Node is not correct or broken");
         }
@@ -86,105 +79,75 @@ namespace JanuarySimpleProject.Core
         {
             Console.WriteLine($"Node:\tName:{Name} ID:{Id}\n\tDateTime create:{DateTimeCreate}\n\tDateTime last update:{DateTimeUpdate}\n\tValue:{Value}");
         }
-
-        //TODO switch all returns to throw Exception
         public void AddValue<TValue>(TValue value)
         {
-            string strValue = value.ToString().Trim();
-
-            if (strValue == null)
-                throw new Exception("you cannot add a null value");
+            string strValue = value?.ToString().Trim() ?? throw new ArgumentNullException(nameof(value));
 
             if (_values.Contains(strValue))
-                throw new Exception("this value is already in the array"); ;
+                return;
 
             _values.Add(strValue);
-            _value += $"{strValue}";
+            _value += strValue;
 
             OnNodeChange?.Invoke();
         }
-
-        //TODO switch all returns to throw Exception
-        public void AddValue<TAnswer>(List<TAnswer> values)
+        public string[] GetArray()
         {
-            if (values.Count <= 0)
-                throw new Exception("you cannot add a list if it is empty");
-
-            foreach (var value in values)
-            {
-                string strValue = value.ToString().Trim();
-
-                if (strValue == null)
-                    throw new Exception("you cannot add a null value");
-
-                if (_values.Contains(strValue))
-                    throw new Exception("the list of elements is already in the array");
-
-                _values.Add(strValue);
-                _value += $"{strValue}";
-
-                OnNodeChange?.Invoke();
-            }
+            string[] result = new string[_values.Count()];
+            Array.Copy(_values.GetArray(), result, _values.Count());
+            return result;
         }
 
-        //TODO switch all returns to throw Exception and add the ability to delete a list of objects
-        public void RemoveValue<TAnswer>(TAnswer value)
-        {
-            string strValue = value.ToString().Trim();
-
-            if (strValue == null)
-                throw new Exception("you cannot add a null value");
-
-            if (!_values.Contains(strValue))
-                throw new Exception("there is no such value in the array");
-
-            _values.Remove(strValue);
-            _value = Value.Replace(strValue, "");
-
-            OnNodeChange?.Invoke();
-        }
-        public void RemoveValue<TAnswer>(List<TAnswer> values)
+        public void AddValue<TValue>(List<TValue> values)
         {
             if (values.Count <= 0)
                 return;
 
             foreach (var value in values)
             {
-                string strValue = value.ToString().Trim();
-
-                if (strValue == null)
-                    throw new Exception("you are trying to delete a null value");
+                string strValue = value?.ToString().Trim() ?? throw new ArgumentNullException(nameof(value));
 
                 if (_values.Contains(strValue))
-                    throw new Exception("this element is not in the array");
+                    return;
 
-                _values.Remove(strValue);
-                _value = Value.Replace(strValue, "");
+                _values.Add(strValue);
+                _value += strValue;
 
                 OnNodeChange?.Invoke();
             }
         }
 
-        public string Update(string strValue)
+        public void RemoveValue<TValue>(TValue value)
         {
-            string oldValue = _value;
-            _value = strValue;
-            return oldValue;
+            string strValue = value?.ToString().Trim() ?? throw new ArgumentNullException(nameof(value));
+
+            if (!_values.Contains(strValue))
+                return;
+
+            _values.Remove(strValue);
+            _value = Value.Replace(strValue, "");
+
+            OnNodeChange?.Invoke();
+        }
+
+        public void UpdateValue<TValue>(TValue value)
+        {
+            string strValue = value?.ToString().Trim() ?? throw new ArgumentNullException(nameof(value));
+
+            int index = Array.IndexOf(_values.GetArray(), strValue);
+            if (index >= 0)
+            {
+                _values.Remove(strValue);
+                _values.Add(strValue);
+                _value += strValue;
+
+                OnNodeChange?.Invoke();
+            }
         }
 
         public static Node CreateEmptyNode()
         {
             return new Node();
-        }
-
-        public string UpdateValue(string s)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateValue<TValue>(TValue oldValue, TValue newValue)
-        {
-            throw new NotImplementedException();
         }
     }
 }
