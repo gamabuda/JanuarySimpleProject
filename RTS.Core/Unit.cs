@@ -9,16 +9,64 @@ using System.Threading.Tasks;
 
 namespace RTS.Core
 {
-    public class Unit : IHPHandler, IManaHandler, IAttackHandler
+    public class Unit : IHPHandler, IManaHandler
     { 
         public int MaxHealth { get; set; }
         public int MaxMana { get; set; }
         public int Health { get; set; }
         public int Mana { get; set; }
-        public int Strength { get; set; }
-        public int Dexterity { get; set; }
-        public int Intelligence { get; set; }
-        public int Vitality { get; set; }
+        private int _strength;
+        public int Strength
+        {
+            get { return _strength; }
+            set
+            {
+                _strength = value;
+                if (_strength > MaxStrenght)
+                {
+                    _strength = MaxStrenght;
+                }
+            }
+        }
+        private int _dexterity;
+        public int Dexterity
+        {
+            get { return _dexterity; }
+            set
+            {
+                _dexterity = value;
+                if (_dexterity > MaxDexterity)
+                {
+                    _dexterity = MaxDexterity;
+                }
+            }
+        }
+        private int _intelligence;
+        public int Intelligence
+        {
+            get { return _intelligence; }
+            set
+            {
+                _intelligence = value;
+                if (_intelligence > MaxIntelligence)
+                {
+                    _intelligence = MaxIntelligence;
+                }
+            }
+        }
+        private int _vitality;
+        public int Vitality
+        {
+            get { return _vitality; }
+            set
+            {
+                _vitality = value;
+                if (_vitality > MaxVitality)
+                {
+                    _vitality = MaxVitality;
+                }
+            }
+        }
         public int PDamage { get; set; }
         public int MDamage { get; set; }
         public int Armor { get; set; }
@@ -36,34 +84,10 @@ namespace RTS.Core
         public int NecessaryExpLevelUp { get; set; } = 1000;
         public int Points { get; set; } = 5;
         public int MaxLevel { get; set; } = 50;
-
         public int MaxStrenght { get;  set; } 
         public int MaxDexterity { get;  set; } 
         public int MaxIntelligence { get;  set; } 
         public int MaxVitality { get;  set; }
-
-        public void Control(Unit unit)
-        {
-            if (unit.Strength > unit.MaxStrenght)
-            {
-                unit.Strength = unit.MaxStrenght;
-            }
-
-            if (unit.Intelligence > unit.MaxIntelligence)
-            {
-                unit.Intelligence = unit.MaxIntelligence;
-            }
-
-            if (unit.Dexterity > unit.MaxDexterity)
-            {
-                unit.Dexterity = unit.MaxDexterity;
-            }
-
-            if (unit.Vitality > unit.MaxVitality)
-            {
-                unit.Vitality = unit.MaxVitality;
-            }
-        }
 
         public virtual void CalculateParametric()
         {
@@ -78,6 +102,7 @@ namespace RTS.Core
                 $"Intelligence: {Intelligence}\n\t" +
                 $"Vitality: {Vitality}");
         }
+
 
         //public void Attack(Unit unit)
         //{
