@@ -14,14 +14,17 @@ namespace RTSClasses
 
         void Attack(IHealthHandler healthHandler)
         {
-            if (healthHandler.Health <= PhysicalDamage)
-            {
-                healthHandler.Health = 0;
-                return;
-            }
-
-            healthHandler.Health -= PhysicalDamage;
+            healthHandler.InflictDamage(PhysicalDamage);
         }
-        void Attack(IArmorHandler armorHandler);
+        void Attack(IArmorHandler armorHandler)
+        {
+            armorHandler.InflictDamage(CalculatePhysDamage(armorHandler.Armor));
+        }
+
+        int CalculatePhysDamage(int Armor)
+        {
+            Random random = new Random();
+            return PhysicalDamage - random.Next(Armor / 2, Armor);
+        }
     }
 }

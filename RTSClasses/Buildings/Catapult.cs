@@ -14,9 +14,9 @@ namespace RTSClasses
 
         public Catapult()
         {
-            Health = 200;
-            MaxHealth = 200;
-            PhysicalDamage = 30;
+            Health = 250;
+            MaxHealth = 250;
+            PhysicalDamage = 20;
         }
 
         public void Attack(IArmorHandler armorHandler)
@@ -27,18 +27,15 @@ namespace RTSClasses
             if (random.Next(2) == 1)
                 damage = PhysicalDamage;
             else
-                damage = PhysicalDamage - random.Next(armorHandler.Armor / 2, armorHandler.Armor);
+                damage = CalculatePhysDamage(armorHandler.Armor);
 
-            if (damage <= 0)
-                damage = 1;
+            armorHandler.InflictDamage(damage);
+        }
 
-            if (armorHandler.Health <= damage)
-            {
-                armorHandler.Health = 0;
-                return;
-            }
-
-            armorHandler.Health -= damage;
+        int CalculatePhysDamage(int Armor)
+        {
+            Random random = new Random();
+            return PhysicalDamage - random.Next(Armor / 2, Armor);
         }
     }
 }

@@ -23,5 +23,16 @@ namespace RTSClasses
             Health += gain;
             return true;
         }
+
+        void InflictDamage(int damage)
+        {
+            if (Health == 0) return;
+            else if (damage < 1)
+                Health -= 1;
+            else if (Health - damage < 0)
+                Health = 0;
+            else
+                Health -= damage;
+        }
     }
 }

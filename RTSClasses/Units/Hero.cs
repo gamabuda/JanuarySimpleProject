@@ -3,13 +3,13 @@ using System.Runtime.InteropServices;
 
 namespace RTSClasses
 {
-    public class Hero : Unit, IHealthHandler, IManaHandler, IAttackHandler, IArmorHandler
+    public class Hero : Unit, IHealthHandler, IMagicHandler, IManaHandler, IAttackHandler
     {
         public int PhysicalDamage { get; set; }
         public int Armor { get; set; }
         public int CriticalChance { get; set; }
         public int CriticalDamage { get; set; }
-        public int MagicalDamage { get; set; }
+        public int MagicDamage { get; set; }
         public int MagicDefense { get; set; }
         public int Mana { get; set; }
 
@@ -38,23 +38,13 @@ namespace RTSClasses
 
         public int MaxMana { get; set; }
 
-        public event Action ?onStatChange;
+        public event Action onStatChange;
 
         public void Attack(IArmorHandler armorHandler)
         {
-            Random random = new Random();
-            int damage = PhysicalDamage - random.Next(armorHandler.Armor / 2, armorHandler.Armor);
+            int damage = CalculatePhysDamage(armorHandler.Armor);
 
-            if (damage <= 0)
-                damage = 1;
-
-            if (armorHandler.Health <= damage)
-            {
-                armorHandler.Health = 0;
-                return;
-            }
-
-            armorHandler.Health -= damage;
+            armorHandler.InflictDamage(damage);
         }
 
         protected void calculateLevel()
@@ -74,6 +64,17 @@ namespace RTSClasses
             }
 
             ExpToNextLvl = temp;
+        }
+
+        protected int CalculatePhysDamage(int Armor)
+        {
+            Random random = new Random();
+            return PhysicalDamage - random.Next(Armor / 2, Armor);
+        }
+
+        protected int CalculateMagicDamage(int MagicDefense)
+        {
+            return MagicDamage - MagicDefense / 2;
         }
 
         protected virtual void UpdateStats() { }
