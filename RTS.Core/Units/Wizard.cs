@@ -11,17 +11,17 @@ namespace RTS.Core
         public int HealPoint { get; set; } = 10;
         public Wizard()
         {
-            Strength = 15;
+            Strenght = 15;
             Dexterity = 20;
             Intelligence = 35;
             Vitality = 15;
 
-            Health = (int)(Vitality * 1.5 + Strength * 0.2);
+            Health = (int)(Vitality * 1.5 + Strenght * 0.2);
             MaxHealth = Health;
             Mana = (int)(Intelligence * 1.5);
             MaxMana = Mana;
 
-            PDamage = (int)(0.5 * Strength);
+            PDamage = (int)(0.5 * Strenght);
             Armor = 1 * Dexterity;
             MDamage = 1 * Intelligence;
             MDefense = 1 * Intelligence;

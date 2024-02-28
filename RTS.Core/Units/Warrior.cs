@@ -10,17 +10,17 @@ namespace RTS.Core
     {
         public Warrior()
         {
-            Strength = 30;
+            Strenght = 30;
             Dexterity = 15;
             Intelligence = 10;
             Vitality = 25;
 
-            Health = Vitality * 2 + Strength;
+            Health = Vitality * 2 + Strenght;
             MaxHealth = Health;
             Mana = 1 * Intelligence;
             MaxMana = Mana;
 
-            PDamage = 1 * Strength;
+            PDamage = 1 * Strenght;
             Armor = 1 * Dexterity;
             MDamage = (int)(0.2 * Intelligence);
             MDefense = (int)(0.5 * Intelligence);

@@ -9,7 +9,7 @@ namespace RTS.Core
         public int Health { get; set; } //здоровье
         public int Strenght { get; set; } //сила
         public int Dexterity { get; set; } //ловкость
-        public int Inteligense { get; set; } //интеллект
+        public int Intelligence { get; set; } //интеллект
 
         public int MaxStrenght { get; set; }
         public int MaxDexterity { get; set; }

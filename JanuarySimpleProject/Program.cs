@@ -54,8 +54,8 @@ List<int> ints = new List<int>()
 //TClass<string> t3 = new TClass<string>("qwerty");
 //t3.ShowTType();
 
-MyClass<int> m = new MyClass<int>();
-m.Value = 1;
-Console.WriteLine(m.Equals(1));
+//MyClass<int> m = new MyClass<int>();
+//m.Value = 1;
+//Console.WriteLine(m.Equals(1));
 
-Console.ReadKey();
+//Console.ReadKey();
