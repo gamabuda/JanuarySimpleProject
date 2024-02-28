@@ -83,23 +83,23 @@
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="4">
-            <Button x:Name="SBTNNplus" Content="+" Click="SBTNNplus_Click_1"></Button>
-            <Button x:Name="SBTNNminus" Content="-" Click="SBTNNminus_Click"></Button>
+            <Button x:Name="SBTNNplus" Content="-" Click="SBTNNplus_Click_1"></Button>
+            <Button x:Name="SBTNNminus" Content="+" Click="SBTNNminus_Click"></Button>
         </StackPanel>
         
         <StackPanel Grid.Row="3" Grid.Column="4">
-            <Button x:Name="DBTNNplus" Content="+" Click="DBTNNplus_Click"></Button>
-            <Button x:Name="DBTNNminus" Content="-" Click="DBTNNminus_Click"></Button>
+            <Button x:Name="DBTNNplus" Content="-" Click="DBTNNplus_Click"></Button>
+            <Button x:Name="DBTNNminus" Content="+" Click="DBTNNminus_Click"></Button>
         </StackPanel>
         
         <StackPanel Grid.Row="4" Grid.Column="4">
-            <Button x:Name="IBTNNplus" Content="+" Click="IBTNNplus_Click"></Button>
-            <Button x:Name="IBTNNminus" Content="-" Click="IBTNNminus_Click"></Button>
+            <Button x:Name="IBTNNplus" Content="-" Click="IBTNNplus_Click"></Button>
+            <Button x:Name="IBTNNminus" Content="+" Click="IBTNNminus_Click"></Button>
         </StackPanel>
         
         <StackPanel Grid.Row="5" Grid.Column="4">
-            <Button x:Name="VBTNNplus" Content="+" Click="VBTNNplus_Click"></Button>
-            <Button x:Name="VBTNNminus" Content="-" Click="VBTNNminus_Click"></Button>
+            <Button x:Name="VBTNNplus" Content="-" Click="VBTNNplus_Click"></Button>
+            <Button x:Name="VBTNNminus" Content="+" Click="VBTNNminus_Click"></Button>
         </StackPanel>
 
         <StackPanel Grid.Row="7" Grid.Column="1">

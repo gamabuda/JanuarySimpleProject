@@ -1,9 +1,10 @@
-﻿using System.ComponentModel;
+﻿using RTS.Core.interfaces;
+using System.ComponentModel;
 using System.Xml.Linq;
 
 namespace RTS.Core
 {
-    public class Unit
+    public class Unit : INotifyPropertyChanged, IAttackHandler, IHpHandler, IManaHandler
     {
         private int _xp;
         public int OldXP 
@@ -33,7 +34,8 @@ namespace RTS.Core
                 }
 
             }
-        } 
+        }
+        public int MaxLevel = 50;
         public double MaxHealth { get; set; }
         public double MaxMana { get; set; }
         public double Armor { get; set; }
@@ -141,7 +143,7 @@ namespace RTS.Core
                 u.HP = 0;
                 return;
             }
-            u.HP -= u.Damage;
+            u.HP -= u.Damage + u.Armor;
         }
         public void ShowInfo()
         {
@@ -149,14 +151,16 @@ namespace RTS.Core
         }
         public void LevelUp()
         {
-
-            if (Level == Level++)
+            if(Level <= MaxLevel)
             {
+                if (Level == Level++)
+                {
 
-                OldXP += NewXp;
-            }
-            
-            NewXp += 1000;
+                    OldXP += NewXp;
+                }
+
+                NewXp += 1000;
+            }          
         }
         public event PropertyChangedEventHandler PropertyChanged;
 

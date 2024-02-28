@@ -109,6 +109,9 @@ namespace RTS.WPF2
         private void XPBTNN_Click(object sender, RoutedEventArgs e)
         {
             unit.OldXP += 1000;
+            unit.LevelUp();
+            unit.StartPoint += 1;
+
         }
     }
     
