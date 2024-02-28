@@ -10,6 +10,7 @@ namespace RTS.Core.Сharacters
     {
         public Warrior()
         {
+            
             Strength = 30;
             Dexterity = 15;
             Intelligence = 10;
@@ -23,6 +24,11 @@ namespace RTS.Core.Сharacters
             Health = MaxHealth;
             Mana = MaxMana;
 
+            CalculateParametric();
+        }
+
+        public override void CalculateParametric()
+        {
             Health = (Vitality + Strength) / 2;
             MaxHealth = Health;
             Mana = 1 * Intelligence;

@@ -20,6 +20,10 @@ namespace RTS.Core.Сharacters
             MaxIntelligence = 70;
             MaxVitality = 80;
 
+            CalculateParametric();
+        }
+        public override void CalculateParametric()
+        {
             Health = (int)(Vitality * 1.5 + Strength * 0.5);
             MaxHealth = Health;
             Mana = (int)(Intelligence * 1.2);

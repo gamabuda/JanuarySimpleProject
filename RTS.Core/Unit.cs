@@ -1,4 +1,5 @@
 ﻿using RTS.Core.Interfaces;
+using RTS.Core.Сharacters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -64,7 +65,11 @@ namespace RTS.Core
             }
         }
 
-        public void ShowInfo()
+        public virtual void CalculateParametric()
+        {
+
+        }
+            public void ShowInfo()
         {
             Console.WriteLine($"Health: {Health}\n" +
                 $"Mana: {Mana}\n\t" +
@@ -73,6 +78,7 @@ namespace RTS.Core
                 $"Intelligence: {Intelligence}\n\t" +
                 $"Vitality: {Vitality}");
         }
+
         //public void Attack(Unit unit)
         //{
         //    if (unit.Health - this.PDamage < 1)

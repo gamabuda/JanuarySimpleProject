@@ -99,7 +99,9 @@ namespace RTS.WpfApp1
             {
                 unit.Points--;
                 unit.Strength++;
+                unit.CalculateParametric();
                 Characteristics();
+
             }
 
         }
@@ -112,7 +114,10 @@ namespace RTS.WpfApp1
                 {
                     unit.Points++;
                     unit.Strength--;
+                    unit.CalculateParametric();
                     Characteristics();
+                    
+
                 }
             }
             if (unit is Wizard)
@@ -122,6 +127,7 @@ namespace RTS.WpfApp1
 
                     unit.Points++;
                     unit.Strength--;
+                    unit.CalculateParametric();
                     Characteristics();
                 }
             }
@@ -132,6 +138,7 @@ namespace RTS.WpfApp1
 
                     unit.Points++;
                     unit.Strength--;
+                    unit.CalculateParametric();
                     Characteristics();
                 }
             }
@@ -143,6 +150,7 @@ namespace RTS.WpfApp1
             {
                 unit.Points--;
                 unit.Dexterity++;
+                unit.CalculateParametric();
                 Characteristics();
             }
 
@@ -157,6 +165,7 @@ namespace RTS.WpfApp1
 
                     unit.Points++;
                     unit.Dexterity--;
+                    unit.CalculateParametric();
                     Characteristics();
                 }
             }
@@ -167,6 +176,7 @@ namespace RTS.WpfApp1
    
                     unit.Points++;
                     unit.Dexterity--;
+                    unit.CalculateParametric();
                     Characteristics();
                 }
             }
@@ -177,6 +187,7 @@ namespace RTS.WpfApp1
                
                     unit.Points++;
                     unit.Dexterity--;
+                    unit.CalculateParametric();
                     Characteristics();
                 }
             }
@@ -188,6 +199,7 @@ namespace RTS.WpfApp1
             {
                 unit.Points--;
                 unit.Intelligence++;
+                unit.CalculateParametric();
                 Characteristics();
             }
 
@@ -201,6 +213,7 @@ namespace RTS.WpfApp1
                 {
                     unit.Points++;
                     unit.Intelligence--;
+                    unit.CalculateParametric();
                     Characteristics();
                 }
             }
@@ -211,6 +224,7 @@ namespace RTS.WpfApp1
                 {
                     unit.Points++;
                     unit.Intelligence--;
+                    unit.CalculateParametric();
                     Characteristics();
                 }
             }
@@ -233,6 +247,7 @@ namespace RTS.WpfApp1
             {
                 unit.Points--;
                 unit.Vitality++;
+                unit.CalculateParametric();
                 Characteristics();
             }
 
@@ -246,6 +261,7 @@ namespace RTS.WpfApp1
                 {
                     unit.Points++;
                     unit.Vitality--;
+                    unit.CalculateParametric();
                     Characteristics();
                 }
             }
@@ -256,6 +272,7 @@ namespace RTS.WpfApp1
                 {
                     unit.Points++;
                     unit.Vitality--;
+                    unit.CalculateParametric();
                     Characteristics();
                 }
             }
@@ -266,6 +283,7 @@ namespace RTS.WpfApp1
                 {
                     unit.Points++;
                     unit.Vitality--;
+                    unit.CalculateParametric();
                     Characteristics();
                 }
             }

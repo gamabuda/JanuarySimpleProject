@@ -22,6 +22,10 @@ namespace RTS.Core.Сharacters
             MaxIntelligence = 250;
             MaxVitality = 70;
 
+           CalculateParametric();
+        }
+        public override void CalculateParametric()
+        {
             Health = (int)(Vitality * 1.5 + Strength * 0.2);
             MaxHealth = Health;
             Mana = (int)(Intelligence * 1.5);
@@ -41,7 +45,7 @@ namespace RTS.Core.Сharacters
             if (Mana < HealPoint)
                 return;
             Mana -= HealPoint;
-            unit.Health += HealPoint;
+            Health += HealPoint;
         }
 
         public void Fireball(Unit unit)
@@ -61,7 +65,7 @@ namespace RTS.Core.Сharacters
                 damage = 0;
             }      
             
-            unit.TakeDamage(damage);
+            TakeDamage(damage);
             Console.WriteLine($"{this} uses a fireball on {unit} for {damage} damage.");
         }
 
@@ -87,7 +91,7 @@ namespace RTS.Core.Сharacters
         //        physicalDamage = 0;
         //    }
 
-        //    unit.TakeDamage(physicalDamage + magicalDamage);
+        //    TakeDamage(physicalDamage + magicalDamage);
         //    Console.WriteLine($"{this} uses double damage on {unit} for {physicalDamage + magicalDamage} damage.");
         //}
     }
