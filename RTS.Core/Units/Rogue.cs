@@ -1,16 +1,30 @@
 ﻿namespace RTS.Core.Units
 {
-    internal class Rogue : Unit
+    public class Rogue : Unit
     {
         public Rogue()
         {
-        }
+            MinStrength = 20;
+            MinDexterity = 30;
+            MinIntelligence = 15;
+            MinVitality = 20;
+            MaxStrength = 65;
+            MaxDexterity = 250;
+            MaxIntelligence = 70;
+            MaxVitality = 80;
 
-        public Rogue(int Strength, int Dexterity, int Intelligence, int Vitality) : base(Strength, Dexterity, Intelligence, Vitality)
-        {
-            Health = (int)(1.5 / Vitality + 0.5 / Strength);
-            Mana = (int)(1.2 / Intelligence);
-            PDamage = (int)(0.5 / Strength + 0.5 * Dexterity);
+            Health = (int)(Vitality / 1.5 + MinStrength / 0.5);
+            Mana = (int)(MinIntelligence / 1.2);
+            PDamage = (int)(Dexterity / 0.5 - MinStrength / 0.5);
+            MDamage = (int)(Intelligence / 0.2);
+            MDefense = (int)(Intelligence / 0.5);
+
+            MaxHealth = Health;
+            MaxMana = Mana;
+            Armor = (int)(Dexterity / 1.5);
+
+            CrtChance = (int)(Dexterity / 0.2);
+            CrtDamage = (int)(Dexterity / 0.1);
         }
     }
 }

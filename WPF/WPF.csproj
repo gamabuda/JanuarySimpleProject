@@ -12,4 +12,16 @@
     <ProjectReference Include="..\RTS.Core\RTS.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="images\rogue.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="images\warrior.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="images\wizard.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

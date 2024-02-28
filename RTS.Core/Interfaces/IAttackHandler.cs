@@ -8,8 +8,9 @@ namespace RTS.Core.Interfaces
 {
     internal interface IAttackHandler
     {
-        public void Attack(Unit unit);
-        public int MDamage { get; set; }
         public int PDamage { get; set; }
+        public int MDamage { get; set; }
+        public void PAttack(Unit unit) { }
+        public void MAttack(Unit unit) { }
     }
 }
