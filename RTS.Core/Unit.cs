@@ -104,8 +104,8 @@ namespace RTS.Core
                 }
             }
         }
-        private int _dexterity;
-        public int Dexterity
+        private double _dexterity;
+        public double Dexterity
         {
             get => _dexterity;
             set
@@ -143,7 +143,19 @@ namespace RTS.Core
                 u.HP = 0;
                 return;
             }
-            u.HP -= u.Damage + u.Armor;
+            
+            if(CriticChanse() == true)
+            {
+                double Boofer;
+                Boofer = Damage + CriticalDamage;
+                u.HP -= Boofer + u.Armor;
+            }
+            else
+            {
+                u.HP -= u.Damage + u.Armor;
+            }
+
+           
         }
         public void ShowInfo()
         {
@@ -167,6 +179,26 @@ namespace RTS.Core
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        
+        public bool CriticChanse()
+        {
+            Unit unit = new Unit();
+            if(unit is Rogue)
+            {
+                CriticalChanse = Dexterity * 0.2;
+            }
+            else if (unit is Warrior)
+            {
+                CriticalChanse = Dexterity * 0.2;
+            }
+
+            else if (unit is Wizzard)
+            {
+                CriticalChanse = Dexterity * 0.2;
+            }
+            return true;
         }
     }
 

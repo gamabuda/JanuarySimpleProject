@@ -20,6 +20,7 @@ namespace RTS.Core
             this.Strength = 15;
             this.Inteligence = 35;
             this.Dexterity = 20;
+            
 
             this.Damage = (Strength * 0.5);
             this.MagicalDamage = Inteligence / 1;

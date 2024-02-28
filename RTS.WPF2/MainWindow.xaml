@@ -8,10 +8,9 @@
         Title="MainWindow" Height="450" Width="800">
 
     <Window.Resources>
-        
-        <Image x:Key="Warrior" Source="/Warrior.jpg"></Image>
-        <Image x:Key="Wizard" Source="/Wizard.jpg" ></Image>
-        <Image x:Key="Rogue" Source="/Rogue.jpg"></Image>
+        <Image x:Key="Rogue" Source="/Rogue.jpg" />
+        <Image x:Key="Warrior" Source="/Warrior.jpg" />
+        <Image  x:Key="Wizard" Source="/Wizard.jpg" />
     </Window.Resources>
     
     <Grid>

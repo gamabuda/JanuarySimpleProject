@@ -102,6 +102,7 @@ namespace RTS.WPF2
 
         private void VBTNNminus_Click(object sender, RoutedEventArgs e)
         {
+            
             unit.StartPoint += 1;
             unit.Vitality -= 1;
         }
