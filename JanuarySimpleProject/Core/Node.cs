@@ -6,10 +6,10 @@ namespace JanuarySimpleProject.Core
 {
     public class Node : INode
     {
-        private static readonly DynamicArray<string> dynamicArray = new();
+        private static readonly DArray<string> dynamicArray = new();
 
         //TODO switch list to array
-        private DynamicArray<string> _values = dynamicArray;
+        private DArray<string> _values = dynamicArray;
         private string _value;
 
         private Node()

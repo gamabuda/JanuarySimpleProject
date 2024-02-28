@@ -1,5 +1,5 @@
-﻿using JanuarySimpleProject;
-using JanuarySimpleProject.Core;
+﻿using JanuarySimpleProject.Core;
+using JanuarySimpleProject.Core.Implementation;
 using System.Formats.Asn1;
 
 /*
@@ -39,7 +39,7 @@ using System.Formats.Asn1;
 //node.ShowInfo();
 
 //Console.WriteLine(node.JSON);
-DynamicArray<string> dynamicArray = new();
+DArray<string> dynamicArray = new();
 dynamicArray.Add("здоровье");
 dynamicArray.Add("сон");
 dynamicArray.Add("еда");
