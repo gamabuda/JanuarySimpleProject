@@ -1,4 +1,5 @@
 ﻿using System;
+using System;
 namespace JanuarySimpleProject.Core.Implementation
 {
     public interface INode
@@ -12,9 +13,7 @@ namespace JanuarySimpleProject.Core.Implementation
         void ShowInfo();
         void AddValue<TValue>(TValue value);
         void RemoveValue<TValue>(TValue value);
-
-        //TODO write UpadateValue method *
-        string UpdateValue(string s);
+        void UpdateValue<TValue>(TValue value);
 
         event Action OnNodeChange;
     }
