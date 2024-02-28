@@ -73,5 +73,6 @@
                 <Button Content="↓" Click="DecreaseVitality_Click" FontSize="20" Height="30" Width="30"/>
             </TextBlock>
         </StackPanel>
+        <Image HorizontalAlignment="Left" Height="100" Margin="1095,165,0,0" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </Window>

@@ -36,7 +36,7 @@ namespace WpfApp1
 
             DataContext = unit;
         }
-
+        
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             unit = new Rogue();
@@ -57,43 +57,65 @@ namespace WpfApp1
 
         private void IncreaseVitality_Click(object sender, RoutedEventArgs e)
         {
-
+            if (unit.Points == 0)
+            {
+                return;
+            }
+            else
+            {
+                unit.Strength++;
+                unit.Points--;
+            }
         }
 
         private void DecreaseVitality_Click(object sender, RoutedEventArgs e)
         {
-
+            unit.Vitality--;
+            unit.Points++;
+            DataContext = unit;
         }
 
         private void IncreaseIntelligence_Click(object sender, RoutedEventArgs e)
         {
-
+            unit.Intelligence++;
+            unit.Points--;
+            DataContext = unit;
         }
 
         private void DecreaseIntelligence_Click(object sender, RoutedEventArgs e)
         {
-
+            unit.Intelligence--;
+            unit.Points++;
+            DataContext = unit;
         }
 
         private void IncreaseDexterity_Click(object sender, RoutedEventArgs e)
         {
-
+            unit.Dexterity++;
+            unit.Points--;
+            DataContext = unit;
         }
 
         private void DecreaseDexterity_Click(object sender, RoutedEventArgs e)
         {
-
+            unit.Dexterity--;
+            unit.Points++;
+            DataContext = unit;
         }
 
         private void IncreaseStrength_Click(object sender, RoutedEventArgs e)
         {
-           
+            unit.Strength++;
+            unit.Points--;
+            DataContext = unit;
            
         }
 
         private void DecreaseStrength_Click(object sender, RoutedEventArgs e)
         {
-
+            unit.Strength--;
+            unit.Points++;
+            DataContext = unit;
         }
     }
 }
