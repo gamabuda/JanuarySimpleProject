@@ -175,7 +175,7 @@ namespace RTS.Core
             else
                 damage = this.Damage;
 
-            if (target.HP - damage < 1)
+            if (target.HP - damage < 1 && target.Armor == 0 || target.HP - (damage - target.Armor) < 1 && target.Armor > 0)
             {
                 target.HP = 0;
                 return;
