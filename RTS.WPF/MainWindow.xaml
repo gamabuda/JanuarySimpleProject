@@ -6,65 +6,70 @@
         xmlns:local="clr-namespace:RTS.WPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Image x:Key ="Warrior" Source="/warrior.png" Height="298"/>
+        <Image x:Key ="Wizard" Source="/wizard.png" Height="298"/>
+        <Image x:Key ="Rogue" Source="/rogue.png" Height="298"/>
+    </Window.Resources> 
+    
     <Grid>
         <Label Content="INFORMATION" HorizontalAlignment="Left" FontSize="36" Height="57" Margin="78,10,0,0" VerticalAlignment="Top" Width="252" Foreground="Red"/>
         <Button Content="Warrior" HorizontalAlignment="Left" Height="22" Margin="24,77,0,0" VerticalAlignment="Top" Width="118" Background="#FF8BB8EA" BorderBrush="#FF2A5788"/>
         <Button Content="Wizard" HorizontalAlignment="Left" Height="22" Margin="162,77,0,0" VerticalAlignment="Top" Width="118" Background="#FF8BB8EA" BorderBrush="#FF2A5788"/>
         <Button Content="Rogue" HorizontalAlignment="Left" Height="22" Margin="300,77,0,0" VerticalAlignment="Top" Width="118" Background="#FF8BB8EA" BorderBrush="#FF2A5788"/>
 
-        
-            <StackPanel Orientation="Horizontal" Margin="62,124,603,282" Height="28">
-                <TextBlock Text="Level:  " FontSize="23" Height="26" Width="59"/>
-                <TextBlock x:Name="Level" Text="1" FontSize="23"/>
-            </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="62,124,603,282" Height="28">
+            <TextBlock Text="Level:  " FontSize="23" Height="26" Width="59"/>
+            <TextBlock x:Name="Level" Text="1" FontSize="23"/>
+        </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Margin="62,171,603,235" Height="28">
-                <TextBlock Text="HP:  " FontSize="23" Height="26" Width="38"/>
-                <TextBlock x:Name="Health1" Text="340" FontSize="23"/>
-                <TextBlock x:Name="Health2" Text="/" FontSize="23"/>
-                <TextBlock x:Name="Health3" Text="340" FontSize="23"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="62,199,583,207" Height="28">
-                <TextBlock Text="Mana:  " FontSize="23" Height="26" Width="64"/>
-                <TextBlock x:Name="Mana1" Text="209" FontSize="23"/>
-                <TextBlock x:Name="Mana2" Text="/" FontSize="23"/>
-                <TextBlock x:Name="Mana3" Text="250" FontSize="23"/>
-            </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="62,171,603,235" Height="28">
+            <TextBlock Text="HP: " FontSize="23" Height="26" Width="38"/>
+            <TextBlock x:Name="HealthMy" Text="0" FontSize="23"/>
+            <TextBlock Text="/" FontSize="23"/>
+            <TextBlock x:Name="HealthMax" Text="0" FontSize="23"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="62,199,583,207" Height="28">
+            <TextBlock Text="Mana: " FontSize="23" Height="26" Width="64"/>
+            <TextBlock x:Name="ManaMy" Text="0" FontSize="23"/>
+            <TextBlock Text="/" FontSize="23"/>
+            <TextBlock x:Name="ManaMax" Text="0" FontSize="23"/>
+        </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Margin="62,246,558,160" Height="28">
-            <TextBlock Text="S:" FontSize="23" Height="26" Width="21"/>
-                <TextBlock x:Name="Strenght1" Text="30" FontSize="23"/>
-                <TextBlock x:Name="Strenght2" Text="/" FontSize="23"/>
-                <TextBlock x:Name="Strenght3" Text="250" FontSize="23"/>
-                <Button x:Name="SPlus" Content="+" Width="23" Height="23" Background="#FF8BB8EA" BorderBrush="#FF2A5788"></Button>
-                <Button x:Name="SMinus" Content="-" Width="23" Height="23" Background="#FF8BB8EA" BorderBrush="#FF2A5788"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="62,274,583,132" Height="28">
-                <TextBlock Text="D:" FontSize="23" Height="26" Width="21"/>
-                <TextBlock x:Name="Dexterity1" Text="15" FontSize="23"/>
-                <TextBlock x:Name="Dexterity2" Text="/" FontSize="23"/>
-                <TextBlock x:Name="Dexterity3" Text="80" FontSize="23"/>
-                <Button x:Name="DPlus" Content="+" Width="23" Height="23" Background="#FF8BB8EA" BorderBrush="#FF2A5788"></Button>
-                <Button x:Name="DMinus" Content="-" Width="23" Height="23" Background="#FF8BB8EA" BorderBrush="#FF2A5788"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="62,302,583,104" Height="28">
-                <TextBlock Text="I:  " FontSize="23" Height="26" Width="21"/>
-                <TextBlock x:Name="Inteligense1" Text="10" FontSize="23"/>
-                <TextBlock x:Name="Inteligense2" Text="/" FontSize="23"/>
-                <TextBlock x:Name="Inteligense3" Text="50" FontSize="23"/>
-                <Button x:Name="IPlus" Content="+" Width="23" Height="23" Background="#FF8BB8EA" BorderBrush="#FF2A5788"></Button>
-                <Button x:Name="IMinus" Content="-" Width="23" Height="23" Background="#FF8BB8EA" BorderBrush="#FF2A5788"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="62,330,583,76" Height="28">
-                <TextBlock Text="V:  " FontSize="23" Height="26" Width="21"/>
-                <TextBlock x:Name="Vitality1" Text="25" FontSize="23"/>
-                <TextBlock x:Name="Vitality2" Text="/" FontSize="23"/>
-                <TextBlock x:Name="Vitality3" Text="100" FontSize="23"/>
-                <Button x:Name="VPlus" Content="+" Width="23" Height="23" Background="#FF8BB8EA" BorderBrush="#FF2A5788"></Button>
-                <Button x:Name="VMinus" Content="-" Width="23" Height="23" Background="#FF8BB8EA" BorderBrush="#FF2A5788"/>
-            </StackPanel>
-            <Image Source="https://img.freepik.com/premium-vector/cartoon-knight-boy_29190-52.jpg?w=826"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="561,67,0,0" Height="281" Width="162"/>
-        
+        <StackPanel Orientation="Horizontal" Margin="62,246,558,160" Height="28">
+            <TextBlock Text="S: " FontSize="23" Height="26" Width="21"/>
+            <TextBlock x:Name="StrenghtMy" Text="0" FontSize="23"/>
+            <TextBlock Text="/" FontSize="23"/>
+            <TextBlock x:Name="StrenghtMax" Text="0" FontSize="23"/>
+            <Button x:Name="SPlus" Content="+" Width="23" Height="23" Background="#FF8BB8EA" BorderBrush="#FF2A5788"></Button>
+            <Button x:Name="SMinus" Content="-" Width="23" Height="23" Background="#FF8BB8EA" BorderBrush="#FF2A5788"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="62,274,583,132" Height="28">
+            <TextBlock Text="D: " FontSize="23" Height="26" Width="21"/>
+            <TextBlock x:Name="DexterityMy" Text="0" FontSize="23"/>
+            <TextBlock Text="/" FontSize="23"/>
+            <TextBlock x:Name="DexterityMax" Text="0" FontSize="23"/>
+            <Button x:Name="DPlus" Content="+" Width="23" Height="23" Background="#FF8BB8EA" BorderBrush="#FF2A5788"></Button>
+            <Button x:Name="DMinus" Content="-" Width="23" Height="23" Background="#FF8BB8EA" BorderBrush="#FF2A5788"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="62,302,583,104" Height="28">
+            <TextBlock Text="I: " FontSize="23" Height="26" Width="21"/>
+            <TextBlock x:Name="InteligenseMy" Text="0" FontSize="23"/>
+            <TextBlock Text="/" FontSize="23"/>
+            <TextBlock x:Name="InteligenseMax" Text="0" FontSize="23"/>
+            <Button x:Name="IPlus" Content="+" Width="23" Height="23" Background="#FF8BB8EA" BorderBrush="#FF2A5788"></Button>
+            <Button x:Name="IMinus" Content="-" Width="23" Height="23" Background="#FF8BB8EA" BorderBrush="#FF2A5788"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="62,330,583,76" Height="28">
+            <TextBlock Text="V: " FontSize="23" Height="26" Width="21"/>
+            <TextBlock x:Name="VitalityMy" Text="0" FontSize="23"/>
+            <TextBlock Text="/" FontSize="23"/>
+            <TextBlock x:Name="VitalityMax" Text="0" FontSize="23"/>
+            <Button x:Name="VPlus" Content="+" Width="23" Height="23" Background="#FF8BB8EA" BorderBrush="#FF2A5788"></Button>
+            <Button x:Name="VMinus" Content="-" Width="23" Height="23" Background="#FF8BB8EA" BorderBrush="#FF2A5788"/>
+        </StackPanel>
+        <Image Source="https://img.freepik.com/premium-vector/cartoon-knight-boy_29190-52.jpg?w=826"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="561,67,0,0" Height="281" Width="162"/>
+
 
     </Grid>
 </Window>
