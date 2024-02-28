@@ -42,10 +42,10 @@
             this.Vitality = Vitality;
         }
         public static void Main(string[] args)
-        {
-            Unit unit = new Unit();
-            unit.ShowInfo();
-        }
+            {
+                Unit unit = new Unit();
+                unit.ShowInfo();
+            }
 
         public void ShowInfo()
         {

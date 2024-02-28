@@ -8,7 +8,7 @@ namespace RTS.Core.Interfaces
 {
     internal interface IManaHandler
     {
-        public int Mana { get; set; }
+        public int Mana {  get; set; }
         public int MaxMana { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace RTS.Core.Interfaces
 {
     internal interface IHealthHandler
     {
-        public int Health { get; set; }
+        public int Health { get; set;  }
         public int MaxHealth { get; set; }
     }
 }

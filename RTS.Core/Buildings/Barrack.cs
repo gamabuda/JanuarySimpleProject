@@ -1,7 +1,6 @@
 ﻿using RTS.Core.Interfaces;
 using RTS.Core.Units;
 using System;
-using System.Threading;
 
 namespace RTS.Core.Buildings
 {
