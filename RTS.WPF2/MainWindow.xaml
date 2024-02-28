@@ -43,7 +43,7 @@
 
         <StackPanel Grid.Row="2" Grid.Column="1">
             <Label Content="XP"></Label>
-            <TextBlock x:Name="XPN" Text="{Binding OldXP}"></TextBlock>
+            <TextBlock x:Name="XPN" Text="{Binding XPGained2}"></TextBlock>
         </StackPanel>
         
         <StackPanel Grid.Row="3" Grid.Column="1">

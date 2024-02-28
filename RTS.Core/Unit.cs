@@ -6,15 +6,17 @@ namespace RTS.Core
 {
     public class Unit : INotifyPropertyChanged, IAttackHandler, IHpHandler, IManaHandler
     {
-        private int _xp;
-        public int OldXP 
+        private int _xpgained1;
+        public int Xp;
+        private int _xpgained2;
+        public int XPGained2
         { 
-            get => _xp;
+            get => _xpgained2;
             set
             {
-                if (_xp != value)
+                if (_xpgained2 != value)
                 {
-                    _xp = value;
+                    _xpgained2 = value;
                     OnPropertyChanged("XP");
                 }
             }
@@ -159,16 +161,16 @@ namespace RTS.Core
         }
         public void ShowInfo()
         {
-            Console.WriteLine($"Health: {HP}\nMana: {Mana}\nStrength: {Strength}\nDexterity: {Dexterity}\nVitality: {Vitality}\nLevel: {Level}\nXP: {OldXP}" );
+            Console.WriteLine($"Health: {HP}\nMana: {Mana}\nStrength: {Strength}\nDexterity: {Dexterity}\nVitality: {Vitality}\nLevel: {Level}\nXP: {XPGained2}" );
         }
-        public void LevelUp()
+        public void LevelUp(int XPGained)
         {
             if(Level <= MaxLevel)
             {
                 if (Level == Level++)
                 {
 
-                    OldXP += NewXp;
+                    XPGained += NewXp;
                 }
 
                 NewXp += 1000;

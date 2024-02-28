@@ -60,6 +60,10 @@ namespace RTS.WPF2
 
         private void SBTNNplus_Click_1(object sender, RoutedEventArgs e)
         {
+            if(unit.StartPoint == 0)
+            {
+                return;
+            }
             unit.StartPoint-=1;
             unit.Strength += 1;
         }
@@ -72,6 +76,10 @@ namespace RTS.WPF2
 
         private void DBTNNplus_Click(object sender, RoutedEventArgs e)
         {
+            if (unit.StartPoint == 0)
+            {
+                return;
+            }
             unit.StartPoint -= 1;
             unit.Dexterity += 1;
         }
@@ -84,6 +92,10 @@ namespace RTS.WPF2
 
         private void IBTNNplus_Click(object sender, RoutedEventArgs e)
         {
+            if (unit.StartPoint == 0)
+            {
+                return;
+            }
             unit.StartPoint -= 1;
             unit.Inteligence += 1;
         }
@@ -96,6 +108,10 @@ namespace RTS.WPF2
 
         private void VBTNNplus_Click(object sender, RoutedEventArgs e)
         {
+            if (unit.StartPoint == 0)
+            {
+                return;
+            }
             unit.StartPoint -= 1;
             unit.Vitality += 1;
         }
@@ -109,8 +125,8 @@ namespace RTS.WPF2
 
         private void XPBTNN_Click(object sender, RoutedEventArgs e)
         {
-            unit.OldXP += 1000;
-            unit.LevelUp();
+            unit.XPGained += 1000;
+            unit.LevelUp(unit.XPGained);
             unit.StartPoint += 1;
 
         }

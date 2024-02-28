@@ -4,9 +4,8 @@ using RTS.Core;
 
 Warrior warrior = new Warrior();
 
-warrior.LevelUp();
-warrior.LevelUp();
-warrior.LevelUp();
+warrior.LevelUp(1000);
+
 
 
 
