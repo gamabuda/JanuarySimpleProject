@@ -129,6 +129,7 @@ namespace JanuarySimpleProject.Core
 
             OnNodeChange?.Invoke();
         }
+
         public void UpdateValue<TValue>(TValue value)
         {
             string strValue = value?.ToString().Trim() ?? throw new ArgumentNullException(nameof(value));

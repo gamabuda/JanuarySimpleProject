@@ -109,5 +109,10 @@ namespace JanuarySimpleProject.Core.Implementation
 
             return -1;
         }
+
+        public void Sort()
+        {
+            Array.Sort(_array, 0, _count);
+        }
     }
 }
