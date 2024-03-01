@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="background.png" />
     <None Remove="rogue.png" />
     <None Remove="warrior.png" />
     <None Remove="wizard.png" />
@@ -19,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="background.png" />
     <Resource Include="rogue.png" />
     <Resource Include="warrior.png" />
     <Resource Include="wizard.png" />
