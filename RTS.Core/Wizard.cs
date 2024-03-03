@@ -42,5 +42,23 @@ namespace RTS.Core
             CriticalChance = Dexterity / 5;
             CriticalDamage = Dexterity / 10;
         }
+
+        public void Fireball(Hero hero)
+        {
+            if (Mana < 10)
+                return;
+
+            int damage = MDamage - hero.MDefense / 2;
+
+            if (hero.Health <= damage)
+            {
+                hero.Health = 0;
+                Mana -= 10;
+                return;
+            }
+
+            hero.Health -= damage;
+            Mana -= 10;
+        }
     }
 }

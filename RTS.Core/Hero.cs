@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RTS.Core
 {
-    public class Hero : Unit, IAttackHandler, IManaHandler, IArmorHandler
+    public class Hero : IHealthHandler, IAttackHandler, IManaHandler, IArmorHandler
     {
         public int Strength { get => _str; set { _str = value; UpdateStats(); } }
         public int MaxStrength { get; set; }
@@ -39,6 +39,8 @@ namespace RTS.Core
         public int Level { get; set; } = 1;
         public int Exp { get => _exp; set { _exp = value; UpdateLevel(); } }
         public int SkillPoints { get; set; } = 5;
+        public int Health { get; set; }
+        public int MaxHealth { get; set; }
 
         public void Attack(IHealthHandler unit)
         {
