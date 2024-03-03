@@ -39,6 +39,10 @@ namespace RTS.Core
         public int LevelUpPoints { get; set; } = 1000;
         public int Health { get; set; }
         public int Mana { get; set; }
+        public int MagicalDamage { get; set; }
+        public int MagicalDefense { get; set; }
+        public int CriticalChanse { get; set; }
+        public int CriticalDamage { get; set; }
 
 
         //public int Strength { get; set; }

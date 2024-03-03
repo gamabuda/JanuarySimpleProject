@@ -11,6 +11,8 @@
 		<Image x:Key="Wizard" Source="/wizard.jpeg"></Image>
 		<Image x:Key="Warrior" Source="/warrior.jpeg"></Image>
 		<Image x:Key="Rogue" Source="/rogue.jpg"></Image>
+		<Image x:Key="Peasent" Source="/Peasent.jpg"></Image>
+		<Image x:Key="Catapulta" Source="/Catapulta.jpg"></Image>
 		<Image x:Key="blank" Source="/blank.jpg"></Image>
 	</Window.Resources>
 
@@ -36,12 +38,20 @@
         Width="200"
         x:Name="MyImage" Margin="589,167,9,265"/>
 		</Border>
-		<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="502,7,0,564" Width="160">
+		<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="502,7,0,564" Width="144" RenderTransformOrigin="0.5,0.5">
+			<StackPanel.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform AngleY="0.252"/>
+					<RotateTransform/>
+					<TranslateTransform Y="0.496"/>
+				</TransformGroup>
+			</StackPanel.RenderTransform>
 			<Button Content="Warrior" Click="Button_Click_1" Height="63"/>
 			<Button Content="Rogue" Margin="5,0,5,0" Click="Button_Click_2"/>
 			<Button Content="Wizard" Click="Button_Click_3"/>
 		</StackPanel>
-		
+
 
 		<TextBlock FontSize="16" x:Name="LvlTB" Text="{Binding Level}" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40" Margin="552,95,0,0" Height="60"/>
 
@@ -79,6 +89,18 @@
     TextAlignment="Left" Grid.Column="1" Margin="0,540,361,22" Grid.Row="1" FontSize="16" Grid.ColumnSpan="3">
 		</TextBlock>
 		<TextBlock HorizontalAlignment="Left" Margin="500,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="ru-ru" Text="Уровень"/></TextBlock>
-		
+		<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="325,6,0,565" Width="144" RenderTransformOrigin="0.5,0.5">
+			<StackPanel.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform AngleY="0.252"/>
+					<RotateTransform/>
+					<TranslateTransform Y="0.496"/>
+				</TransformGroup>
+			</StackPanel.RenderTransform>
+			<Button Content="Catapulta" Click="Button_Click" Height="63"/>
+			<Button Content="Peasent" Margin="5,0,5,0" Click="Button_Click_4" Width="55"/>
+		</StackPanel>
+
 	</Grid>
 </Window>

@@ -184,5 +184,26 @@ namespace RTS.WpfApp
                 unit.Dexterity++;
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            unit = new Catapulta();
+
+            UnitClass.Text = "Catapulta";
+            MyImage.Content = Resources["Catapulta"];
+
+            this.DataContext = unit;
+        }
+
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            unit = new Peasent();
+
+            UnitClass.Text = "Peasent";
+            MyImage.Content = Resources["Peasent"];
+
+            this.DataContext = unit;
+        }
     }
 }
