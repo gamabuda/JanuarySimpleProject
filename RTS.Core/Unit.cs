@@ -35,8 +35,6 @@ namespace RTS.Core
             }
         }
         public int MaxLevel { get; set; } = 50;
-        public int Points { get; set; } = 0;
-        public int LevelUpPoints { get; set; } = 1000;
         public int Health { get; set; }
         public int Mana { get; set; }
         public int MagicalDamage { get; set; }
@@ -45,7 +43,7 @@ namespace RTS.Core
         public int CriticalDamage { get; set; }
 
 
-        //public int Strength { get; set; }
+      
         private int _strength;
         public int Strength
         {
@@ -88,13 +86,13 @@ namespace RTS.Core
         public int MaxMana { get; set; }
         public int HP { get; set; }
 
-        private int _inteligence;
+        private int _intelligence;
         public int Intelligence
         {
-            get => _inteligence;
+            get => _intelligence;
             set
             {
-                _inteligence = value;
+                _intelligence = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Intelligence)));
             }
         }
@@ -154,19 +152,6 @@ namespace RTS.Core
             unit.Health -= this.PDamage;
         }
 
-        //public void LevelUp(Unit unit)
-        //{
-        //    if (this.Level <= 50)
-        //    {
-        //        int index = (Level - 1) * 1000;
-
-        //        if (Points >= Points + index)
-        //            Level++;
-        //        else
-        //            return;
-        //    }
-        //}
-
         public void LevelUp()
         {
             if (Level < MaxLevel)
@@ -190,6 +175,13 @@ namespace RTS.Core
         }
 
     }
+    /*PropertyChanged,  уведомляет об изменении значения свойства.
+     * Данная реализация использует интерфейс INotifyPropertyChanged для поддержки уведомлений об изменении свойств
+     * 
+     * 
+     * 
+     */
+
 }
 
 //    namespace RTS.Core
