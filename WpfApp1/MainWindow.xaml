@@ -5,75 +5,60 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" SizeToContent="Manual">
     <Window.Resources>
         <Image x:Key ="Warrior" Source="/warrior.png" Height="298"/>
         <Image x:Key ="Wizard" Source="/wizard.png" Height="298"/>
         <Image x:Key ="Rogue" Source="/rogue.png" Height="298"/>
     </Window.Resources>
     <Window.Background>
-        <ImageBrush ImageSource ="Background.png"></ImageBrush>
+        <ImageBrush ImageSource ="Background1.png"></ImageBrush>
     </Window.Background>
 
     <Grid>
-        <Rectangle x:Name="rect" Fill="white" Margin="540,0,0,186" Stroke="Black"/>
-        <ContentPresenter x:Name="image" Margin="570,12,30,198"></ContentPresenter>
-        <Button Content="GetEXP" FontFamily="Britannic Bold" HorizontalAlignment="Center" Margin="0,345,0,0" VerticalAlignment="Top" Height="50" Width="102" Background="White"/>
-        <Button Content="Warrior" FontFamily="Britannic Bold" HorizontalAlignment="Left" Margin="463,74,0,0" VerticalAlignment="Top" Click="Button_Click" Height="38" Width="77"/>
-        <Button Content="Rogue" FontFamily="Britannic Bold" HorizontalAlignment="Left" Margin="463,37,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="38" Width="77"/>
-        <Button Content="Wizard" FontFamily="Britannic Bold" HorizontalAlignment="Left" Margin="463,0,0,0" VerticalAlignment="Top" Click="Button_Click_2" Height="38" Width="77"/>
+        <ContentPresenter x:Name="image" Margin="270,65,270,30"></ContentPresenter>
+        <Button Content="GetEXP" FontFamily="Britannic Bold" HorizontalAlignment="Left" Margin="612,354,0,0" VerticalAlignment="Top" Height="50" Width="102" Background="Black" Foreground="White" FontSize="18"/>
+        <Button Content="WARRIOR" FontFamily="Britannic Bold" HorizontalAlignment="Left" Margin="453,17,0,0" VerticalAlignment="Top" Click="Button_Click" Height="40" Width="96" Background="#00FDFE6F" FontSize="20" Foreground="White" BorderBrush="#00707070"/>
+        <Button Content="ROGUE" FontFamily="Britannic Bold" HorizontalAlignment="Left" Margin="270,17,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="40" Width="79" Background="#00FDFE6F" FontSize="20
+                " Foreground="White" BorderBrush="Transparent"/>
+        <Button Content="WIZARD" FontFamily="Britannic Bold" HorizontalAlignment="Center" Margin="0,17,0,0" VerticalAlignment="Top" Click="Button_Click_2" Height="40" Width="80" Background="#00FDFE6F" FontSize="20" Foreground="White" BorderBrush="#00707070" />
 
         <StackPanel Margin="570,253,44,120">
-            <TextBlock TextWrapping="Wrap" Height="50" Foreground="White"><Run Text="Starts points:" FontFamily="Britannic Bold" FontSize="22"/><Run Text=" "/><Run Text="{Binding Points}" FontSize="22"/></TextBlock>
+            <TextBlock TextWrapping="Wrap" Height="50" Foreground="White" RenderTransformOrigin="0.706,0.459"><Run Text="Starts points:" FontFamily="Britannic Bold" FontSize="22"/><Run Text=" "/><Run Text="{Binding Points}" FontSize="22" FontFamily="Britannic Bold"/></TextBlock>
         </StackPanel>
 
-        <StackPanel Margin="10,37,546,51">
-            <TextBlock TextWrapping="Wrap" FontFamily="Britannic Bold" Height="35">
-            <Run Text="{Binding Level}" FontSize="22"/>
-            </TextBlock>
+        <StackPanel Margin="10,65,546,51">
 
-            <TextBlock TextWrapping="Wrap" FontFamily="Britannic Bold" Height="35" Foreground="White">
-                <Run Text="Experience:" FontSize="22"/> 
-                <Run Text="{Binding Experience}" FontSize="22"/>
-            </TextBlock>
+            <TextBlock TextWrapping="Wrap" FontFamily="Britannic Bold" Height="35"><Run Text="{Binding Level}" FontSize="22" FontFamily="Britannic Bold"/></TextBlock>
 
-            <TextBlock TextWrapping="Wrap" FontFamily="Britannic Bold" Height="35" Foreground="White">
-                <Run Text="Health:" FontSize="22"/> 
-                <Run Text="{Binding Health}" FontSize="22"/>
-            </TextBlock>
+            <TextBlock TextWrapping="Wrap" FontFamily="Britannic Bold" Height="35" Foreground="White"><Run Text="Experience:" FontSize="22"/><Run Text=" "/><Run Text="{Binding Experience}" FontSize="22" FontFamily="Britannic Bold"/></TextBlock>
+            <TextBlock TextWrapping="Wrap" FontFamily="Britannic Bold" Height="35" Foreground="White"><Run Text="Health:" FontSize="22"/><Run Text=" "/><Run Text="{Binding Health}" FontSize="22" FontFamily="Britannic Bold"/></TextBlock>
 
-            <TextBlock TextWrapping="Wrap" FontFamily="Britannic Bold" Height="35" Foreground="White" > 
-                <Run Text="Mana:" FontSize="22"/>
-                <Run Text="{Binding Mana}" FontSize="22"/>
-            </TextBlock>
+            <TextBlock TextWrapping="Wrap" FontFamily="Britannic Bold" Height="35" Foreground="White" ><Run Text="Mana:" FontSize="22"/><Run Text=" "/><Run Text="{Binding Mana}" FontSize="22" FontFamily="Britannic Bold"/></TextBlock>
 
-            <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Height="35" Foreground="White" >
-                <Run Text="Strength:" FontFamily="Britannic Bold" FontSize="22"/>
-                <Run Text="{Binding Strength}" FontSize="22"/>
+            <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Height="35" Foreground="White" ><Run Text="Strength:" FontFamily="Britannic Bold" FontSize="22"/><Run Text=" "/><Run Text="{Binding Strength}" FontSize="22" FontFamily="Britannic Bold"/><Run Text=" "/><InlineUIContainer>
                 <Button Content="↑" Click="IncreaseStrength_Click" FontSize="20" Height="30" Width="30"/>
+                </InlineUIContainer><Run Text=" "/><InlineUIContainer>
                 <Button Content="↓" Click="DecreaseStrength_Click" FontSize="20" Height="30" Width="30"/>
-            </TextBlock>
+                </InlineUIContainer></TextBlock>
 
-            <TextBlock TextWrapping="Wrap" Height="35" Foreground="White">
-                <Run Text="Dexterity:" FontFamily="Britannic Bold" FontSize="22"/>
-                <Run Text="{Binding Dexterity}" FontSize="22"/>
-                <Button Content="↑" Click="IncreaseDexterity_Click" FontSize="20" Height="30" Width="30"/>
-                <Button Content="↓" Click="DecreaseDexterity_Click" FontSize="20" Height="30" Width="30"/>
-            </TextBlock>
+            <TextBlock TextWrapping="Wrap" Height="35" Foreground="White"><Run Text="Dexterity:" FontFamily="Britannic Bold" FontSize="22"/><Run Text=" "/><Run Text="{Binding Dexterity}" FontSize="22" FontFamily="Britannic Bold" /><Run Text=" "/><InlineUIContainer>
+                <Button Content="↑" Click="IncreaseDexterity_Click" FontSize="20" Height="30" Width="30" Background="White"/>
+                </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                <Button Content="↓" Click="DecreaseDexterity_Click" FontSize="20" Height="30" Width="30" />
+                </InlineUIContainer></TextBlock>
 
-            <TextBlock TextWrapping="Wrap" Height="35" Foreground="White">
-                <Run Text="Intelligence:" FontFamily="Britannic Bold" FontSize="22"/>
-                <Run Text="{Binding Intelligence}" FontSize="22"/>
+            <TextBlock TextWrapping="Wrap" Height="35" Foreground="White"><Run Text="Intelligence:" FontFamily="Britannic Bold" FontSize="22"/><Run Text=" "/><Run Text="{Binding Intelligence}" FontSize="22" FontFamily="Britannic Bold" /><Run Text=" "/><InlineUIContainer>
                 <Button Content="↑" Click="IncreaseIntelligence_Click" FontSize="20" Height="30" Width="30"/>
+                </InlineUIContainer><Run Text=" "/><InlineUIContainer>
                 <Button Content="↓" Click="DecreaseIntelligence_Click" FontSize="20" Height="30" Width="30"/>
-            </TextBlock>
+                </InlineUIContainer></TextBlock>
 
-            <TextBlock TextWrapping="Wrap" Height="35" Foreground="White">
-                <Run Text="Vitality:" FontFamily="Britannic Bold" FontSize="22"/>
-                <Run Text="{Binding Vitality}" FontSize="22" />
+            <TextBlock TextWrapping="Wrap" Height="35" Foreground="White"><Run Text="Vitality:" FontFamily="Britannic Bold" FontSize="22"/><Run Text=" "/><Run Text="{Binding Vitality}" FontSize="22" FontFamily="Britannic Bold"/><Run Text=" "/><InlineUIContainer>
                 <Button Content="↑" Click="IncreaseVitality_Click" FontSize="20" Height="30" Width="30"/>
+                </InlineUIContainer><Run Text=" "/><InlineUIContainer>
                 <Button Content="↓" Click="DecreaseVitality_Click" FontSize="20" Height="30" Width="30"/>
-            </TextBlock>
+                </InlineUIContainer></TextBlock>
         </StackPanel>
         <Image HorizontalAlignment="Left" Height="100" Margin="1095,165,0,0" VerticalAlignment="Top" Width="100"/>
     </Grid>
