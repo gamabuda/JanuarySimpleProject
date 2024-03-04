@@ -111,5 +111,14 @@ namespace WpfApp1
             unit.Points++;
             DataContext = unit;
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            unit = new Peasant();
+
+            image.Content = Resources["Peasant"];
+
+            DataContext = unit;
+        }
     }
 }
