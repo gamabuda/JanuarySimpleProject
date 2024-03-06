@@ -10,7 +10,8 @@
         <Image x:Key ="Warrior" Source="/warrior.png" Height="298"/>
         <Image x:Key ="Wizard" Source="/wizard.png" Height="298"/>
         <Image x:Key ="Rogue" Source="/rogue.png" Height="298"/>
-        <Image x:Key="Peasant" Source="/Peasant.png" Height="298"/> 
+        <Image x:Key="Peasant" Source="/Peasant.png" Height="298"/>
+        <Image x:Key="Catapult" Source="/catapult.png" Height="298"/>
     </Window.Resources>
     <Window.Background>
         <ImageBrush ImageSource ="Background1.png"></ImageBrush>
@@ -25,6 +26,7 @@
                 " Foreground="White" BorderBrush="Transparent"/>
         <Button Content="WIZARD" FontFamily="Britannic Bold" HorizontalAlignment="Center" Margin="0,17,0,0" VerticalAlignment="Top" Click="Button_Click_2" Height="40" Width="80" Background="#00FDFE6F" FontSize="20" Foreground="White" BorderBrush="#00707070" />
         <Button Content="PEASANT" FontFamily="Britannic Bold" HorizontalAlignment="Left" Margin="549,17,0,0" VerticalAlignment="Top" Click="Button_Click_3" Height="40" Width="96" Background="#00FDFE6F" FontSize="20" Foreground="White" BorderBrush="#00707070"/>
+        <Button Content="CATAPULT" FontFamily="Britannic Bold" HorizontalAlignment="Left" Margin="169,17,0,0" VerticalAlignment="Top" Click="Button_Click_4" Height="40" Width="96" Background="#00FDFE6F" FontSize="20" Foreground="White" BorderBrush="#00707070"/>
 
 
         <StackPanel Margin="570,253,44,120">

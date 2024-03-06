@@ -120,5 +120,14 @@ namespace WpfApp1
 
             DataContext = unit;
         }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            unit = new Catapult();
+
+            image.Content = Resources["Catapult"];
+
+            DataContext = unit;
+        }
     }
 }

@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="Background1.png" />
+    <None Remove="catapult.png" />
     <None Remove="Peasant.png" />
     <None Remove="rogue.png" />
     <None Remove="warrior.png" />
@@ -22,6 +23,7 @@
 
   <ItemGroup>
     <Resource Include="Background1.png" />
+    <Resource Include="catapult.png" />
     <Resource Include="Peasant.png" />
     <Resource Include="rogue.png" />
     <Resource Include="warrior.png" />
